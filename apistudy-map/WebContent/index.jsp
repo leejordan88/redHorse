@@ -54,6 +54,7 @@ function initialize(){
 <title>Insert title here</title>
 </head>
 <body>
+구글지도<br>
 <div id="google_map" style="width:500px; height:500px;"></div>
 </body>
 </html>
