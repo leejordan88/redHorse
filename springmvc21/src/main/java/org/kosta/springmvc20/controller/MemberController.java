@@ -124,6 +124,10 @@ public class MemberController{
 	public String joonSung(){
 		return "leeJoonSung/joonsung";
 	}
+	@RequestMapping("hyomin.do")
+	public String hyomin(){
+		return "member/hyomin";
+	}
 }
 
 
