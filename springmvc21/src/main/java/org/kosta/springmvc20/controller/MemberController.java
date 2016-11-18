@@ -116,6 +116,10 @@ public class MemberController{
 			return new ModelAndView("member/regiOk");
 		}
 	}
+	@RequestMapping("joonSung.do")
+	public String joonSung(){
+		return "leeJoonSung/joonsung";
+	}
 }
 
 
