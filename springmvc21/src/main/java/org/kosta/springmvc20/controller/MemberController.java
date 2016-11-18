@@ -1,6 +1,5 @@
 package org.kosta.springmvc20.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,7 +22,7 @@ public class MemberController{
 	
 	@RequestMapping("findMember.do")
 	public ModelAndView findMember(String id){
-		System.out.println(id + "findMember method 실행");
+		System.out.println(id + "findMember method �떎�뻾");
 		return new ModelAndView("member/find_result", "memberVO", memberDAO.findMemberById(id));
 	}
 	
@@ -41,7 +40,7 @@ public class MemberController{
 	}
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session){
-		System.out.println("logout 실행");
+		System.out.println("logout �떎�뻾");
 		session.invalidate();
 		return "home";
 	}
@@ -115,6 +114,10 @@ public class MemberController{
 			session.setAttribute("mvo", mvo);
 			return new ModelAndView("member/regiOk");
 		}
+	}
+	@RequestMapping("jinseok.do")
+	public String jinseokMember(){
+		return "member/jinseok";
 	}
 }
 
