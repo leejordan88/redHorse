@@ -6,6 +6,8 @@
 <a href="${pageContext.request.contextPath}/getAddressList.do">주소로 회원 검색</a><br>
 <a href="${pageContext.request.contextPath}/joonSung.do">준성페이지로!</a><br>
 <br><br>
+<a href="${pageContext.request.contextPath}/git/yj.do">영주페이지로</a><br>
+<br><br>
 <c:choose>
 <c:when test="${mvo== null }">
 <a href="${pageContext.request.contextPath}/member/login.do">로그인</a><br>
