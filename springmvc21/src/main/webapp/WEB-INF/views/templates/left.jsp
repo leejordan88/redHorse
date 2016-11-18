@@ -2,11 +2,18 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <a href="${pageContext.request.contextPath}/regiform.do">회원등록</a><br>
+<a href="${pageContext.request.contextPath}/jinseok.do">진석페이지 회원검색</a><br>
 <a href="${pageContext.request.contextPath}/member/find.do">회원검색</a><br>
 <a href="${pageContext.request.contextPath}/getAddressList.do">주소로 회원 검색</a><br>
+<<<<<<< HEAD
 
 <a href="${pageContext.request.contextPath}/member/redhorse.do">적토마</a><br>
 
+=======
+<a href="${pageContext.request.contextPath}/joonSung.do">준성페이지로!</a><br>
+<br><br>
+<a href="${pageContext.request.contextPath}/git/yj.do">영주페이지로</a><br>
+>>>>>>> branch 'master' of https://github.com/leejordan88/redHorse.git
 <br><br>
 <c:choose>
 <c:when test="${mvo== null }">
