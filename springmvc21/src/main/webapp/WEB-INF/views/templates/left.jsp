@@ -7,6 +7,7 @@
 <a href="${pageContext.request.contextPath}/joonSung.do">준성페이지로!</a><br>
 <br><br>
 <a href="${pageContext.request.contextPath}/git/yj.do">영주페이지로</a><br>
+<a href="${pageContext.request.contextPath}/git/yw.do">예원페이지로</a><br>
 <br><br>
 <c:choose>
 <c:when test="${mvo== null }">
