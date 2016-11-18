@@ -4,6 +4,9 @@
 <a href="${pageContext.request.contextPath}/regiform.do">회원등록</a><br>
 <a href="${pageContext.request.contextPath}/member/find.do">회원검색</a><br>
 <a href="${pageContext.request.contextPath}/getAddressList.do">주소로 회원 검색</a><br>
+
+<a href="${pageContext.request.contextPath}/member/redhorse.do">적토마</a><br>
+
 <br><br>
 <c:choose>
 <c:when test="${mvo== null }">
