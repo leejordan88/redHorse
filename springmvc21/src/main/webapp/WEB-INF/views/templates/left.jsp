@@ -5,6 +5,9 @@
 <a href="${pageContext.request.contextPath}/jinseok.do">진석페이지 회원검색</a><br>
 <a href="${pageContext.request.contextPath}/member/find.do">회원검색</a><br>
 <a href="${pageContext.request.contextPath}/getAddressList.do">주소로 회원 검색</a><br>
+<a href="${pageContext.request.contextPath}/joonSung.do">준성페이지로!</a><br>
+<br><br>
+<a href="${pageContext.request.contextPath}/git/yj.do">영주페이지로</a><br>
 <br><br>
 <c:choose>
 <c:when test="${mvo== null }">

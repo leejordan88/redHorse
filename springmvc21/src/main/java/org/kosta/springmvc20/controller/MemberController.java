@@ -119,6 +119,11 @@ public class MemberController{
 	public String jinseokMember(){
 		return "member/jinseok";
 	}
+	
+	@RequestMapping("joonSung.do")
+	public String joonSung(){
+		return "leeJoonSung/joonsung";
+	}
 }
 
 
