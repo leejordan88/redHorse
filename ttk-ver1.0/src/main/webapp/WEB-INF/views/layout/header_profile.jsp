@@ -63,7 +63,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.jsp">TTK</a>
+                <a class="navbar-brand page-scroll" href="index.do">TTK</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -73,14 +73,14 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.jsp#portfolio-work">place</a>
+                        <a class="page-scroll" href="index.do">place</a>
                     </li>
 
                     <li>
-                        <a class="page-scroll" href="index.jsp#team">Team</a>
+                        <a class="page-scroll" href="index.do">Team</a>
                     </li>
                     <li>
-                        <a href="register.jsp">회원가입</a>
+                        <a href="register.do">회원가입</a>
                     </li>
 					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
 					<li class="">
@@ -89,8 +89,8 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="mypage2.jsp">My Profile</a></li>
-                    <li><a href="upload.jsp">글쓰기</a></li>
+                    <li><a href="mypage2.do">My Profile</a></li>
+                    <li><a href="upload.do">글쓰기</a></li>
                     <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
@@ -166,7 +166,7 @@
                         </form>
 
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.do"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -185,9 +185,9 @@
 		
 			<div class="text-center">
 				<div class="container-fluid">
-                    	<a href="upload.jsp" class="btn btn-rabbit" >글쓰기</a>
-                        <a href="mypage2.jsp" class="btn btn-rabbit" >사진첩보기</a>
-                        <a href="schedule.jsp" class="btn btn-rabbit">여행일정보기</a>
+                    	<a href="upload.do" class="btn btn-rabbit" >글쓰기</a>
+                        <a href="mypage2.do" class="btn btn-rabbit" >사진첩보기</a>
+                        <a href="schedule.do" class="btn btn-rabbit">여행일정보기</a>
                         <a href="#" data-toggle="modal" data-target="#message-modal" class="btn btn-rabbit">쪽지보내기</a>
 	
 		</div></div>
