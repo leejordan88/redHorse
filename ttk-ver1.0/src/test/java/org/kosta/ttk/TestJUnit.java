@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.ttk.model.MemberDAO;
+import org.kosta.ttk.model.dao.MemberDAO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 

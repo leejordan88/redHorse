@@ -1,4 +1,4 @@
-package org.kosta.ttk.model;
+package org.kosta.ttk.model.vo;
 
 public class TravelerVO {
 	private int placeNo;
