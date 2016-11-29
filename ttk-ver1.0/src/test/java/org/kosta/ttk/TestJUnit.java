@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.ttk.model.dao.MemberDAO;
+import org.kosta.ttk.controller.PlaceController;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -31,12 +31,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
   </dependency>  
   */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/kosta-*.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
 	@Resource
-	private MemberDAO memberDAO;
+	private PlaceController placeController;
 	@Test
 	public void test(){
-		System.out.println(memberDAO.findMemberById("java"));
+		System.out.println(placeController.areaList());
 	}
 }
