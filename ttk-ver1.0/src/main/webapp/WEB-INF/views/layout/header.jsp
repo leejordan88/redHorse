@@ -40,8 +40,6 @@
     <!-- Modernizer js -->
     <script src="${pageContext.request.contextPath}/resources/js/modernizr.custom.js"></script>
 
-    <!-- Font Awesome -->
-    <link href="${pageContext.request.contextPath}/resources/vendors/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="${pageContext.request.contextPath}/resources/vendors/nprogress.css" rel="stylesheet">
 <!-- 
@@ -73,9 +71,11 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.do#portfolio-work">place</a>
+                        <a class="page-scroll" href="index.do#portfolio-work">Place</a>
                     </li>
-
+                    <li>
+                        <a class="page-scroll" href="index.do#profile-list">ProfileList</a>
+                    </li>
                     <li>
                         <a class="page-scroll" href="index.do#team">Team</a>
                     </li>
@@ -91,7 +91,7 @@
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="mypage2.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
