@@ -6,18 +6,21 @@ public class TravelerVO {
 	private String tDate;
 	private int tState;
 	private int tRange;
+	private PlaceVO placeVO;
 	
 	public TravelerVO() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public TravelerVO(int placeNo, String id, String tDate, int tState, int tRange) {
+	public TravelerVO(int placeNo, String id, String tDate, int tState, int tRange, PlaceVO placeVO) {
 		super();
 		this.placeNo = placeNo;
 		this.id = id;
 		this.tDate = tDate;
 		this.tState = tState;
 		this.tRange = tRange;
+		this.placeVO = placeVO;
 	}
 
 	public int getPlaceNo() {
@@ -60,10 +63,18 @@ public class TravelerVO {
 		this.tRange = tRange;
 	}
 
+	public PlaceVO getPlaceVO() {
+		return placeVO;
+	}
+
+	public void setPlaceVO(PlaceVO placeVO) {
+		this.placeVO = placeVO;
+	}
+
 	@Override
 	public String toString() {
 		return "TravelerVO [placeNo=" + placeNo + ", id=" + id + ", tDate=" + tDate + ", tState=" + tState + ", tRange="
-				+ tRange + "]";
+				+ tRange + ", placeVO=" + placeVO + "]";
 	}
-	
+		
 }
