@@ -66,8 +66,8 @@ public class MessageVO {
 	public String toString() {
 		return "MessageVO [messageNo=" + messageNo + ", id=" + id + ", sender=" + sender + ", receiver=" + receiver
 				+ ", messageDate=" + messageDate + ", messageContent=" + messageContent + ", messageState="
-				+ messageState + "]";
+				+ messageState + "]"; 
 	}
-	
+	   
 	
 }
