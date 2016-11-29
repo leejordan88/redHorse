@@ -173,7 +173,7 @@
    <!-- 로그인 모달 끝 -->
 	<body>
 	<header id="header">
-		<div id="head" class="parallax" parallax-speed="2">
+		<div id="head" class="parallax" >
 		<h1 id="logo" class="text-center">
 			<img class="img-circle" src="${pageContext.request.contextPath}/resources/images/img.jpg" alt="">
 			<span class="title">적토마's Page</span>

@@ -7,13 +7,13 @@
 }
 
 .profile_details:nth-child(3n) {
-  clear: both; }
+ }
 
 .profile_details .profile_view {
   display: inline-block;
   padding: 10px 0 0;
   background: #fff; 
-  height: 230px;}
+  height: 200px;}
 
 .profile_details .profile_view .divider {
   border-top: 1px solid #e5e5e5;
@@ -39,9 +39,10 @@
   padding: 10px; }
 
 .profile_details .profile_view .img-circle {
+  margin-bottom: 10px;	
   border: 1px solid #E6E9ED;
   padding: 2px;
-  height: 140px;
+  height: 130px;
   width: 150px; }
 
 .profile_details .profile_view h2 {

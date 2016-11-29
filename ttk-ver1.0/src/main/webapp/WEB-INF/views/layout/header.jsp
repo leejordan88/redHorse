@@ -74,7 +74,7 @@
                         <a class="page-scroll" href="index.do#portfolio-work">Place</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.do#profile-list">ProfileList</a>
+                        <a class="page-scroll" href="profile_list.do">ProfileList</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="index.do#team">Team</a>

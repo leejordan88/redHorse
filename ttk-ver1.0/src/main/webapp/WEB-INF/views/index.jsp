@@ -128,8 +128,7 @@
 	</div>
 </section>
 <!-- End Fun Facts Section -->
-
-<jsp:include page="profile_list.jsp"></jsp:include>    
+  
 
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>
