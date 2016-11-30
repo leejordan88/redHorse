@@ -4,14 +4,9 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-<<<<<<< HEAD
 import org.kosta.ttk.controller.PlaceController;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.vo.PlaceVO;
-=======
-import org.kosta.ttk.model.dao.MemberDAO;
-import org.kosta.ttk.model.vo.MemberVO;
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -41,28 +36,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
 	@Resource
-<<<<<<< HEAD
 	private PlaceController placeController;
 	@Resource
 	private PlaceService placeService;
-=======
-	private MemberDAO memberDAO;
-
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
 	@Test
-<<<<<<< HEAD
+
 	public void test(){
 		PlaceVO placeVO = new PlaceVO();
 		placeVO.setAreaName("강원도");
 		placeVO.setCategoryName("맛집");
 		System.out.println(placeController.placeList(placeVO));
 	}
-=======
-	public void test() {
-		MemberVO mvo = new MemberVO();
-		mvo.setId("java");
-		mvo.setPassword("1234");
-		System.out.println(memberDAO.login(mvo));
-	}	
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
 }
