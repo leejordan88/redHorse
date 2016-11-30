@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +32,6 @@
     
     <!-- Colors CSS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/color/light-red.css" title="light-red">
-
-
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -66,11 +65,16 @@
                 <a class="navbar-brand page-scroll" href="index.do">TTK</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+<!-- 회원가입시 적용 -->
+            <!-- Collect the nav links, forms, and other content for toggling --> 
+             
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+              
                     <li class="hidden">
                         <a href="#page-top"></a>
+                        
                     </li>
                     <li>
                         <a class="page-scroll" href="index.do#portfolio-work">place</a>
@@ -79,28 +83,38 @@
                     <li>
                         <a class="page-scroll" href="index.do#team">Team</a>
                     </li>
+                    <c:choose>
+              <c:when test="${sessionScope.mvo==null}">
                     <li>
                         <a href="register.do">회원가입</a>
                     </li>
 					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+					</c:when>
+				<c:otherwise>
+			
 					<li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="${pageContext.request.contextPath}/resources/images/img.jpg" alt="">적토마's Page
+                    <img src="${pageContext.request.contextPath}/resources/images/img.jpg" alt=""> ${sessionScope.mvo.name}님
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="mypage2.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="update.do">회원정보수정</a></li>
+                    <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
-
-                <li role="presentation" class="dropdown">
+                
+                <!-- 로그인 등장 끝 -->
+                
+        <!-- 쪽지 함 -->
+       			 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">2</span>
+                    <span class="badge bg-green">1</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+               <!-- 쪽지 시작 -->
                     <li>
                       <a href="#" >
                         <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/images/team/진석.jpg" alt="Profile Image" /></span>
@@ -112,36 +126,31 @@
                          같이 여행가실래요?
                         </span>
                       </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/images/team/예원.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>서예원</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          여행가요~
-                        </span>
-                      </a>
-                    </li>
-                    <li>
+                    </li>               
+
+   					 <li>
                       <div class="text-center">
                         <a href="#">
                           <strong>See All Alerts</strong>
                           <i class="fa fa-angle-right"></i>
-                        </a>
+                        </a>             
                       </div>
                     </li>
-                  </ul>
-                </li>
-                </ul>
+                     </ul>
+                    <!-- 쪽지 끝 -->
+               </c:otherwise>
+                  	</c:choose>
+                
+                  </ul>	
             </div>
+  
             <!-- /.navbar-collapse -->
-        </div>
+        </div>     
+        
         <!-- /.container-fluid -->
     </nav>
 
+  
     <!-- 로그인모달 -->
           <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog modal-sm">
@@ -151,10 +160,10 @@
                         <h4 class="modal-title" id="Login">Member Login</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="dispatcher">
+                        <form method="post" action="login.do">
                         	<input type="hidden" name="command" value="login">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="ID" name="member_id">
+                                <input type="text" class="form-control" id="email-modal" placeholder="ID" name="id">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password-modal" placeholder="password" name="password">
@@ -172,6 +181,7 @@
                 </div>
             </div>
         </div>
+        
    <!-- 로그인 모달 끝 -->
 
 
@@ -182,8 +192,5 @@
     <script src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
     <!-- NProgress -->
     <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
-    
-
- 
   </body>
 </html>
