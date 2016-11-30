@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <jsp:include page="layout/header.jsp"></jsp:include>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
-<script src="asset/js/flatpickr.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
+<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
 <script src="https://unpkg.com/flatpickr"></script>
@@ -123,7 +122,6 @@
 					<h5>여행친구찾기완료</h5>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </section>

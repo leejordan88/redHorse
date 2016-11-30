@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
- 
-
 
 
 <!-- Start Portfolio Section -->
@@ -109,20 +106,88 @@
 				<div class="col-md-12">
 					<div class="modal-body">
 						<!-- Project Details Go Here -->
-						<div class="section-title text-center">
-							<h2>날짜선택</h2>
-						</div>
-						<br>
-						<br>
-						<div class="col-md-3 col-sm-3 col-xs-12">
+						<div class="col-md-8">
+							<div class="col-md-4 datepickertitle">
+							<h2>날짜선택</h2></div>
+							<div class="col-md-4">
 							<input id="enableNextMonth" type="text" placeholder="Select date"
-								class="form-control ">
+								class=" form-control ">
+								<br><br>
 						</div>
+						</div>
+						
 
-						<h4>
-							<strong>프로필목록</strong>
-						</h4>
 
+<!-- page content -->
+        <div class="right_col" role="main">
+            <div class="row">
+              <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                      <div class="col-xs-6 col-md-4 profile_details">
+                        <div class="well profile_view">
+                          <div class="col-sm-12">
+                            <div class="left col-xs-7">
+                              <h2><i>이영주</i> <i class="fa fa-female"></i></h2><br>
+                              <ul class="list-unstyled">
+                                <li><p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p></li>
+                                <li><i class="fa fa-smile-o"></i>나이 : 23 </li>
+                                <li><i class="fa fa-building"></i>지역 : 경기도 </li>
+                              </ul>
+                            </div>
+                            <div class="right col-xs-5 text-center">
+                            <a href="mypage2.do"><img src="${pageContext.request.contextPath}/resources/images/team/영주.jpg" alt="" class="img-circle img-responsive"></a>
+                              <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
+                                </i> <i class="fa fa-comments-o"></i>쪽지</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                       <div class="col-xs-6 col-md-4 profile_details">
+                        <div class="well profile_view">
+                          <div class="col-sm-12">
+                            <div class="left col-xs-7">
+                              <h2><i>이준성</i> <i class="fa fa-male"></i></h2><br>
+                              <ul class="list-unstyled">
+                                <li><p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p></li>
+                                <li><i class="fa fa-smile-o"></i>나이 : 29 </li>
+                                <li><i class="fa fa-building"></i>지역 : 경기도 </li>
+                              </ul>
+                            </div>
+                            <div class="right col-xs-5 text-center">
+                            <a href="mypage2.do"><img src="${pageContext.request.contextPath}/resources/images/team/준성.jpg" alt="" class="img-circle img-responsive"></a>
+                              <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
+                                </i> <i class="fa fa-comments-o"></i>쪽지</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                       <div class="col-xs-6 col-md-4 profile_details">
+                        <div class="well profile_view">
+                          <div class="col-sm-12">
+                            <div class="left col-xs-7">
+                              <h2><i>이영주</i> <i class="fa fa-female"></i></h2><br>
+                              <ul class="list-unstyled">
+                                <li><p><strong>About: </strong> Web Designer / UX / Graphic Artist / Coffee Lover </p></li>
+                                <li><i class="fa fa-smile-o"></i>나이 : 23 </li>
+                                <li><i class="fa fa-building"></i>지역 : 경기도 </li>
+                              </ul>
+                            </div>
+                            <div class="right col-xs-5 text-center">
+                            <a href="mypage2.do"><img src="${pageContext.request.contextPath}/resources/images/team/영주.jpg" alt="" class="img-circle img-responsive"></a>
+                              <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">
+                                </i> <i class="fa fa-comments-o"></i>쪽지</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 					</div>
 				</div>
 			</div>
@@ -133,7 +198,6 @@
 
 <script type="text/javascript">
 	flatpickr("#enableNextMonth", {
-		inline : true, // show the calendar inline
 		enable : [ {
 			from : "today",
 			to : new Date().fp_incr(31)
