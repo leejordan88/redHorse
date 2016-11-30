@@ -68,12 +68,18 @@
                             </div>
                            <span id="msg_birthday"></span>
                           </div> 
-                          <!-- 주소끝 -->
-                      </form>
-                        <div class="btn-group">
-                      <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-                      <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-                    </div>
+                          <!-- 주소끝 -->   
+<!-- <p>
+ <button class="btn btn-primary" type="submit">수정수정</button>
+ <button class="btn btn-primary" type="button" >탈퇴</button>
+</p> -->
+<button class="btn btn-primary" type="submit">수정완료</button>
+<a href="DeleteForm.jsp" class="btn btn-large btn-primary">탈퇴</a>
+
+
+                    </form>
+
 </body>
+
 <jsp:include page="layout/footer.jsp"></jsp:include>
 </html>
