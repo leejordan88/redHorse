@@ -9,6 +9,19 @@ public class MessageVO {
 	public MessageVO() {
 		super();
 	}
+	public MessageVO(String sender, String receiver, String messageContent) {
+		super();
+		this.sender = sender;
+		this.receiver = receiver;
+		this.messageContent = messageContent;
+	}
+	
+	
+	public MessageVO(String sender, String receiver) {
+		super();
+		this.sender = sender;
+		this.receiver = receiver;
+	}
 	public MessageVO(int messageNo, String id, String sender, String receiver, String messageDate,
 			String messageContent, int messageState) {
 		super();

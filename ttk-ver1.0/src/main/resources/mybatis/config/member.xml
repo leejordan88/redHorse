@@ -36,4 +36,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	insert into spring_member (id, password, name, address) values(#{id}, #{password}, #{name}, #{address})
  </insert>
  
+ 
+ 
 </mapper>

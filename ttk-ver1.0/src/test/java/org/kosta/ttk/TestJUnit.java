@@ -4,9 +4,11 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /*
  *    TDD : 테스트 주도 개발(test-driven development, TDD)은 
@@ -35,8 +37,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJUnit {
 	@Resource
 	private PlaceController placeController;
+	
+	@Resource
+	private  MessageController messageController;
+	
 	@Test
 	public void test(){
-		System.out.println(placeController.areaList());
+	//System.out.println(messageController.messageSend());
+	//System.out.println(messageController.messageListUnChecked(null ));
+	//System.out.println(messageController.messageList(null ));
+	//System.out.println(messageController.messageDetail(  null ));
 	}
 }

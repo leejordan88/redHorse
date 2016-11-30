@@ -2,7 +2,7 @@ package org.kosta.ttk.model.vo;
 
 public class PlaceVO {
 	private int placeNo;
-	private int categoryNo;
+	private String categoryName;
 	private String areaName;
 	private String placeName;
 	private String placeAddress;
@@ -13,11 +13,11 @@ public class PlaceVO {
 		super();
 	}
 	
-	public PlaceVO(int placeNo, int categoryNo, String areaName, String placeName, String placeAddress, int placeX,
+	public PlaceVO(int placeNo, String categoryName, String areaName, String placeName, String placeAddress, int placeX,
 			int placeY) {
 		super();
 		this.placeNo = placeNo;
-		this.categoryNo = categoryNo;
+		this.categoryName = categoryName;
 		this.areaName = areaName;
 		this.placeName = placeName;
 		this.placeAddress = placeAddress;
@@ -31,11 +31,11 @@ public class PlaceVO {
 	public void setPlaceNo(int placeNo) {
 		this.placeNo = placeNo;
 	}
-	public int getCategoryNo() {
-		return categoryNo;
+	public String getcategoryName() {
+		return categoryName;
 	}
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
+	public void setcategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public String getAreaName() {
 		return areaName;
@@ -70,7 +70,7 @@ public class PlaceVO {
 	
 	@Override
 	public String toString() {
-		return "PlaceVO [placeNo=" + placeNo + ", categoryNo=" + categoryNo + ", areaName=" + areaName + ", placeName="
+		return "PlaceVO [placeNo=" + placeNo + ", categoryName=" + categoryName + ", areaName=" + areaName + ", placeName="
 				+ placeName + ", placeAddress=" + placeAddress + ", placeX=" + placeX + ", placeY=" + placeY + "]";
 	}	
 }
