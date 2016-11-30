@@ -9,13 +9,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>	
 	<!-- 사용할 클래스에 대한 별칭을 명시한다.  -->
 	<typeAliases>
-	<package name="org.kosta.ttk.model"/>
-		<!-- <typeAlias type="org.kosta.springmvc20.model.MemberVO" alias="memberVO"/> -->
+	<package name="org.kosta.ttk.model.vo"/>
 	</typeAliases>	
 	<!-- mapper.xml 을 명시한다  -->
 	<mappers>	
 	<mapper resource="mybatis/config/member.xml"/>	
-	<mapper resource="mybatis/config/message.xml"/>
+	<mapper resource="mybatis/config/place.xml"/>	
+
 	</mappers>
 </configuration>
 

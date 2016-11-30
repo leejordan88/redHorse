@@ -4,7 +4,9 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.ttk.model.MemberDAO;
+import org.kosta.ttk.controller.PlaceController;
+import org.kosta.ttk.model.service.PlaceService;
+import org.kosta.ttk.model.vo.PlaceVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -31,12 +33,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
   </dependency>  
   */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/kosta-*.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
 	@Resource
-	private MemberDAO memberDAO;
+	private PlaceController placeController;
+	@Resource
+	private PlaceService placeService;
 	@Test
+
 	public void test(){
-		System.out.println(memberDAO.findMemberById("java"));
+		PlaceVO placeVO = new PlaceVO();
+		placeVO.setAreaName("강원도");
+		placeVO.setCategoryName("맛집");
+		System.out.println(placeController.placeList(placeVO));
 	}
 }

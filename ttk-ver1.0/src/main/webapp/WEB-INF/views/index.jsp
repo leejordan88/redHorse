@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
-<script src="asset/js/flatpickr.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
+<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
+
 <link rel="stylesheet"
 	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
 <script src="https://unpkg.com/flatpickr"></script>
@@ -15,9 +16,9 @@
 
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#main-slide" data-slide-to="0" class="active"></li>
-			<li data-target="#main-slide" data-slide-to="1"></li>
-			<li data-target="#main-slide" data-slide-to="2"></li>
+			<li data-target="#main-slide" data-slide-to="2" class="active"></li>
+			<li data-target="#main-slide" data-slide-to="3"></li>
+			<li data-target="#main-slide" data-slide-to="40"></li>
 		</ol>
 		<!--/ Indicators end-->
 
@@ -25,7 +26,7 @@
 		<div class="carousel-inner">
 			<div class="item active">
 				<img class="img-responsive"
-					src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg"
+					src="${pageContext.request.contextPath}/resources/images/area/서울.jpg"
 					alt="slider">
 				<div class="slider-content">
 					<div class="col-md-12 text-center">
@@ -90,8 +91,8 @@
 <!-- End Home Page Slider -->
 
 
-
-
+<%--영주 코딩부분 --%>
+<%-- <jsp:include page="place.jsp"></jsp:include>     --%>
 
 
 <!-- Start Portfolio Section -->
@@ -114,37 +115,39 @@
 					</div>
 					<div class="portfolio-contant">
 						<ul id="portfolio-contant-active">
-							<li class="mix Area"><a href="#datepicker-modal"
-								class="portfolio-link" data-toggle="modal"> <img
-									src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>SEOUL</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
+							<c:forEach items="${listVO.areaList }" var="list">
+								<li class="mix Area"><a href="categoryList.do?areaName=${list.areaName }"> 
+									<img src="${pageContext.request.contextPath}/resources/images/area/${list.areaPicture}" alt="">
+										<div class="overly">
+											<div class="position-center">
+												<h2 style="text-align: center">${list.areaName }</h2>
+											</div>
 										</div>
-									</div>
-							</a></li>
-							<li class="mix Area"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/area/경기도.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>경기도</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
+								</a></li>
+							</c:forEach>
+							<c:forEach items="${listVO.categoryList }" var="list">
+								<li class="mix Category"><a href="areaList.do?categoryName=${list.categoryName }">
+									<img src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}" alt="">
+										<div class="overly">
+											<div class="position-center">
+												<h2 style="text-align: center">${list.categoryName }</h2>
+											</div>
 										</div>
-									</div>
-							</a></li>
-							<li class="mix Category"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/category/festival.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>행사</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
+								</a></li>
+							</c:forEach>
+<%-- 							<c:forEach items="${listVO.categoryList }" var="list">
+								<li class="mix Category"><a href="#datepicker-modal"
+									class="portfolio-link" data-toggle="modal">
+										<!-- modal 달력 --> <img
+										src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}"
+										alt="">
+										<div class="overly">
+											<div class="position-center">
+												<h2 style="text-align: center">${list.categoryName }</h2>
+											</div>
 										</div>
-									</div>
-							</a></li>
+								</a></li>
+							</c:forEach> --%>
 							<li class="mix Hot"><a href="#"> <img
 									src="${pageContext.request.contextPath}/resources/images/portfolio/img5.jpg"
 									alt="">
@@ -162,16 +165,6 @@
 									<div class="overly">
 										<div class="position-center">
 											<h2>Hot Place</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
-										</div>
-									</div>
-							</a></li>
-							<li class="mix Category"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/category/관광지.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>관광지</h2>
 											<p>Labore et dolore magna aliqua. Ut enim ad</p>
 										</div>
 									</div>
@@ -201,8 +194,7 @@
 						<div class="section-title text-center">
 							<h2>날짜선택</h2>
 						</div>
-						<br>
-						<br>
+						<br> <br>
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<input id="enableNextMonth" type="text" placeholder="Select date"
 								class="form-control ">
@@ -232,6 +224,7 @@
 
 
 <!-- End Portfolio Section -->
+
 <!-- Start Fun Facts Section -->
 <section class="fun-facts">
 	<div class="container">
@@ -264,12 +257,11 @@
 					<h5>여행친구찾기완료</h5>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </section>
 <!-- End Fun Facts Section -->
-
+  
 
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>
