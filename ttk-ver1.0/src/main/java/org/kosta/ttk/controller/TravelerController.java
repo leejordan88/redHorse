@@ -13,9 +13,11 @@ public class TravelerController {
 	@Resource
 	private TravelerService travelerService;
 	
+	// 핫플레이스 랭킹 5 
 	@RequestMapping("hotplace_ranking.do")
 	public ModelAndView hotPlaceRankingList(){
 		System.out.println("효민");
 		return new ModelAndView("hotplace_ranking","list",travelerService.hotPlaceRankingList());
+		
 	}
 }
