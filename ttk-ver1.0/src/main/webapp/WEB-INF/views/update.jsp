@@ -69,17 +69,11 @@
                            <span id="msg_birthday"></span>
                           </div> 
                           <!-- 주소끝 -->   
-<!-- <p>
- <button class="btn btn-primary" type="submit">수정수정</button>
- <button class="btn btn-primary" type="button" >탈퇴</button>
-</p> -->
-<button class="btn btn-primary" type="submit">수정완료</button>
-<a href="DeleteForm.jsp" class="btn btn-large btn-primary">탈퇴</a>
-
-
-                    </form>
-
-</body>
+<p>
+ <button class="btn btn-primary" type="submit">수정</button>
+</p>
+            </form>
+	</body>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
 </html>
