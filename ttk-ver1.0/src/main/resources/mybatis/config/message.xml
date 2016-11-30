@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="message">
+ 
+ <insert id="messageSend"  parameterType="messageVO">
+ 	insert into message(messageNo,sender,receiver,messageDate,messageContent) 
+ 	values(message_seq.nextval, #{sender}, #{receiver}, sysdate ,#{messageContent})
+ </insert>
+ 
+  <select id="messageListUnChecked"  parameterType="string"  resultType="messageVO">
+ 	select ms.receiver, ms.messageContent, ms.messageDate, m2.profileIMG
+from message ms, member m, member m2 
+where  ms.sender=m2.id  and ms.receiver=m.id  and ms.messageState=1 and  ms.receiver=#{value}
+ </select>
+ 
+<select id="messageList" parameterType="string"  resultType="messageVO">
+ select ms.receiver, ms.messageContent, ms.messageDate, m2.profileIMG
+from message ms, member m, member m2 
+where  ms.sender=m2.id  and ms.receiver=m.id  and  ms.receiver=#{value}
+ </select>
+ 
+ <select id="messageDetail"  resultType="messageVO"  >
+  select receiver, messageContent, messageDate
+from message
+where messageNo=#{value}
+ </select>
+ 
+<!--   보낸쪽지<select id="messageListUnChecked"  parameterType="string"  resultType="messageVO">
+ 	select ms.receiver, ms.messageContent, ms.messageDate, m2.profileIMG
+from message ms, member m, member m2 
+where ms.receiver=m2.id and m.id=#{value}  and ms.messageState=1 and not ms.receiver=#{value} 
+ </select> -->
+ 
+</mapper>
