@@ -90,11 +90,9 @@
 </section>
 <!-- End Home Page Slider -->
 
-<jsp:include page="place.jsp"></jsp:include>    
 
-
-
-
+<%--영주 코딩부분 --%>
+<%-- <jsp:include page="place.jsp"></jsp:include>     --%>
 
 
 <!-- Start Portfolio Section -->
