@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
-<script
-	src="${pageContext.request.contextPath}/asset/js/flatpickr.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
+<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
+
 <link rel="stylesheet"
 	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
 <script src="https://unpkg.com/flatpickr"></script>
@@ -89,6 +89,8 @@
 	<!-- /carousel -->
 </section>
 <!-- End Home Page Slider -->
+
+<jsp:include page="place.jsp"></jsp:include>    
 
 
 
@@ -224,6 +226,7 @@
 
 
 <!-- End Portfolio Section -->
+
 <!-- Start Fun Facts Section -->
 <section class="fun-facts">
 	<div class="container">
@@ -256,12 +259,11 @@
 					<h5>여행친구찾기완료</h5>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </section>
 <!-- End Fun Facts Section -->
-
+  
 
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>
