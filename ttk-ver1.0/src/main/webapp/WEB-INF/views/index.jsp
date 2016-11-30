@@ -116,10 +116,8 @@
 					<div class="portfolio-contant">
 						<ul id="portfolio-contant-active">
 							<c:forEach items="${listVO.areaList }" var="list">
-								<li class="mix Area"><a href="#datepicker-modal"
-									class="portfolio-link" data-toggle="modal"> <img
-										src="${pageContext.request.contextPath}/resources/images/area/${list.areaPicture}"
-										alt="">
+								<li class="mix Area"><a href="categoryList.do?areaName=${list.areaName }"> 
+									<img src="${pageContext.request.contextPath}/resources/images/area/${list.areaPicture}" alt="">
 										<div class="overly">
 											<div class="position-center">
 												<h2 style="text-align: center">${list.areaName }</h2>
@@ -128,8 +126,19 @@
 								</a></li>
 							</c:forEach>
 							<c:forEach items="${listVO.categoryList }" var="list">
+								<li class="mix Category"><a href="areaList.do?categoryName=${list.categoryName }">
+									<img src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}" alt="">
+										<div class="overly">
+											<div class="position-center">
+												<h2 style="text-align: center">${list.categoryName }</h2>
+											</div>
+										</div>
+								</a></li>
+							</c:forEach>
+<%-- 							<c:forEach items="${listVO.categoryList }" var="list">
 								<li class="mix Category"><a href="#datepicker-modal"
-									class="portfolio-link" data-toggle="modal"> <img
+									class="portfolio-link" data-toggle="modal">
+										<!-- modal 달력 --> <img
 										src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}"
 										alt="">
 										<div class="overly">
@@ -138,7 +147,7 @@
 											</div>
 										</div>
 								</a></li>
-							</c:forEach>
+							</c:forEach> --%>
 							<li class="mix Hot"><a href="#"> <img
 									src="${pageContext.request.contextPath}/resources/images/portfolio/img5.jpg"
 									alt="">

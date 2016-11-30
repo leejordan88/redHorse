@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.kosta.ttk.model.dao.PlaceDAO;
 import org.kosta.ttk.model.vo.AreaVO;
 import org.kosta.ttk.model.vo.CategoryVO;
+import org.kosta.ttk.model.vo.PlaceVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +27,11 @@ public class PlaceServiceImpl implements PlaceService {
 	@Override
 	public List<CategoryVO> categoryList() {
 		return placeDAO.categoryList();
+	}
+
+	@Override
+	public List<PlaceVO> placeList(PlaceVO placeVO) {
+		return placeDAO.placeList(placeVO);
 	}
 
 }

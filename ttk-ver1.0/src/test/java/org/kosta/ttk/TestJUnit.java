@@ -5,6 +5,8 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.ttk.controller.PlaceController;
+import org.kosta.ttk.model.service.PlaceService;
+import org.kosta.ttk.model.vo.PlaceVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -35,8 +37,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJUnit {
 	@Resource
 	private PlaceController placeController;
+	@Resource
+	private PlaceService placeService;
 	@Test
 	public void test(){
-		System.out.println(placeController.areaList());
+		PlaceVO placeVO = new PlaceVO();
+		placeVO.setAreaName("강원도");
+		placeVO.setCategoryName("맛집");
+		System.out.println(placeController.placeList(placeVO));
 	}
 }

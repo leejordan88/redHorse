@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.ttk.model.vo.AreaVO;
 import org.kosta.ttk.model.vo.CategoryVO;
+import org.kosta.ttk.model.vo.PlaceVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,12 @@ public class PlaceDAOImpl implements PlaceDAO {
 	@Override
 	public List<CategoryVO> categoryList() {
 		return template.selectList("place.categoryList");
+	}
+
+
+	@Override
+	public List<PlaceVO> placeList(PlaceVO placeVO) {
+		return template.selectList("place.placeList", placeVO);
 	}
 
 }

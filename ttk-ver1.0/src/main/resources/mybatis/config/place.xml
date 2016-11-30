@@ -13,4 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select*from category
 	</select>
 	
+	<select id = "placeList" parameterType="placeVO" resultType = "placeVO">
+	select * from place where areaName = #{areaName} and categoryName = #{categoryName}
+	</select>
 </mapper>
