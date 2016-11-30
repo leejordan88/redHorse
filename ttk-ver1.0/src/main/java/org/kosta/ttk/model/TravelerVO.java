@@ -7,13 +7,15 @@ public class TravelerVO {
 	private int tState;
 	private int tRange;
 	private PlaceVO placeVO;
+	// 순위 출력을 위해 rank 추가하였다.
+	private int rank;
 	
 	public TravelerVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TravelerVO(int placeNo, String id, String tDate, int tState, int tRange, PlaceVO placeVO) {
+	public TravelerVO(int placeNo, String id, String tDate, int tState, int tRange, PlaceVO placeVO, int rank) {
 		super();
 		this.placeNo = placeNo;
 		this.id = id;
@@ -21,6 +23,7 @@ public class TravelerVO {
 		this.tState = tState;
 		this.tRange = tRange;
 		this.placeVO = placeVO;
+		this.rank = rank;
 	}
 
 	public int getPlaceNo() {
@@ -71,10 +74,19 @@ public class TravelerVO {
 		this.placeVO = placeVO;
 	}
 
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	@Override
 	public String toString() {
 		return "TravelerVO [placeNo=" + placeNo + ", id=" + id + ", tDate=" + tDate + ", tState=" + tState + ", tRange="
-				+ tRange + ", placeVO=" + placeVO + "]";
+				+ tRange + ", placeVO=" + placeVO + ", rank=" + rank + "]";
 	}
-		
+
+	
 }

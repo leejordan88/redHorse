@@ -75,7 +75,11 @@
                     <li>
                         <a class="page-scroll" href="index.do#portfolio-work">place</a>
                     </li>
-
+                    <!-- ************************************효민 수정부분*************************************************!-->
+					<li>
+						  <a class="page-scroll" href="hotplace_ranking.do">hotplace</a>
+					</li>
+					<!-- ************************************효민 수정부분*************************************************!-->
                     <li>
                         <a class="page-scroll" href="index.do#team">Team</a>
                     </li>
