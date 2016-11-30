@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
+import org.kosta.ttk.model.service.PlaceService;
+import org.kosta.ttk.model.vo.PlaceVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,15 +39,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestJUnit {
 	@Resource
 	private PlaceController placeController;
-	
+
 	@Resource
-	private  MessageController messageController;
-	
+	private PlaceService placeService;
+
 	@Test
+
 	public void test(){
-	//System.out.println(messageController.messageSend());
-	//System.out.println(messageController.messageListUnChecked(null ));
-	//System.out.println(messageController.messageList(null ));
-	//System.out.println(messageController.messageDetail(  null ));
+
+		PlaceVO placeVO = new PlaceVO();
+		placeVO.setAreaName("강원도");
+		placeVO.setCategoryName("맛집");
+		System.out.println(placeController.placeList(placeVO));
+
 	}
 }
