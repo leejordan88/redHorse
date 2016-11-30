@@ -3,6 +3,7 @@ package org.kosta.ttk.controller;
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.MessageService;
+import org.kosta.ttk.model.MessageVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,20 +13,12 @@ public class MessageController {
 	@Resource(name="messageServiceImpl")
 	private MessageService messageService;
 	
-	@RequestMapping("list.do")
-	public ModelAndView list(String pageNo) {	
-		return new ModelAndView("message/list","lvo",messageService.getMessageList(pageNo));
+	@RequestMapping("messageSend.do")
+	public ModelAndView messageSend(){
+		//messageVO로 들어오는 값이 sender, receiver, messageContent
+		MessageVO messageVO=new MessageVO("java","java2","메세지 전송");
+		MessageService.messageSend(messageVO);
+		System.out.println("컨트롤러에서 메세지 전송~!");
+		return new ModelAndView("hi~");
 	}
-	/*@RequestMapping(value="write.do",method=RequestMethod.POST)	
-	public ModelAndView write(HttpServletRequest request,MessageVO mvo) {
-		HttpSession session=request.getSession(false);
-		if(session!=null){
-			MemberVO memvo=(MemberVO) session.getAttribute("memvo");
-			if(memvo!=null){
-				mvo.setMemberVO(memvo);
-			}
-		}		
-		MessageService.write(mvo);
-		return new ModelAndView("redirect:showContentNoHit.do?no="+mvo.getNo());
-	}	*/
 }

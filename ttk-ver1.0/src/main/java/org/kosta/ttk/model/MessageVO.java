@@ -20,6 +20,14 @@ public class MessageVO {
 		this.messageContent = messageContent;
 		this.messageState = messageState;
 	}
+	
+	public MessageVO(String sender, String receiver, String messageContent) {
+		super();
+		this.sender = sender;
+		this.receiver = receiver;
+		this.messageContent = messageContent;
+	}
+	
 	public int getMessageNo() {
 		return messageNo;
 	}
