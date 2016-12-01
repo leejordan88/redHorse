@@ -16,19 +16,15 @@ public class MemberDAOImpl implements MemberDAO  {
 	public MemberVO login(MemberVO vo) {
 		return template.selectOne("member.login", vo);
 	}
-	
 	@Override
 	public void updateMember(MemberVO vo) {
 		template.update("member.updateMember",vo);			
 	}
 	@Override
-<<<<<<< HEAD
 	public MemberVO findMember(String id) {
 		return template.selectOne("member.findMember", id);
-=======
+	}
 	public void registerMember(MemberVO vo) {
 		template.insert("member.registerMember", vo);
-		
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
 	}
 }
