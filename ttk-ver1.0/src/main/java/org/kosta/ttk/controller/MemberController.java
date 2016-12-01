@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberController {
 	@Resource
 	private MemberService memberService;
+	private String uploadPath;
 /**
  * 로그인 post
  * @param memberVO
@@ -62,33 +63,32 @@ public class MemberController {
 		return "update_result";
 	}
 	
-	//회원가입 컨트롤러
-		@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
-		public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
-			System.out.println(memberVO);
-			uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
-			File uploadDir=new File(uploadPath);
-			if(uploadDir.exists()==false)
-				uploadDir.mkdirs();
-			System.out.println(memberVO.getName());
-			MultipartFile file=memberVO.getUploadFile();//파일 
+	@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
+	public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
+		System.out.println(memberVO);
+		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
+		File uploadDir=new File(uploadPath);
+		if(uploadDir.exists()==false)
+			uploadDir.mkdirs();
+		System.out.println(memberVO.getName());
+		MultipartFile file=memberVO.getUploadFile();//파일 
 
-			//System.out.println(file.isEmpty()); // 업로드할 파일이 있는 지 확인 
-			if(file.isEmpty()==false){
-				System.out.println("파일명:"+file.getOriginalFilename());
-				File uploadFile=new File(uploadPath+file.getOriginalFilename());
-				try {
-					file.transferTo(uploadFile);//실제 디렉토리로 파일을 저장한다 
-					System.out.println(uploadPath+file.getOriginalFilename()+" 파일업로드");
-				} catch (IllegalStateException | IOException e) {				
-					e.printStackTrace();
-				}
+		//System.out.println(file.isEmpty()); // 업로드할 파일이 있는 지 확인 
+		if(file.isEmpty()==false){
+			System.out.println("파일명:"+file.getOriginalFilename());
+			File uploadFile=new File(uploadPath+file.getOriginalFilename());
+			try {
+				file.transferTo(uploadFile);//실제 디렉토리로 파일을 저장한다 
+				System.out.println(uploadPath+file.getOriginalFilename()+" 파일업로드");
+			} catch (IllegalStateException | IOException e) {				
+				e.printStackTrace();
 			}
-			memberVO.setProfileimg(file.getOriginalFilename());
-			memberService.registerMember(memberVO);
-
-			return "register_result";
 		}
+		memberVO.setProfileimg(file.getOriginalFilename());
+		memberService.registerMember(memberVO);
+
+		return "register_result";
+	}
 /**
  * 회원 비활성화  12/1 완료  1 활성화 -> 0 비활성화 업데이트 
  * @param session
