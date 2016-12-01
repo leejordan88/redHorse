@@ -3,12 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
-<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
 
-<link rel="stylesheet"
-	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
-<script src="https://unpkg.com/flatpickr"></script>
 <!-- Start Home Page Slider -->
 <section id="page-top">
 	<!-- Carousel -->
@@ -91,11 +86,6 @@
 <!-- End Home Page Slider -->
 
 
-<<<<<<< HEAD
-<%--영주 코딩부분 --%>
-<%-- <jsp:include page="place.jsp"></jsp:include>     --%>
-
-
 <!-- Start Portfolio Section -->
 <section id="portfolio-work">
 	<div class="container">
@@ -136,19 +126,6 @@
 										</div>
 								</a></li>
 							</c:forEach>
-<%-- 							<c:forEach items="${listVO.categoryList }" var="list">
-								<li class="mix Category"><a href="#datepicker-modal"
-									class="portfolio-link" data-toggle="modal">
-										<!-- modal 달력 --> <img
-										src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}"
-										alt="">
-										<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center">${list.categoryName }</h2>
-											</div>
-										</div>
-								</a></li>
-							</c:forEach> --%>
 							<li class="mix Hot"><a href="#"> <img
 									src="${pageContext.request.contextPath}/resources/images/portfolio/img5.jpg"
 									alt="">
@@ -177,12 +154,7 @@
 		</div>
 	</div>
 </section>
-=======
 
-<!-- 효민 수정부분 , 테스트를 위해 place 부분 모두 hotplace_ranking.jsp로 옮김 -->
-<!-- header에서 hotplace 클릭 시 hotplace_ranking.jsp로 이동  -->
-
->>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 
 <div class="section-modal modal fade" id="datepicker-modal"
@@ -217,18 +189,6 @@
 		</div>
 	</div>
 </div>
-
-
-<script type="text/javascript">
-	flatpickr("#enableNextMonth", {
-		inline : true, // show the calendar inline
-		enable : [ {
-			from : "today",
-			to : new Date().fp_incr(31)
-		} ]
-	})
-</script>
-
 
 <!-- End Portfolio Section -->
 
