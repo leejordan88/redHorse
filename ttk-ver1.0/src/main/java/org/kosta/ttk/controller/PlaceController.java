@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.ttk.model.TravelerService;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.vo.AreaVO;
 import org.kosta.ttk.model.vo.CategoryVO;
@@ -18,6 +19,8 @@ public class PlaceController {
 
 	@Resource
 	private PlaceService placeService;
+	@Resource
+	private TravelerService travelerService;
 	
 	@RequestMapping("index.do")
 	public  ModelAndView index(){

@@ -91,6 +91,7 @@
 <!-- End Home Page Slider -->
 
 
+<<<<<<< HEAD
 <%--영주 코딩부분 --%>
 <%-- <jsp:include page="place.jsp"></jsp:include>     --%>
 
@@ -176,6 +177,12 @@
 		</div>
 	</div>
 </section>
+=======
+
+<!-- 효민 수정부분 , 테스트를 위해 place 부분 모두 hotplace_ranking.jsp로 옮김 -->
+<!-- header에서 hotplace 클릭 시 hotplace_ranking.jsp로 이동  -->
+
+>>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 
 <div class="section-modal modal fade" id="datepicker-modal"

@@ -16,6 +16,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	/* (non-Javadoc)
 	 * @see org.kosta.ttk.model.TravelerDAO#hotPlaceRankingList()
 	 */
+	// 핫 플레이스 랭킹5
 	@Override
 	public List<TravelerVO> hotPlaceRankingList(){
 		return template.selectList("traveler.hotPlaceRankingList");

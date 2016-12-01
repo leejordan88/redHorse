@@ -80,6 +80,11 @@
                     <li>
                         <a class="page-scroll" href="profile_list.do">ProfileList</a>
                     </li>
+                    <!-- ************************************효민 수정부분*************************************************!-->
+					<li>
+						  <a class="page-scroll" href="hotplace_ranking.do">hotplace</a>
+					</li>
+					<!-- ************************************효민 수정부분*************************************************!-->
                     <li>
                         <a class="page-scroll" href="index.do#team">Team</a>
                     </li>
@@ -100,6 +105,7 @@
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="mypage2.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
+
 
                     <li><a href="update.do">회원정보수정</a></li>
 
