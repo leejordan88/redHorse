@@ -1,7 +1,8 @@
-package org.kosta.ttk.model;
+package org.kosta.ttk.model.service;
 
 import javax.annotation.Resource;
 
+import org.kosta.ttk.model.dao.MessageDAO;
 import org.springframework.stereotype.Service;
 
 @Service

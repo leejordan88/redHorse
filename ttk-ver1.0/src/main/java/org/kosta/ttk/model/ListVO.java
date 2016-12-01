@@ -3,6 +3,9 @@ package org.kosta.ttk.model;
 
 import java.util.List;
 
+import org.kosta.ttk.model.vo.MessageVO;
+import org.kosta.ttk.model.vo.PagingBean;
+
 /**
  * 게시물 리스트 정보와 페이징 정보를 가지고 있는 클래스 
  * @author inst

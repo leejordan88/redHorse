@@ -1,8 +1,8 @@
-package org.kosta.ttk.controller;
+package org.kosta.ttk.model.vo;
 
 import javax.annotation.Resource;
 
-import org.kosta.ttk.model.TravelerService;
+import org.kosta.ttk.model.service.TravelerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

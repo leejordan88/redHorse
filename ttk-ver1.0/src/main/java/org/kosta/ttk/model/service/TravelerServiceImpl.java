@@ -1,9 +1,11 @@
-package org.kosta.ttk.model;
+package org.kosta.ttk.model.service;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.ttk.model.TravelerVO;
+import org.kosta.ttk.model.dao.TravelerDAO;
 import org.springframework.stereotype.Service;
 
 @Service
