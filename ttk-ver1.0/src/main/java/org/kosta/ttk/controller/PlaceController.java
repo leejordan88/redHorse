@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+
 import org.kosta.ttk.model.service.MemberService;
+
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.AreaVO;
@@ -58,6 +60,7 @@ public class PlaceController {
 		List<AreaVO> areaList = placeService.areaList();
 		return new ModelAndView("area_list","areaList",areaList);
 	}
+	
 	@RequestMapping("findTravelerBydate.do")
 	@ResponseBody
 	public ArrayList<MemberVO> findTravelerBydate(TravelerVO travelerVO){

@@ -16,6 +16,7 @@ public class TravelerServiceImpl implements TravelerService {
 	/* (non-Javadoc)
 	 * @see org.kosta.ttk.model.TravelerService#hotPlaceRankingList()
 	 */
+
 	// 핫 플레이스 랭킹5
 	@Override
 	public List<TravelerVO> hotPlaceRankingList() {
@@ -26,6 +27,5 @@ public class TravelerServiceImpl implements TravelerService {
 	public List<TravelerVO> travelerList(TravelerVO travelerVO) {
 		return travelerDAO.travelerList(travelerVO);
 	}
-
 
 }
