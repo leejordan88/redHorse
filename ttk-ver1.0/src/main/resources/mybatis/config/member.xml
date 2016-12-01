@@ -8,10 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select id,password,name,tel,sex,age,address,introduce,profileimg,
  		range,enabled,hit from member
  	</sql>
-<!--  <insert id="register" parameterType="memberVO">
- 	insert into member (id, password, name,age, tel,sex,address,introduce) 
- 	values(#{id}, #{password}, #{name},#{age},#{tel},#{sex}#{address},#{introduce})
- </insert> -->
  <select id="login" resultType="memberVO" parameterType="memberVO">
  <include refid="selectMember"></include>
  where id=#{id} and password=#{password}
@@ -20,7 +16,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update member set password=#{password},name=#{name},address=#{address}
 		where id=#{id}
 	</update>
+<<<<<<< HEAD
 	<select id="findMember" parameterType="string" resultType="memberVO">
 		select * from member where id = #{value}
 	</select>
+=======
+<insert id="registerMember" parameterType="memberVO">
+ 	insert into member (id, password, name,tel,sex,age,address,introduce,profileimg,range) 
+ 	values(#{id}, #{password}, #{name},#{tel},#{sex},#{age},#{address},#{introduce},#{profileimg},#{range})
+ </insert>
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
 </mapper>

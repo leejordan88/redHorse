@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  
 	<jsp:include page="layout/header.jsp"></jsp:include>
+<<<<<<< HEAD
 
 
 	<link href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css" rel="stylesheet" type="text/css">
@@ -11,6 +12,8 @@
     <link href="${pageContext.request.contextPath}/resources/vendors/daterangepicker.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
 
+=======
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
     <!-- Select2 -->
     <link href="vendors/select2.min.css" rel="stylesheet">
 
@@ -19,8 +22,10 @@
     <section id="my-profile" class="my-profile-section">
         <div class="container">
             <div class="row">
-	             <div class="x_content">
+			    <form action="${pageContext.request.contextPath}/registerMemberAction.do" method="post" 
+			     enctype="multipart/form-data" id="regForm" class="form-horizontal form-label-left">    
 
+<<<<<<< HEAD
                     <!-- Smart Wizard -->
 
             <div id="wizard" class="form_wizard wizard_horizontal">
@@ -49,6 +54,9 @@
   			  <div id="step-1">
                        <form class="form-horizontal form-label-left">
                           <div class="form-group">
+=======
+              <div class="form-group">
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">아이디 <span class="required">*</span>
                             </label>
                             <div class="col-md-2 col-sm-12 col-xs-12">
@@ -79,13 +87,23 @@
 	                     <div class="form-group">
                    	     <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
                         	<div class="col-md-2">
+<<<<<<< HEAD
                           <input type="text" class="form-control" data-inputmask="'mask' : '(010) 9999-9999'" id = "tel">
                       	  </div>                     
+=======
+                          <input type="number" id="tel"class="form-control" >
+                      	  </div> 
+                      	  <span id="msg_tel"></span>                    
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
 	                      </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">성별<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
+<<<<<<< HEAD
                               <div id="gender" class="btn-group" data-toggle="buttons" id = "sex">
+=======
+                              <div id="sex" class="btn-group" data-toggle="buttons">
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                                 <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                   <input type="radio" name="gender" value="1"> &nbsp; Male &nbsp;
                                 </label>
@@ -96,17 +114,26 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">생년월일<span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">나이<span class="required">*</span>
                             </label>
+<<<<<<< HEAD
                             <div class="col-md-2">
                               <input type="text" class="form-control" data-inputmask="'mask': '9999/99/99'" id = "">
+=======
+                            <div class="col-md-1">
+                              <input type="number" id="age" name="age" class="form-control" >
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                             </div>
+<<<<<<< HEAD
+=======
+                           <span id="msg_age"></span>
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                           </div>
                           
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">거주지역</label>
                         <div class="col-md-3 col-sm-9 col-xs-12">
-                          <select class="select2_group form-control">
+                          <select class="select2_group form-control" name="address">
                             <optgroup label="특별시">
                               <option value="서울">서울특별시</option>
                             </optgroup>
@@ -137,22 +164,47 @@
                           </select>
                         </div>
                       </div> 
-                      
                           <div class="form-group">
                           <label for="introduce" class="control-label col-md-3 col-sm-3 col-xs-12">자기소개 <span class="required">*</span></label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="col-md-6 col-sm-12 col-xs-12">
                           <textarea id="introduce" required="required" class="form-control " name="introduce" ></textarea>
                           </div>
+                          <span id="msg_introduce"></span>
 					</div>                      
+<<<<<<< HEAD
 
                       </form>
                       </div>
                       <div id="step-2">
 
                     </div></div></div>
+=======
+                     <div class="form-group">
+                          <label for="profileimg" class="control-label col-md-3 col-sm-3 col-xs-12">프로필 사진 <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-3 col-xs-12" >
+                           <input type="file" name="uploadFile"  id="uploadFile" required="required">
+                         </div>
+                          <span id="msg_profileimg"></span>
+					</div>					
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">검색공개범위 <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-3 col-xs-12" >
+                              <input type="radio"  checked name="range" value="1"> 전체공개 &nbsp;&nbsp;&nbsp;
+                              <input type="radio"  name="range" value="0"> 비공개
+                          </div>				
+                            <span id="msg_range"></span>
+                          </div>
+					 <div class="form-group">
+					 <div class="submitFormBtn" >
+                        <input type="submit" value="가입하기" class="btn btn-primary" >
+                        </div>
+                        </div>
+                    </form>
+                    </div></div>
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                     <!-- End SmartWizard Content -->
                   
-</div></section>
+</section>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
     
@@ -164,9 +216,8 @@
     <script src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
     <!-- NProgress -->
     <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
-    <!-- jQuery Smart Wizard -->
-    <script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
 
+<<<<<<< HEAD
 
     <!-- jQuery Smart Wizard -->
     <script>
@@ -342,6 +393,8 @@
     <!-- /jquery.inputmask -->
     <!-- jquery.inputmask -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.inputmask.bundle.min.js"></script>
+=======
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
     <!-- Select2 -->
     <script>
       $(document).ready(function() {
