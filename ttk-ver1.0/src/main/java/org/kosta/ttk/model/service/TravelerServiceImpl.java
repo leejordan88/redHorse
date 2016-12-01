@@ -22,4 +22,10 @@ public class TravelerServiceImpl implements TravelerService {
 		return travelerDAO.hotPlaceRankingList();
 	}
 
+	@Override
+	public List<TravelerVO> travelerList(TravelerVO travelerVO) {
+		return travelerDAO.travelerList(travelerVO);
+	}
+
+
 }

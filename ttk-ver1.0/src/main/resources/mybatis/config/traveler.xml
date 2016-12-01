@@ -22,4 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 </select> 
 
+<select id = "travelerList" parameterType="travelerVO" resultType="travelerVO">
+	select * from traveler where placeNo = #{placeNo} and tDate = #{tDate}
+</select>
+
 </mapper>

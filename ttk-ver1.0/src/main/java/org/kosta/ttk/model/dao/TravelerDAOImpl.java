@@ -22,4 +22,9 @@ public class TravelerDAOImpl implements TravelerDAO {
 	public List<TravelerVO> hotPlaceRankingList(){
 		return template.selectList("traveler.hotPlaceRankingList");
 	}
+
+	@Override
+	public List<TravelerVO> travelerList(TravelerVO travelerVO) {
+		return template.selectList("traveler.travelerList", travelerVO);
+	}
 }

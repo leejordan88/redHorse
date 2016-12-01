@@ -126,16 +126,6 @@
 										</div>
 								</a></li>
 							</c:forEach>
-<<<<<<< HEAD
-							<li class="mix Hot"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/portfolio/img5.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>Hot Place</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
-
-=======
 <%-- 							<c:forEach items="${listVO.categoryList }" var="list">
 								<li class="mix Category"><a href="#datepicker-modal"
 									class="portfolio-link" data-toggle="modal">
@@ -149,7 +139,6 @@
 										</div>
 								</a></li>
 							</c:forEach> --%>
-							
 							<!-- 효민 추가부분 핫 플레이스 랭킹5 보기, 선택 시 달력선택 추가하기-->
 								<c:forEach items="${listVO.travelerList }" var="list">
 								<li class="mix Hot"><a href="">
@@ -161,7 +150,6 @@
 										    		${list.placeVO.categoryName }<br>
 										   			 ${list.placeVO.placeName }
 											</div>
->>>>>>> refs/remotes/origin/version1.4
 										</div>
 								</a></li>
 							</c:forEach>
@@ -174,10 +162,6 @@
 		</div>
 	</div>
 </section>
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/version1.4
 
 
 <div class="section-modal modal fade" id="datepicker-modal"

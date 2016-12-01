@@ -20,4 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update member set password=#{password},name=#{name},address=#{address}
 		where id=#{id}
 	</update>
+	<select id="findMember" parameterType="string" resultType="memberVO">
+		select * from member where id = #{value}
+	</select>
 </mapper>

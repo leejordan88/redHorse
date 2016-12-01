@@ -116,13 +116,13 @@ trangeCategory varchar2(100) not null
 )
 
 insert into travelerRange(trange,trangeCategory)
-values(1,'남자')
+values(1,'남자');
 
 insert into travelerRange(trange,trangeCategory)
-values(2,'여자')
+values(2,'여자');
 
 insert into travelerRange(trange,trangeCategory)
-values(3,'전체')
+values(3,'전체');
 
 --  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -151,7 +151,7 @@ values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
  
  --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
 insert into traveler(placeNo,id,tdate,trange)
-values(1,'java',to_date('2016/7/20'),3)
+values(1,'java',to_date('2016-12-02'),3)
 
 
 ---??  sysdate 로 자동으로 주면 해당날짜에 들어가는지??????? 
@@ -451,5 +451,5 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 
 select * from place where areaName = '강원도' and categoryName = '맛집';
 
-
+select * from traveler where placeNo = 1 and tDate = '2016-11-29'
 

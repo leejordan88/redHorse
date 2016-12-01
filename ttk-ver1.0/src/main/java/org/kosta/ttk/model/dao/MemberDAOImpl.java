@@ -24,4 +24,8 @@ public class MemberDAOImpl implements MemberDAO  {
 	public void updateMember(MemberVO vo) {
 		template.update("member.updateMember",vo);			
 	}
+	@Override
+	public MemberVO findMember(String id) {
+		return template.selectOne("member.findMember", id);
+	}
 }
