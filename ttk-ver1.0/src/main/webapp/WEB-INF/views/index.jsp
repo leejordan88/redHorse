@@ -149,27 +149,23 @@
 										</div>
 								</a></li>
 							</c:forEach> --%>
-							<li class="mix Hot"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/portfolio/img5.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>Hot Place</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
-
+							
+							<!-- 효민 추가부분 핫 플레이스 랭킹5 보기, 선택 시 달력선택 추가하기-->
+								<c:forEach items="${listVO.travelerList }" var="list">
+								<li class="mix Hot"><a href="">
+									<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeVO.placeName}.jpg" alt="">
+										<div class="overly">
+											<div class="position-center">
+												<h2 style="text-align: center">${list.rank }위</h2>
+										    		${list.placeVO.areaName }<br>
+										    		${list.placeVO.categoryName }<br>
+										   			 ${list.placeVO.placeName }
+											</div>
 										</div>
-									</div>
-							</a></li>
-							<li class="mix Hot"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/portfolio/img6.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>Hot Place</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
-										</div>
-									</div>
-							</a></li>
+								</a></li>
+							</c:forEach>
+							<!-- 효민 추가부분 끝-->
+							
 						</ul>
 					</div>
 				</div>
@@ -177,12 +173,6 @@
 		</div>
 	</div>
 </section>
-=======
-
-<!-- 효민 수정부분 , 테스트를 위해 place 부분 모두 hotplace_ranking.jsp로 옮김 -->
-<!-- header에서 hotplace 클릭 시 hotplace_ranking.jsp로 이동  -->
-
->>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 
 <div class="section-modal modal fade" id="datepicker-modal"

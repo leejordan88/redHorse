@@ -10,6 +10,7 @@ import org.kosta.ttk.model.vo.AreaVO;
 import org.kosta.ttk.model.vo.CategoryVO;
 import org.kosta.ttk.model.vo.ListVO;
 import org.kosta.ttk.model.vo.PlaceVO;
+import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,9 +27,11 @@ public class PlaceController {
 	public  ModelAndView index(){
 		List<AreaVO> areaList = placeService.areaList();
 		List<CategoryVO> categoryList = placeService.categoryList();
+		List<TravelerVO> travelerList = travelerService.hotPlaceRankingList();
 		ListVO listVO = new ListVO();
 		listVO.setAreaList(areaList);
 		listVO.setCategoryList(categoryList);
+		listVO.setTravelerList(travelerList);
 		//System.out.println(listVO);
 		return new ModelAndView("index", "listVO", listVO);
 	}
@@ -43,9 +46,11 @@ public class PlaceController {
 		List<PlaceVO> placeList = placeService.placeList(placeVO);
 		return new ModelAndView("place_list", "placeList", placeList);
 	}
+	
 	@RequestMapping("areaList.do")
 	public ModelAndView areaList(){
 		List<AreaVO> areaList = placeService.areaList();
 		return new ModelAndView("area_list","areaList",areaList);
 	}
+
 }

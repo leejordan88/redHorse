@@ -13,9 +13,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 핫플레이스 랭킹5  -->
 <select id="hotPlaceRankingList" resultMap="travelerRM" >
+	<![CDATA[
+	select areaname, categoryname, placeName, placeNo, rank from(
 	select p.areaname, p.categoryname, p.placeName, t.placeNo, rank() over(order by count(t.id) desc) as rank
 	from traveler t, place p
 	where p.placeNo=t.placeNo 
-	group by p.areaname, p.categoryname, p.placeName, t.placeNo
+	group by p.areaname, p.categoryname, p.placeName, t.placeNo) where rank<=5
+		]]>
 </select> 
+
 </mapper>
