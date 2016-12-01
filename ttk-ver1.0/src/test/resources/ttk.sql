@@ -27,7 +27,7 @@ create table member(
    password varchar2(100) not null,
    name varchar2(100) not null,
    tel number not null,
-   sex number not null,
+   sex number not null,				--1Male, 2Female 
    age number not null,
    address varchar2(100) not null,
    introduce clob,

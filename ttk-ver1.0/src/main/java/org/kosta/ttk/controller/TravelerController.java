@@ -1,4 +1,4 @@
-package org.kosta.ttk.model.vo;
+package org.kosta.ttk.controller;
 
 import javax.annotation.Resource;
 

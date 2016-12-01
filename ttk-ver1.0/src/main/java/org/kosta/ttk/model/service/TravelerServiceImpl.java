@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.ttk.model.TravelerVO;
 import org.kosta.ttk.model.dao.TravelerDAO;
+import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Service;
 
 @Service
