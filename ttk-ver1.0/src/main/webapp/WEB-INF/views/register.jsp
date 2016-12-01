@@ -3,20 +3,14 @@
  
 	<jsp:include page="layout/header.jsp"></jsp:include>
 
-<<<<<<< HEAD
-	<link href="vendors/smart_wizard.css" rel="stylesheet" type="text/css">
-=======
+
 	<link href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css" rel="stylesheet" type="text/css">
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
+
     <!-- bootstrap-daterangepicker -->
-<<<<<<< HEAD
-    <link href="vendors/daterangepicker.css" rel="stylesheet">
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
-=======
+
     <link href="${pageContext.request.contextPath}/resources/vendors/daterangepicker.css" rel="stylesheet">
-    
 	<script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
+
     <!-- Select2 -->
     <link href="vendors/select2.min.css" rel="stylesheet">
 
@@ -28,15 +22,11 @@
 	             <div class="x_content">
 
                     <!-- Smart Wizard -->
-<<<<<<< HEAD
-                    <div id="wizard" class="form_wizard wizard_horizontal">
-                      <ul class="wizard_steps">
-                        <li>
-=======
+
             <div id="wizard" class="form_wizard wizard_horizontal">
              <ul class="wizard_steps">
   			  <li>
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
+
                           <a href="#step-1">
                             <span class="step_no">1</span>
                             <span class="step_descr">
@@ -55,11 +45,8 @@
                           </a>
                         </li>
                       </ul>
-<<<<<<< HEAD
-                      <div id="step-1">
-=======
+
   			  <div id="step-1">
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                        <form class="form-horizontal form-label-left">
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">아이디 <span class="required">*</span>
@@ -149,9 +136,6 @@
                             </optgroup>
                           </select>
                         </div>
-<<<<<<< HEAD
-                      </div>                       
-=======
                       </div> 
                       
                           <div class="form-group">
@@ -160,24 +144,12 @@
                           <textarea id="introduce" required="required" class="form-control " name="introduce" ></textarea>
                           </div>
 					</div>                      
-                      
-                      
-                      
-                                           
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
+
                       </form>
                       </div>
                       <div id="step-2">
-<<<<<<< HEAD
-                      
-                      </div>
 
-
-
-                    </div>  </div>
-=======
                     </div></div></div>
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                     <!-- End SmartWizard Content -->
                   
 </div></section>
@@ -198,23 +170,13 @@
 
     <!-- jQuery Smart Wizard -->
     <script>
-<<<<<<< HEAD
-      $(document).ready(function() {
-        $('#wizard').smartWizard();
-        $('.buttonFinish').click(function(){
-    		alert("회원가입을 축하드립니다.")
-    	})
-=======
+
     $(document).ready(function() {
     	   
     	$('#wizard').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true}); 
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
         $('.buttonNext').addClass('btn btn-success');
         $('.buttonPrevious').addClass('btn btn-default');
         $('.buttonFinish').addClass('btn btn-primary');
-<<<<<<< HEAD
-      });
-=======
 
     	      function leaveAStepCallback(obj){
     	        var step_num= obj.attr('rel');
@@ -368,7 +330,7 @@
     	      return isValid;
     	    }
 
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
+
     </script>
     <!-- /jQuery Smart Wizard -->
     <!-- jquery.inputmask -->
