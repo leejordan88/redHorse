@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	from traveler t, place p
 	where p.placeNo=t.placeNo 
 	group by p.areaname, p.categoryname, p.placeName, t.placeNo) where rank<=5
-		]]>
+	]]>
 </select> 
 
 </mapper>
