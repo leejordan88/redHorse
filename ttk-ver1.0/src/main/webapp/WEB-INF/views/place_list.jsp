@@ -4,7 +4,7 @@
 <jsp:include page="layout/header.jsp"></jsp:include>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"  ></script>
- 
+
  <script type="text/javascript">  
  //여행지역 선택 시 여행지역 마크업
 $(document).ready(function(){
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		var placeY = $(".mixCategory").children().first().children().first().next().children().children().first().next().next().val();
 		var latlng = new google.maps.LatLng(placeX, placeY);     
 		var myOptions = {       
-			zoom: 4,
+			zoom: 15,
 			center: latlng,       
 			mapTypeId: google.maps.MapTypeId.ROADMAP      
 		};
@@ -57,7 +57,6 @@ $(document).ready(function(){
 					data += "class='img-circle img-responsive'></a><button type='button' class='btn btn-success btn-xs'> <i class='fa fa-user'>";
 					data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></div></div></div></div>";
 				}
-//<img src="${pageContext.request.contextPath}/resources/images/team/영주.jpg" alt="" class="img-circle img-responsive"></a>
 				document.getElementById("travelerListByDate").innerHTML = data;
 			} 
 		});
