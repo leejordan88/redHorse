@@ -12,6 +12,8 @@ public interface MemberDAO {
 	void registerMember(MemberVO memberVO);
 
 
+	void updateDelete(MemberVO vo);
+
 
 
 

@@ -12,4 +12,5 @@ public interface MemberService {
 	MemberVO findMember(String id);
 	
 	void registerMember(MemberVO memberVO);
+	void updateDelete(MemberVO vo);
 }

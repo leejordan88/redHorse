@@ -28,3 +28,7 @@ public class MemberDAOImpl implements MemberDAO  {
 		template.insert("member.registerMember", vo);
 	}
 }
+	public void updateDelete(MemberVO vo){
+		template.update("member.updateDelete",vo);
+	}
+}

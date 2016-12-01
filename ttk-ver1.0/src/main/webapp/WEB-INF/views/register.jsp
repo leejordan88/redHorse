@@ -174,4 +174,4 @@
     <script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
 
   </body>
-</html>    
+</html>
