@@ -146,7 +146,7 @@ create table traveler(
  
  -- to_date(시간정보,포맷)
 insert into date_test(id,mydate) 
-values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
+values('jsp',to_date('2016/7/20 9:00:10','YYYY-MM-DD HH24:MI:SS'));
  
  
  --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
@@ -177,6 +177,7 @@ create table memberPicture(
  filename varchar2(100) not null,
  pictureTitle varchar2(100) not null,
  pictureDate date not null,
+ pictureContent clob not null,
 constraint fk_member foreign key(id) references member(id)
  )
 

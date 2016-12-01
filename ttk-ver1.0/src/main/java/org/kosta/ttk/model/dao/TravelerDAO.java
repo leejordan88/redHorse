@@ -1,4 +1,4 @@
-package org.kosta.ttk.model;
+package org.kosta.ttk.model.dao;
 
 import java.util.List;
 

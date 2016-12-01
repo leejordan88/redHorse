@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.ttk.model.TravelerService;
 import org.kosta.ttk.model.service.PlaceService;
+import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.AreaVO;
 import org.kosta.ttk.model.vo.CategoryVO;
 import org.kosta.ttk.model.vo.ListVO;

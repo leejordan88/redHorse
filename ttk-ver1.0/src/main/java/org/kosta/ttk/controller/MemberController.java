@@ -22,7 +22,7 @@ public class MemberController {
 			return "login_fail";
 		} else {
 			request.getSession().setAttribute("mvo", vo);
-			return "index";
+			return "redirect:index.do";
 		}
 	}
 
@@ -31,7 +31,7 @@ public class MemberController {
 		HttpSession session = request.getSession(false);
 		if (session != null)
 			session.invalidate();
-		return "index";
+		return "redirect:index.do";
 	}
 
 	@RequestMapping("updateMemberAction.do")

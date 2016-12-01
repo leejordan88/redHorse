@@ -23,7 +23,7 @@
                             <li>
                                 <div class="portfolio-item">
                                 <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                    <img src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg" class="img-responsive" alt="" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/area/서울.jpg" class="img-responsive" alt="" />
                                     <div class="portfolio-caption">
                                         <h4>Seoul City<br>2016/07/21</h4>
                                     </div>
@@ -33,7 +33,7 @@
                             <li>
                                 <div class="portfolio-item">
                                 <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                    <img src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg" class="img-responsive" alt="" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/area/서울.jpg" class="img-responsive" alt="" />
                                     <div class="portfolio-caption">
                                         <h4>Seoul City<br>2016/07/21</h4>
                                     </div>
@@ -43,7 +43,7 @@
                             <li>
                                 <div class="portfolio-item">
                                 <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                    <img src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg" class="img-responsive" alt="" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/area/서울.jpg" class="img-responsive" alt="" />
                                     <div class="portfolio-caption">
                                         <h4>Seoul City<br>2016/07/21</h4>
                                     </div>
@@ -53,7 +53,7 @@
                             <li>
                                 <div class="portfolio-item">
                                 <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                    <img src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg" class="img-responsive" alt="" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/area/서울.jpg" class="img-responsive" alt="" />
                                     <div class="portfolio-caption">
                                         <h4>Seoul City<br>2016/07/21</h4>
                                     </div>
@@ -63,7 +63,7 @@
                             <li>
                                 <div class="portfolio-item">
                                 <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                    <img src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg" class="img-responsive" alt="" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/area/서울.jpg" class="img-responsive" alt="" />
                                     <div class="portfolio-caption">
                                         <h4>Seoul City<br>2016/07/21</h4>
                                     </div>
@@ -73,7 +73,7 @@
                             <li>
                                 <div class="portfolio-item">
                                 <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                                    <img src="${pageContext.request.contextPath}/resources/images/area/seoul.jpg" class="img-responsive" alt="" />
+                                    <img src="${pageContext.request.contextPath}/resources/images/area/서울.jpg" class="img-responsive" alt="" />
                                     <div class="portfolio-caption">
                                         <h4>Seoul City<br>2016/07/21</h4>
                                     </div>
