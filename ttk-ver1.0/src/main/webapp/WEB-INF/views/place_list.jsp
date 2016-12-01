@@ -17,10 +17,10 @@ $(document).ready(function(){
 		var myOptions = {       
 			zoom: 4,
 			center: latlng,       
-			mapTypeId: google.maps.MapTypeId.ROADMAP     
-		};     
+			mapTypeId: google.maps.MapTypeId.ROADMAP      
+		};
 		map = new google.maps.Map(document.getElementById("google_map"), myOptions); 
-		//map.setTilt(45);
+		map.setTilt(45);
 		  var marker = new google.maps.Marker({
 			    position: latlng,
 			    map: map,
