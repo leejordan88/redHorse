@@ -3,20 +3,19 @@
  
    <jsp:include page="layout/header.jsp"></jsp:include>
 
-<<<<<<< HEAD
+
 	<link href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css" rel="stylesheet" type="text/css">
-=======
+
    <link href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css" rel="stylesheet" type="text/css">
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+
     <!-- bootstrap-daterangepicker -->
     <link href="${pageContext.request.contextPath}/resources/vendors/daterangepicker.css" rel="stylesheet">
     
-<<<<<<< HEAD
+
 	<script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
-=======
+
    <script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
-    <!-- Select2 -->
+
     <link href="${pageContext.request.contextPath}/resources/vendors/select2.min.css" rel="stylesheet">
 
 <body>
@@ -29,11 +28,11 @@
                     <!-- Smart Wizard -->
             <div id="wizard" class="form_wizard wizard_horizontal">
              <ul class="wizard_steps">
-<<<<<<< HEAD
+
   			  <li>
-=======
+
              <li>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+
                           <a href="#step-1">
                             <span class="step_no">1</span>
                             <span class="step_descr">
@@ -52,11 +51,9 @@
                           </a>
                         </li>
                       </ul>
-<<<<<<< HEAD
-  			  <div id="step-1">
-=======
+
              <div id="step-1">
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+
                        <form class="form-horizontal form-label-left">
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">아이디 <span class="required">*</span>
@@ -91,15 +88,7 @@
                             </div>
                             <span id="msg_name"></span>
                           </div>
-<<<<<<< HEAD
-	                     <div class="form-group">
-                   	     <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
-                        	<div class="col-md-2">
-                          <input type="text" id="tel"class="form-control" data-inputmask="'mask' : '(010) 9999-9999'">
-                      	  </div> 
-                      	  <span id="msg_tel"></span>                    
-	                      </div>
-=======
+
                         <div class="form-group">
                            <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
                            <div class="col-md-2">
@@ -107,7 +96,7 @@
                            </div> 
                            <span id="msg_tel"></span>                    
                          </div>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">성별<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -192,18 +181,15 @@
     <!-- jQuery Smart Wizard -->
     <script>
     $(document).ready(function() {
-<<<<<<< HEAD
-    	   
-    	$('#wizard').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true}); 
-=======
+
           
        $('#wizard').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true}); 
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+
         $('.buttonNext').addClass('btn btn-success');
         $('.buttonPrevious').addClass('btn btn-default');
         $('.buttonFinish').addClass('btn btn-primary');
 
-<<<<<<< HEAD
+
     	      function leaveAStepCallback(obj){
     	        var step_num= obj.attr('rel');
     	        return validateSteps(step_num);

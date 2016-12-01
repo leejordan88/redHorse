@@ -2,6 +2,9 @@ select *from memberRange;
 drop table memberRange;
 
 
+-- 비활성화 테스트 버전1에서 회원탈퇴후 수동으로 변경시켜줘야함 다시 활성화 되려면
+update member set enabled = 1 where id= 'java';
+
 
   -- 0일때 전체공개 거부    //  1일때 전체공개 허용    -- 프로필리스트에서
 create table memberRange(

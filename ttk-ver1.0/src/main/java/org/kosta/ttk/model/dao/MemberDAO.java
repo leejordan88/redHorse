@@ -9,6 +9,8 @@ public interface MemberDAO {
 
 	void updateMember(MemberVO vo);
 
+	void updateDelete(MemberVO vo);
+
 
 
 

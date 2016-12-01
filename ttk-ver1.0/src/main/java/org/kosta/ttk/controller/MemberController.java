@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MemberController {
 	@Resource
 	private MemberService memberService;
-
+/**
+ * 로그인 post
+ * @param memberVO
+ * @param request
+ * @return
+ */
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(MemberVO memberVO, HttpServletRequest request) {
 		MemberVO vo = memberService.login(memberVO);
@@ -25,7 +30,11 @@ public class MemberController {
 			return "index";
 		}
 	}
-
+/**
+ * 로그아웃
+ * @param request
+ * @return
+ */
 	@RequestMapping("logout.do")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -33,6 +42,12 @@ public class MemberController {
 			session.invalidate();
 		return "index";
 	}
+	/**
+	 * 회원정보수정    11/30 완료
+	 * @param request
+	 * @param memberVO
+	 * @return
+	 */
 
 	@RequestMapping("updateMemberAction.do")
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
@@ -41,4 +56,19 @@ public class MemberController {
 		memberService.updateMember(memberVO);
 		return "update_result";
 	}
+/**
+ * 회원 비활성화  12/1 완료  1 활성화 -> 0 비활성화 업데이트 
+ * @param session
+ * @param request
+ * @return
+ */
+	@RequestMapping("updateDelete.do")
+	public String updateDelete(HttpSession session,HttpServletRequest request) {
+		MemberVO mvo =  (MemberVO) session.getAttribute("mvo");
+		System.out.println(mvo);
+		memberService.updateDelete(mvo);
+		request.getSession().invalidate();
+		return "updateDelete";
+	}
+
 }
