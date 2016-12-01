@@ -41,9 +41,12 @@
 
     <!-- NProgress -->
     <link href="${pageContext.request.contextPath}/resources/vendors/nprogress.css" rel="stylesheet">
-<!-- 
-    Custom Theme Style
-    <link href="../vendors/custom.min.css" rel="stylesheet"> -->
+    
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
+	<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+	<script src="https://unpkg.com/flatpickr"></script>
+	
   </head>
 
 <body class="index">

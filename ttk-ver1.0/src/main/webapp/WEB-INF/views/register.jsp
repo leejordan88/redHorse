@@ -1,21 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-   <jsp:include page="layout/header.jsp"></jsp:include>
+	<jsp:include page="layout/header.jsp"></jsp:include>
 
-<<<<<<< HEAD
 	<link href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css" rel="stylesheet" type="text/css">
-=======
-   <link href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css" rel="stylesheet" type="text/css">
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
     <!-- bootstrap-daterangepicker -->
     <link href="${pageContext.request.contextPath}/resources/vendors/daterangepicker.css" rel="stylesheet">
     
-<<<<<<< HEAD
 	<script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
-=======
-   <script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
     <!-- Select2 -->
     <link href="${pageContext.request.contextPath}/resources/vendors/select2.min.css" rel="stylesheet">
 
@@ -24,16 +16,12 @@
  <section id="my-profile" class="my-profile-section">
         <div class="container">
             <div class="row">
-                <div class="x_content">
+	             <div class="x_content">
 
                     <!-- Smart Wizard -->
             <div id="wizard" class="form_wizard wizard_horizontal">
              <ul class="wizard_steps">
-<<<<<<< HEAD
   			  <li>
-=======
-             <li>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
                           <a href="#step-1">
                             <span class="step_no">1</span>
                             <span class="step_descr">
@@ -52,11 +40,7 @@
                           </a>
                         </li>
                       </ul>
-<<<<<<< HEAD
   			  <div id="step-1">
-=======
-             <div id="step-1">
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
                        <form class="form-horizontal form-label-left">
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">아이디 <span class="required">*</span>
@@ -91,7 +75,6 @@
                             </div>
                             <span id="msg_name"></span>
                           </div>
-<<<<<<< HEAD
 	                     <div class="form-group">
                    	     <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
                         	<div class="col-md-2">
@@ -99,15 +82,6 @@
                       	  </div> 
                       	  <span id="msg_tel"></span>                    
 	                      </div>
-=======
-                        <div class="form-group">
-                           <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
-                           <div class="col-md-2">
-                          <input type="text" id="tel"class="form-control" data-inputmask="'mask' : '(010) 9999-9999'">
-                           </div> 
-                           <span id="msg_tel"></span>                    
-                         </div>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">성별<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -164,20 +138,29 @@
                             </optgroup>
                           </select>
                         </div>
-                      </div>                      
+                      </div> 
+                      
+                          <div class="form-group">
+                          <label for="introduce" class="control-label col-md-3 col-sm-3 col-xs-12">자기소개 <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea id="introduce" required="required" class="form-control " name="introduce" ></textarea>
+                          </div>
+					</div>                      
+                      
+                      
+                      
+                                           
                       </form>
                       </div>
                       <div id="step-2">
-
-
                     </div></div></div>
                     <!-- End SmartWizard Content -->
                   
-</div></div></section>
+</div></section>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
     
-    <!-- jQuery -->
+	 <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
     <!-- Bootstrap -->
   <!--   <script src="vendors/bootstrap.js"></script> -->
@@ -192,18 +175,12 @@
     <!-- jQuery Smart Wizard -->
     <script>
     $(document).ready(function() {
-<<<<<<< HEAD
     	   
     	$('#wizard').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true}); 
-=======
-          
-       $('#wizard').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true}); 
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
         $('.buttonNext').addClass('btn btn-success');
         $('.buttonPrevious').addClass('btn btn-default');
         $('.buttonFinish').addClass('btn btn-primary');
 
-<<<<<<< HEAD
     	      function leaveAStepCallback(obj){
     	        var step_num= obj.attr('rel');
     	        return validateSteps(step_num);
@@ -355,159 +332,6 @@
 
     	      return isValid;
     	    }
-=======
-             function leaveAStepCallback(obj){
-               var step_num= obj.attr('rel');
-               return validateSteps(step_num);
-             }
-             
-             function onFinishCallback(){
-              if(validateAllSteps()){
-                 alert("회원가입을 축하드립니다.")
-               $('form').submit();
-              }
-             }
-             });
-             
-           function validateAllSteps(){
-              var isStepValid = true;
-              
-              if(validateStep1() == false){
-                isStepValid = false;
-                $('#wizard').smartWizard('setError',{stepnum:1,iserror:true});         
-              }else{
-                $('#wizard').smartWizard('setError',{stepnum:1,iserror:false});
-              }
-              
-              if(validateStep2() == false){
-                isStepValid = false;
-                $('#wizard').smartWizard('setError',{stepnum:2,iserror:true});         
-              }else{
-                $('#wizard').smartWizard('setError',{stepnum:2,iserror:false});
-              }
-              
-              if(!isStepValid){
-                 $('#wizard').smartWizard('showMessage','Please correct the errors in the steps and continue');
-              }
-                     
-              return isStepValid;
-           }    
-             
-             
-             function validateSteps(step){
-               var isStepValid = true;
-             // validate step 1
-             if(step == 1){
-               if(validateStep1() == false ){
-                 isStepValid = false; 
-                 $('#wizard').smartWizard('showMessage','Please correct the errors in step'+step+ ' and click next.');
-                 $('#wizard').smartWizard('setError',{stepnum:step,iserror:true});         
-               }else{
-                 $('#wizard').smartWizard('hideMessage');
-                 $('#wizard').smartWizard('setError',{stepnum:step,iserror:false});
-               }
-             }
-             
-             // validate step2
-             if(step == 2){
-               if(validateStep2() == false ){
-                 isStepValid = false; 
-                 $('#wizard').smartWizard('showMessage','Please correct the errors in step'+step+ ' and click next.');
-                 $('#wizard').smartWizard('setError',{stepnum:step,iserror:true});         
-               }else{
-                 $('#wizard').smartWizard('hideMessage');
-                 $('#wizard').smartWizard('setError',{stepnum:step,iserror:false});
-               }
-             }
-             
-             return isStepValid;
-           }
-             
-          function validateStep1(){
-              var isValid = true; 
-              
-              // Validate id
-              var id = $('#id').val();
-              if(!id && id.length <= 0){
-                isValid = false;
-                $('#msg_id').html('id를 입력해주세요').show();
-              }else{
-                $('#msg_id').html('').hide();
-              }
-              
-              // Validate Username
-              var name = $('#name').val();
-              if(!name && name.length <= 0){
-                isValid = false;
-                $('#msg_name').html('Please fill username').show();
-              }else{
-                $('#msg_name').html('').hide();
-              }
-              
-              // validate password
-              var pw = $('#password').val();
-              if(!pw && pw.length <= 0){
-                isValid = false;
-                $('#msg_password').html('Please fill password').show();         
-              }else{
-                $('#msg_password').html('').hide();
-              }
-              
-              // validate confirm password
-              var cpw = $('#cpassword').val();
-              if(!cpw && cpw.length <= 0){
-                isValid = false;
-                $('#msg_cpassword').html('Please fill confirm password').show();         
-              }else{
-                $('#msg_cpassword').html('').hide();
-              }  
-              
-              // validate password match
-              if(pw && pw.length > 0 && cpw && cpw.length > 0){
-                if(pw != cpw){
-                  isValid = false;
-                  $('#msg_cpassword').html('Password mismatch').show();            
-                }else{
-                  $('#msg_cpassword').html('').hide();
-                }
-              }
-              
-           // Validate birthday
-              var birthday = $('#birthday').val();
-              if(!birthday && birthday.length <= 0){
-                isValid = false;
-                $('#msg_birthday').html('Please fill birthday').show();
-              }else{
-                $('#msg_birthday').html('').hide();
-              }
-              
-           // Validate gender
-              var gender = $("input[name=gender]:radio:checked");
-              if(gender.length == 0){
-                isValid = false;
-                $('#msg_gender').html('Please fill gender').show();
-              }else{
-                $('#msg_gender').html('').hide();
-              }
-              
-           // Validate Tel
-              var tel = $('#tel').val();
-              if(!tel && tel.length <= 0){
-                isValid = false;
-                $('#msg_tel').html('Please fill tel').show();
-              }else{
-                $('#msg_tel').html('').hide();
-              }
-              
-              return isValid;
-           }
-           
-           function validateStep2(){
-             var isValid = true;    
-
-             return isValid;
-           }
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
 
     </script>
     <!-- /jQuery Smart Wizard -->
@@ -540,5 +364,4 @@
     <script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
 
   </body>
-</html>
-    
+</html>    
