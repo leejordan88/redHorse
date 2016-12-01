@@ -31,6 +31,7 @@ public class PlaceController {
 		ListVO listVO = new ListVO();
 		listVO.setAreaList(areaList);
 		listVO.setCategoryList(categoryList);
+		listVO.setTravelerList(travelerList);
 		//System.out.println(listVO);
 		return new ModelAndView("index", "listVO", listVO);
 	}
@@ -45,9 +46,11 @@ public class PlaceController {
 		List<PlaceVO> placeList = placeService.placeList(placeVO);
 		return new ModelAndView("place_list", "placeList", placeList);
 	}
+	
 	@RequestMapping("areaList.do")
 	public ModelAndView areaList(){
 		List<AreaVO> areaList = placeService.areaList();
 		return new ModelAndView("area_list","areaList",areaList);
 	}
+
 }
