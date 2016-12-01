@@ -8,4 +8,6 @@ public interface MemberService {
 	MemberVO login(MemberVO memberVO);
 
 	void updateMember(MemberVO vo);
+
+	void registerMember(MemberVO memberVO);
 }
