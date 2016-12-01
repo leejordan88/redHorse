@@ -100,10 +100,9 @@
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="mypage2.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
-<<<<<<< HEAD
-=======
+
                     <li><a href="update.do">회원정보수정</a></li>
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+
                     <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
