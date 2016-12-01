@@ -12,8 +12,8 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -74,5 +74,12 @@ public class MemberController {
 		memberService.registerMember(memberVO);
 
 		return "register_result";
+	}
+	
+	@RequestMapping("idcheckAjax.do")
+	@ResponseBody
+	public String idcheckAjax(String id) {		
+		int count=memberService.idcheck(id);
+		return (count==0) ? "ok":"fail"; 		
 	}
 }

@@ -10,4 +10,6 @@ public interface MemberService {
 	void updateMember(MemberVO vo);
 
 	void registerMember(MemberVO memberVO);
+
+	int idcheck(String id);
 }

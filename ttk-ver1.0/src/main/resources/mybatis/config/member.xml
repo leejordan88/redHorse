@@ -20,4 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	insert into member (id, password, name,tel,sex,age,address,introduce,profileimg,range) 
  	values(#{id}, #{password}, #{name},#{tel},#{sex},#{age},#{address},#{introduce},#{profileimg},#{range})
  </insert>
+ 	<select id="idcheck" resultType="int">
+		select count(*) from member where id=#{value}
+	</select>
 </mapper>

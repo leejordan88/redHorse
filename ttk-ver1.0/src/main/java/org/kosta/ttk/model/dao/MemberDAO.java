@@ -9,6 +9,8 @@ public interface MemberDAO {
 
 	void registerMember(MemberVO memberVO);
 
+	int idcheck(String id);
+
 
 
 

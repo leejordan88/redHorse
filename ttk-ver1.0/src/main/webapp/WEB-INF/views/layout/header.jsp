@@ -83,14 +83,7 @@
                     <li>
                         <a class="page-scroll" href="profile_list.do">ProfileList</a>
                     </li>
-                    <!-- ************************************효민 수정부분*************************************************!-->
-					<li>
-						  <a class="page-scroll" href="hotplace_ranking.do">hotplace</a>
-					</li>
-					<!-- ************************************효민 수정부분*************************************************!-->
-                    <li>
-                        <a class="page-scroll" href="index.do#team">Team</a>
-                    </li>
+
                     <c:choose>
               <c:when test="${sessionScope.mvo==null}">
                     <li>
