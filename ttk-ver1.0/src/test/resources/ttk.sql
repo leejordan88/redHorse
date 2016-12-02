@@ -96,8 +96,6 @@ create table place(
  constraint fk_area foreign key(areaname) references area(areaname)
 )
 
-insert into place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname)
-values(place_seq.nextval,'남산_N서울타워.jpg','남산_N서울타워','04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)',37.551399,126.988184,'관광지','서울');
 
 select * from place where areaname = '강원도' and categoryname = '맛집';
 
