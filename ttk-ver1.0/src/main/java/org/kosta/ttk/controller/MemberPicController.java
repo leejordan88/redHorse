@@ -5,9 +5,11 @@ import java.io.IOException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.kosta.ttk.model.service.MemberPicService;
 import org.kosta.ttk.model.vo.MemberPicVO;
+import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class MemberPicController {
 	@Resource
 		private MemberPicService memberPicService;
-		
 	
 	/*@RequestMapping(value="uploadMemberPic.do",method=RequestMethod.POST)	
 		public ModelAndView uploadMemberPic(MemberPicVO pvo){
@@ -25,28 +26,25 @@ public class MemberPicController {
 			return new ModelAndView("redirect:");
 	}*/
 	
-	/**
-	 * 상품등록화면을 제공하는 메서드 
-	 * @return
-	 */
-	/*@RequestMapping("product_register.do")
-	public String registerProductView(){
-		return "product_registerProduct";
-	}*/
-	
-	
-	/**
-	 * 업로드 경로 
-	 */
 	private String uploadPath;
 	/**
 	 * 파일 업로드 구현 
-	 * @param name
-	 * @return
+	 * 12/2 효민
+	 * @param request
+	 * @param pvo
+	 * @return 
 	 */
 	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
 	public String registerProductAction(MemberPicVO pvo,HttpServletRequest request){
-		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/" + pvo.getId()+"/picupload/");
+		HttpSession session=request.getSession(false);
+		// MemberVO setting
+		if(session!=null){
+			MemberVO mvo=(MemberVO) session.getAttribute("mvo");
+			if(mvo!=null){
+				pvo.setMemberVO(mvo);
+			}
+		}		
+		uploadPath=request.getSession().getServletContext().getRealPath("/resources/picupload/" + pvo.getMemberVO().getId()+"/picture/");
 		File uploadDir=new File(uploadPath);
 		if(uploadDir.exists()==false)
 			uploadDir.mkdirs();
@@ -69,6 +67,7 @@ public class MemberPicController {
 		}
 		pvo.setFileName(file.getOriginalFilename());
 		memberPicService.uploadMemberPic(pvo);
+		System.out.println(pvo);
 		return "uploadMemberPic_result";
 	}
 }

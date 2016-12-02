@@ -15,6 +15,8 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	/* (non-Javadoc)
 	 * @see org.kosta.ttk.model.dao.MemberPicDAO#uploadMemberPic(org.kosta.ttk.model.vo.MemberPicVO)
 	 */
+	
+	// 12/2 효민 사진 업로드
 	@Override
 	public void uploadMemberPic(MemberPicVO pvo) {
 		template.insert("memberpic.uploadMemberPic", pvo);
