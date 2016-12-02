@@ -2,13 +2,66 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"  ></script>
+<script type="text/javascript">  
+ //여행지역 선택 시 여행지역 마크업
+$(document).ready(function(){
+	$(".mixHot").click(function(){
+		var map;
+		var placeName = $(".mixHot").children().first().children().first().next().children().children().first().next().html();
+		var placeX = $(".mixHot").children().first().children().first().next().children().children().first().next().next().html();
+		var placeY = $(".mixHot").children().first().children().first().next().children().children().first().next().next().next().html();
+ 		var latlng = new google.maps.LatLng(placeX, placeY);     
+		var myOptions = {       
+			zoom: 15,
+			center: latlng,       
+			mapTypeId: google.maps.MapTypeId.ROADMAP      
+		};
+		map = new google.maps.Map(document.getElementById("google_map"), myOptions); 
+		map.setTilt(45);
+		  var marker = new google.maps.Marker({
+			    position: latlng,
+			    map: map,
+			    title: placeName
+			  });
+		  marker.setMap(map);
+	}); 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
-<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
-
-<link rel="stylesheet"
-	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
-<script src="https://unpkg.com/flatpickr"></script>
+	//날짜 지정 시 ajax를 통한 여행자 리스트 제공
+ 	$("#enableNextMonth").change(function(){
+		var placeNo = $(".mixHot").children().first().children().first().next().children().children().first().next().next().next().next().html();
+		var tDate = $("#enableNextMonth").val();
+		$.ajax({
+			type:"get",
+			url: "findTravelerBydate.do",
+			dataType: "json",
+			data: "placeNo=" + placeNo + "&tDate=" + tDate,
+			success: function(json){
+  				var data = "<h2>여행자 정보</h2>";
+				for(var i = 0; i < json.length; i++){
+					var sex = "";
+					if(json[i].sex==1){
+						sex = "male";
+					}else{
+						sex = "female"
+					}
+					data += "<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'>";
+					data += "<div class='col-sm-12'><div class='left col-xs-7'>";
+					data += "<h2><i>"+json[i].name+"</i> <i class='fa fa-"+sex+"'></i></h2><br>'<ul class='list-unstyled'>";
+					data += "<li><p><strong>"+json[i].introduce+"</p></li><li><i class='fa fa-smile-o'></i>나이 : "+json[i].age+"</li>";
+					data += "<li><i class='fa fa-building'></i>지역 : "+json[i].address+"</li></ul></div>";
+					data += "<div class='right col-xs-5 text-center'><a href='mypage2.do'>";
+					data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"}/profile/"+json[i].profileimg+" alt=''";
+					data += "class='img-circle img-responsive'></a><button type='button' class='btn btn-success btn-xs'> <i class='fa fa-user'>";
+					data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></div></div></div></div>";
+				}
+				document.getElementById("travelerListByDate").innerHTML = data;
+			} 
+		});
+	});//날짜 선택
+});//ready
+</script> 
 <!-- Start Home Page Slider -->
 <section id="page-top">
 	<!-- Carousel -->
@@ -89,10 +142,6 @@
 <!-- End Home Page Slider -->
 
 
-<%--영주 코딩부분 --%>
-<%-- <jsp:include page="place.jsp"></jsp:include>     --%>
-
-
 <!-- Start Portfolio Section -->
 <section id="portfolio-work">
 	<div class="container">
@@ -133,40 +182,24 @@
 										</div>
 								</a></li>
 							</c:forEach>
-<%-- 							<c:forEach items="${listVO.categoryList }" var="list">
-								<li class="mix Category"><a href="#datepicker-modal"
-									class="portfolio-link" data-toggle="modal">
-										<!-- modal 달력 --> <img
-										src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}"
-										alt="">
+							<!-- 효민 추가부분 핫 플레이스 랭킹5 보기, 선택 시 달력선택 추가하기-->
+								<c:forEach items="${listVO.travelerList }" var="list">
+								<li class="mixHot"><a href="#datepicker-modal" class="portfolio-link" data-toggle="modal">
+									<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeVO.placeName}.jpg" alt="">
 										<div class="overly">
 											<div class="position-center">
-												<h2 style="text-align: center">${list.categoryName }</h2>
+												<h2 style="text-align: center">${list.rank }위</h2>
+										    	<h3>${list.placeVO.placeName }</h3>
+										    	<h4>${list.placeVO.placeX }</h4>
+										    	<h4>${list.placeVO.placeY }</h4>
+										    	<h4>${list.placeVO.placeNo }</h4>
+										   			${list.placeVO.placeName }
 											</div>
 										</div>
 								</a></li>
-							</c:forEach> --%>
-							<li class="mix Hot"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/portfolio/img5.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>Hot Place</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
-
-										</div>
-									</div>
-							</a></li>
-							<li class="mix Hot"><a href="#"> <img
-									src="${pageContext.request.contextPath}/resources/images/portfolio/img6.jpg"
-									alt="">
-									<div class="overly">
-										<div class="position-center">
-											<h2>Hot Place</h2>
-											<p>Labore et dolore magna aliqua. Ut enim ad</p>
-										</div>
-									</div>
-							</a></li>
+							</c:forEach>
+							<!-- 효민 추가부분 끝-->
+							
 						</ul>
 					</div>
 				</div>
@@ -189,37 +222,37 @@
 				<div class="col-md-12">
 					<div class="modal-body">
 						<!-- Project Details Go Here -->
-						<div class="section-title text-center">
-							<h2>날짜선택</h2>
-						</div>
-						<br> <br>
-						<div class="col-md-3 col-sm-3 col-xs-12">
+						<div class="col-md-8">
+							<div class="col-md-4 datepickertitle">
+							<h2>날짜선택</h2></div>
+							<div class="col-md-4">
 							<input id="enableNextMonth" type="text" placeholder="Select date"
-								class="form-control ">
+								class=" form-control ">
+								<br><br>
 						</div>
-
-						<h4>
-							<strong>프로필목록</strong>
-						</h4>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+						</div>
+						
 
 
-<script type="text/javascript">
-	flatpickr("#enableNextMonth", {
-		inline : true, // show the calendar inline
-		enable : [ {
-			from : "today",
-			to : new Date().fp_incr(31)
-		} ]
-	})
-</script>
-
+<!-- page content -->
+        <div class="right_col" role="main">
+            <div class="row">
+            <!-- 여행자 리스트 제공 -->
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center" id = "travelerListByDate">
+                             
+                  </div>
+                 <div class="right_col" role="main">
+                             <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                  <h2>MAP</h2>
+                  <div  id="google_map" style="width:1000px;height:500px;"></div>
+                  </div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div></div></div></div>
 
 <!-- End Portfolio Section -->
 
@@ -264,5 +297,13 @@
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>
 
+<script type="text/javascript">
+	flatpickr("#enableNextMonth", {
+		enable : [ {
+			from : "today",
+			to : new Date().fp_incr(31)
+		} ]
+	})
+</script>
 </body>
 </html>

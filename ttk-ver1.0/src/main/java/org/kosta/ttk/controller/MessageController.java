@@ -2,8 +2,8 @@ package org.kosta.ttk.controller;
 
 import javax.annotation.Resource;
 
-import org.kosta.ttk.model.MessageService;
-import org.kosta.ttk.model.MessageVO;
+import org.kosta.ttk.model.service.MessageService;
+import org.kosta.ttk.model.vo.MessageVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
