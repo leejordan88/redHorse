@@ -2,6 +2,9 @@ select *from memberRange;
 drop table memberRange;
 
 
+-- 비활성화 테스트 버전1에서 회원탈퇴후 수동으로 변경시켜줘야함 다시 활성화 되려면
+update member set enabled = 1 where id= 'java';
+
 
   -- 0일때 전체공개 거부    //  1일때 전체공개 허용    -- 프로필리스트에서
 create table memberRange(
@@ -27,11 +30,7 @@ create table member(
    password varchar2(100) not null,
    name varchar2(100) not null,
    tel number not null,
-<<<<<<< HEAD
-   sex number not null,				--1Male, 2Female 
-=======
-   sex number not null, --1은 남자 2는 여자
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
+   sex number not null,
    age number not null,
    address varchar2(100) not null,
    introduce clob,
@@ -55,9 +54,8 @@ categoryname varchar2(100) primary key,
 categorypicture varchar2(100) not null
 )
 
-insert into category(categoryname,categorypicture) values('관광지','관광지.jpg');
-insert into category(categoryname,categorypicture) values('맛집','맛집.jpg');
-insert into category(categoryname,categorypicture) values('엑티비티','엑티비티.jpg');
+insert into category(categoryname,categorypicture)
+values('activity','category1')
 
 
 drop table area;
@@ -65,23 +63,17 @@ create table area(
 areaname varchar2(100) primary key,
 areapicture varchar2(100) not null
 )
-insert into area(areaname,areapicture) values('강원도','강원도.jpg');
-insert into area(areaname,areapicture) values('경기도','경기도.jpg');
-insert into area(areaname,areapicture) values('경상도','경상도.jpg');
-insert into area(areaname,areapicture) values('부산','부산.jpg');
-insert into area(areaname,areapicture) values('서울','서울.jpg');
-insert into area(areaname,areapicture) values('인천','인천.jpg');
-insert into area(areaname,areapicture) values('전라도','전라도.jpg');
-insert into area(areaname,areapicture) values('제주도','제주도.jpg');
-insert into area(areaname,areapicture) values('충청도','충청도.jpg');
+insert into area(areaname,areapicture)
+values('seoul','area1')
 
 drop sequence place_seq;
 create sequence place_seq;
 
 select place_seq.nextval from dual;
-select place_seq.currval from dual;
+select place_seq.currval from dual;  --안댐
 
 
+drop table area;
 drop table place;
 create table place(
  placeNo number primary key,
@@ -96,8 +88,8 @@ create table place(
  constraint fk_area foreign key(areaname) references area(areaname)
 )
 
-
-select * from place where areaname = '강원도' and categoryname = '맛집';
+insert into place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname)
+values(place_seq.nextval,'place1','한강오리배','한강변두리 44-1번지',123.66,47.44,'activity','seoul')
 
 drop table category
 drop table area
@@ -105,6 +97,7 @@ drop table place
 select*from area
 select*from category
 select*from place
+
 
 
 --------------------------회원, 장소 까지 
@@ -118,13 +111,13 @@ trangeCategory varchar2(100) not null
 )
 
 insert into travelerRange(trange,trangeCategory)
-values(1,'남자');
+values(1,'남자')
 
 insert into travelerRange(trange,trangeCategory)
-values(2,'여자');
+values(2,'여자')
 
 insert into travelerRange(trange,trangeCategory)
-values(3,'전체');
+values(3,'전체')
 
 --  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -148,12 +141,12 @@ create table traveler(
  
  -- to_date(시간정보,포맷)
 insert into date_test(id,mydate) 
-values('jsp',to_date('2016/7/20 9:00:10','YYYY-MM-DD HH24:MI:SS'));
+values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
  
  
  --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
 insert into traveler(placeNo,id,tdate,trange)
-values(1,'java',to_date('2016-12-02'),3)
+values(1,'java',to_date('2016/7/20'),3)
 
 
 ---??  sysdate 로 자동으로 주면 해당날짜에 들어가는지??????? 
@@ -179,7 +172,6 @@ create table memberPicture(
  filename varchar2(100) not null,
  pictureTitle varchar2(100) not null,
  pictureDate date not null,
- pictureContent clob not null,
 constraint fk_member foreign key(id) references member(id)
  )
 
@@ -214,7 +206,32 @@ values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
 insert into message(messageNo,sender,reciever,messageDate,messageContent)
 values(message_seq.nextval,'java2','java',sysdate,'2번째경우 반대의경우')
 
+-- ////수정
+create table category(
+categoryname varchar2(100) primary key,
+categorypicture varchar2(100) not null
+)
 
+insert into category(categoryname,categorypicture) values('관광지','관광지.jpg');
+insert into category(categoryname,categorypicture) values('맛집','맛집.jpg');
+insert into category(categoryname,categorypicture) values('엑티비티','엑티비티.jpg');
+
+
+create table area(
+areaname varchar2(100) primary key,
+areapicture varchar2(100) not null
+)
+insert into area(areaname,areapicture) values('강원도','강원도.jpg');
+insert into area(areaname,areapicture) values('경기도','경기도.jpg');
+insert into area(areaname,areapicture) values('경상도','경상도.jpg');
+insert into area(areaname,areapicture) values('부산','부산.jpg');
+insert into area(areaname,areapicture) values('서울','서울.jpg');
+insert into area(areaname,areapicture) values('인천','인천.jpg');
+insert into area(areaname,areapicture) values('전라도','전라도.jpg');
+insert into area(areaname,areapicture) values('제주도','제주도.jpg');
+insert into area(areaname,areapicture) values('충청도','충청도.jpg');
+ 		
+ 		
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '1','남산_N서울타워.jpg', '남산_N서울타워', '04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)', '37.551399', '126.988184', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '2','중구_위안부_기억의터.jpg', '중구_위안부_기억의터', '04628  서울 중구 퇴계로26가길 6 (예장동)', '37.559061', '126.990767', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '3','합정_겟앤쇼.jpg', '합정_겟앤쇼', '서울특별시 마포구 독막로3길 25', '37.549737', '126.916858', '관광지', '서울');
@@ -452,7 +469,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '235','천해천.jpg', '천해천', '제주특별자치도 제주시 한라대학로 25', '33.479404', '126.474343', '맛집', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '236','춘심이네 본점.jpg', '춘심이네 본점', '제주특별자치도 서귀포시 안덕면 창천중앙로24번길 16', '33.264953', '126.370623', '맛집', '제주도');
 
-select * from place where areaName = '강원도' and categoryName = '맛집';
-
-select * from traveler where placeNo = 1 and tDate = '2016-11-29'
-
+ 		
+ 		
+ 		
+ 		

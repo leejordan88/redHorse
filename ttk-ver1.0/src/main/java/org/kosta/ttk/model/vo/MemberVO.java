@@ -1,5 +1,7 @@
 package org.kosta.ttk.model.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVO {
 	private String id;
 	private String password;
@@ -13,12 +15,13 @@ public class MemberVO {
 	private int range;
 	private int enabled;
 	private int hit;
+	private MultipartFile uploadFile; // 파일업로드를 위한 변수 
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MemberVO(String id, String password, String name, int tel, int sex, int age, String address,
-			String introduce, String profileimg, int range, int enabled, int hit) {
+			String introduce, String profileimg, int range, int enabled, int hit, MultipartFile uploadFile) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -32,6 +35,7 @@ public class MemberVO {
 		this.range = range;
 		this.enabled = enabled;
 		this.hit = hit;
+		this.uploadFile = uploadFile;
 	}
 	public String getId() {
 		return id;
@@ -105,11 +109,17 @@ public class MemberVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", tel=" + tel + ", sex=" + sex
 				+ ", age=" + age + ", address=" + address + ", introduce=" + introduce + ", profileimg=" + profileimg
-				+ ", range=" + range + ", enabled=" + enabled + ", hit=" + hit + "]";
+				+ ", range=" + range + ", enabled=" + enabled + ", hit=" + hit + ", uploadFile=" + uploadFile + "]";
 	}
 	
 }

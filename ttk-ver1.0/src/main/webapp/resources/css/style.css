@@ -1,3 +1,10 @@
+.submitFormBtn {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .dataTables_paginate a {
   padding: 6px 9px !important;
   background: #ddd !important;
@@ -2961,4 +2968,7 @@ iframe {
       }
 }
 
+.google_map{
+	margin: auto;
+}
 

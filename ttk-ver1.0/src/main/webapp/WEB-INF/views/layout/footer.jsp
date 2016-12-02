@@ -60,11 +60,8 @@
 	<script src="${pageContext.request.contextPath}/resources/js/styleswitcher.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/js/jqBootstrapValidation.js"></script>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'version1.6' of https://github.com/leejordan88/redHorse.git
+    <script src="${pageContext.request.contextPath}/resources/js/jqBootstrapValidation.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
