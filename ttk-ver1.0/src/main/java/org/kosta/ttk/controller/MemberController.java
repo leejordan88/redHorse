@@ -20,7 +20,12 @@ public class MemberController {
 	@Resource
 	private MemberService memberService;
 	private String uploadPath;
-	
+/**
+ * 로그인 post
+ * @param memberVO
+ * @param request
+ * @return
+ */
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(MemberVO memberVO, HttpServletRequest request) {
 		MemberVO vo = memberService.login(memberVO);
@@ -31,7 +36,11 @@ public class MemberController {
 			return "redirect:index.do";
 		}
 	}
-
+/**
+ * 로그아웃
+ * @param request
+ * @return
+ */
 	@RequestMapping("logout.do")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -39,6 +48,12 @@ public class MemberController {
 			session.invalidate();
 		return "redirect:index.do";
 	}
+	/**
+	 * 회원정보수정    11/30 완료
+	 * @param request
+	 * @param memberVO
+	 * @return
+	 */
 
 	@RequestMapping("updateMemberAction.do")
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
@@ -48,7 +63,6 @@ public class MemberController {
 		return "update_result";
 	}
 	
-	//회원가입 컨트롤러
 	@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
 	public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
 		System.out.println(memberVO);
@@ -75,6 +89,7 @@ public class MemberController {
 
 		return "register_result";
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping("idcheckAjax.do")
 	@ResponseBody
@@ -82,4 +97,21 @@ public class MemberController {
 		int count=memberService.idcheck(id);
 		return (count==0) ? "ok":"fail"; 		
 	}
+=======
+/**
+ * 회원 비활성화  12/1 완료  1 활성화 -> 0 비활성화 업데이트 
+ * @param session
+ * @param request
+ * @return
+ */
+	@RequestMapping("updateDelete.do")
+	public String updateDelete(HttpSession session,HttpServletRequest request) {
+		MemberVO mvo =  (MemberVO) session.getAttribute("mvo");
+		System.out.println(mvo);
+		memberService.updateDelete(mvo);
+		request.getSession().invalidate();
+		return "updateDelete";
+	}
+
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 }

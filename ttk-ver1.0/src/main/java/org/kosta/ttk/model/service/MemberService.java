@@ -9,7 +9,12 @@ public interface MemberService {
 
 	void updateMember(MemberVO vo);
 
+	MemberVO findMember(String id);
+	
 	void registerMember(MemberVO memberVO);
 
 	int idcheck(String id);
+	
+	void updateDelete(MemberVO vo);
+
 }

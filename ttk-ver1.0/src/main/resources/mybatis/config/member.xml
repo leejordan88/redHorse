@@ -10,17 +10,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</sql>
  <select id="login" resultType="memberVO" parameterType="memberVO">
  <include refid="selectMember"></include>
- where id=#{id} and password=#{password}
+ where id=#{id} and password=#{password} and enabled = '1'   <!-- enabled=1 일떄 로그인 가능  0일때 접근불가 -->
  </select>
-  	<update id="updateMember" parameterType="memberVO">
-		update member set password=#{password},name=#{name},address=#{address}
+  	<update id="updateMember" parameterType="memberVO"> <!-- tel 추가 -->
+		update member set password=#{password},tel=#{tel},address=#{address} 
 		where id=#{id}
 	</update>
-<insert id="registerMember" parameterType="memberVO">
- 	insert into member (id, password, name,tel,sex,age,address,introduce,profileimg,range) 
- 	values(#{id}, #{password}, #{name},#{tel},#{sex},#{age},#{address},#{introduce},#{profileimg},#{range})
- </insert>
+
+	<select id="findMember" parameterType="string" resultType="memberVO">
+		select * from member where id = #{value}
+	</select>
+
+	<insert id="registerMember" parameterType="memberVO">
+ 		insert into member (id, password, name,tel,sex,age,address,introduce,profileimg,range) 
+ 		values(#{id}, #{password}, #{name},#{tel},#{sex},#{age},#{address},#{introduce},#{profileimg},#{range})
+ 	</insert>
  	<select id="idcheck" resultType="int">
 		select count(*) from member where id=#{value}
 	</select>
+
+	<update id="updateDelete" parameterType="memberVO">
+	update member set enabled = 0
+	 where id= #{id}
+	</update>
+
 </mapper>

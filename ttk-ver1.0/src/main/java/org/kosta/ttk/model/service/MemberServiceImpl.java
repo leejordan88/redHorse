@@ -21,8 +21,18 @@ public class MemberServiceImpl implements MemberService {
 	public void registerMember(MemberVO memberVO) {
 		memberDAO.registerMember(memberVO);
 	}
+	
 	@Override
 	public int idcheck(String id) {
 		return memberDAO.idcheck(id);
+	}
+	
+	public MemberVO findMember(String id) {
+		return memberDAO.findMember(id);
+	}
+	@Override
+	public void updateDelete(MemberVO vo){
+		memberDAO.updateDelete(vo);
+
 	}
 }

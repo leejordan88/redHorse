@@ -1,6 +1,4 @@
-
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
  
 	<jsp:include page="layout/header.jsp"></jsp:include>
 
@@ -426,3 +424,5 @@ $(":input[name=id]").keyup(function(){
     <script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
 
   </body>
+</html>
+

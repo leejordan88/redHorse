@@ -7,7 +7,12 @@ public interface MemberDAO {
 
 	void updateMember(MemberVO vo);
 
+	MemberVO findMember(String id);
+
 	void registerMember(MemberVO memberVO);
+
+
+	void updateDelete(MemberVO vo);
 
 	int idcheck(String id);
 

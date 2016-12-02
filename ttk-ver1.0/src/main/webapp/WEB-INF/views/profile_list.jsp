@@ -141,8 +141,6 @@
                           <td>2012/12/18</td>
                           <td>$313,500</td>
                         </tr>
-
-               
                       </tbody>
                     </table>
                   </div>
@@ -154,9 +152,7 @@
     <!-- Datatables -->
     <script>
       $(document).ready(function() {
-
         $('#datatable').dataTable();
-
       });
     </script>
     <!-- /Datatables -->
