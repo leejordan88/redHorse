@@ -60,9 +60,8 @@
 	<script src="${pageContext.request.contextPath}/resources/js/styleswitcher.js"></script>
 
     <!-- Contact Form JavaScript -->
+
     <script src="${pageContext.request.contextPath}/resources/js/jqBootstrapValidation.js"></script>
-
-
 
     <!-- Custom Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>

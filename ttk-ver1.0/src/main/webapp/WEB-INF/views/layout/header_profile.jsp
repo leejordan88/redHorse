@@ -83,7 +83,7 @@
 					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
 					<li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="${pageContext.request.contextPath}/resources/images/img.jpg" alt="">적토마's Page
+                   <img src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}" alt="">적토마's Page
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -175,11 +175,12 @@
 	<header id="header">
 		<div id="head" class="parallax" >
 		<h1 id="logo" class="text-center">
-			<img class="img-circle" src="${pageContext.request.contextPath}/resources/images/img.jpg" alt="">
-			<span class="title">적토마's Page</span>
+
+			<img class="img-circle" src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}" >
+			<span class="title">${sessionScope.mvo.name}'s Page</span>
 		</h1>
-		<h5 class="text-center">방문자수 <strong>1</strong></h5>
-		<h4 class="text-center">kosta 132기 4조 적토마입니다. 잘 부탁 드립니다.</h4>
+		<h5 class="text-center">방문자수 <strong>${sessionScope.mvo.hit}</strong></h5>
+		<h4 class="text-center">${sessionScope.mvo.introduce}</h4>
 		
 			<div class="text-center">
 				<div class="container-fluid">

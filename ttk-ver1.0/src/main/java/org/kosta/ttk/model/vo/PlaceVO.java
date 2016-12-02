@@ -6,16 +6,16 @@ public class PlaceVO {
 	private String areaName;
 	private String placeName;
 	private String placeAddress;
-	private int placeX;
-	private int placeY;
+	private double placeX;
+	private double placeY;
 	
 	public PlaceVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PlaceVO(int placeNo, String categoryName, String areaName, String placeName, String placeAddress, int placeX,
-			int placeY) {
+	public PlaceVO(int placeNo, String categoryName, String areaName, String placeName, String placeAddress,
+			double placeX, double placeY) {
 		super();
 		this.placeNo = placeNo;
 		this.categoryName = categoryName;
@@ -66,19 +66,19 @@ public class PlaceVO {
 		this.placeAddress = placeAddress;
 	}
 
-	public int getPlaceX() {
+	public double getPlaceX() {
 		return placeX;
 	}
 
-	public void setPlaceX(int placeX) {
+	public void setPlaceX(double placeX) {
 		this.placeX = placeX;
 	}
 
-	public int getPlaceY() {
+	public double getPlaceY() {
 		return placeY;
 	}
 
-	public void setPlaceY(int placeY) {
+	public void setPlaceY(double placeY) {
 		this.placeY = placeY;
 	}
 
@@ -88,8 +88,6 @@ public class PlaceVO {
 				+ ", placeName=" + placeName + ", placeAddress=" + placeAddress + ", placeX=" + placeX + ", placeY="
 				+ placeY + "]";
 	}
-	
-	
-	
+
 
 }

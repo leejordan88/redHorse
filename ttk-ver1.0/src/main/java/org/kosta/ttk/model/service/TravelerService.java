@@ -7,4 +7,8 @@ import org.kosta.ttk.model.vo.TravelerVO;
 public interface TravelerService {
 	// 핫 플레이스 랭킹5
 	List<TravelerVO> hotPlaceRankingList();
+
+	List<TravelerVO> travelerList(TravelerVO travelerVO);
+
+
 }
