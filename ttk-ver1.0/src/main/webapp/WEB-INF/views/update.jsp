@@ -33,9 +33,10 @@
 	<br>
 	<br>
 	<br>
+
 	<!-- 수정 시작 form -->
 	<form class="form-horizontal form-label-left" method="post"
-		action="${pageContext.request.contextPath}/updateMemberAction.do">
+		action="${pageContext.request.contextPath}/updateMemberAction.do" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="update">
 		<!-- 아이디시작 -->
 		<div class="form-group">
@@ -83,12 +84,12 @@
                           <label for="profileimg" class="control-label col-md-3 col-sm-3 col-xs-12">프로필 사진 <span class="required">*</span></label>
                           <div class="col-md-6 col-sm-3 col-xs-12" >
                           <!-- 글씨끝 -->
-                            <img src="${pageContext.request.contextPath}/resources/images/img.jpg" alt="">
-                          <input type="file" name="profileimg"  id="profileimg" required="required">
-                         </div>
-                          <span id="msg_profileimg"></span>
-               </div>                 
+ 					<input type="file" name=uploadFile><br>
+               </div>                 <!-- profileimg -->uploadFile
                <!-- 프로필사진 끝 -->        
+               <br>
+               <br><br>
+               <br>
 <!-- <form id="ajaxform" action="/upload" method="post" enctype="multipart/form-data">
     <input type="file" multiple id="photo_upload">
     <output id="list"></output>
@@ -148,10 +149,20 @@
 	<!-- 수정버튼끝 -->
 	
 	<!-- 회원탈퇴 제이쿼리 비활성화 updateDelete.do -->
+	<!-- 12/2 정밀 검사 회원탈퇴 추가 진석 -->
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#delete').click(function(){
-			$(location).attr('href',"updateDelete.do");
+			 var result = confirm('정말로 탈퇴하시겠습니까?');
+		        if(result) {
+		           //yes
+		        	$(location).attr('href',"updateDelete.do");
+		        } else {
+		            //no
+		        	alert("개인정보수정을 취소합니다.");
+		        	  location.replace('index.do');
+		            retrun;
+		        }
 		});
 	});
 	</script>

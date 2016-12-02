@@ -135,12 +135,23 @@
                     </li>               
 
    					 <li>
+   					 <!-- 쪽지 클릭 구현: 오진석 -->
                       <div class="text-center">
-                        <a href="#">
+                        <a href="javascript:popupOpen();">
                           <strong>See All Alerts</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>             
                       </div>
+                      <!-- 쪽지 클릭 끝  -->
+                      <!--  쪽지 팝업창 구현: 오진석-->
+                      <script type="text/javascript">
+function popupOpen(){
+    var popUrl = "test.djklo";    //팝업창에 출력될 페이지 URL
+    var popOption = "width=470, height=460, top=200,left=530 resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+        window.open(popUrl,"",popOption);
+    }
+</script>         
+		<!-- 쪽지 구현 끝 -->
                     </li>
                      </ul>
                     <!-- 쪽지 끝 -->

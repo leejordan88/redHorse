@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -44,133 +45,7 @@
     <link href="${pageContext.request.contextPath}/resources/vendors/nprogress.css" rel="stylesheet">
 
   </head>
-
-<body class="index">
-
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="index.do">TTK</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index.do">place</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index.do#profile-list">ProfileList</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index.do">Team</a>
-                    </li>
-                    <li>
-                        <a href="register.do">회원가입</a>
-                    </li>
-					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-					<li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   <img src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}" alt="">적토마's Page
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="mypage2.do">My Profile</a></li>
-                    <li><a href="upload.do">글쓰기</a></li>
-                    <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">2</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a href="#" >
-                        <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/images/team/진석.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>오진석</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                         같이 여행가실래요?
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/images/team/예원.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>서예원</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          여행가요~
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a href="#">
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- 로그인모달 -->
-          <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Member Login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="dispatcher">
-                        	<input type="hidden" name="command" value="login">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="ID" name="member_id">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password" name="password">
-                            </div>
-
-                            <p class="text-center">
-                                <button class="btn btn-green animated fadeInUp" type="submit"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
-                        </form>
-
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.do"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-   <!-- 로그인 모달 끝 -->
+  <jsp:include page="header.jsp"></jsp:include>
 	<body>
 	<header id="header">
 		<div id="head" class="parallax" >

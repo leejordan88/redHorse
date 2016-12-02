@@ -52,7 +52,7 @@ public class MemberPicController {
 			uploadDir.mkdirs();
 		System.out.println(pvo.getFileName());
 		MultipartFile file=pvo.getUploadFile();//파일 
-		
+		//dwdw
 		//System.out.println(file.isEmpty()); // 업로드할 파일이 있는 지 확인 
 		if(file.isEmpty()==false){
 			System.out.println("파일명:"+file.getOriginalFilename());
@@ -66,7 +66,7 @@ public class MemberPicController {
 			} catch (IllegalStateException | IOException e) {				
 				e.printStackTrace();
 			}
-		}
+		} 
 		pvo.setFileName(file.getOriginalFilename());
 		memberPicService.uploadMemberPic(pvo);
 		return "uploadMemberPic_result";

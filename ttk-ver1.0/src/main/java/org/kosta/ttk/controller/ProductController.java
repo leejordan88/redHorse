@@ -35,8 +35,7 @@ public class ProductController {
 	 * @param name
 	 * @return
 	 */
-	@RequestMapping(value = "registerProductAction.do", 
-			method = RequestMethod.POST)
+	@RequestMapping(value = "registerProductAction.do", method = RequestMethod.POST)
 	public ModelAndView registerProductAction(ProductVO productVO,HttpServletRequest request){
 		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/");
 		File uploadDir=new File(uploadPath);
