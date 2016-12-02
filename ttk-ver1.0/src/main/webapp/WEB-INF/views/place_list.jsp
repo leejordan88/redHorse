@@ -27,12 +27,14 @@ $(document).ready(function(){
 			    title: placeName
 			  });
 		  marker.setMap(map);
+		  var latlng = "";
+		  var placeName = "";
 	});
-
 	//날짜 지정 시 ajax를 통한 여행자 리스트 제공
 	$("#enableNextMonth").change(function(){
 		var placeNo = $(".mixCategory").children().first().children().first().next().children().children().first().next().next().next().val();
 		var tDate = $("#enableNextMonth").val();
+		alert(placeNo);
 		$.ajax({
 			type:"get",
 			url: "findTravelerBydate.do",
@@ -58,6 +60,8 @@ $(document).ready(function(){
 					data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></div></div></div></div>";
 				}
 				document.getElementById("travelerListByDate").innerHTML = data;
+				var placeNo = "";
+				var tDate = "";
 			} 
 		});
 	});//날짜 선택
