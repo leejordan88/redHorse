@@ -51,10 +51,8 @@
 							<span>Welcome to <strong>TTK</strong></span>
 						</h1>
 						<p class="animated1">로그인하면 더 많은 서비스들을 이용할 수 있어요</p>
-						<a class="animated3 slider btn btn-primary btn-min-block"
-							data-toggle="modal" data-target="#login-modal" href="#">Login</a>
-						<a class="animated3 slider btn btn-default btn-min-block"
-							href="register.do">Register</a>
+						<a class="animated3 slider btn btn-primary btn-min-block" data-toggle="modal" data-target="#login-modal" href="#">Login</a>
+						<a class="animated3 slider btn btn-default btn-min-block" href="register.do">Register</a>
 					</div>
 				</div>
 			</div>
