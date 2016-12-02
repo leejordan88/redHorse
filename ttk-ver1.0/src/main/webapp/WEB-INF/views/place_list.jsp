@@ -2,8 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"  ></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"></script>
+
 
  <script type="text/javascript">  
  //여행지역 선택 시 여행지역 마크업
@@ -68,6 +71,7 @@ $(document).ready(function(){
 });//ready
 </script> 
  
+
 <!-- Start Portfolio Section -->
 <section id="portfolio-work">
 	<div class="container">
@@ -80,21 +84,21 @@ $(document).ready(function(){
 				<div class="block">
 					<div class="portfolio-contant">
 						<ul id="portfolio-contant-active">
-							<c:forEach items="${placeList }" var="list" >
-							                      <!-- alert($(this).children().first().children().first().next().children().children().html()); -->
-								<li class="mixCategory">
-								<a href="#datepicker-modal" class="portfolio-link" data-toggle="modal" >
-										<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeName}.jpg" alt="">
+							<c:forEach items="${placeList }" var="list">
+								<!-- alert($(this).children().first().children().first().next().children().children().html()); -->
+								<li class="mixCategory"><a href="#datepicker-modal"
+									class="portfolio-link" data-toggle="modal"> <img
+										src="${pageContext.request.contextPath}/resources/images/place/${list.placeName}.jpg"
+										alt="">
 										<div class="overly">
 											<div class="position-center">
 												<h2 style="text-align: center" id="place_abc">${list.placeName }</h2>
-												<input type="hidden" name ="placeX" value = "${list.placeX }">
-												<input type="hidden" name ="placeY" value = "${list.placeY }">
-												<input type="hidden" name ="placeY" value = "${list.placeNo }">
+												<input type="hidden" name="placeX" value="${list.placeX }">
+												<input type="hidden" name="placeY" value="${list.placeY }">
+												<input type="hidden" name="placeY" value="${list.placeNo }">
 											</div>
 										</div>
-								</a>
-								</li>
+								</a></li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -103,7 +107,6 @@ $(document).ready(function(){
 		</div>
 	</div>
 </section>
-
 <div class="section-modal modal fade" id="datepicker-modal"
 	tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-content">
@@ -119,37 +122,36 @@ $(document).ready(function(){
 						<!-- Project Details Go Here -->
 						<div class="col-md-8">
 							<div class="col-md-4 datepickertitle">
-							<h2>날짜선택</h2></div>
+								<h2>날짜선택</h2>
+							</div>
 							<div class="col-md-4">
-							<input id="enableNextMonth" type="text" placeholder="Select date"
-								class=" form-control ">
-								<br><br>
+								<input id="enableNextMonth" type="text"
+									placeholder="Select date" class=" form-control "> <br>
+								<br>
+							</div>
 						</div>
+						<!-- page content -->
+						<div class="right_col" role="main">
+							<div class="row">
+								<!-- 여행자 리스트 제공 -->
+								<div class="col-md-12 col-sm-12 col-xs-12 text-center"
+									id="travelerListByDate"></div>
+								<div class="right_col" role="main">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+										</div>
+									</div>
+								</div>
+							</div>
+							<h2 align="center">MAP</h2>
+							<div id="google_map" style="width: 100%; height: 400px"></div>
 						</div>
-						
-
-
-<!-- page content -->
-        <div class="right_col" role="main">
-            <div class="row">
-            <!-- 여행자 리스트 제공 -->
-                      <div class="col-md-12 col-sm-12 col-xs-12 text-center" id = "travelerListByDate">
-                             
-                  </div>
-                 <div class="right_col" role="main">
-                             <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                  <h2>MAP</h2>
-                  <div  id="google_map" style="width:1000px;height:500px;"></div>
-                  </div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-</div></div></div></div>
-
-
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
 
