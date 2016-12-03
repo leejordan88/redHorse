@@ -5,25 +5,14 @@ public class MessageVO {
 	private String id,sender,receiver;
 	private String messageDate;
 	private String messageContent;
+	private int senderState;
+	private int receiverState;
+	private MemberVO memberVO;
 	private int messageState;
-	public MessageVO() {
-		super();
-	}
-	public MessageVO(String sender, String receiver, String messageContent) {
-		super();
-		this.sender = sender;
-		this.receiver = receiver;
-		this.messageContent = messageContent;
-	}
 	
 	
-	public MessageVO(String sender, String receiver) {
-		super();
-		this.sender = sender;
-		this.receiver = receiver;
-	}
 	public MessageVO(int messageNo, String id, String sender, String receiver, String messageDate,
-			String messageContent, int messageState) {
+			String messageContent, int senderState, int receiverState, MemberVO memberVO, int messageState) {
 		super();
 		this.messageNo = messageNo;
 		this.id = id;
@@ -31,7 +20,17 @@ public class MessageVO {
 		this.receiver = receiver;
 		this.messageDate = messageDate;
 		this.messageContent = messageContent;
+		this.senderState = senderState;
+		this.receiverState = receiverState;
+		this.memberVO = memberVO;
 		this.messageState = messageState;
+	}
+	public MessageVO() {
+		super();
+	}
+	public MessageVO(MemberVO memberVO) {
+		super();
+		this.memberVO = memberVO;
 	}
 	public int getMessageNo() {
 		return messageNo;
@@ -69,6 +68,26 @@ public class MessageVO {
 	public void setMessageContent(String messageContent) {
 		this.messageContent = messageContent;
 	}
+	public int getSenderState() {
+		return senderState;
+	}
+	public void setSenderState(int senderState) {
+		this.senderState = senderState;
+	}
+	public int getReceiverState() {
+		return receiverState;
+	}
+	public void setReceiverState(int receiverState) {
+		this.receiverState = receiverState;
+	}
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
+	
 	public int getMessageState() {
 		return messageState;
 	}
@@ -78,8 +97,9 @@ public class MessageVO {
 	@Override
 	public String toString() {
 		return "MessageVO [messageNo=" + messageNo + ", id=" + id + ", sender=" + sender + ", receiver=" + receiver
-				+ ", messageDate=" + messageDate + ", messageContent=" + messageContent + ", messageState="
-				+ messageState + "]"; 
+				+ ", messageDate=" + messageDate + ", messageContent=" + messageContent + ", senderState=" + senderState
+				+ ", receiverState=" + receiverState + ", memberVO=" + memberVO + ", messageState=" + messageState
+				+ "]";
 	}
 	   
 	

@@ -41,9 +41,12 @@
 
     <!-- NProgress -->
     <link href="${pageContext.request.contextPath}/resources/vendors/nprogress.css" rel="stylesheet">
-<!-- 
-    Custom Theme Style
-    <link href="../vendors/custom.min.css" rel="stylesheet"> -->
+    
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/asset/css/flatpickr.min.css">
+	<script src="${pageContext.request.contextPath}/resources/asset/js/flatpickr.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+	<script src="https://unpkg.com/flatpickr"></script>
+	
   </head>
 
 <body class="index">
@@ -79,7 +82,7 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="profile_list.do">ProfileList</a>
-                    </li>
+                    </li>             
                     <li>
                         <a class="page-scroll" href="index.do#team">Team</a>
                     </li>
@@ -94,13 +97,16 @@
 			
 					<li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="${pageContext.request.contextPath}/resources/images/img.jpg" alt=""> ${sessionScope.mvo.name}님
+                    <img src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}" alt=""> ${sessionScope.mvo.name}님
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="mypage2.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
+
+
                     <li><a href="update.do">회원정보수정</a></li>
+
                     <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>

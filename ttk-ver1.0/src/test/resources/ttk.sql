@@ -27,7 +27,11 @@ create table member(
    password varchar2(100) not null,
    name varchar2(100) not null,
    tel number not null,
-   sex number not null,
+<<<<<<< HEAD
+   sex number not null,				--1Male, 2Female 
+=======
+   sex number not null, --1은 남자 2는 여자
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
    age number not null,
    address varchar2(100) not null,
    introduce clob,
@@ -92,8 +96,6 @@ create table place(
  constraint fk_area foreign key(areaname) references area(areaname)
 )
 
-insert into place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname)
-values(place_seq.nextval,'남산_N서울타워.jpg','남산_N서울타워','04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)',37.551399,126.988184,'관광지','서울');
 
 select * from place where areaname = '강원도' and categoryname = '맛집';
 
@@ -116,13 +118,13 @@ trangeCategory varchar2(100) not null
 )
 
 insert into travelerRange(trange,trangeCategory)
-values(1,'남자')
+values(1,'남자');
 
 insert into travelerRange(trange,trangeCategory)
-values(2,'여자')
+values(2,'여자');
 
 insert into travelerRange(trange,trangeCategory)
-values(3,'전체')
+values(3,'전체');
 
 --  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -146,12 +148,12 @@ create table traveler(
  
  -- to_date(시간정보,포맷)
 insert into date_test(id,mydate) 
-values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
+values('jsp',to_date('2016/7/20 9:00:10','YYYY-MM-DD HH24:MI:SS'));
  
  
  --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
 insert into traveler(placeNo,id,tdate,trange)
-values(1,'java',to_date('2016/7/20'),3)
+values(1,'java',to_date('2016-12-02'),3)
 
 
 ---??  sysdate 로 자동으로 주면 해당날짜에 들어가는지??????? 
@@ -177,6 +179,7 @@ create table memberPicture(
  filename varchar2(100) not null,
  pictureTitle varchar2(100) not null,
  pictureDate date not null,
+ pictureContent clob not null,
 constraint fk_member foreign key(id) references member(id)
  )
 
@@ -451,5 +454,5 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 
 select * from place where areaName = '강원도' and categoryName = '맛집';
 
-
+select * from traveler where placeNo = 1 and tDate = '2016-11-29'
 

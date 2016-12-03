@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="traveler">
+
+<resultMap type="travelerVO" id="travelerRM">
+		<result property="placeVO.categoryName" column="categoryname" />
+		<result property="placeVO.areaName" column="areaname" />
+		<result property="placeVO.placeName" column="placeName" />
+		<result property="placeVO.placeX" column="placeX" />
+		<result property="placeVO.placeY" column="placeY" />
+		<result property="placeVO.placeNo" column="placeNo" />
+	</resultMap>
+
+<!-- 핫플레이스 랭킹5  -->
+<!-- placeX, placeY 좌표가 필요해서 수정 코딩했음(준성: 12월 1일) -->
+<select id="hotPlaceRankingList" resultMap="travelerRM" >
+	<![CDATA[
+	select areaname, categoryname, placeName, placeNo, placeX, placeY, rank from(
+	select p.areaname, p.categoryname, p.placeName, p.placeNo, p.placeX, p.placeY, rank() over(order by count(t.id) desc) as rank
+	from traveler t, place p
+	where p.placeNo=t.placeNo 
+	group by p.areaname, p.categoryname, p.placeName, p.placeNo, p.placeX, p.placeY) where rank<=5
+	]]>
+</select> 
+
+<select id = "travelerList" parameterType="travelerVO" resultType="travelerVO">
+	select * from traveler where placeNo = #{placeNo} and tDate = #{tDate}
+</select>
+
+</mapper>

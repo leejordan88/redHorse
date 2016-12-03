@@ -15,4 +15,6 @@ public interface PlaceService {
 	List<PlaceVO> placeList(PlaceVO placeVO);
 
 
+
+
 }

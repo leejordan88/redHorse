@@ -3,58 +3,76 @@ package org.kosta.ttk.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.kosta.ttk.model.MessageService;
+import org.kosta.ttk.model.service.MessageService;
+import org.kosta.ttk.model.vo.ListVO;
+import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.MessageVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 public class MessageController {
-
 	@Resource
 	private MessageService messageService;
-	
 
-	@RequestMapping("messageSend.do")
-	public ModelAndView messageSend(){
-		//messageVO 로 들어오는 값이 sender   receiver   messageContent    
-		MessageVO messageVO=new MessageVO("java","java3","2");
+	/*@RequestMapping("messageSend.do")
+	public ModelAndView messageSend(HttpServletRequest request, String id) {
+		// messageVO 로 들어오는 값이 sender receiver messageContent
+		
+		MessageVO messageVO = new MessageVO("java", "java3", "2");
 		messageService.messageSend(messageVO);
 		return new ModelAndView("index.do");
-	}
+	}*/
 	
 	@RequestMapping("messageListUnChecked.do")
+	public ModelAndView messageListUnChecked(HttpServletRequest request) {
+		List<MessageVO> list =null;
+		HttpSession session=request.getSession(false);
+		if(session!=null||session.getAttribute("mvo")==null){
+			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
+			list = messageService.messageListUnChecked(smvo);
+		}
+		return new ModelAndView("messagePopup/messageListUnChecked", "list", list);
+		}
+	@RequestMapping("messageList.do")
+	public ModelAndView messageList(HttpServletRequest request,String pageNo) {
+		//ListVO vo=new ListVO();
+		ListVO vo=null;
+		HttpSession session=request.getSession(false);
+		if(session!=null||session.getAttribute("mvo")==null){
+			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
+				MessageVO messageVO=new MessageVO();
+				messageVO.setId(smvo.getId());
+			vo = messageService.messageList(messageVO,pageNo);
+		}
+		return new ModelAndView("messagePopup/messageList", "vo", vo);
+	}
 	
-	// SQL Between! 과  날짜로 정렬 필요!
-	public ModelAndView messageListUnChecked(String id){
-		id="java";
-		List<MessageVO> list=messageService.messageListUnChecked(id);
-		return new ModelAndView("index.do","list",list);
+	
+	@RequestMapping("messageSendList.do")
+	public ModelAndView messageSendList(HttpServletRequest request,String pageNo) {
+		ListVO vo=null;
+		HttpSession session=request.getSession(false);
+		if(session!=null||session.getAttribute("mvo")==null){
+			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
+			MessageVO messageVO=new MessageVO();
+			messageVO.setId(smvo.getId());
+			vo = messageService.messageSendList(messageVO,pageNo);
+		}
+		return new ModelAndView("messagePopup/messageSendList", "vo", vo);
 	}
-
-@RequestMapping("messageList.do")
-// 페이징빈 필요
-	public ModelAndView messageList(String id){
-		id="java";
-		
-		
-		List<MessageVO> list=messageService.messageList(id);
-		return new ModelAndView("index.do","list",list);
+	
+	
+	
+	@RequestMapping("messageDetail.do")
+	public ModelAndView messageDetail(int messageNo) {
+		MessageVO messageVO = messageService.messageDetail(messageNo);
+		return new ModelAndView("messagePopup/messageDetail", "messageVO", messageVO);
 	}
-
-@RequestMapping("messageDetail.do")
-public ModelAndView messageDetail(int messageNo){
-	messageNo=2;
-	MessageVO messageVO=messageService.messageDetail(messageNo);
-	return new ModelAndView("index.do","messageVO",messageVO);
 }
-}
-
-
-
-
-
-
 
