@@ -33,6 +33,11 @@ public class PlaceServiceImpl implements PlaceService {
 	public List<PlaceVO> placeList(PlaceVO placeVO) {
 		return placeDAO.placeList(placeVO);
 	}
+
+	@Override
+	public PlaceVO detailPlace(PlaceVO placeVO) {
+		return placeDAO.detailPlace(placeVO);
+	}
 	
 
 }

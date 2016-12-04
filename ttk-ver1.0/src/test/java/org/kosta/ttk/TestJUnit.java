@@ -1,12 +1,16 @@
 package org.kosta.ttk;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.ttk.controller.PlaceController;
+import org.kosta.ttk.model.service.MemberService;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;
+import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.PlaceVO;
 import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.test.context.ContextConfiguration;
@@ -43,13 +47,18 @@ public class TestJUnit {
 	private PlaceService placeService;
 	@Resource
 	private TravelerService travelerService;
+	@Resource
+	private MemberService memberService;
 	@Test
 
 	public void test(){
 		TravelerVO travelerVO = new TravelerVO();
 		travelerVO.setPlaceNo(1);
-		travelerVO.settDate("2016-12-02");
-		//System.out.println(travelerService.travelerList(travelerVO));
-		System.out.println(placeController.findTravelerBydate(travelerVO));
+		travelerVO.settDate("2016-12-05");
+		MemberVO mvo = new MemberVO();
+		mvo.setId("java");
+		mvo.setPassword("1234");
+		mvo.setSex(1);
+		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
 	}
 }

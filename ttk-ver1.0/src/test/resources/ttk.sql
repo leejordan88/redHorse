@@ -136,14 +136,12 @@ create table traveler(
  id varchar2(100),
  tdate date not null,
  tstate number default 1,              -- 1일때 진행중   0일때 감추기
- 
  trange number constraint fk_traveler_trange references travelerRange(trange),               
- 
  constraint pk_placeNo foreign key(placeNo) references place,
  constraint pk_id foreign key(id) references member,
  constraint pk_traveler primary key(placeNo,id,tdate)
  )
-
+insert into traveler(placeNo, id, tdate, trange) values(1, 'java', '2016-12-01', 3);
 
  
  -- to_date(시간정보,포맷)
