@@ -50,8 +50,6 @@
   </head>
 
 <body class="index">
-
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -198,5 +196,5 @@
     <script src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
     <!-- NProgress -->
     <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
-  </body>
-</html>
+
+ <!-- 이 위치에 있던 </body> </html> 테그 삭제 -->

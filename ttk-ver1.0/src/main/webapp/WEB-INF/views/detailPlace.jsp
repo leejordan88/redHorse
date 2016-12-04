@@ -55,7 +55,6 @@
 						 data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"/profile/"+json[i].profileimg+"' alt=''";
 						 data += "class='img-circle img-responsive'></a><button type='button' class='btn btn-success btn-xs'> <i class='fa fa-user'>";
 						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></div></div></div></div>";
-						 alert(json[i].profileimg);
 						 }
 						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
 						 document.getElementById("travelerListByDate").innerHTML = data;

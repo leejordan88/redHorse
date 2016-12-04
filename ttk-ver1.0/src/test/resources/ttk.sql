@@ -395,7 +395,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '180','임진각 평화누리.jpg', '임진각 평화누리', '파주시 문산읍 임진각로 148-53(사목리 480-1)', '37.890506', '126.740228', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '181','헤이리 예술마을.jpg', '헤이리 예술마을', '파주시 탄현면 헤이리마을길 82 일대', '37.789033', '126.698690', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '182','프로방스마을.jpg', '프로방스마을', '경기도 파주시 탄현면 성동리 82-1', '37.790978', '126.685104', '관광지', '경기도');
-insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '183',' 판문점.jpg', ' 판문점', '경기도 파주시 군내면 일대', '37.933558', '126.729623', '관광지', '경기도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '183','판문점.jpg', ' 판문점', '경기도 파주시 군내면 일대', '37.933558', '126.729623', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '184','이천세라피아.jpg', '이천세라피아', ' 이천시 경충대로 2697번길 263', '37.275457', '127.423424', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '185','돼지테마파크.jpg', '돼지테마파크', '이천시 율면 임오산로 372번지 (월포4리 64번지)', '37.085735', '127.583997', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '186','건강과 성박물관.jpg', '건강과 성박물관', '제주특별자치도 서귀포시 안덕면 감산리 1736 ', '33.255005', '126.346669', '관광지', '제주도');
@@ -423,7 +423,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '208','루어인제주.jpg', '루어인제주', '제주 제주시 서광로3길 47', '33.504417', '126.513488', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '209','제주레포츠랜드.jpg', '제주레포츠랜드', '제주 제주시 조천읍 와흘상서2길 47', '33.482453', '126.638638', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '210','짚라인제주.jpg', '짚라인제주', '제주 제주시 조천읍 선교로 117', '33.486941', '126.706655', '엑티비티', '제주도');
-insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '211','얼라이브 카트 .jpg', '얼라이브 카트 ', '제주특별자치도 서귀포시 중문관광로 42', '33.254940', '126.408729', '엑티비티', '제주도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '211','얼라이브 카트.jpg', '얼라이브 카트 ', '제주특별자치도 서귀포시 중문관광로 42', '33.254940', '126.408729', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '212','제주 돔 레저타운.jpg', '제주 돔 레저타운', '제주특별자치도 서귀포시 대정읍 보성구억로 119 통통감귤선과장 ', '33.262119', '126.275539', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '213','제주실탄사격장.jpg', '제주실탄사격장', '제주특별자치도 서귀포시 소보리당로164번길 62 ', '33.263984', '126.385204', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '214','제주제트.jpg', '제주제트', '제주특별자치도 서귀포시 대포동 2181-6 ', '33.238574', '126.439497', '엑티비티', '제주도');
