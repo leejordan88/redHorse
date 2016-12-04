@@ -1,5 +1,7 @@
 package org.kosta.ttk.model.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.vo.MemberPicVO;
@@ -22,4 +24,9 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 		template.insert("memberpic.uploadMemberPic", pvo);
 	}
 	
+	// 사진 리스트
+	@Override
+	public List<MemberPicVO> getPictureList(){
+		return template.selectList("memberpic.getPictureList");		
+	}
 }

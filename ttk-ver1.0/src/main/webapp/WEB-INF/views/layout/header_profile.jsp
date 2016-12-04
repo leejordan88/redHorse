@@ -185,7 +185,7 @@
 			<div class="text-center">
 				<div class="container-fluid">
                     	<a href="upload.do" class="btn btn-rabbit" >글쓰기</a>
-                        <a href="mypage2.do" class="btn btn-rabbit" >사진첩보기</a>
+                        <a href="getPictureList.do" class="btn btn-rabbit" >사진첩보기</a>
                         <a href="schedule.do" class="btn btn-rabbit">여행일정보기</a>
                         <a href="#" data-toggle="modal" data-target="#message-modal" class="btn btn-rabbit">쪽지보내기</a>
 	
