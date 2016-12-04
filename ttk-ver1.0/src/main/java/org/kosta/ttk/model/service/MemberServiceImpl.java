@@ -1,5 +1,7 @@
 package org.kosta.ttk.model.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.dao.MemberDAO;
@@ -34,5 +36,9 @@ public class MemberServiceImpl implements MemberService {
 	public void updateDelete(MemberVO vo){
 		memberDAO.updateDelete(vo);
 
+	}
+	@Override
+	public List<MemberVO> searchMemberByOption(String str) {
+		return memberDAO.searchMemberByOption(str);
 	}
 }

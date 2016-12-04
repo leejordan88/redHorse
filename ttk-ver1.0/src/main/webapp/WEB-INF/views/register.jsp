@@ -73,7 +73,7 @@
 	                     <div class="form-group">
                    	     <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
                         	<div class="col-md-2">
-                          <input type="number" id="tel" name="tel"class="form-control">
+                          <input type="text" id="tel" name="tel"class="form-control">
                       	  </div> 
                       	  <span id="msg_tel"></span>                    
 	                      </div>
@@ -348,6 +348,13 @@ $(":input[name=id]").keyup(function(){
     	         $('#msg_tel').html('').hide();
     	       }
     	       
+    	       if(isNaN(tel)){
+      	         isValid = false;
+      	         $('#msg_tel').html('<p class="validate_msg">전화번호를 숫자로 입력해주세요</p>').show();
+      	       }else{
+      	         $('#msg_tel').html('').hide();
+      	       }
+    	       
        	    // Validate sex
     	       var sex = $("input[name=sex]:radio:checked");
     	       if(sex.length == 0){
@@ -395,15 +402,7 @@ $(":input[name=id]").keyup(function(){
 
     </script>
     <!-- /jQuery Smart Wizard -->
-    <!-- jquery.inputmask -->
-    <script>
-      $(document).ready(function() {
-        $(":input").inputmask();
-      });
-    </script>
-    <!-- /jquery.inputmask -->
-    <!-- jquery.inputmask -->
-    <script src="${pageContext.request.contextPath}/resources/vendors/jquery.inputmask.bundle.min.js"></script>
+
     <!-- Select2 -->
     <script>
       $(document).ready(function() {
