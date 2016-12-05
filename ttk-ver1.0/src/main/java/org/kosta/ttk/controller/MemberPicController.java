@@ -99,6 +99,6 @@ public class MemberPicController {
 	
 	@RequestMapping("showPictureDetailNoHit.do")
 	public ModelAndView showPictureDetailNoHit(int pictureNo) {			
-		return new ModelAndView("memberpic_list","pvo",memberPicService.showPictureDetailNoHit(pictureNo));
+		return new ModelAndView("memberpic_detail","pvo",memberPicService.showPictureDetailNoHit(pictureNo));
 	}		
 }

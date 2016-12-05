@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="row topspace">
 		<!-- Start Portfolio Section -->
-		<div class="container">
+		<div class="container" >
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center">
@@ -26,11 +26,11 @@
 							<ul id="portfolio-list"> 
 						</c:if>
 						<li>
-							<div class="portfolio-item">
-								<a href="#portfolioModal6" class="portfolio-link"
-									data-toggle="modal"> <img
+							<div class="portfolio-item" >
+								<a href='showPictureDetail.do' class="portfolio-link"
+									data-toggle="modal">  <img
 									src="${pageContext.request.contextPath}/resources/picupload/${list.memberVO.getId() }/picture/${list.fileName}"
-									class="img-responsive" alt="" />
+									class="img-responsive" alt="" /></a>
 									<div class="portfolio-caption">
 										<h4>
 											${list.pictureTitle }<br>${list.pictureDate }
@@ -122,9 +122,9 @@
 		<!-- End Portfolio Section -->
 		
 		<!-- Portfolio Modal 6 -->
-		<div class="section-modal modal fade" id="portfolioModal6"
+<%-- 		<div class="section-modal modal fade" id="portfolioModal6"
 			tabindex="-1" role="dialog" aria-hidden="true" >
-			<div class="modal-content">
+			<div class="modal-content" id="content">
 				<div class="close-modal" data-dismiss="modal">
 					<div class="lr">
 						<div class="rl"></div>
@@ -136,7 +136,7 @@
 							<div class="modal-body" >
 								<!-- Project Details Go Here -->
 								<div class="section-title text-center">
-									<h2>${requestScope.pvo.pictureTitle}</h2>
+									<h2>${pvo.pictureTitle}</h2>
 									<h4>2016/07/21</h4>
 								</div>
 								<br> <img class="img-responsive img-centered"
@@ -152,15 +152,12 @@
 										href="http://graphicburger.com/">Graphic Burger</a></li>
 									<li>Category: Graphic Design</li>
 								</ul>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-
+		</div> --%>
 	</div>
 </div>
 <!-- /container -->
