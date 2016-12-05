@@ -35,7 +35,6 @@ public class MemberController {
 		if (vo == null) {
 			return "login_fail";
 		} else {
-			System.out.println(vo);
 			request.getSession().setAttribute("mvo", vo);
 			return "redirect:index.do";
 		}
