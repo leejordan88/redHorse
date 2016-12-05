@@ -196,7 +196,7 @@
 											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 								</ul></li>
 
-							<!-- 로그인 등장 끝 -->
+					<!-- 로그인 등장 끝 -->
 
 							<!-- 쪽지 함 -->
 							<li role="presentation" class="dropdown"><a
