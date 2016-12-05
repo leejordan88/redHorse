@@ -119,7 +119,7 @@
 									<li><a href="upload.do">글쓰기</a></li>
 
 
-<<<<<<< HEAD
+
 <!-- 회원가입시 적용 -->
             <!-- Collect the nav links, forms, and other content for toggling --> 
              
@@ -188,9 +188,9 @@
                         </span>
                       </a>
                     </li>               
-=======
+
 									<li><a href="update.do">회원정보수정</a></li>
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
+
 
 									<li><a href="logout.do"><i
 											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
