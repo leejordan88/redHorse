@@ -295,10 +295,6 @@ $(document).ready(function(){
 </section>
 <!-- End Fun Facts Section -->
   
-
-<jsp:include page="our_team.jsp"></jsp:include>
-<jsp:include page="layout/footer.jsp"></jsp:include>
-
 <script type="text/javascript">
 	flatpickr("#enableNextMonth", {
 		enable : [ {
@@ -307,5 +303,8 @@ $(document).ready(function(){
 		} ]
 	})
 </script>
-</body>
-</html>
+  
+
+<jsp:include page="our_team.jsp"></jsp:include>
+<jsp:include page="layout/footer.jsp"></jsp:include>
+
