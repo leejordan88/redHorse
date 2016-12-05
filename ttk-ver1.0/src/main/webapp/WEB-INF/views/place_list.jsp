@@ -12,7 +12,6 @@
 	$(document)
 			.ready(
 					function() {
-
 						
 						$(".mixCategory")
 								.click(
@@ -46,7 +45,6 @@
 															.getElementById("google_map"),
 													myOptions);
 											map.setTilt(45);
-
 											var marker = new google.maps.Marker(
 													{
 														position : latlng,
@@ -55,7 +53,6 @@
 													});
 											marker.setMap(map);
 										});
-
 						//날짜 지정 시 ajax를 통한 여행자 리스트 제공
 						$("#enableNextMonth")
 								.change(
