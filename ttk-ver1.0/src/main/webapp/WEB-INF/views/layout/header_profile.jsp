@@ -173,6 +173,9 @@
             </div>
         </div>
    <!-- 로그인 모달 끝 -->
+=======
+<jsp:include page="header.jsp"></jsp:include>
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 	<body>
 	<header id="header">
 		<div id="head" class="parallax" >
