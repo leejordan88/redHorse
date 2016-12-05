@@ -178,6 +178,7 @@ create table memberPicture(
  pictureTitle varchar2(100) not null,
  pictureDate date not null,
  pictureContent clob not null,
+ hit number default 0,
 constraint fk_member foreign key(id) references member(id)
  )
 

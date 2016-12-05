@@ -99,7 +99,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="mypage2.do">My Profile</a></li>
+                    <li><a href="getPictureList.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
 
 

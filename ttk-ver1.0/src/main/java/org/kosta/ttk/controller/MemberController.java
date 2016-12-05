@@ -65,6 +65,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
 	public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
+		
 		System.out.println(memberVO);
 		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
 		File uploadDir=new File(uploadPath);
