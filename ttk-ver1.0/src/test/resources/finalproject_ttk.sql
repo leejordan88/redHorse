@@ -266,6 +266,6 @@ select p.areaname, p.categoryname, p.placeName, t.placeNo, rank() over(order by 
 	
 	
 	
-	
+
 	
 	

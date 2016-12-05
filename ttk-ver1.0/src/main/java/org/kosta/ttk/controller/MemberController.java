@@ -2,6 +2,9 @@ package org.kosta.ttk.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +15,8 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -89,6 +92,14 @@ public class MemberController {
 
 		return "register_result";
 	}
+	
+	@RequestMapping("idcheckAjax.do")
+	@ResponseBody
+	public String idcheckAjax(String id) {		
+		int count=memberService.idcheck(id);
+		return (count==0) ? "ok":"fail"; 		
+	}
+
 /**
  * 회원 비활성화  12/1 완료  1 활성화 -> 0 비활성화 업데이트 
  * @param session
@@ -103,5 +114,57 @@ public class MemberController {
 		request.getSession().invalidate();
 		return "updateDelete";
 	}
-
+	
+//조건별 다른 회원 검색
+	@RequestMapping("searchMemberByOption.do")
+	@ResponseBody
+	public Object searchMemberByOption(String[] search){
+		int sex=0;
+		ArrayList<String> ageRange=new ArrayList<String>();
+		StringBuffer age= new StringBuffer();
+		for(int i=0;i<search.length;i++){
+			if(search[i].equals("1")){
+				sex+=1;
+			}else if(search[i].equals("2")){
+				sex+=2;
+			}else if(search[i].equals("10")){
+				ageRange.add("age<20");
+			}else if(search[i].equals("20")){
+				ageRange.add("20<=age and age<30");
+			}else if(search[i].equals("30")){
+				ageRange.add("30<=age and age<40");
+			}else if(search[i].equals("40")){
+				ageRange.add("40<=age");
+			}
+		}
+		if(!ageRange.isEmpty()){
+			age.append(ageRange.get(0));
+			for(int j=1;j<ageRange.size();j++)
+				age.append(" or "+ageRange.get(j));
+		}
+		String str="";
+		if((sex==1||sex==2)&&age.length()>0){
+			str="sex="+sex+" and "+age;
+		}else if(age.length()>0){
+			str=age.toString();
+		}else if(sex==1||sex==2){
+			str="sex="+sex;
+		}else if(sex==3){
+			str="sex=1 or sex=2";
+		}
+		System.out.println(age.length());
+		System.out.println(sex);
+		System.out.println(ageRange);
+		System.out.println(str);
+		List<MemberVO> list =memberService.searchMemberByOption(str);
+		if(list.isEmpty()){
+			HashMap<String,String> map=new HashMap<String,String>();
+			map.put("error","fail");
+			return map;
+		}
+			
+		return list;
+	}
+	
+	
 }

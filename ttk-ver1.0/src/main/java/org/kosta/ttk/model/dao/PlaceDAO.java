@@ -11,6 +11,7 @@ public interface PlaceDAO {
 	List<AreaVO> areaList();
 	List<CategoryVO> categoryList();
 	List<PlaceVO> placeList(PlaceVO placeVO);
+	PlaceVO detailPlace(PlaceVO placeVO);
 
 	
 }

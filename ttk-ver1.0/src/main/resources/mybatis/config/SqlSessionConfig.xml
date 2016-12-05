@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mapper resource="mybatis/config/memberpic.xml"/>
 
 	</mappers>
+
 </configuration>
 
 
