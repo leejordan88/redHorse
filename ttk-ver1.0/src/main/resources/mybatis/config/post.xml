@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="message">
+<mapper namespace="post">
  <!-- message.xml -->
  <resultMap type="messageVO" id="useMemberVO"  >
 <result column="profileIMG"  property="memberVO.profileimg"></result>
