@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 // 사진첩 페이지 VO 12/2 효민 수정
 public class MemberPicVO {	
 	private int pictureNo;
+	private int hit;
 	private String fileName;
 	private String pictureTitle;
 	private String pictureDate;
@@ -15,10 +16,11 @@ public class MemberPicVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberPicVO(int pictureNo, String fileName, String pictureTitle, String pictureDate, String pictureContent,
-			MultipartFile uploadFile, MemberVO memberVO) {
+	public MemberPicVO(int pictureNo, int hit, String fileName, String pictureTitle, String pictureDate,
+			String pictureContent, MultipartFile uploadFile, MemberVO memberVO) {
 		super();
 		this.pictureNo = pictureNo;
+		this.hit = hit;
 		this.fileName = fileName;
 		this.pictureTitle = pictureTitle;
 		this.pictureDate = pictureDate;
@@ -31,6 +33,12 @@ public class MemberPicVO {
 	}
 	public void setPictureNo(int pictureNo) {
 		this.pictureNo = pictureNo;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 	public String getFileName() {
 		return fileName;
@@ -70,11 +78,9 @@ public class MemberPicVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberPicVO [pictureNo=" + pictureNo + ", fileName=" + fileName + ", pictureTitle=" + pictureTitle
-				+ ", pictureDate=" + pictureDate + ", pictureContent=" + pictureContent + ", uploadFile=" + uploadFile
-				+ ", memberVO=" + memberVO + "]";
+		return "MemberPicVO [pictureNo=" + pictureNo + ", hit=" + hit + ", fileName=" + fileName + ", pictureTitle="
+				+ pictureTitle + ", pictureDate=" + pictureDate + ", pictureContent=" + pictureContent + ", uploadFile="
+				+ uploadFile + ", memberVO=" + memberVO + "]";
 	}
-	
-	
 	
 }

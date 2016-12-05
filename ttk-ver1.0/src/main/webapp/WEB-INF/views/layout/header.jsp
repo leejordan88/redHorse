@@ -101,7 +101,9 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="getPictureList.do">My Profile</a></li>
+                  <!-- 12/5 효민 수정부분 -->
+                    <li><a href="getPictureList.do?id=${sessionScope.mvo.id }">My Profile</a></li>
+                  <!-- 12/5 효민 수정부분 끝 -->
                     <li><a href="upload.do">글쓰기</a></li>
 
 

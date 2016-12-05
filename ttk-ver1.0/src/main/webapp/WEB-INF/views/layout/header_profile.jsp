@@ -87,7 +87,9 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="mypage2.do">My Profile</a></li>
+                  <!-- 12/5 효민 수정부분 -->
+                    <li><a href="getPictureList.do">My Profile</a></li>
+                   <!-- 12/5 효민 수정부분 끝-->
                     <li><a href="upload.do">글쓰기</a></li>
                     <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
@@ -185,7 +187,7 @@
 			<div class="text-center">
 				<div class="container-fluid">
                     	<a href="upload.do" class="btn btn-rabbit" >글쓰기</a>
-                        <a href="getPictureList.do" class="btn btn-rabbit" >사진첩보기</a>
+                        <a href="getPictureList.do?id=${sessionScope.mvo.id }" class="btn btn-rabbit" >사진첩보기</a>
                         <a href="schedule.do" class="btn btn-rabbit">여행일정보기</a>
                         <a href="#" data-toggle="modal" data-target="#message-modal" class="btn btn-rabbit">쪽지보내기</a>
 	

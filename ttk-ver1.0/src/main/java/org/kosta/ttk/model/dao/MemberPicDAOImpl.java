@@ -24,10 +24,10 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 		template.insert("memberpic.uploadMemberPic", pvo);
 	}
 	
-	// 사진 리스트
+	// 사진 리스트, 12/5 수정 
 	@Override
-	public List<MemberPicVO> getPictureList(){
-		return template.selectList("memberpic.getPictureList");		
+	public List<MemberPicVO> getPictureList(String id){
+		return template.selectList("memberpic.getPictureList", id);		
 	}
 	
 	// 12/4 효민 사진 조회수 증가
@@ -41,4 +41,11 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	public MemberPicVO showPictureDetail(int pictureNo){
 		return (MemberPicVO)template.selectOne("memberpic.showPictureDetail", pictureNo);
 	}
+	
+	// 12/5 사진 삭제
+	@Override
+	public void deleteMemberPic(int pictureNo){
+		template.delete("memberpic.deleteMemberPic", pictureNo);
+	}
+	
 }
