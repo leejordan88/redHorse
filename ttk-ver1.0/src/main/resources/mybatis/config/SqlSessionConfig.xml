@@ -17,7 +17,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mapper resource="mybatis/config/member.xml"/>	
 	<mapper resource="mybatis/config/place.xml"/>	
 	<mapper resource="mybatis/config/message.xml"/>	
-
 	<mapper resource="mybatis/config/member.xml"/>	
 	<mapper resource="mybatis/config/place.xml"/>	
 	<mapper resource="mybatis/config/traveler.xml"/>	

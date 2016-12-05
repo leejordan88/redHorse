@@ -39,6 +39,8 @@ public class MessageController {
 		}
 		return new ModelAndView("messagePopup/messageListUnChecked", "list", list);
 		}
+	
+	
 	@RequestMapping("messageList.do")
 	public ModelAndView messageList(HttpServletRequest request,String pageNo) {
 		//ListVO vo=new ListVO();
