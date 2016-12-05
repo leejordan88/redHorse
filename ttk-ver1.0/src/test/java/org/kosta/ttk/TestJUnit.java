@@ -38,7 +38,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
    <scope>test</scope>
   </dependency>  
   */
-@RunWith(SpringJUnit4ClassRunner.class)
+/*@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
 	@Resource
@@ -52,7 +52,14 @@ public class TestJUnit {
 	@Test
 
 	public void test(){
-		TravelerVO travelerVO = new TravelerVO();
+<<<<<<< HEAD
+		PlaceVO placeVO = new PlaceVO();
+		placeVO.setAreaName("강원도");
+		placeVO.setCategoryName("맛집");
+		System.out.println(placeController.placeList(placeVO));
+	}*/
+
+/*		TravelerVO travelerVO = new TravelerVO();
 		travelerVO.setPlaceNo(1);
 		travelerVO.settDate("2016-12-05");
 		MemberVO mvo = new MemberVO();
@@ -62,3 +69,4 @@ public class TestJUnit {
 		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
 	}
 }
+*/

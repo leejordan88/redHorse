@@ -2,7 +2,6 @@ select *from memberRange;
 drop table memberRange;
 
 
-
   -- 0일때 전체공개 거부    //  1일때 전체공개 허용    -- 프로필리스트에서
 create table memberRange(
 range number primary key,
@@ -27,11 +26,7 @@ create table member(
    password varchar2(100) not null,
    name varchar2(100) not null,
    tel number not null,
-<<<<<<< HEAD
    sex number not null,				--1Male, 2Female 
-=======
-   sex number not null, --1은 남자 2는 여자
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
    age number not null,
    address varchar2(100) not null,
    introduce clob,

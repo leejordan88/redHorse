@@ -1,5 +1,7 @@
 package org.kosta.ttk.model.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.vo.MemberVO;
@@ -13,7 +15,7 @@ public class MemberDAOImpl implements MemberDAO  {
 	private SqlSessionTemplate template;
 
 	@Override
-	public MemberVO login(MemberVO vo) {
+	public MemberVO login(MemberVO vo  ) {
 		return template.selectOne("member.login", vo);
 	}
 	@Override
@@ -30,5 +32,14 @@ public class MemberDAOImpl implements MemberDAO  {
 
 	public void updateDelete(MemberVO vo){
 		template.update("member.updateDelete",vo);
+	}
+	@Override
+	public int idcheck(String id) {
+		return template.selectOne("member.idcheck",id);		
+	}
+	@Override
+	public List<MemberVO> searchMemberByOption(String str) {
+
+		return template.selectList("member.searchMemberByOption", str);
 	}
 }

@@ -80,10 +80,8 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="profile_list.do">ProfileList</a>
-                    </li>             
-                    <li>
-                        <a class="page-scroll" href="index.do#team">Team</a>
                     </li>
+
                     <c:choose>
               <c:when test="${sessionScope.mvo==null}">
                     <li>
