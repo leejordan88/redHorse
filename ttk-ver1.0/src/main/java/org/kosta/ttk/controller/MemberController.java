@@ -128,13 +128,13 @@ public class MemberController {
 			}else if(search[i].equals("2")){
 				sex+=2;
 			}else if(search[i].equals("10")){
-				ageRange.add("age<20");
+				ageRange.add("(age<20)");
 			}else if(search[i].equals("20")){
-				ageRange.add("20<=age and age<30");
+				ageRange.add("(20<=age and age<30)");
 			}else if(search[i].equals("30")){
-				ageRange.add("30<=age and age<40");
+				ageRange.add("(30<=age and age<40)");
 			}else if(search[i].equals("40")){
-				ageRange.add("40<=age");
+				ageRange.add("(40<=age)");
 			}
 		}
 		if(!ageRange.isEmpty()){
@@ -144,7 +144,7 @@ public class MemberController {
 		}
 		String str="";
 		if((sex==1||sex==2)&&age.length()>0){
-			str="sex="+sex+" and "+age;
+			str="sex="+sex+" and ("+age+")";
 		}else if(age.length()>0){
 			str=age.toString();
 		}else if(sex==1||sex==2){
@@ -152,7 +152,7 @@ public class MemberController {
 		}else if(sex==3){
 			str="sex=1 or sex=2";
 		}
-
+		System.out.println(str);
 		List<MemberVO> list =memberService.searchMemberByOption(str);
 		if(list.isEmpty()){
 			HashMap<String,String> map=new HashMap<String,String>();
@@ -163,5 +163,18 @@ public class MemberController {
 		return list;
 	}
 	
+	@RequestMapping("searchMemberByName.do")
+	@ResponseBody
+	public Object searchMemberByName(String name){
+		System.out.println(name);
+		List<MemberVO> list =memberService.searchMemberByName(name);
+		if(list.isEmpty()){
+			HashMap<String,String> map=new HashMap<String,String>();
+			map.put("error","fail");
+			return map;
+		}
+			
+		return list;
+	}
 	
 }

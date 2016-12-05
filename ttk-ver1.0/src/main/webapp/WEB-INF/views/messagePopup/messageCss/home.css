@@ -1,0 +1,66 @@
+table,th,td{
+	border: 1px solid black;
+}
+table {
+	border-collapse: collapse;
+}
+th,td{
+	padding: 10px;
+}
+.layout{
+	width: 100%;	
+}
+
+.messageLeft{
+	height: 400px;
+	width: 230px;
+	vertical-align: top;
+}
+
+
+/* 
+
+<table class="layout">
+	<tr>
+		<td colspan="2" class="header">
+			<jsp:include page="layout/header.jsp"></jsp:include>
+		</td>
+	</tr>
+	<tr>
+		<td class="left">
+			<jsp:include page="layout/left.jsp"></jsp:include>
+		</td>
+		
+		<td class="main">
+			<% ArrayList<ItemVO>list=
+		(ArrayList)request.getAttribute("list"); %> 
+		<table class=inner>
+			<thead>
+				<tr>
+					<th>번호</th><th>제품명</th><th>제조사</th>
+				</tr>
+			</thead>
+			<tbody>				
+					<% for(ItemVO ivo:list){ %>
+					<tr>
+					<td>						
+						<a href="DispatcherServlet?command=itemdetail&no=<%=ivo.getItemNo() %>">
+						<%=ivo.getItemNo() %>
+						</a>
+					</td>
+					<td><%=ivo.getName() %></td>
+					<td><%=ivo.getMaker() %></td>
+					</tr>
+					<%} %>				
+			</tbody>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="footer"><jsp:include page="layout/footer.jsp"></jsp:include>
+		</td>
+	</tr>
+</table>
+
+
+ */

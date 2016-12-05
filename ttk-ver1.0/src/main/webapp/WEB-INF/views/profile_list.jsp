@@ -13,8 +13,9 @@
                 	<h3>다른 회원 검색</h3>
                     <p>타 회원 프로필 리스트입니다. 조건별 검색이 가능합니다.</p>
 				</div>
-                     <form id="searchForm">
-                      <div class="form-group">
+
+              <div class="form-group">                    
+                      <form id="searchForm">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select class="select2_multiple form-control" multiple="multiple" name="search">
                             <option value="1">남자회원</option>
@@ -25,15 +26,24 @@
                             <option value="40">40대~</option>
                           </select>
                         </div>
-                        <label class="control-label col-md-3"><input type="button" class="btn btn-primary" value="찾기!" id="serachBtn"></label>
-                      </div>
+                        <label class="control-label col-md-1"><input type="button" class="btn btn-primary" value="찾기!" id="serachBtn"></label>
 					</form>
+					
+			<form id="searchByNameForm">
+				<div class="col-md-2 col-sm-12 col-xs-12">
+                    <input type="text" name="name"  id="searchName" placeholder="이름" class="form-control">
+                </div>
+                  	<input type="button" class="btn btn-success" value="검색!" id="searchByNameBtn">
+				</form> 
+			</div>
+				<div class="searchView">
 					<div class="form-group">
                       <div class="col-md-12 col-sm-12 col-xs-12 text-center">
              		    <span id="serachResultView"></span>
                   </div>
                 </div>
-              </div>
+               </div>
+             </div>
 		</div>
       </div>
       <!-- 쪽지보내기모달 -->
@@ -66,6 +76,43 @@
 
  <script type="text/javascript">
     $(document).ready(function(){
+    	
+    	$("#searchByNameBtn").click(function(){
+			$.ajax({
+				type:"POST",
+				url:"searchMemberByName.do",				
+				data:$("#searchByNameForm").serialize(),
+				dataType:"json",   
+				success:function(result){ 					
+					if(result.error=="fail"){
+						alert("조건이 일치하는 회원이 없습니다.");					
+					}else{
+						var sicon="<i class='fa fa-male'></i>";
+						var data="";
+						for(var i=0;i<result.length;i++){
+							if(result[i].sex==2){
+								sicon="<i class='fa fa-female'></i>";
+							}
+							data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
+							data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";
+							data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
+							data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
+							data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
+							data+="<div class='right col-xs-5 text-center'><a href='mypage2.do'><img src='${pageContext.request.contextPath}/resources/upload/";
+							data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'></a>";
+							data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
+							data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
+							data+="<i class='fa fa-comments-o'></i>쪽지 </button></a>";
+							data+="</div></div></div></div>";
+						}
+						$("#serachResultView").html(data);				
+					}
+				}// success
+			  });//ajax 		
+    	});
+    	
+    	
+    	
     	$("#serachBtn").click(function(){ 
 			$.ajax({
 			type:"POST",
