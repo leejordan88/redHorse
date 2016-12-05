@@ -1,12 +1,13 @@
+--member13명 삽입, category, area, place 등록 완료
+
 select *from memberRange;
 drop table memberRange;
-
 
   -- 0일때 전체공개 거부    //  1일때 전체공개 허용    -- 프로필리스트에서
 create table memberRange(
 range number primary key,
 rangeCategory varchar2(100) not null
-)
+);
 
 insert into memberRange(range,rangeCategory)
 values(1,'공개허용');
@@ -15,17 +16,14 @@ insert into memberRange(range,rangeCategory)
 values(0,'공개거부');
 
 
-
-
 select *from member;
 drop table member;
-
 
 create table member(
    id varchar2(100) primary key,
    password varchar2(100) not null,
    name varchar2(100) not null,
-   tel number not null,
+   tel varchar2(100) not null,
    sex number not null,				--1Male, 2Female 
    age number not null,
    address varchar2(100) not null,
@@ -34,13 +32,21 @@ create table member(
    range number constraint fk_member_range references memberRange(range),
    enabled number default 1,           --1 일때 활성,    0 일때 비활성
    hit number default 0
- )
+ );
 
-insert into member(id,password,name,tel,sex,age,address,introduce,profileImg,range)
-values('java','1234','천영해',01045496971,1,27,'야탑','안녕하세요?','path',1)
-
-insert into member(id,password,name,tel,sex,age,address,introduce,profileImg,range)
-values('java2','1234','아이유',01022226971,1,25,'판교','반갑스니다?','path2',0)
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java1','1234', '준성', '01011111111', '1', '29', '안양', '안녕하세요', '준성.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java2','1234', '영해', '01011111111', '1', '28', '판교', '안녕하세요', '영해.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java3','1234', '예원', '01011111111', '2', '23', '용인', '안녕하세요', '예원.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java4','1234', '효민', '01011111111', '2', '24', '수원', '안녕하세요', '효민.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java5','1234', '영주', '01011111111', '2', '23', '과천', '안녕하세요', '영주.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java6','1234', '진석', '01011111111', '1', '25', '수원', '안녕하세요', '진석.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java7','1234', '한지민', '01011111111', '2', '40', '서울', '안녕하세요', '한지민.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java8','1234', '초아', '01011111111', '2', '27', '서울', '안녕하세요', '초아.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java9','1234', '공유', '01011111111', '1', '40', '서울', '안녕하세요', '공유.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java10','1234', '지섭', '01011111111', '1', '40', '서울', '안녕하세요', '지섭.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java11','1234', '승호', '01011111111', '1', '24', '서울', '안녕하세요', '승호.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java12','1234', '유라', '01011111111', '2', '50', '감옥', '안녕하세요', '유라.jpg', '1');
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range) values ( 'java13','1234', '설현', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1');
 
 
  drop table category;
@@ -48,18 +54,18 @@ values('java2','1234','아이유',01022226971,1,25,'판교','반갑스니다?','
  create table category(
 categoryname varchar2(100) primary key,
 categorypicture varchar2(100) not null
-)
+);
 
 insert into category(categoryname,categorypicture) values('관광지','관광지.jpg');
 insert into category(categoryname,categorypicture) values('맛집','맛집.jpg');
 insert into category(categoryname,categorypicture) values('엑티비티','엑티비티.jpg');
 
-
 drop table area;
 create table area(
 areaname varchar2(100) primary key,
 areapicture varchar2(100) not null
-)
+);
+
 insert into area(areaname,areapicture) values('강원도','강원도.jpg');
 insert into area(areaname,areapicture) values('경기도','경기도.jpg');
 insert into area(areaname,areapicture) values('경상도','경상도.jpg');
@@ -69,13 +75,6 @@ insert into area(areaname,areapicture) values('인천','인천.jpg');
 insert into area(areaname,areapicture) values('전라도','전라도.jpg');
 insert into area(areaname,areapicture) values('제주도','제주도.jpg');
 insert into area(areaname,areapicture) values('충청도','충청도.jpg');
-
-drop sequence place_seq;
-create sequence place_seq;
-
-select place_seq.nextval from dual;
-select place_seq.currval from dual;
-
 
 drop table place;
 create table place(
@@ -89,125 +88,7 @@ create table place(
  areaname varchar2(100) not null,
  constraint fk_category foreign key(categoryname) references category(categoryname),
  constraint fk_area foreign key(areaname) references area(areaname)
-)
-
-
-select * from place where areaname = '강원도' and categoryname = '맛집';
-
-drop table category
-drop table area
-drop table place
-select*from area
-select*from category
-select*from place
-
-
---------------------------회원, 장소 까지 
-drop table travelerRange
-select*from travelerRange
-
-----공개범위설정
-create table travelerRange(
-trange number primary key,
-trangeCategory varchar2(100) not null
-)
-
-insert into travelerRange(trange,trangeCategory)
-values(1,'남자');
-
-insert into travelerRange(trange,trangeCategory)
-values(2,'여자');
-
-insert into travelerRange(trange,trangeCategory)
-values(3,'전체');
-
---  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-drop table traveler
-select*from traveler
-
-create table traveler(
- placeNo number,
- id varchar2(100),
- tdate date not null,
- tstate number default 1,              -- 1일때 진행중   0일때 감추기
- trange number constraint fk_traveler_trange references travelerRange(trange),               
- constraint pk_placeNo foreign key(placeNo) references place,
- constraint pk_id foreign key(id) references member,
- constraint pk_traveler primary key(placeNo,id,tdate)
- )
-insert into traveler(placeNo, id, tdate, trange) values(1, 'java', '2016-12-01', 3);
-
- 
- -- to_date(시간정보,포맷)
-insert into date_test(id,mydate) 
-values('jsp',to_date('2016/7/20 9:00:10','YYYY-MM-DD HH24:MI:SS'));
- 
- 
- --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
-insert into traveler(placeNo,id,tdate,trange)
-values(1,'java',to_date('2016-12-02'),3)
-
-
----??  sysdate 로 자동으로 주면 해당날짜에 들어가는지??????? 
--- 해당날짜를 선택해서 삽입해야하는데 sysdate로
--- 들어가게되면 자동으로 현재날짜가 들어감 (생각해보기
-
--- to_date(시간정보,포맷)
-insert into date_test(id,mydate) 
-values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
-
-
---여행사진
-
-drop sequence memberPicture_seq;
-create sequence memberPicture_seq;
-
-drop table memberPicture;
-select*from memberPicture
-
-create table memberPicture(
- pictureNo number primary key,
- id varchar2(100),
- filename varchar2(100) not null,
- pictureTitle varchar2(100) not null,
- pictureDate date not null,
- pictureContent clob not null,
- hit number default 0,
-constraint fk_member foreign key(id) references member(id)
- )
-
- 
- insert into memberPicture(pictureNo,id,filename,pictureTitle,pictureDate)
-values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
-
-
-
---message
-
-drop sequence message_seq;
-create sequence message_seq;
-
-select*from message
-
-drop table message;
-
-create table message(
- messageNo number primary key,
- sender varchar2(100) constraint fk_message_sender references member(id),
- reciever varchar2(100) constraint fk_message_reciever references member(id),
- messageDate date not null,
- messageContent clob not null,
- messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
- )
--- sender와 reciever 가 같을경우 생각해보자
-
-insert into message(messageNo,sender,reciever,messageDate,messageContent)
-values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
-
-insert into message(messageNo,sender,reciever,messageDate,messageContent)
-values(message_seq.nextval,'java2','java',sysdate,'2번째경우 반대의경우')
-
+);
 
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '1','남산_N서울타워.jpg', '남산_N서울타워', '04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)', '37.551399', '126.988184', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '2','중구_위안부_기억의터.jpg', '중구_위안부_기억의터', '04628  서울 중구 퇴계로26가길 6 (예장동)', '37.559061', '126.990767', '관광지', '서울');
@@ -391,7 +272,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '180','임진각 평화누리.jpg', '임진각 평화누리', '파주시 문산읍 임진각로 148-53(사목리 480-1)', '37.890506', '126.740228', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '181','헤이리 예술마을.jpg', '헤이리 예술마을', '파주시 탄현면 헤이리마을길 82 일대', '37.789033', '126.698690', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '182','프로방스마을.jpg', '프로방스마을', '경기도 파주시 탄현면 성동리 82-1', '37.790978', '126.685104', '관광지', '경기도');
-insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '183','판문점.jpg', ' 판문점', '경기도 파주시 군내면 일대', '37.933558', '126.729623', '관광지', '경기도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '183','판문점.jpg', '판문점', '경기도 파주시 군내면 일대', '37.933558', '126.729623', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '184','이천세라피아.jpg', '이천세라피아', ' 이천시 경충대로 2697번길 263', '37.275457', '127.423424', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '185','돼지테마파크.jpg', '돼지테마파크', '이천시 율면 임오산로 372번지 (월포4리 64번지)', '37.085735', '127.583997', '관광지', '경기도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '186','건강과 성박물관.jpg', '건강과 성박물관', '제주특별자치도 서귀포시 안덕면 감산리 1736 ', '33.255005', '126.346669', '관광지', '제주도');
@@ -419,7 +300,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '208','루어인제주.jpg', '루어인제주', '제주 제주시 서광로3길 47', '33.504417', '126.513488', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '209','제주레포츠랜드.jpg', '제주레포츠랜드', '제주 제주시 조천읍 와흘상서2길 47', '33.482453', '126.638638', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '210','짚라인제주.jpg', '짚라인제주', '제주 제주시 조천읍 선교로 117', '33.486941', '126.706655', '엑티비티', '제주도');
-insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '211','얼라이브 카트.jpg', '얼라이브 카트 ', '제주특별자치도 서귀포시 중문관광로 42', '33.254940', '126.408729', '엑티비티', '제주도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '211','얼라이브 카트.jpg', '얼라이브 카트', '제주특별자치도 서귀포시 중문관광로 42', '33.254940', '126.408729', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '212','제주 돔 레저타운.jpg', '제주 돔 레저타운', '제주특별자치도 서귀포시 대정읍 보성구억로 119 통통감귤선과장 ', '33.262119', '126.275539', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '213','제주실탄사격장.jpg', '제주실탄사격장', '제주특별자치도 서귀포시 소보리당로164번길 62 ', '33.263984', '126.385204', '엑티비티', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '214','제주제트.jpg', '제주제트', '제주특별자치도 서귀포시 대포동 2181-6 ', '33.238574', '126.439497', '엑티비티', '제주도');
@@ -445,8 +326,257 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '234','제주김만복.jpg', '제주김만복', '제주특별자치도 제주시 북성로 65 ', '33.515354', '126.518001', '맛집', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '235','천해천.jpg', '천해천', '제주특별자치도 제주시 한라대학로 25', '33.479404', '126.474343', '맛집', '제주도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '236','춘심이네 본점.jpg', '춘심이네 본점', '제주특별자치도 서귀포시 안덕면 창천중앙로24번길 16', '33.264953', '126.370623', '맛집', '제주도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '237','송정해수욕장.jpg', '송정해수욕장', '부산광역시 해운대구 송정동 712-2', '35.179388', '129.199032', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '238','솔밭예술마을.jpg', '솔밭예술마을', '부산광역시 해운대구 우동 1139-38', '35.164959', '129.162317', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '239','송상현광장.jpg', '송상현광장', '부산광역시 부산진구 전포동 864-1', '35.165380', '129.066910', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '240','달맞이길.jpg', '달맞이길', '부산광역시 해운대구 중2동', '35.159747', '129.182190', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '241','해운대해수욕장.jpg', '해운대해수욕장', '부산광역시 해운대구 중1동 1411-14', '35.159487', '129.161445', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '242','용두산공원.jpg', '용두산공원', '부산광역시 중구 광복동 용두산길 37-55', '35.100926', '129.032633', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '243','부산타워.jpg', '부산타워', '부산광역시 중구 광복동 용두산길 37-30', '35.101473', '129.032353', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '244','국제시장.jpg', '국제시장', '부산광역시 중구 신창동 4가', '35.101074', '129.029145', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '245','영화의 전당.jpg', '영화의 전당', '부산광역시 해운대구 우동 1467', '35.171441', '129.127185', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '246','민주공원.jpg', '민주공원', '부산광역시 중구 영주동2동 민주공원길19', '35.110214', '129.027955', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '247','충혼탑.jpg', '충혼탑', '부산광역시 중구 영주동 산10-16', '35.110214', '129.027955', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '248','부산시립중앙도서관.jpg', '부산시립중앙도서관', '부산광역시 중구 보수동 1가 산 3-41', '35.110291', '129.027017', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '249','40계단.jpg', '40계단', '부산광역시 중구 동광동 5가 48-2', '35.104358', '129.034401', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '250','태종대.jpg', '태종대', '부산광역시 영도구 동삼2동 산29-1', '35.055659', '129.089960', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '251','좌천역.jpg', '좌천역', '부산광역시 기장군 장안읍 좌천리 211-1', '35.311424', '129.243584', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '252','해동용궁사.jpg', '해동용궁사', '부산광역시 기장군 기장읍 시랑리 416-3', '35.188568', '129.223320', '관광지', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '253','파파스시.jpg', '파파스시', '부산광역시 해운대고 중동 957-2', '35.158769', '129.171175', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '254','모리구이집.jpg', '모리구이집', '부산광역시 해운대구 중2동 585-1', '35.160966', '129.191886', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '255','더베이101.jpg', '더베이101', '부산광역시 해운대구 동백로 52', '35.156921', '129.152134', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '256','깡통야시장.jpg', '깡통야시장', '부산광역시 중구 부평동2가 18-2', '35.101573', '129.026153', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '257','91st.jpg', '91st', '부산광역시 금정구 장전동 392-20', '35.233438', '129.089032', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '258','무심정.jpg', '무심정', '부산광역시 금정구 금성동 528-4', '35.252232', '129.055931', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '259','이찌니찌.jpg', '이찌니찌', '부산광역시 금정구 장전동 419-21', '35.230770', '129.084288', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '260','킹콩닭강정.jpg', '킹콩닭강정', '부산광역시 금정구 장전동 316-3', '35.230255', '129.086627', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '261','가미.jpg', '가미', '부산광역시 해운대구 우동 1507', '35.166987', '129.133833', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '262','면옥향천jpg', '면옥향천', '부산광역시 해운대구 해운대로 383번길 26', '35.170362', '129.139395', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '263','스테이크 잡스.jpg', '스테이크 잡스', '부산광역시 부산진구 부전동 168-448', '35.155831', '129.061041', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '264','거인통닭.jpg', '거인통닭', '부산광역시 중구 부평동 2가 11-2', '35.102613', '129.026083', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '265','뽀빠이핫도그.jpg', '뽀빠이핫도그', '부산광역시 중구 창선동 1가 30-12', '35.099580', '129.031067', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '266','할매집 회국수.jpg', '할매집 회국수', '부산광역시 중구 남포동 2가 15-1', '35.099127', '129.031497', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '267','미스터스시.jpg', '미스터스시', '부산광역시 사하구 다대동 1552-18', '35.048824', '128.965396', '맛집', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '268','VR플러스부산남포점.jpg', 'VR플러스부산남포점', '부산광역시 중구 남포동 6가 85 남포프라자 지하1층', '35.097711', '129.028991', '액티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '269','광안비치랜드.jpg', '광안비치랜드', '부산광역시 수영구 민락동 181-191', '35.154320', '129.124879', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '270','디오라마월드.jpg', '디오라마월드', '부산광역시 해운대구 우동 1468-1', '35.171515', '129.128809', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '271','주라지 테마파크.jpg', '주라지 테마파크', '부산광역시 해운대구 우동 1495 신세계백화점 센텀시티점 9F', '35.168956', '129.129743', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '272','센텀시티 아이스링크.jpg', '센텀시티 아이스링크', '부산광역시 해운대구 우동 1495 신세계백화점 센텀시티점 4F', '35.168956', '129.129743', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '273','락볼링장.jpg', '락볼링장', '부산 금정구 장전동 292-4번지', '35.230392', '129.088091', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '274','야사노.jpg', '야사노', '부산광역시 금정구 장전동 302-9', '35.229779', '129.087476', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '275','작은 동물원.jpg', '작은 동물원', '부산광역시 부산진구 양정동 519-16 5층', '35.168823', '129.066773', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '276','아쿠아리움.jpg', '아쿠아리움', '부산광역시 해운대구 중1동 1411-4', '35.159491', '129.160950', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '277','어린이대공원.jpg', '어린이대공원', '부산광역시 부산진구 새싹로295', '35.183257', '129.046339', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '278','삼정더파크.jpg', '삼정더파크', '부산광역시 부산진구 초읍동 45', '35.184444', '129.042490', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '279','국립해양박물관.jpg', '국립해양박물관', '부산광역시 영도구 동삼1동 해양로 301번길 45', '35.078756', '129.080246', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '280','과학관.jpg', '과학관', '부산광역시 기장군 기장읍 시랑리 408-1', '35.192491', '129.223262', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '281','리얼야구존.jpg', '리얼야구존', '부산광역시 남구 대연동 72-6', '35.136918', '129.099242', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '282','은하수다방.jpg', '은하수다방', '부산광역시 남구 대연동 50-51', '35.136137', '129.103586', '엑티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '283','전주_송광사.jpg', '전주_송광사', '전라북도 완주군 소양면 대흥리 596-2', '35.886012', '127.241779', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '284','전주_모악산.jpg', '전주_모악산', '전라북도 완주군 구이면', '35.730848', '127.084552', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '285','전주_한벽당.jpg', '전주_한벽당', '전라북도 전주시 완산구 교동 15', '35.812130', '127.160809', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '286','전주_동고사.jpg', '전주_동고사', '전라북도 전주시 완산구 교동 산3-1', '35.813649', '127.159843', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '287','광주_중외공원.jpg', '광주_중외공원', '광주광역시 북구 운암동 164-1', '35.180312', '126.884753', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '288','광주_펭귄마을.jpg', '광주_펭귄마을', '광주 남구 천변좌로 446번길 7', '35.140354', '126.917066', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '289','광주_이장우가옥.jpg', '광주_이장우가옥', '광주광역시 남구 양촌길 21', '35.140654', '126.914245', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '290','광주_국립아시아문화전당.jpg', '광주_국립아시아문화전당', '광주광역시 동구 문화전당로 38', '35.147493', '126.920581', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '291','나주_목사내아.jpg', '나주_목사내아', '전라남도 나주시 금계동 33-1', '35.032469', '126.715329', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '292','나주_금성관.jpg', '나주_금성관', '전라남도 나주시 과원동 109-5', '35.032404', '126.715634', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '293','고창_한옥마을.jpg', '고창_한옥마을', '전라북도 고창군 고창읍 읍내리 120', '35.432445', '126.705901', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '294','고창_문수사.jpg', '고창_문수사', '전라북도 고창군 고수면 은사리 48', '35.381096', '126.726033', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '295','고창_동호해수욕장.jpg', '고창_동호해수욕장', '전라북도 고창군 해리면 구동호1길 17-13', '35.516856', '126.482652', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '296','담양_관방제림.jpg', '담양_관방제림', '전남 담양군 담양읍 객사리, 남산리 일원', '35.324244', '126.985856', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '297','담양_죽녹원.jpg', '담양_죽녹원', '전라남도 담양군 담양읍 죽녹원로 119', '35.326085', '126.986265', '관광지', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '298','고창_석정회관.jpg', '고창_석정회관', '전라북도 고창군 고창읍 교촌리 78-5', '35.434745', '126.705055', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '299','전주_호남각.jpg', '전주_호남각', '전라북도 전주시 덕진구 송천동 2가 560-3', '35.865291', '127.113659', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '300','전주_성미당.jpg', '전주_성미당', '전북 전주시 완산구 중앙동 3가 31-2', '35.817626', '127.145243', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '301','전주_메밀방앗간.jpg', '전주_메밀방앗간', '전북 전주시 완산구 중화산동 2가 652-3', '35.817617', '127.123453', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '302','전주_맘스브레드.jpg', '전주_맘스브레드', '전라북도 전주시 완산구 효자동 2가', '35.808893', '127.103591', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '303','광주_토속고을.jpg', '광주_토속고을', '경기도 광주시 오포읍 양벌리', '37.388355', '127.255498', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '304','광주_고래등.jpg', '광주_고래등', '광주광역시 북구 용봉동 1395-1', '35.187806', '126.892603', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '305','광주_소나무한그루.jpg', '광주_소나무한그루', '광주광역시 서구 금호동', '35.130607', '126.858410', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '306','나주_사랑채.jpg', '나주_사랑채', '전남 나주시 금남길 61', '35.034055', '126.714257', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '307','나주_하얀집.jpg', '나주_하얀집', '전라남도 나주시 중앙동 48-17', '35.032407', '126.716961', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '308','고창_풍천장어.jpg', '고창_풍천장어', '고창군 부안면 용산리 44-18', '35.508430', '126.644619', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '309','고창_웰빙오곡영양보리밥.jpg', '고창_웰빙오곡영양보리밥', '전라북도 고창군 고창읍 읍내리 576-5', '35.433170', '126.697117', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '310','고창_해주가든.jpg', '고창_해주가든', '전라북도 고창군 아산면 삼인리 19-27', '35.507994', '126.605588', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '311','군산_지린성.jpg', '군산_지린성', '전라북도 군산시 미원동 87', '35.979929', '126.714771', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '312','군산_안젤라분식.jpg', '군산_안젤라분식', '전라북도 군산시 영화동 18-4', '35.989202', '126.710863', '맛집', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '313','사계절레저.jpg', '사계절레저', '전라북도 무주군 설천면 심곡리 682', '35.911315', '127.759780', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '314','무주래프팅.jpg', '무주래프팅', '전라북도 무주군 무주읍 용포리 1191-1', '35.998135', '127.607215', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '315','무주스키.jpg', '무주스키', '전라북도 무주군 설천면 심곡리 587-11', '35.907189', '127.755406', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '316','새만금낚시.jpg', '새만금낚시', '전라북도 부안군 변산면 격포리 385-7', '35.622574', '126.472862', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '317','잉어킹낚시카페본점.jpg', '잉어킹낚시카페본점', '전라북도 전주시 완산구 고사동 373-2 B1', '35.820291', '127.143206', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '318','블루마린스쿠버.jpg', '블루마린스쿠버', '전라북도 군산시 문화동 889-16', '35.976055', '126.702410', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '319','전주드림랜드.jpg', '전주드림랜드', '전라북도 전주시 덕진구 덕진동1가 산 36-8', '35.857721', '127.144250', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '320','블랙이글스 패러글라이딩스쿨.jpg', '블랙이글스 패러글라이딩스쿨', '전라북도 완주군 구이면 덕천리 188-1', '35.752589', '127.124720', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '321','워터월드.jpg', '워터월드', '전라북도 남원시 주생면 내동리 66-1', '35.382476', '127.283441', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '322','전라북도축구협회.jpg', '전라북도축구협회', '전라북도 전주시 덕진구 덕진동1가 1283-2', '35.841041', '127.126159', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '323','자바라낚시카페.jpg', '자바라낚시카페', '전라북도 전주시 완산구 평화동2가 909-3', '35.783273', '127.133140', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '324','만돌 어촌체험마을.jpg', '만돌 어촌체험마을', '전라북도 고창군 심원면 만돌리 960-27', '35.530455', '126.515046', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '325','모항갯벌체험장.jpg', '모항갯벌체험장', '전라북도 부안군 변산면 도청리 123', '35.587765', '126.514014', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '326','임실치즈스쿨.jpg', '임실치즈스쿨', '전라북도 임실군 임실읍 이인리 92', '35.549209', '127.261083', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '327','안덕건강힐링체험마을.jpg', '안덕건강힐링체험마을', '전라북도 완주군 구이면 안덕리 95', '35.695340', '127.099817', '엑티비티', '전라도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '328','동화마을.jpg', '동화마을', '인천광역시 부평구 부평4동 206-12', '37.495443', '126.723263', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '329','차이나타운.jpg', '차이나타운', '인천광역시 중구 북성동2가 12-148', '37.476601', '126.618161', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '330','신포시장.jpg', '신포시장', '인천광역시 중구 내동 212-4', '37.471691', '126.627758', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '331','연안부두 해양광장.jpg', '연안부두 해양광장', '인천광역시 중구 항동7가 60-1', '37.455359', '126.601341', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '332','개항장문화지구.jpg', '개항장문화지구', '인천광역시 중구 신포로23번길 83', '37.473042', '126.621061', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '333','두무진.jpg', '두무진', '인천광역시 중구 연안동 87-9', '37.453251', '126.598926', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '334','갑곶돈대.jpg', '갑곶돈대', '인천광역시 중구 무의동 산369번지 일원', '37.733259', '126.516480', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '335','인천나비공원.jpg', '인천나비공원', '인천광역시 부평구 청천동 68-12', '37.520261', '126.692712', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '336','인천상륙작전기념관.jpg', '인천상륙작전기념관', '인천광역시 옥련동 인천상륙작전기념관', '37.419523', '126.653059', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '337','팔각정.jpg', '팔각정', '인천광역시 중구 북성동3가 1', '37.475922', '126.621913', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '338','을왕리해수욕장.jpg', '을왕리해수욕장', '인천광역시 중구 을왕로 36', '37.447512', '126.372633', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '339','커넬워크.jpg', '커넬워크', '인천광역시 연수구 송도2동 아트센터대로 87', '37.4025670', '126.640168', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '340','무의도.jpg', '무의도', '인천광역시 중구 무의동 산151-1', '37.392084 ', '126.415628', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '341','인천대교.jpg', '인천대교', '인천광역시 중구 운남동 1113-70', '37.414000', '126.566489', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '342','팔미도 등대.jpg', '팔미도 등대', '인천 중구 무의동 산 374', '37.358300', ' 126.512113', '관광지', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '343','집게.jpg', '집게', '인천광역시 연수구 송도동 8-19', '37.385577', '126.64507', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '344','트리플듀에.jpg', '트리플듀에', '인천광역시 연수구 송도동 22-22', '37.392908', '126.645213', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '345','소소한가.jpg', '소소한가', '인천남구 숭의동 293-15 105호', '37.458154', '126.650083', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '346','스테이크 1번가.jpg', '스테이크 1번가', '인천시 남구 주안동 143-3', '37.463030', '126.680686', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '347','수밀원.jpg', '수밀원', '인천광역시 연수구 옥련동 557-1', '37.415877', '126.651828', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '348','아웃도어키친.jpg', '아웃도어키친', '인천광역시 남동구 장수동 121-5', '37.459810', '126.771484', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '349','배터지는 게장.jpg', '배터지는 게장', '인천광역시 남동구 장수동 391-1', '37.464091', '126.749806', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '350','십리향.jpg', '십리향', '인천광역시 중구 북성동2가 10-26', '37.475362', '126.618767', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '351','명가호떡.jpg', '명가호떡', '인천광역시 남동구 구월동 1271-7', '37.452614', '126.720741', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '352','대원닭강정.jpg', '대원닭강정', '인천광역시 남동구 구월동 1271-4', '37.452824', '126.720011', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '353','콩순아지매칼국수.jpg', '콩순아지매칼국수', '인천광역시 부평구 삼산동 430-4', '37.516542', '126.734531', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '354','초코식당.jpg', '초코식당', '인천광역시 부평구 부평5동 201-25 2층', '37.493673', '126.723786', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '355','아르떼 게스트로펍.jpg', '아르떼 게스트로펍', '인천광역시 부평구 부평동 151-30', '37.494409', '126.727185', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '356','그릴드캠핑.jpg', '그릴드캠핑', '계양구 계산동 988-7', '37.536681', '126.722905', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '357','B105.jpg', 'B105', '인천 서구 중봉대로 586번길 19홍익파크', '37.531267', '126.651305', '맛집', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '358','송도 비행스쿨.jpg', '송도 비행스쿨', '인천광역시 연수구 동춘동 907', '37.413138', '126.644259', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '359','용유 승마장.jpg', '용유 승마장', '인천광역시 중구 덕교동 652번지', '37.432889', ' 126.418111', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '360','송도골프클럽.jpg', '송도골프클럽', '인천광역시 연수구 동춘동 844-1', '37.414550', '126.651219', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '361','인천그랜드컨트리클럽.jpg', '인천그랜드컨트리클럽', '인천광역시 서구 원창동 380번지', '37.514050', '126.641201', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '362','펀코스트.jpg', '펀코스트', '인천광역시 중구 항동7가 100번지', '37.452054', '126.613794', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '363','덕적도 자전거길.jpg', '덕적도 자전거길', '인천광역시 옹진군 덕적면 진리 산122-34', '37.237919', '126.127940', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '364','송도센트럴파크.jpg', '송도센트럴파크', '인천 연수구 송도동', '37.392949', ' 126.638715', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '365','옥토끼 우주센터.jpg', '옥토끼 우주센터', '인천광역시 강화군 불은면 강화동로 403 옥토끼우주센타', '37.674924', ' 126.486730', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '366','강화도자연체험농장.jpg', '강화도자연체험농장', '강화군 길상면 해안남로 344', '37.608322', '126.517097', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '367','달빛동화마을.jpg', '달빛동화마을', '강화군 양도면 강화남로921번길 10-6', '37.681079', '126.416463', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '368','월미 놀이공원.jpg', '월미 놀이공원', '인천광역시 중구 북성동1가', '37.475004', '126.598248', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '369','고인돌식물원.jpg', '고인돌식물원', '인천광역시 강화군 하점면 장정리 989', '37.777261', '126.434744', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '370','인천대공원.jpg', '인천대공원', '인천광역시 남동구 무네미로 236 인천대공원사업소', '37.458641', '126.755067', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '371','장봉도(농촌체험).jpg', '장봉도(농촌체험)', '인천광역시 옹진군 북도면 장봉리 10번지', '37.537048', '126.380680', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '372','에너지파크.jpg', '에너지파크', '인천광역시 옹진군 영흥면 영흥남로293번길 75', '37.244316 ', '126.448105', '엑티비티', '인천');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '373','목척교.jpg', '목척교', '대전광역시 동구 중동 318-2', '36.329986', '127.429386', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '374','으능정이 문화의 거리.jpg', '으능정이 문화의 거리', '대전광역시 중구 은행동 33-8', '36.327979', '127.427947', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '375','대동벽화마을.jpg', '대동벽화마을', '대전광역시 동구 용운동 산40-1', '36.332378', '127.451945', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '376','대동하늘공원.jpg', '대동하늘공원', '대전광역시 동구 용운동 산40-1', '36.332378', '127.451945', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '377','지중해마을.jpg', '지중해마을', '충청남도 아산시 탕정면 갈산리 599-14', '36.797565', '127.060782', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '378','독립기념관.jpg', '독립기념관', '충청남도 천안시 동남구 목천읍 삼방로 95', '36.787138', '127.222754', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '379','화수목정원.jpg', '화수목정원', '충청남도 천안시 동남구 목천읍 교천리 211', '36.783337', '127.194661', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '380','웅천돌문화공원.jpg', '웅천돌문화공원', '충남 보령시 웅천읍 대천리 81-1', '36.237640', '126.590576', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '381','보령 석탄박물관.jpg', '보령 석탄박물관', '충청남도 보령시 성주면 개화리 산23-1', '36.323910', '126.653491', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '382','죽도 상화원.jpg', '죽도 상화원', '충청남도 보령시 남포면 남포방조제로 408-52', '36.277415', '126.537666', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '383','마곡사.jpg', '마곡사', '충청남도 공주시 사곡면 운암리 567', '36.559160', '127.012435', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '384','박달재.jpg', '박달재', '충청북도 제천시 백운면 평동리', '37.149448', '128.046557', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '385','의림지.jpg', '의림지', '충청북도 제천시 모산동 241', '37.173246', '128.210558', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '386','백제군사박물관.jpg', '백제군사박물관', '충청남도 논산시 부적면 충곡로 311-54 백제군사박물관', '36.192414', '127.181355', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '387','탑정호 호수 생태공원.jpg', '탑정호 호수 생태공원', '충청남도 논산시 부적면 충곡리', '36.191831', '127.172355', '관광지', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '388','오늘은파스타.jpg', '오늘은파스타', '대전광역시 대덕구 오정동 223-273', '36.351580', '127.425623', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '389','성심당.jpg', '성심당', '대전광역시 중구 은행동 145', '36.327778', '127.427241', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '390','홍부리.jpg', '홍부리', '대전광역시 동구 자양동 141-9', '36.334559', '127.445552', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '391','헌치스 핫도그.jpg', '헌치스 핫도그', '대전광역시 동구 대동 402-4 아썸타워 101호', '36.329610', '127.442826', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '392','요상한집.jpg', '요상한집', '대전광역시 중구 대흥동 471-1 2층', '36.325960', '127.423073', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '393','복숭아 식당.jpg', '복숭아 식당', '대전광역시 중구 대흥동 469-1', '36.325806', '127.422638', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '394','천상오징어.jpg', '천상오징어', '천안시 서북구 쌍용동 1116', '36.802980', '127.129119', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '395','형제상회.jpg', '형제상회', '천안시 서북구 쌍용동 1147', '36.802561', '127.130376', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '396','대원횟집.jpg', '대원횟집', '천안시 동남구 신방동 1685', '36.788252', '127.120117', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '397','수전복삼합.jpg', '수전복삼합', '천안시 서북구 두정동 982', '36.835470', '127.135513', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '398','논산 그린성가든.jpg', '논산 그린성가든', '충청남도 논산시 연무읍 동산리', '36.132173', '127.121746', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '399','명성불고기.jpg', '명성불고기', '충청남도 공주시 산성동 133-4', '36.458424', '127.125088', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '400','예일낙지마을.jpg', '예일낙지마을', '충청남도 공주시 산성동 189-12', '36.459129', '127.123586', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '401','보령해물칼국수.jpg', '보령해물칼국수', '충청남도 보령시 남곡동 856-3', '36.464088', '126.543831', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '402','가마솥불곰탕.jpg', '가마솥불곰탕', '충청남도 보령시 내항동 919-7', '36.347905', '126.570653', '맛집', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '403','카페마실.jpg', '카페마실', '대전광역시 대덕구 오정동 223-268 지하1층', '36.351436', '127.426059', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '404','선물가게 소금.jpg', '선물가게 소금', '대전광역시 동구 자양동 48-10', '36.340036', '127.448594', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '405','소프라임.jpg', '소프라임', '대전광역시 동구 자양동 85-23', '36.338686', '127.450711', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '406','팝아일랜드.jpg', '팝아일랜드', '대전광역시 중구 대흥동 150-7 2층', '36.326648', '127.427843', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '407','도자기 공방 굽다.jpg', '도자기 공방 굽다', '대전중구 중촌동 412-1 롯데리아 지하1층', '36.336076', '127.411534', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '408','대전오월드.jpg', '대전오월드', '대전광역시 중구 사정동 사정공원로 70', '36.288580', '127.397789', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '409','대전 아쿠아리움.jpg', '대전 아쿠아리움', '대전광역시 중구 대사동 198-14', '36.310003', '127.421045', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '410','한화 이글스파크.jpg', '한화 이글스파크', '대전광역시 중구 부사동 177', '36.317025', '127.429189', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '411','아리솔CC.jpg', '아리솔CC', '충청북도 보은군 탄부면', '36.447190', '127.781907', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '412','단양패러스쿨.jpg', '단양패러글라이딩', '충청북도 단양군 단양읍 도전리', '36.980433', '128.369469', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '413','홍종열클라이밍짐.jpg', '홍종열클라이밍짐', '충청남도 천안시 서북구 두정로 1523', '36.834448', '127.142086', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '414','LOVE낚시카페.jpg', 'LOVE낚시카페', '충청남도 천안시 서북구 원두정8길 14 경한빌딩', '36.832443', '127.134781', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '415','옥천학생야영장.jpg', '옥천학생야영장', '충청북도 옥천군 이원면 용방리 1016-1', '36.255834', '127.635966', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '416','도레미캠핑장.jpg', '도레미캠핑장', '충청북도 괴산군 불정면 세평리', '36.857619', '127.820288', '엑티비티', '충청도');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '417','아산레일바이크.jpg', '아산레일바이크', '충청남도 아산시 도고면 아산만로 199-7', '36.761284', '126.867220', '엑티비티', '충청도');
 
-select * from place where areaName = '강원도' and categoryName = '맛집';
 
-select * from traveler where placeNo = 1 and tDate = '2016-11-29'
+--------------------------회원, 장소 까지 
+drop table travelerRange
+select*from travelerRange
+
+----공개범위설정
+create table travelerRange(
+trange number primary key,
+trangeCategory varchar2(100) not null
+);
+
+insert into travelerRange(trange,trangeCategory)
+values(1,'남자');
+
+insert into travelerRange(trange,trangeCategory)
+values(2,'여자');
+
+insert into travelerRange(trange,trangeCategory)
+values(3,'전체');
+
+--  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+drop table traveler
+select*from traveler
+
+create table traveler(
+ placeNo number,
+ id varchar2(100),
+ tdate date not null,
+ tstate number default 1,              -- 1일때 진행중   0일때 감추기
+ trange number constraint fk_traveler_trange references travelerRange(trange),               
+ constraint pk_placeNo foreign key(placeNo) references place,
+ constraint pk_id foreign key(id) references member,
+ constraint pk_traveler primary key(placeNo,id,tdate)
+ );
+
+--여행사진
+drop sequence memberPicture_seq;
+create sequence memberPicture_seq;
+
+drop table memberPicture;
+select*from memberPicture
+
+create table memberPicture(
+ pictureNo number primary key,
+ id varchar2(100),
+ filename varchar2(100) not null,
+ pictureTitle varchar2(100) not null,
+ pictureDate date not null,
+ pictureContent clob not null,
+ hit number default 0,
+constraint fk_member foreign key(id) references member(id)
+ );
+
+--message
+
+drop sequence message_seq;
+create sequence message_seq;
+
+select*from message
+
+drop table message;
+create table message(
+ messageNo number primary key,
+ sender varchar2(100) constraint fk_message_sender references member(id),
+ reciever varchar2(100) constraint fk_message_reciever references member(id),
+ messageDate date not null,
+ messageContent clob not null,
+ messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ );
+-- sender와 reciever 가 같을경우 생각해보자
 
