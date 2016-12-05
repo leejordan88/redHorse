@@ -30,4 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from traveler where placeNo = #{placeNo} and tDate = #{tDate}
 </select>
 
+<insert id="regiTraveler" parameterType="travelerVO">
+	insert into traveler(placeNo, id, tdate, trange) values(#{placeNo}, #{id}, #{tDate}, #{tRange})
+</insert>
+
 </mapper>

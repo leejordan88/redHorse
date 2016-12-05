@@ -45,10 +45,9 @@
                         <h4 class="modal-title" id="Message">Message</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="dispatcher">
-                        	<input type="hidden" name="command" value="message">
+                        <form method="post" action="messageSend.do">
                             <div class="form-group">
-                            <input type="text" id="receiver" name="receiver" value="받는사람이름" readonly="readonly" class="form-control"/>
+                            <input type="text" id="receiver" name="receiver" value="" readonly="readonly" class="form-control"/>
                             </div>
                             <div class="form-group">
                             	<textarea class="form-control" id="messageContent" name="messageContent" cols="45" rows="9" placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 쪽지 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>

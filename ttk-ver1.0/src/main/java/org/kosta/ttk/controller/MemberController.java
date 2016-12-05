@@ -35,7 +35,6 @@ public class MemberController {
 		if (vo == null) {
 			return "login_fail";
 		} else {
-			System.out.println(vo);
 			request.getSession().setAttribute("mvo", vo);
 			return "redirect:index.do";
 		}
@@ -153,10 +152,7 @@ public class MemberController {
 		}else if(sex==3){
 			str="sex=1 or sex=2";
 		}
-		System.out.println(age.length());
-		System.out.println(sex);
-		System.out.println(ageRange);
-		System.out.println(str);
+
 		List<MemberVO> list =memberService.searchMemberByOption(str);
 		if(list.isEmpty()){
 			HashMap<String,String> map=new HashMap<String,String>();

@@ -50,8 +50,6 @@
   </head>
 
 <body class="index">
-
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -99,7 +97,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="mypage2.do">My Profile</a></li>
+                    <li><a href="getPictureList.do">My Profile</a></li>
                     <li><a href="upload.do">글쓰기</a></li>
 
 
@@ -196,5 +194,5 @@
     <script src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
     <!-- NProgress -->
     <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
-  </body>
-</html>
+
+ <!-- 이 위치에 있던 </body> </html> 테그 삭제 -->

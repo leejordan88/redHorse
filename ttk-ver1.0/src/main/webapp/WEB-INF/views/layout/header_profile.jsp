@@ -17,8 +17,7 @@
                     	<a href="upload.do"  >글쓰기</a>
                         <a href="mypage2.do"  >사진첩보기</a>
                         <a href="schedule.do">여행일정보기</a>
-                        <a href="#" data-toggle="modal" data-target="#message-modal" >쪽지보내기</a>
-	
+                        <a href="#" data-toggle="modal" data-target="#message-modal" >쪽지보내기</a>	
 		</div></div>
 	</div>
 
@@ -60,7 +59,5 @@
     <!-- NProgress -->
     <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
     
-
  
   </body>
-</html>
