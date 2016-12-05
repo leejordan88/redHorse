@@ -28,4 +28,9 @@ public class TravelerServiceImpl implements TravelerService {
 		return travelerDAO.travelerList(travelerVO);
 	}
 
+	@Override
+	public void regiTraveler(TravelerVO tvo) {
+		travelerDAO.regiTraveler(tvo);
+	}
+
 }

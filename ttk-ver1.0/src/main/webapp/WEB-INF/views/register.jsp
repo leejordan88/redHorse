@@ -1,6 +1,6 @@
 
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+
  
 	<jsp:include page="layout/header.jsp"></jsp:include>
 
@@ -75,7 +75,9 @@
 	                     <div class="form-group">
                    	     <label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span class="required">*</span></label>
                         	<div class="col-md-2">
-                          <input type="number" id="tel" name="tel"class="form-control">
+
+                          <input type="text" id="tel" name="tel"class="form-control">
+
                       	  </div> 
                       	  <span id="msg_tel"></span>                    
 	                      </div>
@@ -177,6 +179,7 @@
     <!-- jQuery Smart Wizard -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
 <script>
+
 $(":input[name=id]").keyup(function(){
 	var id=$(this).val().trim();
 		if(id.length<4 || id.length>10){
@@ -202,7 +205,208 @@ $(":input[name=id]").keyup(function(){
 		}//callback			
 	});//ajax
 });//keyup
+
+
+
 </script>
+
+    <!-- jQuery Smart Wizard -->
+    <script>
+    $(document).ready(function() {
+    	
+    	   
+    	$('#wizard').smartWizard({transitionEffect:'slideleft',onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true}); 
+        $('.buttonNext').addClass('btn btn-success');
+        $('.buttonPrevious').addClass('btn btn-default');
+        $('.buttonFinish').addClass('btn btn-primary');
+
+    	      function leaveAStepCallback(obj){
+    	        var step_num= obj.attr('rel');
+    	        return validateSteps(step_num);
+    	      }
+    	      
+    	      function onFinishCallback(){
+    	       if(validateAllSteps()){
+    	        $('#regForm').submit();
+    	       }
+    	      }
+    			});
+    		   
+    	    function validateAllSteps(){
+    	       var isStepValid = true;
+    	       
+    	       if(validateStep1() == false){
+    	         isStepValid = false;
+    	         $('#wizard').smartWizard('setError',{stepnum:1,iserror:true});         
+    	       }else{
+    	         $('#wizard').smartWizard('setError',{stepnum:1,iserror:false});
+    	       }
+    	       
+    	       if(validateStep2() == false){
+    	         isStepValid = false;
+    	         $('#wizard').smartWizard('setError',{stepnum:2,iserror:true});         
+    	       }else{
+    	         $('#wizard').smartWizard('setError',{stepnum:2,iserror:false});
+    	       }
+    	       
+    	       if(!isStepValid){
+    	          $('#wizard').smartWizard('showMessage','<p class="validate_msg">에러가 존재합니다. 확인해주세요!</p>');
+    	       }
+    	              
+    	       return isStepValid;
+    	    } 	
+    			
+    			
+    			function validateSteps(step){
+    			  var isStepValid = true;
+    	      // validate step 1
+    	      if(step == 1){
+    	        if(validateStep1() == false ){
+    	          isStepValid = false; 
+    	          $('#wizard').smartWizard('showMessage','<p class="validate_msg">step'+step+ '에서 에러가 존재합니다. 확인해주세요!</p>');
+    	          $('#wizard').smartWizard('setError',{stepnum:step,iserror:true});         
+    	        }else{
+    	          $('#wizard').smartWizard('hideMessage');
+    	          $('#wizard').smartWizard('setError',{stepnum:step,iserror:false});
+    	        }
+    	      }
+    	      
+    	      // validate step2
+    	      if(step == 2){
+    	        if(validateStep2() == false ){
+    	          isStepValid = false; 
+    	          $('#wizard').smartWizard('showMessage','<p class="validate_msg">step'+step+ '에서 에러가 존재합니다. 확인해주세요!</p>');
+    	          $('#wizard').smartWizard('setError',{stepnum:step,iserror:true});         
+    	        }else{
+    	          $('#wizard').smartWizard('hideMessage');
+    	          $('#wizard').smartWizard('setError',{stepnum:step,iserror:false});
+    	        }
+    	      }
+    	      
+    	      return isStepValid;
+    	    }
+    			
+    		function validateStep1(){
+    	       var isValid = true; 
+    	       
+    	       // Validate id
+    	       var idCheck = $('#idCheck').val();
+    	       if(!idCheck && idCheck.length <= 0){
+      	         isValid = false;
+      	         $('#msg_id').html('<p class="validate_msg">잘못된 아이디입니다</p>').show();
+      	       }else{
+      	         $('#msg_id').html('').hide();
+      	       }
+    	       
+    	       // Validate Username
+    	       var name = $('#name').val();
+    	       if(!name && name.length <= 0){
+    	         isValid = false;
+    	         $('#msg_name').html('<p class="validate_msg">이름을 입력해주세요</p>').show();
+    	       }else{
+    	         $('#msg_name').html('').hide();
+    	       }
+    	       
+    	       // validate password
+    	       var pw = $('#password').val();
+    	       if(!pw && pw.length <= 0){
+    	         isValid = false;
+    	         $('#msg_password').html('<p class="validate_msg">비밀번호를 입력해주세요</p>').show();         
+    	       }else{
+    	         $('#msg_password').html('').hide();
+    	       }
+    	       
+    	       // validate confirm password
+    	       var cpw = $('#cpassword').val();
+    	       if(!cpw && cpw.length <= 0){
+    	         isValid = false;
+    	         $('#msg_cpassword').html('<p class="validate_msg">비밀번호확인칸을 입력해주세요</p>').show();         
+    	       }else{
+    	         $('#msg_cpassword').html('').hide();
+    	       }  
+    	       
+    	       // validate password match
+    	       if(pw && pw.length > 0 && cpw && cpw.length > 0){
+    	         if(pw != cpw){
+    	           isValid = false;
+    	           $('#msg_cpassword').html('<p class="validate_msg">비밀번호가 일치하지 않습니다</p>').show();            
+    	         }else{
+    	           $('#msg_cpassword').html('').hide();
+    	         }
+    	       }
+       	    // Validate age
+    	       var age = $('#age').val();
+    	       if(!age && age.length <= 0){
+    	         isValid = false;
+    	         $('#msg_age').html('<p class="validate_msg">나이를 입력해주세요</p>').show();
+    	       }else{
+    	         $('#msg_age').html('').hide();
+    	       }
+
+    	    // Validate Tel
+    	       var tel = $('#tel').val();
+    	       if(!tel && tel.length <= 0){
+    	         isValid = false;
+    	         $('#msg_tel').html('<p class="validate_msg">전화번호를 입력해주세요</p>').show();
+    	       }else{
+    	         $('#msg_tel').html('').hide();
+    	       }
+    	       
+    	       if(isNaN(tel)){
+      	         isValid = false;
+      	         $('#msg_tel').html('<p class="validate_msg">전화번호를 숫자로 입력해주세요</p>').show();
+      	       }else{
+      	         $('#msg_tel').html('').hide();
+      	       }
+    	       
+       	    // Validate sex
+    	       var sex = $("input[name=sex]:radio:checked");
+    	       if(sex.length == 0){
+    	         isValid = false;
+    	         $('#msg_sex').html('<p class="validate_msg">성별을 선택해주세요</p>').show();
+    	       }else{
+    	         $('#msg_sex').html('').hide();
+    	       }
+    	       
+    	       
+    	       return isValid;
+    	    }
+    	    
+    	    function validateStep2(){
+    	      var isValid = true;    
+         
+      	    // Validate introduce
+   	       var introduce = $('#introduce').val();
+   	       if(!introduce && introduce.length <= 0){
+   	         isValid = false;
+   	         $('#msg_introduce').html('<p class="validate_msg">자기소개를 입력해주세요</p>').show();
+   	       }else{
+   	         $('#msg_introduce').html('').hide();
+   	       }
+
+     	    // Validate uploadFile
+   	       var uploadFile = $('#uploadFile').val();
+   	       if(!uploadFile && uploadFile.length <= 0){
+   	         isValid = false;
+   	         $('#msg_uploadFile').html('<p class="validate_msg">프로필 사진을 업로드해주세요</p>').show();
+   	       }else{
+   	         $('#msg_uploadFile').html('').hide();
+   	       }
+   	       
+      	    // Validate range
+	       var range = $("input[name=range]:radio:checked");
+	       if(range.length == 0){
+	         isValid = false;
+	         $('#msg_range').html('<p class="validate_msg">공개범위를 선택해주세요</p>').show();
+	       }else{
+	         $('#msg_range').html('').hide();
+	       }   	       
+    	      return isValid;
+    	    }
+
+    </script>
+    <!-- /jQuery Smart Wizard -->
+
 
     <!-- jQuery Smart Wizard -->
     <script>
@@ -417,4 +621,8 @@ $(":input[name=id]").keyup(function(){
      <!-- Select2 -->
     <script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
 
+
   </body>
+</html>
+
+
