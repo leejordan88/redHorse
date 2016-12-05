@@ -28,5 +28,22 @@ public class MemberPicServiceImpl implements MemberPicService {
 	public List<MemberPicVO> getPictureList(){
 		return memberPicDAO.getPictureList();
 	}
-		
+	
+	// 조회수 증가
+	@Override
+	public void updateHit(int pictureNo){
+		memberPicDAO.updateHit(pictureNo);
+	}
+	
+	// 사진 상세보기(조회수 증가)
+	@Override
+	public MemberPicVO showPictureDetail(int pictureNo){
+		memberPicDAO.updateHit(pictureNo);
+		return memberPicDAO.showPictureDetail(pictureNo);
+	}
+	
+	@Override
+	public MemberPicVO showPictureDetailNoHit(int pictureNo){		
+		return memberPicDAO.showPictureDetail(pictureNo);
+	}			
 }

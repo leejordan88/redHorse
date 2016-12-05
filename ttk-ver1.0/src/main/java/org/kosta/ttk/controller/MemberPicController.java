@@ -46,7 +46,7 @@ public class MemberPicController {
 		// 디렉토리 없을 경우 생성한다
 		if(uploadDir.exists()==false)
 			uploadDir.mkdirs();
-		System.out.println(memberPicVO.getFileName());
+		//System.out.println(memberPicVO.getFileName());
 		MultipartFile file=memberPicVO.getUploadFile();//파일 
 		
 		//System.out.println(file.isEmpty()); // 업로드할 파일이 있는 지 확인 
@@ -90,4 +90,15 @@ public class MemberPicController {
 		List<MemberPicVO> list = memberPicService.getPictureList();
 		return new ModelAndView("memberpic_list","list",list);
 	}
+	
+	@RequestMapping("showPictureDetail.do")
+	public ModelAndView showPictureDetail(int pictureNo) {		
+		memberPicService.updateHit(pictureNo);	
+		return new ModelAndView("redirect:showContentNoHit.do?pictureNo="+pictureNo);
+	}
+	
+	@RequestMapping("showPictureDetailNoHit.do")
+	public ModelAndView showPictureDetailNoHit(int pictureNo) {			
+		return new ModelAndView("memberpic_list","pvo",memberPicService.showPictureDetailNoHit(pictureNo));
+	}		
 }

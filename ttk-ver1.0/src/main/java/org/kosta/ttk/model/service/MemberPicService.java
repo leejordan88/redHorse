@@ -10,4 +10,10 @@ public interface MemberPicService {
 
 	List<MemberPicVO> getPictureList();
 
+	void updateHit(int pictureNo);
+
+	MemberPicVO showPictureDetail(int pictureNo);
+
+	MemberPicVO showPictureDetailNoHit(int pictureNo);
+
 }

@@ -24,5 +24,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
  	from memberPicture order by pictureNo desc
  </select>
+ 
+ <!-- 12/4 효민 사진 상세보기 -->
+ <!-- 조회수 -->
+ <update id="updateHit" parameterType="int">
+	update memberPicture set hit=hit+1 where pictureNo=#{pictureNo}
+</update>
 
+<!-- 상세보기 -->
+<select id="showPictureDetail" resultMap="memberPicRM">
+	 select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
+ 		from memberPicture where pictureNo=#{pictureNo}
+</select>
 </mapper>

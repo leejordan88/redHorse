@@ -29,4 +29,16 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	public List<MemberPicVO> getPictureList(){
 		return template.selectList("memberpic.getPictureList");		
 	}
+	
+	// 12/4 효민 사진 조회수 증가
+	@Override
+	public void updateHit(int pictureNo){
+		template.update("memberpic.updateHit",pictureNo);
+	}
+	
+	// 사진 상세보기
+	@Override
+	public MemberPicVO showPictureDetail(int pictureNo){
+		return (MemberPicVO)template.selectOne("memberpic.showPictureDetail", pictureNo);
+	}
 }
