@@ -8,7 +8,7 @@
 <section id="profile-list">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12"><br>
 				<div class="section-title text-center">
                 	<h3>다른 회원 검색</h3>
                     <p>타 회원 프로필 리스트입니다. 조건별 검색이 가능합니다.</p>

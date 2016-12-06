@@ -101,7 +101,7 @@
 
 					<c:choose>
 						<c:when test="${sessionScope.mvo==null}">
-							<li><a href="register_agreement.do">회원가입</a></li>
+							<li><a href="register.do">회원가입</a></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#login-modal">Login</a></li>
 						</c:when>

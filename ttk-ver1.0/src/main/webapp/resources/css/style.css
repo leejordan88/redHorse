@@ -1,4 +1,13 @@
-
+.agrRadio{
+    margin-top: 15px;
+    margin-left: 63%;
+}
+.agrTextarea{
+	font-size: 10px;
+	margin-left:15%;
+	width: 750px;
+    height: 200px;
+}
 .searchView{
 	padding-top: 100px;
 }
