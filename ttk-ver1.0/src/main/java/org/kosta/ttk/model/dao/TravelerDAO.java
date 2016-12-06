@@ -10,5 +10,6 @@ public interface TravelerDAO {
 
 	List<TravelerVO> hotPlaceRankingList();
 	List<TravelerVO> travelerList(TravelerVO travelerVO);
+	void regiTraveler(TravelerVO tvo);
 
 }

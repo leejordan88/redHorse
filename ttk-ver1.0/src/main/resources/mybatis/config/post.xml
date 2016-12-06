@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post">
+ <!-- message.xml -->
+ <resultMap type="messageVO" id="useMemberVO"  >
+<result column="profileIMG"  property="memberVO.profileimg"></result>
+</resultMap>
+  
+<resultMap type="pagingBeanVO"    id="usePagingBeanVO"  >
+<result column="messageNo"  property="messageVO.messageNo"></result>
+<result column="sender"  property="messageVO.sender"></result>
+<result column="receiver"  property="messageVO.receiver"></result>
+<result column="messageDate"  property="messageVO.messageDate"></result>
+<result column="messageContent"  property="messageVO.messageContent"></result>
+<result column="messageState"  property="messageVO.messageState"></result>
+</resultMap>
+ 
+  <select id="messageListTotalCount"     parameterType="messageVO"  resultType="int">
+     select count(*)from message where receiver=#{id}
+ </select>
+ 
+  <select id="messageSendListTotalCount"     parameterType="messageVO"  resultType="int">
+     select count(*)from message where sender=#{id}
+ </select>
+ 
+ 
+<select id="messageList"   resultMap="usePagingBeanVO"  >
+select rnum, messageNo, sender ,receiver, messageDate, messageContent, messageState FROM
+( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,sender,receiver,messageDate,messageContent,messageState  FROM message
+where receiver =#{messageVO.id}) rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageNo desc
+</select>
+ 
+ 
+ <select id="messageSendList"     resultMap="usePagingBeanVO"  >
+select rnum, messageNo, receiver, sender, messageContent , messageDate FROM
+( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,messageContent, messageDate, sender, receiver  FROM message
+where sender ='java' )rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber}  order by messageNo desc
+</select>
+ 
+ 
+<select id="messageListUnChecked"     resultMap="useMemberVO">
+    select ms.messageNo,ms.sender,ms.receiver, ms.messageContent, ms.messageDate, m2.profileIMG 
+from message ms, member m2 
+where  ms.sender=m2.id  and  ms.messageState=1 and  ms.receiver=#{id}
+ </select>
+ 
+<update id="messageReadCheck"  parameterType="messageVO">
+update message set messageState=0 where messageNo=#{value}
+</update>
+
+<select id="messageDetail"   resultMap="useMemberVO"  >
+select ms.messageNo, ms.sender, ms.messageContent, ms.messageDate , m2.profileIMG 
+from message ms, member m2 
+where  ms.sender=m2.id and messageNo=#{value}
+</select>
+ 
+ 
+ <insert id="messageSend"  parameterType="messageVO">
+ insert into message(messageNo,sender,receiver,messageDate,messageContent) 
+ values(message_seq.nextval, #{sender}, #{receiver}, sysdate ,#{messageContent})
+ </insert>
+ 
+
+</mapper>

@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <script type="text/javascript">
+
 alert("로그인실패!");
 location.href="index.do";
 </script>

@@ -29,7 +29,7 @@ create table member(
    id varchar2(100) primary key,
    password varchar2(100) not null,
    name varchar2(100) not null,
-   tel number not null,
+   tel varchar2(50) not null, --number에서 varchar로 변경
    sex number not null,
    age number not null,
    address varchar2(100) not null,

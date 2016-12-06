@@ -1,5 +1,7 @@
 package org.kosta.ttk.model.dao;
 
+import java.util.List;
+
 import org.kosta.ttk.model.vo.MemberVO;
 
 public interface MemberDAO {
@@ -13,6 +15,10 @@ public interface MemberDAO {
 
 
 	void updateDelete(MemberVO vo);
+
+	int idcheck(String id);
+
+	List<MemberVO> searchMemberByOption(String str);
 
 
 

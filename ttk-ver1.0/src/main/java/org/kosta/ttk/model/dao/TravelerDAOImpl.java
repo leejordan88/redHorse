@@ -29,4 +29,9 @@ public class TravelerDAOImpl implements TravelerDAO {
 		return template.selectList("traveler.travelerList", travelerVO);
 	}
 
+	@Override
+	public void regiTraveler(TravelerVO tvo) {
+		template.insert("traveler.regiTraveler", tvo);
+	}
+
 }
