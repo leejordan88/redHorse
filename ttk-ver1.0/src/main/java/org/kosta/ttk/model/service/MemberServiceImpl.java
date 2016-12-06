@@ -37,7 +37,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.updateDelete(vo);
 
 	}
-	@Override
 	public List<MemberVO> searchMemberByOption(String str) {
 		return memberDAO.searchMemberByOption(str);
 	}

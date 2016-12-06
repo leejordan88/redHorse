@@ -14,11 +14,9 @@ public interface MemberService {
 	MemberVO findMember(String id);
 	
 	void registerMember(MemberVO memberVO);
-
-	int idcheck(String id);
-	
 	void updateDelete(MemberVO vo);
 
 	List<MemberVO> searchMemberByOption(String str);
 
+	int idcheck(String id);
 }

@@ -8,7 +8,6 @@
     margin-top: 10px;
 }
 
-.dataTables_paginate a {
   padding: 6px 9px !important;
   background: #ddd !important;
   border-color: #ddd !important; }
@@ -1932,7 +1931,8 @@ and (min-width : 551px){
    height: 300px;
 }
 
-.portfolio-item:hover img {
+
+.big:hover img {
     -webkit-transform: scale(1,5);
    -moz-transform: scale(1.5);
    -o-transform: scale(1.5);
@@ -2994,3 +2994,4 @@ iframe {
 	box-shadow: 0px 1px 20px #333;
 	z-index:99;
 	display:none;}
+

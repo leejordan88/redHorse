@@ -34,4 +34,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into traveler(placeNo, id, tdate, trange) values(#{placeNo}, #{id}, #{tDate}, #{tRange})
 </insert>
 
+<select id="getTravelingList" parameterType="string" resultType="travelerVO" resultMap="travelerRM">
+	select p.placeNo, p.placeName, p.areaName, to_char(t.tDate,'RRRR-MM-DD') as tDate
+	from traveler t, place p
+	where t.placeNo = p.placeNo and t.id = #{value} and t.tState = 1
+</select>
+
+<update id="hideTravel" parameterType = "travelerVO">
+	update traveler set tState = #{tState} where placeNo = #{placeNo} and tDate = #{tDate}
+</update>
+
 </mapper>
