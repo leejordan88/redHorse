@@ -299,7 +299,6 @@ $(document).ready(function(){
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>
 
-<<<<<<< HEAD
 <script type="text/javascript">
 	flatpickr("#enableNextMonth", {
 		enable : [ {
@@ -310,7 +309,3 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-=======
-
-
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git

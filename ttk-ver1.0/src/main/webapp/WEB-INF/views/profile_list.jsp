@@ -165,7 +165,6 @@
 			<form id="searchByNameForm">
 				<div class="col-md-2 col-sm-12 col-xs-12">
                     <input type="text" name="name"  id="searchName" placeholder="이름" class="form-control">
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
                 </div>
                   	<input type="button" class="btn btn-success" value="검색!" id="searchByNameBtn">
 				</form> 

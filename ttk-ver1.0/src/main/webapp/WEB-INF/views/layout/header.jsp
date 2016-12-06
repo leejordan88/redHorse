@@ -159,7 +159,6 @@
                   <!-- 12/5 효민 수정부분 끝 -->
                     <li><a href="upload.do">글쓰기</a></li>
 
-
                     <li><a href="update.do">회원정보수정</a></li>
 
                     <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
@@ -168,35 +167,6 @@
                 
                 <!-- 로그인 등장 끝 -->
                 
-        <!-- 쪽지 함 -->
-                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">1</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-               <!-- 쪽지 시작 -->
-                    <li>
-                      <a href="#" >
-                        <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/images/team/진석.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>오진석</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                         같이 여행가실래요?
-                        </span>
-                      </a>
-                    </li>               
-
-                           <li><a href="update.do">회원정보수정</a></li>
-
-
-                           <li><a href="logout.do"><i
-                                 class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                        </ul></li>
-
-               <!-- 로그인 등장 끝 -->
 
                      <!-- 쪽지 함 -->
                      <li role="presentation" class="dropdown"><a
