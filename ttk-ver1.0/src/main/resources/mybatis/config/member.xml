@@ -31,5 +31,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update member set enabled = 0
 	 where id= #{id}
 	</update>
-
+	
+	<select id="searchMemberByOption" resultType="memberVO">
+	<![CDATA[
+	select * from member
+	where ${value} and range=1 and enabled = 1
+	]]>
+	</select>
+	
+	<select id="searchMemberByName" resultType="memberVO">
+	<![CDATA[
+	select * from member
+	where name like '%${value}%' and range=1 and enabled = 1
+	]]>
+	</select>
+	
 </mapper>

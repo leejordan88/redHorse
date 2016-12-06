@@ -40,4 +40,8 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> searchMemberByOption(String str) {
 		return memberDAO.searchMemberByOption(str);
 	}
+	@Override
+	public List<MemberVO> searchMemberByName(String name) {
+		return memberDAO.searchMemberByName(name);
+	}
 }
