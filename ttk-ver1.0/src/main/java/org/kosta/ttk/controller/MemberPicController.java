@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MemberPicController {
 	@Resource
-		private MemberPicService memberPicService;
+	private MemberPicService memberPicService;
 	
 	private String uploadPath;
 	/**
