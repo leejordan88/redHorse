@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.ttk.model.service.MemberService;
-
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.AreaVO;
@@ -27,7 +26,7 @@ public class PlaceController {
 	@Resource
 	private PlaceService placeService;
 	@Resource
-	private TravelerService travelerService;
+	private TravelerService travelerService;	
 	@Resource
 	private MemberService memberService;
 	

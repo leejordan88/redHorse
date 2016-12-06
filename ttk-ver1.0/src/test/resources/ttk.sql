@@ -573,7 +573,7 @@ drop table message;
 create table message(
  messageNo number primary key,
  sender varchar2(100) constraint fk_message_sender references member(id),
- reciever varchar2(100) constraint fk_message_reciever references member(id),
+ receiver varchar2(100) constraint fk_message_reciever references member(id),
  messageDate date not null,
  messageContent clob not null,
  messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
