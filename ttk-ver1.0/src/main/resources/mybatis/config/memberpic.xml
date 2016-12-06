@@ -17,13 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <!-- 비매칭 부분 매칭 -->
  <resultMap type="MemberPicVO" id="memberPicRM">
 	<result column="id" property="memberVO.id"/>
-	<result column="name" property="memberVO.name"/>
 </resultMap>
 
- <!-- 사진첩 리스트, 12/5수정 where id =#{value}부분 추가-->
+ <!-- 사진첩 리스트 -->
  <select id="getPictureList" resultMap="memberPicRM">
  	select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
- 	from memberPicture where id=#{value} order by pictureNo desc
+ 	from memberPicture order by pictureNo desc
  </select>
  
  <!-- 12/4 효민 사진 상세보기 -->
@@ -34,17 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 상세보기 -->
 <select id="showPictureDetail" resultMap="memberPicRM">
-	 select p.pictureNo, p.id, m.name, p.filename, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
- 		from memberPicture p, member m where p.pictureNo=#{p.pictureNo} and p.id=m.id
+	 select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
+ 		from memberPicture where pictureNo=#{pictureNo}
 </select>
-
-<!-- 사진 수정하기 -->
-<update id="updateMemberPic" parameterType="memberPicVO">
-	update memberPicture set     where pictureNo=#{pictureNo}
-</update>
-
-<!-- 사진 삭제하기 -->
-<delete id="deleteMemberPic">
-		delete from memberPicture where pictureNo=#{value}
-</delete>
 </mapper>

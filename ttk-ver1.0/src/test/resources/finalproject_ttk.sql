@@ -265,8 +265,7 @@ select p.areaname, p.categoryname, p.placeName, t.placeNo, rank() over(order by 
 	
 	
 	
-		select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
- 	from memberPicture where id='java' order by pictureNo desc 
+	
 
 	
-	delete from memberPicture where pictureNo=22
+	

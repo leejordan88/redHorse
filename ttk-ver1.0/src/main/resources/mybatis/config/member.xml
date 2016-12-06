@@ -5,13 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<sql id="selectMember">
- 		select id,password,name,tel,sex,age,address,introduce,profileimg,
- 		range,enabled,hit from member
+ 		select id,password,name,tel,sex,age,address,introduce,profileimg,range,enabled,hit from member
  	</sql>
- <select id="login" resultType="memberVO" parameterType="memberVO">
- <include refid="selectMember"></include>
- where id=#{id} and password=#{password} and enabled = '1'   <!-- enabled=1 일떄 로그인 가능  0일때 접근불가 -->
- </select>
+
+	 <select id="login" resultType="memberVO" parameterType="memberVO">
+	 <include refid="selectMember"></include>
+	 where id=#{id} and password=#{password} and enabled = '1'   <!-- enabled=1 일떄 로그인 가능  0일때 접근불가 -->
+	 </select>
+
   	<update id="updateMember" parameterType="memberVO"> <!-- tel 추가 -->
 		update member set password=#{password},tel=#{tel},address=#{address} 
 		where id=#{id}
@@ -20,7 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findMember" parameterType="string" resultType="memberVO">
 		select * from member where id = #{value}
 	</select>
-
 
 	<insert id="registerMember" parameterType="memberVO">
  		insert into member (id, password, name,tel,sex,age,address,introduce,profileimg,range) 
@@ -42,12 +42,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where ${value} and range=1 and enabled = 1
 	]]>
 	</select>
-	
-	<select id="searchMemberByName" resultType="memberVO">
-	<![CDATA[
-	select * from member
-	where name like '%${value}%' and range=1 and enabled = 1
-	]]>
-	</select>
-	
 </mapper>
