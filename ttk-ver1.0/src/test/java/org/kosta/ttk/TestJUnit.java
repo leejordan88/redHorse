@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.ttk.controller.MemberController;
-import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;

@@ -107,7 +107,6 @@
                   </c:when>
                   <c:otherwise>
 
-<<<<<<< HEAD
                      <li class=""><a href="javascript:;"
                         class="user-profile dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false"> <img
@@ -118,124 +117,6 @@
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
                            <li><a href="getPictureList.do">My Profile</a></li>
                            <li><a href="upload.do">글쓰기</a></li> --%>
-=======
-					<c:choose>
-						<c:when test="${sessionScope.mvo==null}">
-							<li><a href="register_agreement.do">회원가입</a></li>
-							<li><a href="#" data-toggle="modal"
-								data-target="#login-modal">Login</a></li>
-						</c:when>
-						<c:otherwise>
-
-							<li class=""><a href="javascript:;"
-								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <img
-									src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}"
-									alt=""> ${sessionScope.mvo.name}님 <span
-									class=" fa fa-angle-down"></span>
-							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="getPictureList.do">My Profile</a></li>
-									<li><a href="upload.do">글쓰기</a></li>
-
-
-									<li><a href="update.do">회원정보수정</a></li>
-
-									<li><a href="logout.do"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-								</ul></li>
-
-							<!-- 로그인 등장 끝 -->
-
-							<!-- 쪽지 함 -->
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> <i
-									class="fa fa-envelope-o"></i> <span class="badge bg-green">1</span>
-							</a>
-								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
-									role="menu">
-									<!-- 쪽지 시작 -->
-									<li><a href="#"> <span class="user-profile"><img
-												src="${pageContext.request.contextPath}/resources/images/team/진석.jpg"
-												alt="Profile Image" /></span> <span> <span>오진석</span> <span
-												class="time">3 mins ago</span>
-										</span> <span class="message"> 같이 여행가실래요? </span>
-									</a></li>
-
-									<li>
-										<div class="text-center">
-											<a href="javascript:popupOpen();"> <strong>See
-													All Letters</strong> <i class="fa fa-angle-right"></i>
-											</a>
-										</div> <script type="text/javascript">
-											function popupOpen() {
-												var popUrl = "messageList.do"; //팝업창에 출력될 페이지 URL
-												var popOption = "width=870, height=460, top=200, left=330 resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
-												window.open(popUrl, "",
-														popOption);
-											}
-										</script>
-
-
-									</li>
-								</ul> <!-- 쪽지 끝 -->
-						</c:otherwise>
-					</c:choose>
-
-				</ul>
-			</div>
-
-			<!-- /.navbar-collapse -->
-		</div>
-
-		<!-- /.container-fluid -->
-	</nav>
-
-
-	<!-- 로그인모달 -->
-	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
-		aria-labelledby="Login" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="Login">Member Login</h4>
-				</div>
-				<div class="modal-body">
-					<form method="post" action="login.do">
-						<input type="hidden" name="command" value="login">
-						<div class="form-group">
-							<input type="text" class="form-control" id="email-modal"
-								placeholder="ID" name="id">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="password-modal"
-								placeholder="password" name="password">
-						</div>
-
-						<p class="text-center">
-							<button class="btn btn-green animated fadeInUp" type="submit">
-								<i class="fa fa-sign-in"></i> Log in
-							</button>
-						</p>
-					</form>
-
-					<p class="text-center text-muted">Not registered yet?</p>
-					<p class="text-center text-muted">
-						<a href="register.do"><strong>Register now</strong></a>! It is
-						easy and done in 1&nbsp;minute and gives you access to special
-						discounts and much more!
-					</p>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- 로그인 모달 끝 -->
->>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git
 
 
 
@@ -285,6 +166,36 @@
                   </ul>
                 </li>
                 
+                <!-- 로그인 등장 끝 -->
+                
+        <!-- 쪽지 함 -->
+                 <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">1</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+               <!-- 쪽지 시작 -->
+                    <li>
+                      <a href="#" >
+                        <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/images/team/진석.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>오진석</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                         같이 여행가실래요?
+                        </span>
+                      </a>
+                    </li>               
+
+                           <li><a href="update.do">회원정보수정</a></li>
+
+
+                           <li><a href="logout.do"><i
+                                 class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        </ul></li>
+
                <!-- 로그인 등장 끝 -->
 
                      <!-- 쪽지 함 -->
