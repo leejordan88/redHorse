@@ -28,6 +28,8 @@
                         <label class="control-label col-md-3"><input type="button" class="btn btn-primary" value="찾기!" id="serachBtn"></label>
                       </div>
 					</form>
+
+
 					<div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
 					<span id="serachResultView">
