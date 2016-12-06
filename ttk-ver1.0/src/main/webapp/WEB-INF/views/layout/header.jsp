@@ -91,6 +91,9 @@
                     <li>
                         <a href="register.do">회원가입</a>
                     </li>
+                        <li>
+                        <a href="register_consent.do">test</a>
+                    </li>
 					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
 					</c:when>
 				<c:otherwise>

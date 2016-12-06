@@ -6,7 +6,7 @@ public class MemberVO {
 	private String id;
 	private String password;
 	private String name;
-	private int tel;
+	private String tel;
 	private int sex;
 	private int age;
 	private String address;
@@ -15,12 +15,12 @@ public class MemberVO {
 	private int range;
 	private int enabled;
 	private int hit;
-	private MultipartFile uploadFile; // 파일업로드를 위한 변수 
+	private MultipartFile uploadFile; // 占쎈솁占쎌뵬占쎈씜嚥≪뮆諭띄몴占� 占쎌맄占쎈립 癰귨옙占쎈땾 
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberVO(String id, String password, String name, int tel, int sex, int age, String address,
+	public MemberVO(String id, String password, String name, String tel, int sex, int age, String address,
 			String introduce, String profileimg, int range, int enabled, int hit, MultipartFile uploadFile) {
 		super();
 		this.id = id;
@@ -55,10 +55,10 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public int getSex() {

@@ -81,20 +81,24 @@
 		<!-- 프로필 사진 등록 -->
 		<!--  글씨 -->
                      <div class="form-group">
-                          <label for="profileimg" class="control-label col-md-3 col-sm-3 col-xs-12">프로필 사진 <span class="required">*</span></label>
-                          <div class="col-md-6 col-sm-3 col-xs-12" >
+           	<label class="control-label col-md-3 col-sm-3 col-xs-12">사진
+				<span class="required">*</span>
+					</label>
                           <!-- 글씨끝 -->
  					<input type="file" name=uploadFile><br>
-               </div>                 <!-- profileimg -->uploadFile
+               </div>               
                <!-- 프로필사진 끝 -->        
-               <br>
-               <br><br>
-               <br>
-<!-- <form id="ajaxform" action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" multiple id="photo_upload">
-    <output id="list"></output>
-    <input type="button" value="완료" id="files_send">
-</form> -->
+               <!-- 전체 공개 범위 -->
+             <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">검색공개범위 
+                            <span class="required">*</span></label>
+                          <div class="col-md-6 col-sm-3 col-xs-12">
+                              <input type="radio"  checked name="range" value="1"> 전체공개
+                              <input type="radio"  name="range" value="0"> 비공개
+                          </div>				
+                            <span id="msg_range"></span>
+                          </div>
+                         <!-- 전체 공개 범위 끝 -->
 		<!-- 폰번호 시작 -->
 		<div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span
@@ -143,8 +147,10 @@
 	                    <span id="msg_introduce"></span>       
                </div>   
                <!-- 자기소개끝  -->
-			<button class="btn btn-primary" type="submit">수정</button>
+               <center>
+			<button class="btn btn-primary" type="submit" id="update">수정</button>
 			<button class="btn btn-primary" type="button" id="delete" name="delete">회원탈퇴</button>
+			</center>
 	</form>
 	<!-- 수정버튼끝 -->
 	
@@ -163,8 +169,23 @@
 		        	  location.replace('index.do');
 		            retrun;
 		        }
-		});
-	});
+		}); // click
+		
+	// 숫자 체크 
+		$('#update').click(function() {
+			// isNaN = Not a Number ==> 숫자가 아니면 true 
+			// 숫자면 false
+			if(isNaN($('#age').val())) {
+				alert("나이를 숫자로 입력하세요");
+			/* 	alert(typeof $('#age').val()); */
+					return false;
+			}isNaN
+				if(isNumeric($('#tel').val())){
+				alert("핸드폰번호를 숫자로 입력하세요");
+					return false;
+			} 
+		}); // update 버튼 클릭
+	}); // ready
 	</script>
 <!-- 회원탈퇴 제이쿼리 끝 비활성화  -->
 </body>
