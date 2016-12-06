@@ -42,7 +42,7 @@ body {
 .table-filter tr td:nth-child(2) {
 	width: 35px;
 }
-.ckbox {
+/* .ckbox {
 	position: relative;
 }
 .ckbox input[type="checkbox"] {
@@ -78,7 +78,12 @@ body {
 	font-size: 11px;
 	font-family: 'Glyphicons Halflings';
 	position: absolute;
-}
+} */
+
+
+
+
+
 .table-filter .star {
 	color: #ccc;
 	text-align: center;

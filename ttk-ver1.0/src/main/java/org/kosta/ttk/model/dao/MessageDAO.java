@@ -11,9 +11,10 @@ public interface MessageDAO {
 	List<MessageVO> messageListUnChecked(MemberVO smvo);
 	MessageVO messageDetail(int messageNo);
 	void messageReadCheck(int messageNo);
-	List<MessageVO> messageSendList(PagingBeanVO pagingBeanSend);
+	List<MessageVO> messageSendList(PagingBeanVO pagingBean);
 	List<MessageVO> messageList(PagingBeanVO pagingBean);
 	//List<MessageVO> messageList(MemberVO smvo);
 	int messageListTotalCount(MessageVO messageVO);
 	int messageSendListTotalCount(MessageVO messageVO);
+	int messageUncheckedCount(MemberVO smvo);
 }

@@ -43,13 +43,13 @@ public class MessageServiceImpl implements MessageService {
 	
 		int totalCount = messageDAO.messageSendListTotalCount(messageVO);
 	
-		PagingBeanVO pagingBeanSend = null;
+		PagingBeanVO pagingBean = null;
 		if (pageNo == null){
-			pagingBeanSend = new PagingBeanVO(messageVO, totalCount);
+			pagingBean = new PagingBeanVO(messageVO, totalCount);
 		}else{
-			pagingBeanSend = new PagingBeanVO(messageVO , totalCount, Integer.parseInt(pageNo));
+			pagingBean = new PagingBeanVO(messageVO , totalCount, Integer.parseInt(pageNo));
 		}
-		return new ListVO(messageDAO.messageSendList(pagingBeanSend) , pagingBeanSend);
+		return new ListVO(messageDAO.messageSendList(pagingBean) , pagingBean);
 	}
 	
 	@Override
@@ -58,6 +58,10 @@ public class MessageServiceImpl implements MessageService {
 		return messageDAO.messageDetail(messageNo);
 	}
 
+	@Override
+	public int messageUncheckedCount(MemberVO smvo) {
+		return messageDAO.messageUncheckedCount(smvo) ;
+	}
 }
 
 

@@ -29,6 +29,18 @@ public class MessageController {
 		return new ModelAndView("index.do");
 	}*/
 	
+	@RequestMapping("messageUncheckedCount.do")
+	public ModelAndView messageUncheckedCount(HttpServletRequest request) {
+		int count =0;
+		HttpSession session=request.getSession(false);
+		if(session!=null||session.getAttribute("mvo")==null){
+			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
+			 count = messageService.messageUncheckedCount(smvo);
+		}
+		return new ModelAndView("message/messageIndex", "count", count);
+		}
+	
+	
 	@RequestMapping("messageListUnChecked.do")
 	public ModelAndView messageListUnChecked(HttpServletRequest request) {
 		List<MessageVO> list =null;
@@ -37,7 +49,7 @@ public class MessageController {
 			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
 			list = messageService.messageListUnChecked(smvo);
 		}
-		return new ModelAndView("messagePopup/messageListUnChecked", "list", list);
+		return new ModelAndView("message/messagePop/messageListUnChecked", "list", list);
 		}
 	@RequestMapping("messageList.do")
 	public ModelAndView messageList(HttpServletRequest request,String pageNo) {
@@ -50,7 +62,7 @@ public class MessageController {
 				messageVO.setId(smvo.getId());
 			vo = messageService.messageList(messageVO,pageNo);
 		}
-		return new ModelAndView("messagePopup/messageList", "vo", vo);
+		return new ModelAndView("message/messagePopup/messageList", "vo", vo);
 	}
 	
 	
@@ -64,15 +76,14 @@ public class MessageController {
 			messageVO.setId(smvo.getId());
 			vo = messageService.messageSendList(messageVO,pageNo);
 		}
-		return new ModelAndView("messagePopup/messageSendList", "vo", vo);
+		return new ModelAndView("message/messagePopup/messageSendList", "vo", vo);
 	}
-	
-	
 	
 	@RequestMapping("messageDetail.do")
 	public ModelAndView messageDetail(int messageNo) {
 		MessageVO messageVO = messageService.messageDetail(messageNo);
-		return new ModelAndView("messagePopup/messageDetail", "messageVO", messageVO);
+		return new ModelAndView("message/messagePopup/messageDetail", "messageVO", messageVO);
 	}
+
 }
 

@@ -11,11 +11,9 @@ package org.kosta.ttk.model.vo;
  */
 public class PagingBeanVO {
 	private MessageVO messageVO;
-	
 	public MessageVO getMessageVO() {
 		return messageVO;
 	}
-
 	public void setMessageVO(MessageVO messageVO) {
 		this.messageVO = messageVO;
 	}
@@ -27,7 +25,7 @@ public class PagingBeanVO {
 	/**
 	 * 페이지당 게시물수
 	 */
-	private int contentNumberPerPage = 3;
+	private int contentNumberPerPage = 5;
 	/**
 	 * 페이지 그룹당 페이지수
 	 */
