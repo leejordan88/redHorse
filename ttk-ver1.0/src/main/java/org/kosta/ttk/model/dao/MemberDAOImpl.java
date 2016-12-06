@@ -15,7 +15,7 @@ public class MemberDAOImpl implements MemberDAO  {
 	private SqlSessionTemplate template;
 
 	@Override
-	public MemberVO login(MemberVO vo  ) {
+	public MemberVO login(MemberVO vo) {
 		return template.selectOne("member.login", vo);
 	}
 	@Override

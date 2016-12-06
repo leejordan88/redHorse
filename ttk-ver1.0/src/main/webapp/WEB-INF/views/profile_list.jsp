@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
     <jsp:include page="layout/header.jsp"></jsp:include>
     <!-- Select2 -->
     <link href="${pageContext.request.contextPath}/resources/vendors/select2.min.css" rel="stylesheet">
@@ -48,6 +49,7 @@
       </div>
       <!-- 쪽지보내기모달 -->
           <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -60,7 +62,7 @@
                             <input type="text" id="receiver" name="receiver" value="" readonly="readonly" class="form-control"/>
                             </div>
                             <div class="form-group">
-                            	<textarea class="form-control" id="messageContent" name="messageContent" cols="45" rows="9" placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 쪽지 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>
+                            	<textarea class="form-control" required="required" id="messageContent" name="messageContent" cols="45" rows="9" placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 쪽지 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>
                             </div>
                             <p class="text-center">
                                 <button class="btn btn-green animated fadeInUp" type="submit"><i class="fa fa-sign-in"></i>전송</button>
@@ -100,9 +102,10 @@
 							data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
 							data+="<div class='right col-xs-5 text-center'><a href='mypage2.do'><img src='${pageContext.request.contextPath}/resources/upload/";
 							data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'></a>";
+							data+="<c:if test='${sessionScope.mvo!=null}'>";
 							data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
 							data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
-							data+="<i class='fa fa-comments-o'></i>쪽지 </button></a>";
+							data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
 							data+="</div></div></div></div>";
 						}
 						$("#serachResultView").html(data);				
@@ -136,9 +139,10 @@
 						data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
 						data+="<div class='right col-xs-5 text-center'><a href='mypage2.do'><img src='${pageContext.request.contextPath}/resources/upload/";
 						data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'></a>";
+						data+="<c:if test='${sessionScope.mvo!=null}'>";
 						data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
 						data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
-						data+="<i class='fa fa-comments-o'></i>쪽지 </button></a>";
+						data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
 						data+="</div></div></div></div>";
 					}
 					$("#serachResultView").html(data);				

@@ -188,11 +188,11 @@
 						<input type="hidden" name="command" value="login">
 						<div class="form-group">
 							<input type="text" class="form-control" id="email-modal"
-								placeholder="ID" name="id">
+								placeholder="ID" name="id" required="required">
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" id="password-modal"
-								placeholder="password" name="password">
+								placeholder="password" name="password" required="required">
 						</div>
 
 						<p class="text-center">

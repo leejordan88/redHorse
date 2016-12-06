@@ -106,12 +106,14 @@
 						 data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"/profile/"+json[i].profileimg+"' alt=''";
 
 						 data += "class='img-circle img-responsive'></a>";
+						 
+						data+="<c:if test='${sessionScope.mvo!=null}'>";
 						
 						 data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
 							 
 						 data+="<button type='button' value="+json[i].id+" class='btn btn-success btn-xs messageBtn'> <i class='fa fa-user'>";
 
-						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></a></div></div></div></div>";
+						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></a></c:if></div></div></div></div>";
 
 						 }
 
