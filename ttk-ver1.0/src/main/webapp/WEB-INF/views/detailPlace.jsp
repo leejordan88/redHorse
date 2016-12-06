@@ -7,104 +7,56 @@
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <script type="text/javascript"
-
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"></script>
 <script type="text/javascript">
-
 	//여행지역 선택 시 여행지역 마크업
-
 	$(document).ready(function() {
-
 				var map;
-
 				var placeName = $("#placeName").val();
-
 				var placeX = $("#placeX").val();
-
 				var placeY = $("#placeY").val();
-
 				var latlng = new google.maps.LatLng(placeX, placeY);
-
 				var myOptions = {
-
 					zoom : 15,
-
 					center : latlng,
-
 					mapTypeId : google.maps.MapTypeId.ROADMAP
-
 				};
-
 				map = new google.maps.Map(
-
 						document.getElementById("google_map"), myOptions);
-
 				map.setTilt(45);
-
 				var marker = new google.maps.Marker({
-
 					position : latlng,
-
 					map : map,
-
 					title : placeName
-
 				});
-
 				marker.setMap(map);
-
 				//날짜 지정 시 ajax를 통한 여행자 리스트 제공
-
 				$("#enableNextMonth").change(function(){
-
 				 var placeNo = $("#placeNo").val();
-
 				 var tDate = $("#enableNextMonth").val();
-
 					 $.ajax({
-
 						 type:"get",
-
 						 url: "findTravelerByDate.do",
-
 						 dataType: "json",
-
 						 data: "placeNo=" + placeNo + "&tDate=" + tDate,
-
 						 success: function(json){
-
 						 var data = "<h2 align='center'>여행자 정보</h2>";
-
 						 for(var i = 0; i < json.length; i++){
-
 							 var sex = "";
-
 							 if(json[i].sex==1){
-
 								 sex = "male";
-
 							 }else{
-
 								 sex = "female"
-
 							 }
-
 						 data += "<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'>";
-
 						 data += "<div class='col-sm-12'><div class='left col-xs-7'>";
-
 						 data += "<h2><i>"+json[i].name+"</i> <i class='fa fa-"+sex+"'></i></h2><br><ul class='list-unstyled'>";
-
 						 data += "<li><p><strong>"+json[i].introduce+"</p></li><li><i class='fa fa-smile-o'></i>나이 : "+json[i].age+"</li>";
-
 						 data += "<li><i class='fa fa-building'></i>지역 : "+json[i].address+"</li></ul></div>";
-
 						 data += "<div class='right col-xs-5 text-center'><a href='mypage2.do'>";
-
 						 data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"/profile/"+json[i].profileimg+"' alt=''";
-
 						 data += "class='img-circle img-responsive'></a>";
 						 
 						data+="<c:if test='${sessionScope.mvo!=null}'>";
@@ -112,17 +64,11 @@
 						 data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
 							 
 						 data+="<button type='button' value="+json[i].id+" class='btn btn-success btn-xs messageBtn'> <i class='fa fa-user'>";
-
 						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></a></c:if></div></div></div></div>";
-
 						 }
-
 						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
-
 						 document.getElementById("travelerListByDate").innerHTML = data;
-
 						 } 
-
 					 });
 					 
 				    	$("#travelerListByDate").on("click",".messageBtn",(function(){
@@ -131,47 +77,26 @@
 				    		$("#receiver").val(receiver);
 				    	}))
 					 
-
 					 $("#travelerListByDate").on("click","#regiTraveler",function(){	
-
 						 $('#popup_layer, #overlay_t').show(); 
-
 					     $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px");
-
 					     $('#overlay_t, .close').click(function(e){ 
-
 					         e.preventDefault(); 
-
 					         $('#popup_layer, #overlay_t').hide(); 
-
 					     }); 
-
 						 //$(location).attr('href',"regiTraveler.do?placeNo="+placeNo+"&tDate="+tDate);
-
 					 });//여행 등록 팝업 on/off
-
 					 $("#popup_layer").on("click","#openToMale",function(){
-
 						 $(location).attr('href',"regiTraveler.do?placeNo="+placeNo+"&tDate="+tDate+"&tRange=1");
-
 					 });
-
 					 $("#popup_layer").on("click","#openToFemale",function(){
-
 						 $(location).attr('href',"regiTraveler.do?placeNo="+placeNo+"&tDate="+tDate+"&tRange=2");
-
 					 });
-
 					 $("#popup_layer").on("click","#openToAll",function(){
-
 						 $(location).attr('href',"regiTraveler.do?placeNo="+placeNo+"&tDate="+tDate+"&tRange=3");
-
 					 });//openToMale: 1, openToFemale=2, openToAll=3
-
 				 });//날짜 선택 
-
 			});//ready
-
 </script>
 
 
@@ -294,7 +219,7 @@
 <input type='button' id ='openToFemale' value='여자에게만 공개' class='btn btn-primary'>
 <input type='button' id ='openToAll' value='모두에게 공개' class='btn btn-primary'>
 </div>
-<jsp:include page="layout/footer.jsp"></jsp:include>
+
 <script type="text/javascript">
 	flatpickr("#enableNextMonth", {
 		enable : [ {
@@ -303,5 +228,4 @@
 		} ]
 	})
 </script>
-</body>
-</html>
+<jsp:include page="layout/footer.jsp"></jsp:include>

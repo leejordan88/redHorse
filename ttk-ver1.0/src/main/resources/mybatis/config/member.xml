@@ -15,7 +15,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
   	<update id="updateMember" parameterType="memberVO"> <!-- tel 추가 -->
 		update member set password=#{password},tel=#{tel},address=#{address} 
-
 		where id=#{id}
 	</update>
 
@@ -27,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		insert into member (id, password, name,tel,sex,age,address,introduce,profileimg,range) 
  		values(#{id}, #{password}, #{name},#{tel},#{sex},#{age},#{address},#{introduce},#{profileimg},#{range})
  	</insert>
+ 	
  	<select id="idcheck" resultType="int">
 		select count(*) from member where id=#{value}
 	</select>
@@ -49,5 +49,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where name like '%${value}%' and range=1 and enabled = 1
 	]]>
 	</select>
-	
 </mapper>

@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+  <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
  
 	<jsp:include page="layout/header.jsp"></jsp:include>
 
@@ -293,7 +293,6 @@
                   
 </div></section>
 
-<jsp:include page="layout/footer.jsp"></jsp:include>
     
 	 <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
@@ -306,7 +305,6 @@
     <!-- jQuery Smart Wizard -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
 <script>
-
 $(":input[name=id]").keyup(function(){
 	var id=$(this).val().trim();
 		if(id.length<4 || id.length>10){
@@ -332,9 +330,6 @@ $(":input[name=id]").keyup(function(){
 		}//callback			
 	});//ajax
 });//keyup
-
-
-
 </script>
 
     <!-- jQuery Smart Wizard -->
@@ -346,7 +341,6 @@ $(":input[name=id]").keyup(function(){
         $('.buttonNext').addClass('btn btn-success');
         $('.buttonPrevious').addClass('btn btn-default');
         $('.buttonFinish').addClass('btn btn-primary');
-
     	      function leaveAStepCallback(obj){
     	        var step_num= obj.attr('rel');
     	        return validateSteps(step_num);
@@ -506,7 +500,6 @@ $(":input[name=id]").keyup(function(){
     	       }else{
     	         $('#msg_age').html('').hide();
     	       }
-
     	    // Validate Tel
     	       var tel = $('#tel').val();
     	       if(!tel && tel.length <= 0){
@@ -543,7 +536,6 @@ $(":input[name=id]").keyup(function(){
    	       }else{
    	         $('#msg_introduce').html('').hide();
    	       }
-
      	    // Validate uploadFile
    	       var uploadFile = $('#uploadFile').val();
    	       if(!uploadFile && uploadFile.length <= 0){
@@ -563,7 +555,6 @@ $(":input[name=id]").keyup(function(){
 	       }   	       
     	      return isValid;
     	    }
-
     </script>
     <!-- /jQuery Smart Wizard -->
 
@@ -571,13 +562,11 @@ $(":input[name=id]").keyup(function(){
     <script>
       $(document).ready(function() {
         $(".select2_group").select2({});
-
       });
     </script>
     <!-- /Select2 -->
      <!-- Select2 -->
     <script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
-
-  </body>
-</html>
-
+    
+    
+<jsp:include page="layout/footer.jsp"></jsp:include>

@@ -20,7 +20,6 @@ public class MessageController {
 	@Resource
 	private MessageService messageService;
 
-	
 	@RequestMapping("messageSend.do")
 	public ModelAndView messageSend(HttpServletRequest request,MessageVO messageVO){
 		HttpSession session = request.getSession(false);
@@ -28,7 +27,6 @@ public class MessageController {
 		messageVO.setSender(mvo.getId());
 		System.out.println(messageVO);
 		messageService.messageSend(messageVO);
-		System.out.println("컨트롤러에서 메세지 전송~!");
 		return new ModelAndView("index");
 	}
 	

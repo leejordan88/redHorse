@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kosta.ttk.controller.MemberController;
 import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
 import org.kosta.ttk.model.service.MemberService;
@@ -40,7 +41,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
    <scope>test</scope>
   </dependency>  
   */
-/*@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
 	@Resource
@@ -54,16 +55,9 @@ public class TestJUnit {
 	@Resource
 	private MemberService memberService;
 	@Test
-
 	public void test(){
-
-		travelerVO.setPlaceNo(1);
-		travelerVO.settDate("2016-12-05");
-		MemberVO mvo = new MemberVO();
-		mvo.setId("java");
-		mvo.setPassword("1234");
-		mvo.setSex(1);
-		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
+		String id = "java1";
+		System.out.println(travelerService.getTravelingList(id));
 	}
 }
-*/
+

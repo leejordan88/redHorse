@@ -87,7 +87,8 @@
 				dataType:"json",   
 				success:function(result){ 					
 					if(result.error=="fail"){
-						alert("조건이 일치하는 회원이 없습니다.");					
+						alert("조건이 일치하는 회원이 없습니다.");	
+						$("#serachResultView").html("");						
 					}else{
 						var sicon="<i class='fa fa-male'></i>";
 						var data="";
@@ -124,7 +125,8 @@
 			dataType:"json",   
 			success:function(result){ 					
 				if(result.error=="fail"){
-					alert("조건이 일치하는 회원이 없습니다.");					
+					alert("조건이 일치하는 회원이 없습니다.");
+					$("#serachResultView").html("");
 				}else{
 					var sicon="<i class='fa fa-male'></i>";
 					var data="";
