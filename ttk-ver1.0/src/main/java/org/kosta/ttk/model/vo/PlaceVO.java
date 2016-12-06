@@ -12,10 +12,7 @@ public class PlaceVO {
 	public PlaceVO() {
 		super();
 	}
-	public PlaceVO(int placeNo, String categoryName, String areaName, String placeName, String placeAddress, int placeX,
-			int placeY) {
-		super();
-	}
+
 	public PlaceVO(int placeNo, String categoryName, String areaName, String placeName, String placeAddress,
 			double placeX, double placeY) {
 		super();
@@ -90,4 +87,5 @@ public class PlaceVO {
 				+ ", placeName=" + placeName + ", placeAddress=" + placeAddress + ", placeX=" + placeX + ", placeY="
 				+ placeY + "]";
 	}
+
 }

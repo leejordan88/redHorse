@@ -73,6 +73,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
 	public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
+		
 		System.out.println(memberVO);
 		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
 		File uploadDir=new File(uploadPath);
@@ -97,14 +98,6 @@ public class MemberController {
 
 		return "register_result";
 	}
-	
-	@RequestMapping("idcheckAjax.do")
-	@ResponseBody
-	public String idcheckAjax(String id) {		
-		int count=memberService.idcheck(id);
-		return (count==0) ? "ok":"fail"; 		
-	}
-
 /**
  * 회원 비활성화  12/1 완료  1 활성화 -> 0 비활성화 업데이트 
  * @param session

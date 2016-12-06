@@ -5,7 +5,7 @@ public class TravelerVO {
 	private String id;
 	private String tDate;
 	private int tState;
-	private int tRange;//1남자에게 공개, 2여자에게 공개, 3모두에게 공개
+	private int tRange;
 	private PlaceVO placeVO;
 	// 순위 출력을 위해 rank 추가하였다.
 	private int rank;

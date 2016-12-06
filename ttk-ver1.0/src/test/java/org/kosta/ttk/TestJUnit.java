@@ -1,23 +1,18 @@
 package org.kosta.ttk;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kosta.ttk.controller.MemberController;
 import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
-import org.kosta.ttk.model.service.MemberService;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;
-import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.PlaceVO;
 import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /*
  *    TDD : 테스트 주도 개발(test-driven development, TDD)은 
@@ -46,18 +41,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestJUnit {
 	@Resource
 	private PlaceController placeController;
-
 	@Resource
 	private PlaceService placeService;
-
 	@Resource
 	private TravelerService travelerService;
-	@Resource
-	private MemberService memberService;
 	@Test
 	public void test(){
 		String id = "java1";
 		System.out.println(travelerService.getTravelingList(id));
 	}
 }
-

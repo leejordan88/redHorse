@@ -8,8 +8,8 @@
 </head>
 <body>
 <script type="text/javascript">
-alert("로그인실패!");
-location.href="index.do";
+	alert("${param.id} 아이디에 해당하는 회원없음!");
+	location.href="index.do";
 </script>
 </body>
 </html>
