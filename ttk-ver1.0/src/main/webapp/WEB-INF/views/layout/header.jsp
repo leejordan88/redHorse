@@ -159,14 +159,14 @@
                   <!-- 12/5 효민 수정부분 끝 -->
                     <li><a href="upload.do">글쓰기</a></li>
 
-
                     <li><a href="update.do">회원정보수정</a></li>
 
                     <li><a href="logout.do"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
                 
-               <!-- 로그인 등장 끝 -->
+                <!-- 로그인 등장 끝 -->
+                
 
                      <!-- 쪽지 함 -->
                      <li role="presentation" class="dropdown"><a

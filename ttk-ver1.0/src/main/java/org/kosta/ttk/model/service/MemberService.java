@@ -8,15 +8,12 @@ public interface MemberService {
 
 
 	MemberVO login(MemberVO memberVO);
-
 	void updateMember(MemberVO vo);
-
 	MemberVO findMember(String id);
-	
 	void registerMember(MemberVO memberVO);
 	void updateDelete(MemberVO vo);
-
 	List<MemberVO> searchMemberByOption(String str);
-
 	int idcheck(String id);
+	List<MemberVO> searchMemberByName(String name);
+
 }
