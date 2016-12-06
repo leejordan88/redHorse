@@ -3,7 +3,65 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"  ></script>
+<script type="text/javascript">  
+ //여행지역 선택 시 여행지역 마크업
+$(document).ready(function(){
+	$(".mixHot").click(function(){
+		var map;
+		var placeName = $(".mixHot").children().first().children().first().next().children().children().first().next().html();
+		var placeX = $(".mixHot").children().first().children().first().next().children().children().first().next().next().html();
+		var placeY = $(".mixHot").children().first().children().first().next().children().children().first().next().next().next().html();
+ 		var latlng = new google.maps.LatLng(placeX, placeY);     
+		var myOptions = {       
+			zoom: 15,
+			center: latlng,       
+			mapTypeId: google.maps.MapTypeId.ROADMAP      
+		};
+		map = new google.maps.Map(document.getElementById("google_map"), myOptions); 
+		map.setTilt(45);
+		  var marker = new google.maps.Marker({
+			    position: latlng,
+			    map: map,
+			    title: placeName
+			  });
+		  marker.setMap(map);
+	}); 
 
+	//날짜 지정 시 ajax를 통한 여행자 리스트 제공
+ 	$("#enableNextMonth").change(function(){
+		var placeNo = $(".mixHot").children().first().children().first().next().children().children().first().next().next().next().next().html();
+		var tDate = $("#enableNextMonth").val();
+		$.ajax({
+			type:"get",
+			url: "findTravelerBydate.do",
+			dataType: "json",
+			data: "placeNo=" + placeNo + "&tDate=" + tDate,
+			success: function(json){
+  				var data = "<h2>여행자 정보</h2>";
+				for(var i = 0; i < json.length; i++){
+					var sex = "";
+					if(json[i].sex==1){
+						sex = "male";
+					}else{
+						sex = "female"
+					}
+					data += "<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'>";
+					data += "<div class='col-sm-12'><div class='left col-xs-7'>";
+					data += "<h2><i>"+json[i].name+"</i> <i class='fa fa-"+sex+"'></i></h2><br>'<ul class='list-unstyled'>";
+					data += "<li><p><strong>"+json[i].introduce+"</p></li><li><i class='fa fa-smile-o'></i>나이 : "+json[i].age+"</li>";
+					data += "<li><i class='fa fa-building'></i>지역 : "+json[i].address+"</li></ul></div>";
+					data += "<div class='right col-xs-5 text-center'><a href='mypage2.do'>";
+					data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"}/profile/"+json[i].profileimg+" alt=''";
+					data += "class='img-circle img-responsive'></a><button type='button' class='btn btn-success btn-xs'> <i class='fa fa-user'>";
+					data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></div></div></div></div>";
+				}
+				document.getElementById("travelerListByDate").innerHTML = data;
+			} 
+		});
+	});//날짜 선택
+});//ready
+</script> 
 <!-- Start Home Page Slider -->
 <section id="page-top">
 	<!-- Carousel -->
@@ -128,12 +186,18 @@
 							</c:forEach>
 							<!-- 효민 추가부분 핫 플레이스 랭킹5 보기, 선택 시 달력선택 추가하기-->
 								<c:forEach items="${listVO.travelerList }" var="list">
-								<li class="mix Hot"><a href="detailPlace.do?placeNo=${list.placeVO.placeNo }">
+								<li class="mixHot"><a href="#datepicker-modal" class="portfolio-link" data-toggle="modal">
 									<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeVO.placeName}.jpg" alt="">
+										<div class="overly">
 											<div class="position-center">
 												<h2 style="text-align: center">${list.rank }위</h2>
 										    	<h3>${list.placeVO.placeName }</h3>
+										    	<h4>${list.placeVO.placeX }</h4>
+										    	<h4>${list.placeVO.placeY }</h4>
+										    	<h4>${list.placeVO.placeNo }</h4>
+										   			${list.placeVO.placeName }
 											</div>
+										</div>
 								</a></li>
 							</c:forEach>
 							<!-- 효민 추가부분 끝-->
@@ -146,6 +210,53 @@
 	</div>
 </section>
 
+
+<div class="section-modal modal fade" id="datepicker-modal"
+	tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-content">
+		<div class="close-modal" data-dismiss="modal">
+			<div class="lr">
+				<div class="rl"></div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="modal-body">
+						<!-- Project Details Go Here -->
+						<div class="col-md-8">
+							<div class="col-md-4 datepickertitle">
+							<h2>날짜선택</h2></div>
+							<div class="col-md-4">
+							<input id="enableNextMonth" type="text" placeholder="Select date"
+								class=" form-control ">
+								<br><br>
+						</div>
+						</div>
+						
+
+
+<!-- page content -->
+        <div class="right_col" role="main">
+            <div class="row">
+            <!-- 여행자 리스트 제공 -->
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center" id = "travelerListByDate">
+                             
+                  </div>
+                 <div class="right_col" role="main">
+                             <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                  <h2>MAP</h2>
+                  <div  id="google_map" style="width:1000px;height:500px;"></div>
+                  </div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div></div></div></div>
+
+<!-- End Portfolio Section -->
 
 <!-- Start Fun Facts Section -->
 <section class="fun-facts">
@@ -188,5 +299,18 @@
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>
 
+<<<<<<< HEAD
+<script type="text/javascript">
+	flatpickr("#enableNextMonth", {
+		enable : [ {
+			from : "today",
+			to : new Date().fp_incr(31)
+		} ]
+	})
+</script>
 </body>
 </html>
+=======
+
+
+>>>>>>> branch 'version1.5' of https://github.com/leejordan88/redHorse.git

@@ -6,7 +6,7 @@ public class MemberVO {
 	private String id;
 	private String password;
 	private String name;
-	private String tel;
+	private int tel;
 	private int sex;
 	private int age;
 	private String address;
@@ -20,7 +20,7 @@ public class MemberVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberVO(String id, String password, String name, String tel, int sex, int age, String address,
+	public MemberVO(String id, String password, String name, int tel, int sex, int age, String address,
 			String introduce, String profileimg, int range, int enabled, int hit, MultipartFile uploadFile) {
 		super();
 		this.id = id;
@@ -55,10 +55,10 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getTel() {
+	public int getTel() {
 		return tel;
 	}
-	public void setTel(String tel) {
+	public void setTel(int tel) {
 		this.tel = tel;
 	}
 	public int getSex() {

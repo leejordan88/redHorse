@@ -21,9 +21,10 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="footer-link">
                             <ul class="pull-right">
-                    		<li>
-                     		  <a class="page-scroll" href="index.do#team">Our Team</a>
-                  		  </li>
+                                <li><a href="#">Privacy Policy</a>
+                                </li>
+                                <li><a href="#">Terms of Use</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
