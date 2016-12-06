@@ -15,7 +15,8 @@
 <link
 	href="${pageContext.request.contextPath}/resources/asset/css/bootstrap.min.css"
 	rel="stylesheet">
-
+	
+	
 <!-- Font Awesome CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
@@ -35,8 +36,13 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/owl.transitions.css">
 
-<!-- Custom CSS -->
+<!-- Style CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet">
+	
+<!-- Custom CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/custom.css"
 	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath}/resources/css/responsive.css"

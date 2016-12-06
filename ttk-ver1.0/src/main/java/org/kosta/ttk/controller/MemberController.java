@@ -11,17 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.ttk.model.service.MemberService;
+import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.MemberVO;
+import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
 	@Resource
 	private MemberService memberService;
+	@Resource
+	private TravelerService travelerService;
 	private String uploadPath;
 /**
  * 로그인 post
@@ -166,5 +171,18 @@ public class MemberController {
 		return list;
 	}
 	
+	@RequestMapping("schedule.do")
+	public ModelAndView schedule(HttpSession session){
+		MemberVO memberVO = (MemberVO) session.getAttribute("mvo");
+		String id = memberVO.getId();
+		List<TravelerVO> travelingList = travelerService.getTravelingList(id);
+		return new ModelAndView("schedule", "travelingList", travelingList);
+	}
 	
+	@RequestMapping("hideTravel.do")
+	public 	ModelAndView hideTravel(TravelerVO travelerVO){
+		System.out.println(travelerVO);
+		travelerService.hideTravel(travelerVO);
+		return new ModelAndView("redirect:schedule.do");
+	}
 }
