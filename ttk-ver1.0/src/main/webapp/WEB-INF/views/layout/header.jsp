@@ -222,8 +222,6 @@
 
 	<!-- 로그인 모달 끝 -->
 
-
-
 	<!-- jQuery -->
 	<script
 		src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
