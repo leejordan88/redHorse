@@ -10,7 +10,6 @@ public class MessageVO {
 	private MemberVO memberVO;
 	private int messageState;
 	
-	
 	public MessageVO(int messageNo, String id, String sender, String receiver, String messageDate,
 			String messageContent, int senderState, int receiverState, MemberVO memberVO, int messageState) {
 		super();
@@ -87,7 +86,6 @@ public class MessageVO {
 	public void setMemberVO(MemberVO memberVO) {
 		this.memberVO = memberVO;
 	}
-	
 	public int getMessageState() {
 		return messageState;
 	}
