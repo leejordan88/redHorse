@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.ttk.model.dao.MemberDAO;
 import org.kosta.ttk.model.vo.MemberVO;
+import org.kosta.ttk.model.vo.StatsVO;
 import org.springframework.stereotype.Service;
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -40,5 +41,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberVO> searchMemberByOption(String str) {
 		return memberDAO.searchMemberByOption(str);
+	}
+	@Override
+	public List<StatsVO> getStats(StatsVO svo){
+		return memberDAO.getStats(svo);
 	}
 }

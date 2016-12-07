@@ -45,5 +45,6 @@ public class MemberPicServiceImpl implements MemberPicService {
 	@Override
 	public MemberPicVO showPictureDetailNoHit(int pictureNo){		
 		return memberPicDAO.showPictureDetail(pictureNo);
-	}			
+	}
+	
 }

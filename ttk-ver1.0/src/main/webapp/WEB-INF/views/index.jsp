@@ -154,7 +154,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-female"></i>
-					<div class="timer" id="item4" data-to="223" data-speed="5000"></div>
+					<div class="timer" id="item4" data-to="2" data-speed="5000"></div>
 					<h5>여자회원수</h5>
 				</div>
 			</div>

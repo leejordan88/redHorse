@@ -1,3 +1,40 @@
+
+--create table member ( sex(남1,여2) ,  
+--create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
+--create table traveler(  tstate number default 1,     
+
+select sex,pictureNo,tstate,count(*) from a.member,b.memberPicture,c.traveler 
+group by a.sex,b.poctureNo,c.tstate
+--distinct
+
+--통계 12/6 진석
+select distinct(select count(sex) from member where sex=1 group by sex) as male
+,(select count(sex) from member where sex=2 group by sex) as female
+,(select count(*) from memberPicture) as pictureNo
+,(select count(*) from traveler where tstate=2) as tstate  
+from member
+
+--distinct  중복값 제거
+
+
+
+select * from MEMBER
+where sex=1
+select count(*) from memberPicture
+select count(*) from traveler
+where tstate=2
+
+select m.sex, p.pictureNo, t.tstate from member m, memberPicture p, traveler t
+where m.id=p.id
+and p.id=t.id
+
+
+-- sex 값 남, 여 한번에 추출
+select sex,count(sex) from member
+group by sex;
+
+select count(*) from member where sex='1'
+
 --member13명 삽입, category, area, place 등록 완료
 
 select *from memberRange;
@@ -537,7 +574,7 @@ create table traveler(
  placeNo number,
  id varchar2(100),
  tdate date not null,
- tstate number default 1,              -- 1일때 진행중   0일때 감추기
+ tstate number default 1,              -- 1일때 진행중   2,3,4 
  trange number constraint fk_traveler_trange references travelerRange(trange),               
  constraint pk_placeNo foreign key(placeNo) references place,
  constraint pk_id foreign key(id) references member,
@@ -552,7 +589,7 @@ drop table memberPicture;
 select*from memberPicture
 
 create table memberPicture(
- pictureNo number primary key,
+ pictureNo number primary key,  --사진 업로드 쏩기
  id varchar2(100),
  filename varchar2(100) not null,
  pictureTitle varchar2(100) not null,

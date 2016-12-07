@@ -192,10 +192,7 @@ public class MemberController {
 			HashMap<String,String> map=new HashMap<String,String>();
 			map.put("error","fail");
 			return map;
-		}
-			
+		}	
 		return list;
-	}
-	
-	
+	}	
 }

@@ -12,7 +12,6 @@ public class ProductVO {
 	private MultipartFile uploadFile; // 파일업로드를 위한 변수 
 	public ProductVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public ProductVO(String name, MultipartFile uploadFile) {
 		super();

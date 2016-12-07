@@ -3,6 +3,7 @@ package org.kosta.ttk.model.service;
 import java.util.List;
 
 import org.kosta.ttk.model.vo.MemberVO;
+import org.kosta.ttk.model.vo.StatsVO;
 
 public interface MemberService {
 
@@ -20,5 +21,7 @@ public interface MemberService {
 	void updateDelete(MemberVO vo);
 
 	List<MemberVO> searchMemberByOption(String str);
+
+	List<StatsVO> getStats(StatsVO svo);
 
 }

@@ -12,10 +12,8 @@ public class ListVO {
 	private List<AreaVO> areaList;
 	private List<CategoryVO> categoryList;
 	private List<TravelerVO> travelerList;
-
 	private List<MessageVO> list;
-	private PagingBeanVO pagingBean;
-
+	private PagingBeanVO pagingBean;	
 	public ListVO() {
 		super();
 	}
@@ -48,7 +46,6 @@ public class ListVO {
 		this.categoryList = categoryList;
 		this.travelerList = travelerList;
 	}
-
 	public List<AreaVO> getAreaList() {
 		return areaList;
 	}
