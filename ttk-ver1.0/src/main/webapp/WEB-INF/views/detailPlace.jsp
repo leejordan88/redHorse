@@ -216,8 +216,8 @@
 <div id="popup_layer">
 <div class="btn-group-vertical">
 <input type='button' id ='openToMale' value='남자에게만 공개' class='btn btn-success'>
-<input type='button' id ='openToMale' value='여자에게만 공개' class='btn btn-primary'>
-<input type='button' id ='openToMale' value='모두에게 공개' class='btn btn-inverse'>
+<input type='button' id ='openToFemale' value='여자에게만 공개' class='btn btn-primary'>
+<input type='button' id ='openToAll' value='모두에게 공개' class='btn btn-inverse'>
 </div>
 </div>
 

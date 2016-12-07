@@ -130,10 +130,12 @@
 								<c:forEach items="${listVO.travelerList }" var="list">
 								<li class="mix Hot"><a href="detailPlace.do?placeNo=${list.placeVO.placeNo }">
 									<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeVO.placeName}.jpg" alt="">
+									<div class="overly">
 											<div class="position-center">
 												<h2 style="text-align: center">${list.rank }위</h2>
 										    	<h3>${list.placeVO.placeName }</h3>
 											</div>
+										</div>
 								</a></li>
 							</c:forEach>
 							<!-- 효민 추가부분 끝-->
