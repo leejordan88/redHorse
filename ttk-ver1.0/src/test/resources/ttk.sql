@@ -754,3 +754,5 @@ where t.placeNo = p.placeNo and t.id = 'java1';
 
 	update memberPicture set pictureTitle='rrr', pictureContent='rrr', filename='속초_봉포머구리집.jpg'
 	where pictureNo=2
+	select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
+ 		from memberPicture p, member m where p.id='java1' and p.id=m.id order by p.pictureNo desc

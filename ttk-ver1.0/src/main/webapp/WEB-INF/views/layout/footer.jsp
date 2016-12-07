@@ -64,4 +64,4 @@
     
      <!-- Js -->
     <script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+  <%--   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script> --%>

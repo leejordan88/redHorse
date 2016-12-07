@@ -9,7 +9,7 @@ public interface MemberPicService {
 
 	void uploadMemberPic(MemberPicVO pvo);
 
-	List<MemberPicVO> getPictureList();
+	List<MemberPicVO> getPictureList(String id);
 
 	void updateHit(int pictureNo);
 

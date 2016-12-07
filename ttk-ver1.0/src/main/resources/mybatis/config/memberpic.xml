@@ -28,10 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </select>
  
 <!-- 12/7 수정 상세보기 (게시물 수정 완료 후 페이지)-->
-<!-- <select id="showPictureDetail" resultMap="memberPicRM">
+<select id="showPictureDetail" resultMap="memberPicRM">
 	 select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
  		from memberPicture p, member m where p.pictureNo=#{p.pictureNo} and p.id=m.id order by p.pictureNo desc
-</select> -->
+</select>
 
  <!-- 12/4 효민 사진 상세보기 -->
  <!-- 조회수 -->

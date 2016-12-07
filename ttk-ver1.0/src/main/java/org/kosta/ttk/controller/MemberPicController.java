@@ -12,7 +12,6 @@ import org.kosta.ttk.model.service.MemberPicService;
 import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.MemberPicVO;
 import org.kosta.ttk.model.vo.MemberVO;
-import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,9 +36,6 @@ public class MemberPicController {
 	 */
 	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
 	public String registerProductAction(MemberPicVO memberPicVO, HttpServletRequest request){
-		HttpSession session=request.getSession(false);
-
-	public String uploadMemberPic(MemberPicVO memberPicVO, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		// MemberVO setting
 		if(session!=null){
@@ -85,9 +81,8 @@ public class MemberPicController {
 	 * @return
 	 */
 	@RequestMapping("getPictureList.do")
-	public ModelAndView getPictureList(MemberPicVO pvo){
-		pvo.getMemberVO();
-		List<MemberPicVO> list = memberPicService.getPictureList();
+	public ModelAndView getPictureList(String id){
+		List<MemberPicVO> list = memberPicService.getPictureList(id);
 		return new ModelAndView("memberpic_list","list",list);
 	}
 	
@@ -126,7 +121,7 @@ public class MemberPicController {
 		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mv.addObject("travelingList", travelerService.getTravelingList(id));
 		return mv;
-	
+	}
 	/**
 	 * 사진 삭제하기
 	 * @param pictureNo

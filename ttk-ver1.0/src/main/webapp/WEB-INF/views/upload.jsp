@@ -37,7 +37,7 @@
 		method="post" enctype="multipart/form-data" id="uploadForm">
 		  <div class="form-group col-xs-6 col-sm-3" >
     		<label for="pictureTitle">제목</label>
-  		 	 <input type="text" class="form-control" id="pictureTitle" placeholder="제목을 입력하세요">
+  		 	 <input type="text" class="form-control" id="pictureTitle" name="pictureTitle" placeholder="제목을 입력하세요">
   			</div>
   			<br>
   			<div class="form-group">
@@ -47,13 +47,13 @@
 			<br>
 			<div class="form-group col-xs-6">
 				<label for="pictureContent">내용</label>
-				<textarea class="form-control" id="pictureContent" rows="3"></textarea>
+				<textarea class="form-control" id="pictureContent" name="pictureContent" rows="3"></textarea>
 			</div>
 			<br>
 			<%-- file upload를 위해 type을 file로 명시 --%>
 			 <div class="form-group">
 	   			 <label for="uploadFile"></label>
-	 				  <input type="file" id="uploadFile">
+	 				  <input type="file" id="uploadFile" name="uploadFile">
 	  		</div>
 	  		<br>
 			<!-- <input type="submit" value="등록"> -->
