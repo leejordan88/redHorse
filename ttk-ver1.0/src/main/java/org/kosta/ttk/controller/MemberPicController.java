@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.ttk.model.service.MemberPicService;
+import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.MemberPicVO;
 import org.kosta.ttk.model.vo.MemberVO;
+import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberPicController {
 	@Resource
 	private MemberPicService memberPicService;
+	@Resource
+	private TravelerService travelerService;
 	
 	private String uploadPath;
 	/**
@@ -110,6 +114,12 @@ public class MemberPicController {
 			
 		return mv;
 	}
-	
-	
+	@RequestMapping("visitSchedule.do")
+	public ModelAndView visitSchedule(String id, HttpServletRequest request){
+		ModelAndView mv =new ModelAndView();
+		mv.setViewName("visitSchedule");
+		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
+		mv.addObject("travelingList", travelerService.getTravelingList(id));
+		return mv;
+	}
 }

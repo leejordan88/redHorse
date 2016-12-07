@@ -196,9 +196,5 @@ public class MemberController {
 		travelerService.hideTravel(travelerVO);
 		return new ModelAndView("redirect:schedule.do");
 	}
-	//아직 코드 작성 안됌
-	@RequestMapping("visitSchedule.do")
-	public ModelAndView visitSchedule(){
-		return new ModelAndView();
-	}
+
 }
