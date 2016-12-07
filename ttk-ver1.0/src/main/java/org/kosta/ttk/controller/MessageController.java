@@ -20,14 +20,15 @@ public class MessageController {
 	@Resource
 	private MessageService messageService;
 
-	/*@RequestMapping("messageSend.do")
-	public ModelAndView messageSend(HttpServletRequest request, String id) {
-		// messageVO 로 들어오는 값이 sender receiver messageContent
-		
-		MessageVO messageVO = new MessageVO("java", "java3", "2");
+	@RequestMapping("messageSend.do")
+	public ModelAndView messageSend(HttpServletRequest request,MessageVO messageVO){
+		HttpSession session = request.getSession(false);
+		MemberVO mvo =  (MemberVO) session.getAttribute("mvo");
+		messageVO.setSender(mvo.getId());
+		System.out.println(messageVO);
 		messageService.messageSend(messageVO);
-		return new ModelAndView("index.do");
-	}*/
+		return new ModelAndView("index");
+	}
 	
 	@RequestMapping("messageListUnChecked.do")
 	public ModelAndView messageListUnChecked(HttpServletRequest request) {

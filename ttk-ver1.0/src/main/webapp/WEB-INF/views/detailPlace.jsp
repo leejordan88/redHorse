@@ -11,9 +11,7 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXgY2_QloeiWmqWax41miqR-eI87X4ZdA"></script>
 <script type="text/javascript">
-
 	//여행지역 선택 시 여행지역 마크업
-
 	$(document).ready(function() {
 				var map;
 				var placeName = $("#placeName").val();
@@ -34,7 +32,6 @@
 					title : placeName
 				});
 				marker.setMap(map);
-
 				//날짜 지정 시 ajax를 통한 여행자 리스트 제공
 				$("#enableNextMonth").change(function(){
 				 var placeNo = $("#placeNo").val();
@@ -60,13 +57,26 @@
 						 data += "<li><i class='fa fa-building'></i>지역 : "+json[i].address+"</li></ul></div>";
 						 data += "<div class='right col-xs-5 text-center'><a href='mypage2.do'>";
 						 data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"/profile/"+json[i].profileimg+"' alt=''";
-						 data += "class='img-circle img-responsive'></a><button type='button' class='btn btn-success btn-xs'> <i class='fa fa-user'>";
-						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></div></div></div></div>";
+						 data += "class='img-circle img-responsive'></a>";
+						 
+						data+="<c:if test='${sessionScope.mvo!=null}'>";
+						
+						 data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
+							 
+						 data+="<button type='button' value="+json[i].id+" class='btn btn-success btn-xs messageBtn'> <i class='fa fa-user'>";
+						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></a></c:if></div></div></div></div>";
 						 }
 						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
 						 document.getElementById("travelerListByDate").innerHTML = data;
 						 } 
 					 });
+					 
+				    	$("#travelerListByDate").on("click",".messageBtn",(function(){
+				    		var receiver =$(this).val();
+				    		$("#messageContent").val("");
+				    		$("#receiver").val(receiver);
+				    	}))
+					 
 					 $("#travelerListByDate").on("click","#regiTraveler",function(){	
 						 $('#popup_layer, #overlay_t').show(); 
 					     $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px");
@@ -76,7 +86,6 @@
 					     }); 
 						 //$(location).attr('href',"regiTraveler.do?placeNo="+placeNo+"&tDate="+tDate);
 					 });//여행 등록 팝업 on/off
-
 					 $("#popup_layer").on("click","#openToMale",function(){
 						 $(location).attr('href',"regiTraveler.do?placeNo="+placeNo+"&tDate="+tDate+"&tRange=1");
 					 });
@@ -95,61 +104,122 @@
 <!-- Start Portfolio Section -->
 
 <section id="portfolio-work">
+
 	<div class="container">
+
 		<div class="row">
+
 			<div class="col-md-12">
+
 				<div class="section-title text-center"></div>
+
 				<div class="block"></div>
+
 			</div>
+
 		</div>
+
 	</div>
+
 </section>
 
 
 
 <div class="close-modal" data-dismiss="modal">
+
 	<div class="lr">
+
 		<div class="rl"></div>
+
 	</div>
+
 </div>
 
 
 
 <div class="container">
+
 	<div class="row">
+
 		<div class="col-md-12">
-			<div class="modal-body">
+
 				<div class="col-md-8">
+
 					<div class="col-md-4 datepickertitle">
+
 						<h2>날짜선택</h2>
+
 					</div>
+
 					<div class="col-md-4">
+
 						<input id="enableNextMonth" type="text" placeholder="Select date"
+
 							class=" form-control "> <br> <br>
+
 					</div>
+
 				</div>
+
 				<div class="right_col" role="main">
+
 					<div class="row">
+
 						<div  id="travelerListByDate" class="col-md-12 col-sm-12 col-xs-12 text-center"></div>
+
 					</div>
+
 				<h2 align="center">MAP</h2>
+
 				<div id="google_map" style="width: 100%; height: 400px"></div>
+
 				<input type="hidden" id="placeX" value="${placeVO.placeX }">
+
 				<input type="hidden" id="placeY" value="${placeVO.placeY }">
+
 				<input type="hidden" id="placeName" value="${placeVO.placeName }">
+
 				<input type="hidden" id="placeNo" value="${placeVO.placeNo }">
 				</div>
 			</div>
+			
+	 <!-- 쪽지보내기모달 -->
+          <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Message">Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="messageSend.do">
+                            <div class="form-group">
+                            <input type="text" id="receiver" name="receiver" value="" readonly="readonly" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                            	<textarea class="form-control" id="messageContent" name="messageContent" cols="45" rows="9" placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 쪽지 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>
+                            </div>
+                            <p class="text-center">
+                                <button class="btn btn-green animated fadeInUp" type="submit"><i class="fa fa-sign-in"></i>전송</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- 쪽지보내기 모달 끝 -->  
+      
+			
 		</div>
 	</div>
-</div>
+
 <div id="overlay_t"></div> 
 <div id="popup_layer">
 <input type='button' id ='openToMale' value='남자에게만 공개' class='btn btn-primary'>
 <input type='button' id ='openToFemale' value='여자에게만 공개' class='btn btn-primary'>
 <input type='button' id ='openToAll' value='모두에게 공개' class='btn btn-primary'>
 </div>
-<jsp:include page="layout/footer.jsp"></jsp:include>
+
 <script type="text/javascript">
 	flatpickr("#enableNextMonth", {
 		enable : [ {
@@ -158,5 +228,4 @@
 		} ]
 	})
 </script>
-</body>
-</html>
+<jsp:include page="layout/footer.jsp"></jsp:include>

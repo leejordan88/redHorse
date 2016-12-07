@@ -42,4 +42,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where ${value} and range=1 and enabled = 1
 	]]>
 	</select>
+	
+	<select id="searchMemberByName" resultType="memberVO">
+	<![CDATA[
+	select * from member
+	where name like '%${value}%' and range=1 and enabled = 1
+	]]>
+	</select>
 </mapper>
