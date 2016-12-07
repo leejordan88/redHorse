@@ -6,6 +6,7 @@
 ${sessionScope.mvo.profileimg}<br>
 ${sessionScope.mvo.id}<br>
 
+<a href="messageListUnChecked.do"></a>
 <a href="messageList.do">받은쪽지함 </a><br>
 <a href="messageSendList.do">보낸쪽지함 </a><br>
 </p>

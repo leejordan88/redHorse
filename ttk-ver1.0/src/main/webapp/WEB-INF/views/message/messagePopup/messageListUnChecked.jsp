@@ -14,7 +14,6 @@
 <table class="layout">
 	<tr>
 		<td class="messageLeft">
-		<jsp:include page="messageLeft.jsp"></jsp:include>
 		</td>
 		</tr>
 </table>

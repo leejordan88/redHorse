@@ -13,7 +13,7 @@ public interface MessageService {
 	ListVO messageList(MessageVO messageVO, String pageNo);
 	MessageVO messageDetail(int messageNo);
 	ListVO messageSendList(MessageVO messageVO,String pageNo);
-	
+	int messageUncheckedCount(MemberVO smvo);
 	//임시
 	//int messageListTotalCount(MemberVO smvo);
 }
