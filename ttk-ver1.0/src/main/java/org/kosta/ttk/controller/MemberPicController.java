@@ -82,8 +82,11 @@ public class MemberPicController {
 	 */
 	@RequestMapping("getPictureList.do")
 	public ModelAndView getPictureList(String id){
-		List<MemberPicVO> list = memberPicService.getPictureList(id);
-		return new ModelAndView("memberpic_list","list",list);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("memberpic_list");
+		mav.addObject("memberVO", memberPicService.getMemberInfo(id));
+		mav.addObject("list", memberPicService.visitMemberPic(id));
+		return mav;
 	}
 	
 	@RequestMapping("showPictureDetail.do")
@@ -110,7 +113,6 @@ public class MemberPicController {
 		mv.setViewName("memberpic_list");
 		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mv.addObject("list", memberPicService.visitMemberPic(id));
-			
 		return mv;
 	}
 

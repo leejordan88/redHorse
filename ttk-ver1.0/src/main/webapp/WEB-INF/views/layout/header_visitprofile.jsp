@@ -14,8 +14,8 @@
 		
 			<div class="text-center">
 				<div class="container-fluid">
-                        <a href="getPictureList.do" class="btn btn-default" >사진첩보기</a>
-                        <a href="visitSchedule.do?id=${param.id }" class="btn btn-default">여행일정보기</a>
+                        <a href="getPictureList.do?id=${param.id}" class="btn btn-default" >사진첩보기</a>
+                        <a href="visitSchedule.do?id=${param.id}" class="btn btn-default">여행일정보기</a>
                         <a href="#" data-toggle="modal" data-target="#message-modal" class="btn btn-default">쪽지보내기</a>
 	
 		</div></div>
@@ -49,4 +49,3 @@
             </div>
         </div>
    <!-- 쪽지보내기 모달 끝 --> 
-
