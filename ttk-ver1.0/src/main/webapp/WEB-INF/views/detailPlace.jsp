@@ -54,17 +54,16 @@
 						 data += "<div class='col-sm-12'><div class='left col-xs-7'>";
 						 data += "<h2><i>"+json[i].name+"</i> <i class='fa fa-"+sex+"'></i></h2><br><ul class='list-unstyled'>";
 						 data += "<li><p><strong>"+json[i].introduce+"</p></li><li><i class='fa fa-smile-o'></i>나이 : "+json[i].age+"</li>";
-						 data += "<li><i class='fa fa-building'></i>지역 : "+json[i].address+"</li></ul></div>";
-						 data += "<div class='right col-xs-5 text-center'><a href='mypage2.do'>";
-						 data += "<img src='${pageContext.request.contextPath}/resources/upload/"+json[i].id+"/profile/"+json[i].profileimg+"' alt=''";
-						 data += "class='img-circle img-responsive'></a>";
-						 
+			     		 data += "<li><i class='fa fa-building'></i>지역 : "+json[i].address+"</li></ul></div>";
+						data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+json[i].id+"'></c:if>";
+						data+="<img src='${pageContext.request.contextPath}/resources/upload/";
+						data+=json[i].id+"/profile/"+json[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
 						data+="<c:if test='${sessionScope.mvo!=null}'>";
-						
-						 data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
-							 
-						 data+="<button type='button' value="+json[i].id+" class='btn btn-success btn-xs messageBtn'> <i class='fa fa-user'>";
-						 data += "</i> <i class='fa fa-comments-o'></i>쪽지</button></a></c:if></div></div></div></div>";
+						data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
+						data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+json[i].id+"> <i class='fa fa-user'></i>";
+						data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
+					    data += "</div></div></div></div>";
+					
 						 }
 						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
 						 document.getElementById("travelerListByDate").innerHTML = data;

@@ -36,4 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
  		from memberPicture where pictureNo=#{pictureNo}
 </select>
+
+<select id="visitMemberPic" resultMap="memberPicRM" resultType="memberPicVO">
+ 	select pictureNo, id, filename, pictureTitle, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate
+ 	from memberPicture where id=#{value} order by pictureNo desc
+</select>
+
+
+
 </mapper>

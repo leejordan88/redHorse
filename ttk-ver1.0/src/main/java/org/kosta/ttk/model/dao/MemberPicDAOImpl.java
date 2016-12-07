@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.vo.MemberPicVO;
+import org.kosta.ttk.model.vo.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +41,17 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	@Override
 	public MemberPicVO showPictureDetail(int pictureNo){
 		return (MemberPicVO)template.selectOne("memberpic.showPictureDetail", pictureNo);
+	}
+
+	//영주 타회원프로필
+	@Override
+	public List<MemberPicVO> visitMemberPic(String id) {
+		return template.selectList("memberpic.visitMemberPic",id);
+	}
+
+	@Override
+	public MemberVO getMemberInfo(String id) {
+		template.update("member.updateHit",id);
+		return template.selectOne("member.getMemberInfo", id);
 	}
 }

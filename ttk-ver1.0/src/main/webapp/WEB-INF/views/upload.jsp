@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="layout/header_profile.jsp"></jsp:include>
+<jsp:include page="layout/header_myprofile.jsp"></jsp:include>
 <link 	href="${pageContext.request.contextPath}/resources/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 <!-- 사진첩 사진 업로드 페이지 -->
 <!-- 12/2 효민 추가 부분  -->

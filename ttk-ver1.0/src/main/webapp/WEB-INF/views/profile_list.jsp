@@ -101,8 +101,9 @@
 							data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
 							data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
 							data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
-							data+="<div class='right col-xs-5 text-center'><a href='mypage2.do'><img src='${pageContext.request.contextPath}/resources/upload/";
-							data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'></a>";
+							data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+result[i].id+"'></c:if>";
+							data+="<img src='${pageContext.request.contextPath}/resources/upload/";
+							data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
 							data+="<c:if test='${sessionScope.mvo!=null}'>";
 							data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
 							data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
@@ -139,8 +140,9 @@
 						data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
 						data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
 						data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
-						data+="<div class='right col-xs-5 text-center'><a href='mypage2.do'><img src='${pageContext.request.contextPath}/resources/upload/";
-						data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'></a>";
+						data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+result[i].id+"'></c:if>";
+						data+="<img src='${pageContext.request.contextPath}/resources/upload/";
+						data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
 						data+="<c:if test='${sessionScope.mvo!=null}'>";
 						data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
 						data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
