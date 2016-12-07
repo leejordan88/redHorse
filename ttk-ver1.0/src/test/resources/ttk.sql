@@ -749,6 +749,7 @@ where t.placeNo = p.placeNo and t.id = 'java1';
 
 
 
+
 	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
 	where pictureNo=63
 
@@ -756,3 +757,10 @@ where t.placeNo = p.placeNo and t.id = 'java1';
 	where pictureNo=2
 	select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
  		from memberPicture p, member m where p.id='java1' and p.id=m.id order by p.pictureNo desc
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.receiver=m2.id and  ms.sender ='java1')  rnum
+where   rnum  between 1 and 7 order by messageNo desc
+

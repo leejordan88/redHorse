@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
 <!-- Start Home Page Slider -->
@@ -84,7 +85,6 @@
 	<!-- /carousel -->
 </section>
 <!-- End Home Page Slider -->
-
 
 <!-- Start Portfolio Section -->
 <section id="portfolio-work">

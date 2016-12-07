@@ -1,36 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../../layout/header.jsp"></jsp:include>
-<!-- Select2 -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendors/select2.min.css"
-	rel="stylesheet">
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../../layout/header.jsp"></jsp:include> 
+
 <!-- Add custom CSS here -->
 <link
-	href="${pageContext.request.contextPath}/resources/message/messageIndex/css/style.css"
-	rel="stylesheet">
-<script
-   src="${pageContext.request.contextPath}/resources/message/messageIndex/js/jquery-1.10.2.js"></script>
+   href="${pageContext.request.contextPath}/resources/message/messageIndex/css/style.css"
+   rel="stylesheet">
 
+<link
+   href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
+   rel="stylesheet">
+
+<!-- 전체 페이지시작 -->
 <section id="profile-list">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title text-center">
-					<h3>Send Messages</h3>
+						<h3>Send Messages</h3>
 					<p>보낸메세지 입니다.</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Services -->
-	<div id="services" class="services">
-		<div class="container">
-			<div class="row">
-				<div id="msgicon">
-					<h2 class="main-title">
+
+   <!--파란색부분 -->
+   <div id="services" class="services">
+      <div class="container">
+         <div class="row">
+            <div id="msgicon">
+                       <h2 class="main-title">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/message/mainReceive.png"
 							id="moveReceive"> <img
@@ -39,59 +40,77 @@
 							src="${pageContext.request.contextPath}/resources/images/message/mainDelete.png"
 							id="moveDelete">
 					</h2>
-				</div>
-			</div>
-			<hr>
-			<table>
-				<c:forEach var="msvo" items="${requestScope.vo.list}">
-					<tr>
-						<td><h5>${msvo.messageVO.receiver}</h5></td>
-						<td>${msvo.messageVO.messageDate}| <br> <a
-							href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}"></a>
-							${msvo.messageVO.messageContent}
-						</td>
-						<td><img
-							src="${pageContext.request.contextPath}/resources/images/message/deleteB.PNG"></td>
-					</tr>
-				</c:forEach>
+                   </div>     
+             </div>
+<hr>
 
-				<%-- <td>사진<img
-									src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}"></td> --%>
+   <!-- 리스트부분시작 -->
+  <div class="container bootstrap snippet">
+    <div class="row">
+            <div class="chat-message" id="list-form">
+                <ul class="chat">
+                       <c:forEach var="msvo" items="${requestScope.vo.list}">   
+							<li class="right clearfix">
+                        <span class="chat-img pull-right">
+                    		<img src="${pageContext.request.contextPath}/resources/upload/${msvo.messageVO.receiver}/profile/${msvo.messageVO.memberVO.profileimg}" >
+                    	</span>
+                    	<div class="chat-body clearfix">
+                    		<div class="header">
+                    			<strong class="primary-font">${msvo.messageVO.receiver}</strong>
+                    			<small class="pull-right text-muted">
+                    			${msvo.messageVO.messageDate}</small>
+                    		</div>
+                    			<p id="list-font">
+                    			${msvo.messageVO.messageContent}
+                    		</p>
+                    	</div>
+                    </li>     
+			 			</c:forEach>
+                </ul>
+            </div>                      
+      </div>
+   </div>
+<hr>
+ <!-- 리스트부분끝 -->
 
-			</table>
-			<p class="paging">
-				<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
-				<c:if test="${pb.previousPageGroup}">
-					<a href="messageSendList.do?pageNo=${pb.startPageOfPageGroup-1}">◀&nbsp;
-					</a>
-
-				</c:if>
-				<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-					end="${pb.endPageOfPageGroup}">
-					<c:choose>
-						<c:when test="${pb.nowPage!=i}">
-							<a href="messageSendList.do?pageNo=${i}">${i}</a>
-						</c:when>
-						<c:otherwise>
-	${i}
-	</c:otherwise>
-					</c:choose>
-	&nbsp;
-	</c:forEach>
-				<c:if test="${pb.nextPageGroup}">
-					<a href="messageSendList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
-				</c:if>
-			</p>
-			<br> <br>
-
-		</div>
-	</div>
-	<!-- /Services -->
-
+<!-- 페이징부분 -->
+<div id="plist">
+         <p class="paging">
+      <c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+      <c:if test="${pb.previousPageGroup}">
+         <a href="messageSendList.do?pageNo=${pb.startPageOfPageGroup-1}">◀&nbsp;
+         </a>
+      
+      </c:if>
+      <c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+         end="${pb.endPageOfPageGroup}">
+         <c:choose>
+            <c:when test="${pb.nowPage!=i}">
+               <a href="messageSendList.do?pageNo=${i}">${i}</a>
+            </c:when>
+            <c:otherwise>
+   ${i}
+   </c:otherwise>
+         </c:choose>
+   &nbsp;
+   </c:forEach>
+      <c:if test="${pb.nextPageGroup}">
+         <a href="messageSendList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+      </c:if>
+   </p>
+   <br>
+   <br>
+   </div>
+  <!-- 페이징부분  끝-->
+  
+   </div>
+   </div>
 </section>
+<!--  페이지전체끝 -->
+
+<!--  경로이동  java script -->
 <script
 	src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#moveReceive").click(function() {
@@ -107,31 +126,3 @@
 </script>
 
 <jsp:include page="../../layout/footer.jsp"></jsp:include>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
