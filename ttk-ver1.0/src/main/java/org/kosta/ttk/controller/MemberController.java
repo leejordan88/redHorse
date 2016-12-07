@@ -191,9 +191,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("hideTravel.do")
-	public 	ModelAndView hideTravel(TravelerVO travelerVO){
+	public ModelAndView hideTravel(TravelerVO travelerVO){
 		System.out.println(travelerVO);
 		travelerService.hideTravel(travelerVO);
 		return new ModelAndView("redirect:schedule.do");
+	}
+	//아직 코드 작성 안됌
+	@RequestMapping("visitSchedule.do")
+	public ModelAndView visitSchedule(){
+		return new ModelAndView();
 	}
 }
