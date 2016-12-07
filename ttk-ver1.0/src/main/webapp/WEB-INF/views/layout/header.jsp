@@ -15,7 +15,8 @@
 <link
 	href="${pageContext.request.contextPath}/resources/asset/css/bootstrap.min.css"
 	rel="stylesheet">
-
+	
+	
 <!-- Font Awesome CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
@@ -35,8 +36,13 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/owl.transitions.css">
 
-<!-- Custom CSS -->
+<!-- Style CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet">
+	
+<!-- Custom CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/custom.css"
 	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath}/resources/css/responsive.css"
@@ -192,11 +198,11 @@
 						<input type="hidden" name="command" value="login">
 						<div class="form-group">
 							<input type="text" class="form-control" id="email-modal"
-								placeholder="ID" name="id">
+								placeholder="ID" name="id" required="required">
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" id="password-modal"
-								placeholder="password" name="password">
+								placeholder="password" name="password" required="required">
 						</div>
 
 						<p class="text-center">
@@ -232,4 +238,3 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
 
-	<!-- 이 위치에 있던 </body> </html> 테그 삭제 -->

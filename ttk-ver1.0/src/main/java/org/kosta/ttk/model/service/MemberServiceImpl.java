@@ -46,4 +46,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<StatsVO> getStats(StatsVO svo){
 		return memberDAO.getStats(svo);
 	}
+	public List<MemberVO> searchMemberByName(String name) {
+		return memberDAO.searchMemberByName(name);
+	}
 }

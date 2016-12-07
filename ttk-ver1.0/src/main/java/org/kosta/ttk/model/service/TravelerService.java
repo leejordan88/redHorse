@@ -10,6 +10,8 @@ public interface TravelerService {
 
 	List<TravelerVO> travelerList(TravelerVO travelerVO);
 	void regiTraveler(TravelerVO tvo);
+	List<TravelerVO> getTravelingList(String id);
+	void hideTravel(TravelerVO travelerVO);
 
 
 }

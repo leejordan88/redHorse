@@ -16,7 +16,7 @@ public class MemberDAOImpl implements MemberDAO  {
 	private SqlSessionTemplate template;
 
 	@Override
-	public MemberVO login(MemberVO vo  ) {
+	public MemberVO login(MemberVO vo) {
 		return template.selectOne("member.login", vo);
 	}
 	@Override
@@ -44,7 +44,10 @@ public class MemberDAOImpl implements MemberDAO  {
 	}
 	@Override
 	public List<StatsVO> getStats(StatsVO svo){
-		
 		return template.selectList("member.getStats", svo);
+	}
+	@Override
+	public List<MemberVO> searchMemberByName(String name) {
+		return template.selectList("member.searchMemberByName", name);
 	}
 }

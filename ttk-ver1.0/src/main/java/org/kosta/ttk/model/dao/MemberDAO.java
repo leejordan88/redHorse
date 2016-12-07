@@ -20,8 +20,8 @@ public interface MemberDAO {
 	List<MemberVO> searchMemberByOption(String str);
 
 	List<StatsVO> getStats(StatsVO svo);
-	
 
+	List<MemberVO> searchMemberByName(String name);
 
 
 
