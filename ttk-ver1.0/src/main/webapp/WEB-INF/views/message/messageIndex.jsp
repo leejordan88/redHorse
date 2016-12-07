@@ -49,7 +49,8 @@
                         <div class="service-item">
                             <i class="service-icon fa fa-trash-o"></i>
                             <h4 class="service-title">Delete Message</h4>
-                        </div>
+                     <!--  <p class="service-desc"></p> -->
+					 </div>
                     </div>
                 </div>
             </div>
@@ -60,11 +61,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#messageList").click(function(){
-			
-			 var popUrl = "messageList.do";    //팝업창에 출력될 페이지 URL
+			location.href="messageList.do";
+			/*  var popUrl = "messageList.do";    //팝업창에 출력될 페이지 URL
 			    var popOption = "width=870, height=600, top=100, left=330 resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-			        window.open(popUrl,"",popOption);
-		
+			        window.open(popUrl,"",popOption); */
 		});
 		$("#messageSendList").click(function(){
 			location.href="messageSendList.do";
@@ -75,13 +75,13 @@
 	});
 </script>
 
-
+<!-- 
  <script type="text/javascript">
 function popupOpen(){
     var popUrl = "messageList.do";    //팝업창에 출력될 페이지 URL
     var popOption = "width=870, height=460, top=200, left=330 resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
         window.open(popUrl,"",popOption);
     }
-</script>      
+</script>       -->
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>

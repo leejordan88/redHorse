@@ -1,7 +1,5 @@
 package org.kosta.ttk.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,21 +34,25 @@ public class MessageController {
 		HttpSession session=request.getSession(false);
 		if(session!=null||session.getAttribute("mvo")==null){
 			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
-			 count = messageService.messageUncheckedCount(smvo);
+			MessageVO messageVO=new MessageVO();
+			messageVO.setId(smvo.getId());
+			count = messageService.messageUncheckedCount(messageVO);
 		}
 		return new ModelAndView("message/messageIndex", "count", count);
 		}
 	
 	
 	@RequestMapping("messageListUnChecked.do")
-	public ModelAndView messageListUnChecked(HttpServletRequest request) {
-		List<MessageVO> list =null;
+	public ModelAndView messageListUnChecked(HttpServletRequest request,String pageNo) {
+		ListVO vo=null;
 		HttpSession session=request.getSession(false);
 		if(session!=null||session.getAttribute("mvo")==null){
 			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
-			list = messageService.messageListUnChecked(smvo);
+				MessageVO messageVO=new MessageVO();
+				messageVO.setId(smvo.getId());
+			vo = messageService.messageListUnChecked(messageVO,pageNo);
 		}
-		return new ModelAndView("message/messagePop/messageListUnChecked", "list", list);
+		return new ModelAndView("message/messagePopup/messageListUnChecked", "vo", vo);
 		}
 	
 	
@@ -64,6 +66,8 @@ public class MessageController {
 				MessageVO messageVO=new MessageVO();
 				messageVO.setId(smvo.getId());
 			vo = messageService.messageList(messageVO,pageNo);
+	
+		
 		}
 		return new ModelAndView("message/messagePopup/messageList", "vo", vo);
 	}

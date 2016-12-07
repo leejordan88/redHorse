@@ -1,6 +1,12 @@
+#msgicon{
+   margin-top: -80px;
+   margin-left: 35%;
+   margin-bottom: -2%;
+}
+
 .services {
   background: #7fbbda;
-  padding: 50px 0;
+  padding: 80px 0;
   color: #ffffff;
 }
 .service-item {
@@ -23,14 +29,14 @@ h4.service-title {
 }
 
 /* 한번도 클릭하지 않은 링크, none으로 언더라인 생기지 않게 함 */
-	a:link {color:#ffffff; text-decoration:none;}
-	한번 이상 클릭한 링크, none으로 언더라인 생기지 않게 함
-	a:visited {color:#ffffff; text-decoration:none;}	
-	마우스 오버시 링크 색상, none으로 언더라인 생기지 않게 함
-	a:hover {color:#ffffff; text-decoration:none;}
-	
-	이미지 마우스 오버시 커서 포인터 변경
-	.action{
-	  cursor: pointer;
-	}
+   a:link {color:#ffffff; text-decoration:none;}
+   한번 이상 클릭한 링크, none으로 언더라인 생기지 않게 함
+   a:visited {color:#ffffff; text-decoration:none;}   
+   마우스 오버시 링크 색상, none으로 언더라인 생기지 않게 함
+   a:hover {color:#ffffff; text-decoration:none;}
+   
+   이미지 마우스 오버시 커서 포인터 변경
+   .action{
+     cursor: pointer;
+   }
 
