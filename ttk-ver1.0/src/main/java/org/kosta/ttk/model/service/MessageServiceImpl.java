@@ -1,12 +1,10 @@
 package org.kosta.ttk.model.service;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.dao.MessageDAO;
 import org.kosta.ttk.model.vo.ListVO;
-import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.MessageVO;
 import org.kosta.ttk.model.vo.PagingBeanVO;
 import org.springframework.stereotype.Service;
@@ -23,8 +21,15 @@ public class MessageServiceImpl implements MessageService {
 	}
 	
 	@Override
-	public List<MessageVO> messageListUnChecked(MemberVO smvo) {
-		return messageDAO.messageListUnChecked(smvo) ;
+	public ListVO messageListUnChecked(MessageVO messageVO,String pageNo) {
+		int totalCount = messageDAO.messageUncheckedCount(messageVO);
+		PagingBeanVO pagingBean = null;
+		if (pageNo == null){
+			pagingBean = new PagingBeanVO(messageVO, totalCount);
+		}else{
+			pagingBean = new PagingBeanVO(messageVO , totalCount, Integer.parseInt(pageNo));
+		}
+		return new ListVO(messageDAO.messageList(pagingBean) , pagingBean);
 	}
 	
 	@Override
@@ -40,24 +45,24 @@ public class MessageServiceImpl implements MessageService {
 	}
 	@Override
 	public ListVO messageSendList(MessageVO messageVO,String pageNo) {
-	
 		int totalCount = messageDAO.messageSendListTotalCount(messageVO);
-	
-		PagingBeanVO pagingBeanSend = null;
+		PagingBeanVO pagingBean = null;
 		if (pageNo == null){
-			pagingBeanSend = new PagingBeanVO(messageVO, totalCount);
+			pagingBean = new PagingBeanVO(messageVO, totalCount);
 		}else{
-			pagingBeanSend = new PagingBeanVO(messageVO , totalCount, Integer.parseInt(pageNo));
+			pagingBean = new PagingBeanVO(messageVO , totalCount, Integer.parseInt(pageNo));
 		}
-		return new ListVO(messageDAO.messageSendList(pagingBeanSend) , pagingBeanSend);
+		return new ListVO(messageDAO.messageSendList(pagingBean) , pagingBean);
 	}
-	
 	@Override
 	public MessageVO messageDetail(int messageNo) {
 		messageDAO.messageReadCheck(messageNo);
 		return messageDAO.messageDetail(messageNo);
 	}
-
+	@Override
+	public int messageUncheckedCount(MessageVO messageVO) {
+		return messageDAO.messageUncheckedCount(messageVO) ;
+	}
 }
 
 

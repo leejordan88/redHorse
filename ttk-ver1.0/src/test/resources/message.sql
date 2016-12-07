@@ -224,16 +224,16 @@ create table message(
 -- sender와 receiver 가 같을경우 생각해보자
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
-values(message_seq.nextval,'java','java2',sysdate,'안녕하세요?');
+values(message_seq.nextval,'java1','java2',sysdate,'ㄴㅇㅁ나ㅓㅗ어ㅏㅁ노아머농ㄴㅇ?');
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
-values(message_seq.nextval,'java2','java',sysdate,'ㅎ2');
+values(message_seq.nextval,'java1','java4',sysdate,'ㄴ언안ㅁㅇㅁ너ㅏ와');
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
-values(message_seq.nextval,'java','java2',sysdate,'아이유씨?');
+values(message_seq.nextval,'java1','java2',sysdate,'ㅇ?');
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
-values(message_seq.nextval,'java2','java',sysdate,'ㅇㅇ');
+values(message_seq.nextval,'java1','java3',sysdate,'ㅇ');
 
 
 
@@ -256,7 +256,7 @@ where ms.receiver=m2.id and m.id='java' and ms.messageState=1 and not ms.receive
 
 select ms.receiver, ms.messageContent, ms.messageDate, m2.profileIMG
 from message ms, member m, member m2 
-where  ms.sender=m2.id  and ms.receiver=m.id  and ms.messageState=1 and  ms.receiver='java'  ;
+where  ms.sender=m2.id  and ms.receiver=m.id  and ms.messageState=1 and  ms.receiver='java1'  ;
 
 
 --받은쪽지 - 전체 
@@ -268,4 +268,53 @@ where  ms.sender=m2.id  and ms.receiver=m.id  and  ms.receiver='java'  ;
 
   select receiver, messageContent, messageDate
 from message
-where messageNo=2
+where sender='java1';
+
+
+select count(*)from 
+message where messageState=1 and receiver='java1'
+
+select *from 
+message where messageState=1 and receiver='java1'
+
+
+
+
+
+select messageNo,sender,receiver, messageContent, messageDate, profileIMG 
+from message 
+where  messageState=1 and receiver='java1'
+
+
+
+select rnum, messageNo, sender ,receiver, messageDate, messageContent, messageState FROM
+( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,sender,receiver,messageDate,messageContent,messageState  FROM message
+where receiver ='java1'  ) rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+-- 받은쪾지 페이징빈
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.sender=m2.id and  ms.receiver ='java1')  rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+
+-- 안읽은쪽지페이징빈
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.messageState=1 and ms.sender=m2.id and  ms.receiver ='java1')  rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+
+
+
+
+
+
+
+

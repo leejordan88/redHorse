@@ -138,10 +138,17 @@
 							<!-- 로그인 등장 끝 -->
 
 							<!-- 쪽지 함 -->
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> <i
-									class="fa fa-envelope-o"></i> <span class="badge bg-green">1</span>
+							<li role="presentation" class="dropdown">
+							<a href=
+							"javascript:;"
+								
+								 class="dropdown-toggle info-number"
+								data-toggle="dropdown" aria-expanded="false"> 
+								
+							<!-- 	<a href="messageUncheckedCount.do"> -->
+								
+								
+								<i	class="fa fa-envelope-o"></i> <span class="badge bg-green">N</span>
 							</a>
 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
 									role="menu">
@@ -155,17 +162,17 @@
 
 									<li>
 										<div class="text-center">
-											<a href="javascript:popupOpen();"> <strong>See
+											<a href="messageUncheckedCount.do"> <strong>See
 													All Letters</strong> <i class="fa fa-angle-right"></i>
-											</a>
-										</div> <script type="text/javascript">
+									  		</a>
+										</div> <!-- <script type="text/javascript">
 											function popupOpen() {
 												var popUrl = "messageList.do"; //팝업창에 출력될 페이지 URL
 												var popOption = "width=870, height=460, top=200, left=330 resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
 												window.open(popUrl, "",
 														popOption);
 											}
-										</script>
+										</script> -->
 
 
 									</li>
@@ -226,10 +233,22 @@
 
 	<!-- 로그인 모달 끝 -->
 
+<<<<<<< HEAD
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
     <!-- FastClick -->
     <script src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
     <!-- NProgress -->
     <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
+=======
+	<!-- jQuery -->
+	<script
+		src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
+	<!-- FastClick -->
+	<script
+		src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
+	<!-- NProgress -->
+	<script
+		src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
+>>>>>>> branch 'version1.2' of https://github.com/leejordan88/redHorse.git
 

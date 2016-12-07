@@ -35,7 +35,7 @@ public class MessageDAOImpl implements MessageDAO {
 		template.update("post.messageReadCheck",messageNo );
 	}
 	
-	@Override
+
 	public List<MessageVO> messageSendList(PagingBeanVO pagingBeanSend) {
 		return template.selectList("post.messageSendList", pagingBeanSend);
 	}
@@ -47,6 +47,10 @@ public class MessageDAOImpl implements MessageDAO {
 	@Override
 	public int messageSendListTotalCount(MessageVO messageVO) {
 		return template.selectOne("post.messageSendListTotalCount",messageVO);
-		
 	}
+	@Override
+	public int messageUncheckedCount(MessageVO messageVO) {
+		return template.selectOne("post.messageUncheckedCount",messageVO);
+	}
+
 }

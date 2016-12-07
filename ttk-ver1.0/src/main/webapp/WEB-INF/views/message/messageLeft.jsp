@@ -1,25 +1,28 @@
-table,th,td{
-	border: 1px solid black;
-}
-table {
-	border-collapse: collapse;
-}
-th,td{
-	padding: 10px;
-}
-.layout{
-	width: 100%;	
-}
-
-.messageLeft{
-	height: 400px;
-	width: 230px;
-	vertical-align: top;
-}
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 
-/* 
+<p>
+${sessionScope.mvo.profileimg}<br>
+${sessionScope.mvo.id}<br>
 
+<a href="messageListUnChecked.do"></a>
+<a href="messageList.do">받은쪽지함 </a><br>
+<a href="messageSendList.do">보낸쪽지함 </a><br>
+</p>
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"  import="java.util.ArrayList,model.ItemVO,model.MemberVO"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+<title>상품 목록</title>
+</head>
+<body>
 <table class="layout">
 	<tr>
 		<td colspan="2" class="header">
@@ -62,5 +65,5 @@ th,td{
 	</tr>
 </table>
 
-
- */
+</body>
+</html> --%>
