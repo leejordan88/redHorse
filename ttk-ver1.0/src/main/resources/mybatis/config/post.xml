@@ -27,6 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      select count(*)from message where sender=#{id}
  </select>
  
+  <select id="messageUncheckedCount"     parameterType="memberVO"  resultType="int">
+ 	 select count(*)from message where messageState=1 and receiver=#{id}
+ </select>
  
 <select id="messageList"   resultMap="usePagingBeanVO"  >
 select rnum, messageNo, sender ,receiver, messageDate, messageContent, messageState FROM
@@ -39,7 +42,7 @@ where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageNo d
  <select id="messageSendList"     resultMap="usePagingBeanVO"  >
 select rnum, messageNo, receiver, sender, messageContent , messageDate FROM
 ( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,messageContent, messageDate, sender, receiver  FROM message
-where sender ='java' )rnum
+where sender =#{messageVO.id})rnum
 where   rnum  between #{startRowNumber} and #{endRowNumber}  order by messageNo desc
 </select>
  

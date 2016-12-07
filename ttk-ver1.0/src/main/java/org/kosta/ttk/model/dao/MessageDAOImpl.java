@@ -53,7 +53,7 @@ public class MessageDAOImpl implements MessageDAO {
 
 	@Override
 	public int messageUncheckedCount(MemberVO memberVO) {
-		return template.selectOne("message.messageUncheckedCount",memberVO);
+		return template.selectOne("post.messageUncheckedCount",memberVO);
 	}
 
 }

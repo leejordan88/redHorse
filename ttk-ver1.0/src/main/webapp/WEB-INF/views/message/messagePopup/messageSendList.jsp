@@ -38,25 +38,31 @@
 	<!-- Services -->
 	<div id="services" class="services">
 		<div class="container">
-			<!-- <div class="row">
+			<div class="row">
                     <div class="col-md-4 col-md-offset-4 text-center">
-                        <h2 class="main-title">Our Services</h2>
+                        <h2 class="main-title">
+                        <img src="${pageContext.request.contextPath}/resources/images/message/mainReceive.png" id="">
+                        <img src="${pageContext.request.contextPath}/resources/images/message/mainUncheck.png">
+                       <img src="${pageContext.request.contextPath}/resources/images/message/mainDelete.png">
+                       </h2>
                         <hr>
                     </div>
-                </div> -->
-			<table>
+                </div>
+<table>
 <c:forEach var="msvo" items="${requestScope.vo.list}">	
  <tr>
-<td>${msvo.messageVO.receiver}</td> 
- <td>${msvo.messageVO.messageDate}</td>  
-   <td> <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}" >  ${msvo.messageVO.messageContent} </a>  </td>     
- <td><img src="${pageContext.request.contextPath}/resources/images/message/deleteB.PNG"></td>
- <td><img
-									src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}"></td>
+<td><h3>${msvo.messageVO.receiver}</h3></td> 
+ <td>${msvo.messageVO.messageDate} | <br>   <%-- <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}" ></a> --%>  ${msvo.messageVO.messageContent}    </td>  
+<%--  <td><img src="${pageContext.request.contextPath}/resources/images/message/deleteB.PNG"></td> --%>
  </tr>
-</c:forEach>
-</table>
 
+</c:forEach>
+
+<%-- <td>사진<img
+									src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}"></td> --%>
+
+
+</table>
 			<p class="paging">
 		<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
 		<c:if test="${pb.previousPageGroup}">
