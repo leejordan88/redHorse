@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.ttk.model.dao.MemberDAO;
 import org.kosta.ttk.model.service.MemberService;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;
@@ -48,7 +47,7 @@ public class PlaceController {
 		listVO.setCategoryList(categoryList);
 		listVO.setTravelerList(travelerList);
 		listVO.setStatsList(statsList);
-		//System.out.println(listVO);
+		System.out.println(listVO);
 		return new ModelAndView("index", "listVO", listVO);
 	}
 	

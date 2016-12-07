@@ -41,9 +41,9 @@
 	rel="stylesheet">
 	
 <!-- Custom CSS -->
-<%-- <link
+<link
 	href="${pageContext.request.contextPath}/resources/css/custom.css"
-	rel="stylesheet"> --%>
+	rel="stylesheet"> 
 <link
 	href="${pageContext.request.contextPath}/resources/css/responsive.css"
 	rel="stylesheet">
