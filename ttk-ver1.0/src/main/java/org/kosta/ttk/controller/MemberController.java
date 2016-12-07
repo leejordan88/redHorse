@@ -73,7 +73,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
 	public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
-		
 		System.out.println(memberVO);
 		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
 		File uploadDir=new File(uploadPath);
@@ -98,6 +97,14 @@ public class MemberController {
 
 		return "register_result";
 	}
+	
+	@RequestMapping("idcheckAjax.do")
+	@ResponseBody
+	public String idcheckAjax(String id) {		
+		int count=memberService.idcheck(id);
+		return (count==0) ? "ok":"fail"; 		
+	}
+
 /**
  * 회원 비활성화  12/1 완료  1 활성화 -> 0 비활성화 업데이트 
  * @param session
@@ -126,13 +133,13 @@ public class MemberController {
 			}else if(search[i].equals("2")){
 				sex+=2;
 			}else if(search[i].equals("10")){
-				ageRange.add("(age<20)");
+				ageRange.add("age<20");
 			}else if(search[i].equals("20")){
-				ageRange.add("(20<=age and age<30)");
+				ageRange.add("20<=age and age<30");
 			}else if(search[i].equals("30")){
-				ageRange.add("(30<=age and age<40)");
+				ageRange.add("30<=age and age<40");
 			}else if(search[i].equals("40")){
-				ageRange.add("(40<=age)");
+				ageRange.add("40<=age");
 			}
 		}
 		if(!ageRange.isEmpty()){
@@ -142,7 +149,7 @@ public class MemberController {
 		}
 		String str="";
 		if((sex==1||sex==2)&&age.length()>0){
-			str="sex="+sex+" and ("+age+")";
+			str="sex="+sex+" and "+age;
 		}else if(age.length()>0){
 			str=age.toString();
 		}else if(sex==1||sex==2){
@@ -150,6 +157,9 @@ public class MemberController {
 		}else if(sex==3){
 			str="sex=1 or sex=2";
 		}
+		System.out.println(age.length());
+		System.out.println(sex);
+		System.out.println(ageRange);
 		System.out.println(str);
 		List<MemberVO> list =memberService.searchMemberByOption(str);
 		if(list.isEmpty()){
@@ -175,19 +185,4 @@ public class MemberController {
 		travelerService.hideTravel(travelerVO);
 		return new ModelAndView("redirect:schedule.do");
 	}
-
-	@RequestMapping("searchMemberByName.do")
-	@ResponseBody
-	public Object searchMemberByName(String name){
-		System.out.println(name);
-		List<MemberVO> list =memberService.searchMemberByName(name);
-		if(list.isEmpty()){
-			HashMap<String,String> map=new HashMap<String,String>();
-			map.put("error","fail");
-			return map;
-		}
-			
-		return list;
-	}
-	
 }
