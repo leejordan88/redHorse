@@ -49,7 +49,7 @@
   			  	<div id="step-1">
   			  		<div class="form-group">
   			  		<br>
-  			  		<textarea rows="20" cols="150" class="agrTextarea">TTK 및 TTK 관련 제반 서비스의 이용과 관련하여 필요한 사항을 규정합니다.
+  			  		<textarea rows="20" cols="150" class="agrTextarea" readonly="readonly">TTK 및 TTK 관련 제반 서비스의 이용과 관련하여 필요한 사항을 규정합니다.
 제 1조 (목적)
 이 약관은 TTK(주)(이하 "회사")가 제공하는 TTK 및 TTK 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
 제 2조 (정의)
