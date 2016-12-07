@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,13 +89,23 @@
  					<input type="file" name=uploadFile><br>
                </div>               
                <!-- 프로필사진 끝 -->        
-               <!-- 전체 공개 범위 -->
+               <!-- 전체 공개 범위
+                range 위치 변경 문 12/7 진석 -->
              <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">검색공개범위 
                             <span class="required">*</span></label>
+                            
                           <div class="col-md-6 col-sm-3 col-xs-12">
+                 <c:choose>
+                 	<c:when test="${sessionScope.mvo.range==1}">                              
                               <input type="radio"  checked name="range" value="1"> 전체공개
-                              <input type="radio"  name="range" value="0"> 비공개
+                              <input type="radio"   name="range" value="0"> 비공개
+                     </c:when>
+                     <c:otherwise>                              
+                              <input type="radio"   name="range" value="1"> 전체공개
+                              <input type="radio"  checked name="range" value="0"> 비공개
+                     </c:otherwise>
+                     </c:choose>                                    
                           </div>				
                             <span id="msg_range"></span>
                           </div>

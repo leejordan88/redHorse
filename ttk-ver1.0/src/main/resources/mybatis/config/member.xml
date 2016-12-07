@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 <!-- enabled=1 일떄 로그인 가능 0일때 접근불가 -->
 	</select>
 	<update id="updateMember" parameterType="memberVO">
-		update member set password=#{password},tel=#{tel},address=#{address}
+		update member set password=#{password},tel=#{tel},address=#{address},range=#{range}
 		<if test="profileimg != null">
 			,profileimg=#{profileimg}
 		</if>

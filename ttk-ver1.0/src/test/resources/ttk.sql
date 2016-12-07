@@ -113,6 +113,8 @@ insert into area(areaname,areapicture) values('전라도','전라도.jpg');
 insert into area(areaname,areapicture) values('제주도','제주도.jpg');
 insert into area(areaname,areapicture) values('충청도','충청도.jpg');
 
+
+--오류
 drop table place;
 create table place(
  placeNo number primary key,
@@ -394,7 +396,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '265','뽀빠이핫도그.jpg', '뽀빠이핫도그', '부산광역시 중구 창선동 1가 30-12', '35.099580', '129.031067', '맛집', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '266','할매집 회국수.jpg', '할매집 회국수', '부산광역시 중구 남포동 2가 15-1', '35.099127', '129.031497', '맛집', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '267','미스터스시.jpg', '미스터스시', '부산광역시 사하구 다대동 1552-18', '35.048824', '128.965396', '맛집', '부산');
-insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '268','VR플러스부산남포점.jpg', 'VR플러스부산남포점', '부산광역시 중구 남포동 6가 85 남포프라자 지하1층', '35.097711', '129.028991', '액티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '268','VR플러스부산남포점.jpg', 'VR플러스부산남포점', '부산광역시 중구 남포동 6가 85 남포프라자 지하1층', '35.097711', '129.028991', '엑티비티', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '269','광안비치랜드.jpg', '광안비치랜드', '부산광역시 수영구 민락동 181-191', '35.154320', '129.124879', '엑티비티', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '270','디오라마월드.jpg', '디오라마월드', '부산광역시 해운대구 우동 1468-1', '35.171515', '129.128809', '엑티비티', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '271','주라지 테마파크.jpg', '주라지 테마파크', '부산광역시 해운대구 우동 1495 신세계백화점 센텀시티점 9F', '35.168956', '129.129743', '엑티비티', '부산');
@@ -544,8 +546,6 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '415','옥천학생야영장.jpg', '옥천학생야영장', '충청북도 옥천군 이원면 용방리 1016-1', '36.255834', '127.635966', '엑티비티', '충청도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '416','도레미캠핑장.jpg', '도레미캠핑장', '충청북도 괴산군 불정면 세평리', '36.857619', '127.820288', '엑티비티', '충청도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '417','아산레일바이크.jpg', '아산레일바이크', '충청남도 아산시 도고면 아산만로 199-7', '36.761284', '126.867220', '엑티비티', '충청도');
-
-
 --------------------------회원, 장소 까지 
 drop table travelerRange
 select*from travelerRange
@@ -598,6 +598,9 @@ create table memberPicture(
  hit number default 0,
 constraint fk_member foreign key(id) references member(id)
  );
+ 
+insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate,pictureContent)
+values(memberPicture_seq.nextval,'java1','준성.jpg','강릉에서~~~!2',sysdate,'123')
 
 --message
 

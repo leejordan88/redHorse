@@ -42,9 +42,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> searchMemberByOption(String str) {
 		return memberDAO.searchMemberByOption(str);
 	}
-	@Override
-	public List<StatsVO> getStats(StatsVO svo){
-		return memberDAO.getStats(svo);
+
+	// 통계 
+	@Override 
+	public List<StatsVO> getStats(){
+		return memberDAO.getStats();
 	}
 	public List<MemberVO> searchMemberByName(String name) {
 		return memberDAO.searchMemberByName(name);

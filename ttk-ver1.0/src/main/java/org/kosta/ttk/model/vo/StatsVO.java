@@ -1,5 +1,9 @@
 package org.kosta.ttk.model.vo;
-
+/**
+ * 통계 VO 추가 12/7 진석
+ * @author kosta
+ *
+ */
 public class StatsVO {
 	private int male;
 	private int female;

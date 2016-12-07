@@ -43,8 +43,8 @@ public class MemberDAOImpl implements MemberDAO  {
 		return template.selectList("member.searchMemberByOption", str);
 	}
 	@Override
-	public List<StatsVO> getStats(StatsVO svo){
-		return template.selectList("member.getStats", svo);
+	public List<StatsVO> getStats(){
+		return template.selectList("member.getStats");
 	}
 	@Override
 	public List<MemberVO> searchMemberByName(String name) {
