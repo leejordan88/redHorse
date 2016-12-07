@@ -537,7 +537,7 @@ create table traveler(
  placeNo number,
  id varchar2(100),
  tdate date not null,
- tstate number default 1,              -- 1일때 진행중   0일때 감추기
+ tstate number default 1,              -- 1일때 진행중 2~4는 여행 종료( findPartner= 2, changedPlan=3, otherReason=4)
  trange number constraint fk_traveler_trange references travelerRange(trange),               
  constraint pk_placeNo foreign key(placeNo) references place,
  constraint pk_id foreign key(id) references member,
@@ -579,4 +579,9 @@ create table message(
  messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
  );
 -- sender와 reciever 가 같을경우 생각해보자
+
+ --여행일정 뽑는 SQL
+select p.placeName, p.areaName, t.tDate
+from traveler t, place p
+where t.placeNo = p.placeNo and t.id = 'java1';
 

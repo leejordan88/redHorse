@@ -65,13 +65,51 @@
 									</a>
 									<div class="media-body">
 										${msvo.messageVO.messageContent}  <br /> <small class="text-muted">${msvo.messageVO.sender}
-											| ${msvo.messageVO.messageDate}</small>
+											| ${msvo.messageVO.messageDate} | <c:if test="${msvo.messageVO.messageState==0}">읽음</c:if></small>  
 										<hr />
 									</div>
 								</div>
 							</div>
 						</li>
 </c:forEach>
+		
+		<li class="media">
+							<div class="media-body">
+								<div class="media">
+									<a class="pull-left" href="#"> <img
+										class="media-object img-circle "  />
+									</a>
+									<div class="media-body">
+									<!-- 페이징 -->
+<p class="paging">
+	<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+	<c:if test="${pb.previousPageGroup}">
+		<a href="messageList.do?pageNo=${pb.startPageOfPageGroup-1}">◀&nbsp;
+		</a>
+	</c:if>
+	<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+		end="${pb.endPageOfPageGroup}">
+		<c:choose>
+			<c:when test="${pb.nowPage!=i}">
+				<a href="messageList.do?pageNo=${i}">${i}</a>
+			</c:when>
+			<c:otherwise>
+	${i}
+	</c:otherwise>
+		</c:choose>
+	&nbsp;
+	</c:forEach>
+	<c:if test="${pb.nextPageGroup}">
+		<a href="messageList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+	</c:if>
+</p>
+										<hr />
+									</div>
+								</div>
+							</div>
+						</li>
+		
+		
 		<%-- 					
 				<c:forEach var="msvo" items="${requestScope.vo.list}">
 						<c:if test="${msvo.messageVO.messageState==0}"><img src="${pageContext.request.contextPath}/resources/images/message/checkB.PNG"></c:if>
@@ -98,29 +136,7 @@
 
 
 
-<!-- 페이징 -->
-<p class="paging">
-	<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
-	<c:if test="${pb.previousPageGroup}">
-		<a href="messageList.do?pageNo=${pb.startPageOfPageGroup-1}">◀&nbsp;
-		</a>
-	</c:if>
-	<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-		end="${pb.endPageOfPageGroup}">
-		<c:choose>
-			<c:when test="${pb.nowPage!=i}">
-				<a href="messageList.do?pageNo=${i}">${i}</a>
-			</c:when>
-			<c:otherwise>
-	${i}
-	</c:otherwise>
-		</c:choose>
-	&nbsp;
-	</c:forEach>
-	<c:if test="${pb.nextPageGroup}">
-		<a href="messageList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
-	</c:if>
-</p>
+
 
 
 <%-- 	</div>

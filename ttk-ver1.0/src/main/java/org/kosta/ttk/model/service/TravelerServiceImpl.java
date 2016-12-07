@@ -33,4 +33,14 @@ public class TravelerServiceImpl implements TravelerService {
 		travelerDAO.regiTraveler(tvo);
 	}
 
+	@Override
+	public List<TravelerVO> getTravelingList(String id) {
+		return travelerDAO.getTravelingList(id);
+	}
+
+	@Override
+	public void hideTravel(TravelerVO travelerVO) {
+		travelerDAO.hideTravel(travelerVO);
+	}	
+
 }

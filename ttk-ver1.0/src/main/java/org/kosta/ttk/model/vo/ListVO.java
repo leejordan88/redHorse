@@ -12,7 +12,7 @@ public class ListVO {
 	private List<AreaVO> areaList;
 	private List<CategoryVO> categoryList;
 	private List<TravelerVO> travelerList;
-
+	
 	private List<MessageVO> list;
 	private PagingBeanVO pagingBean;
 

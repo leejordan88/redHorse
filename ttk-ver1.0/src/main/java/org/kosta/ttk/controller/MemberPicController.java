@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MemberPicController {
 	@Resource
-		private MemberPicService memberPicService;
+	private MemberPicService memberPicService;
 	
 	private String uploadPath;
 	/**
@@ -69,15 +69,7 @@ public class MemberPicController {
 		System.out.println(memberPicVO);
 		return "uploadMemberPic_result";
 	}
-	
-/*	*//**
-	 * 사진 업로드 후 사진첩 페이지 목록으로 이동
-	 * @return
-	 *//*
-	@RequestMapping("mypic.do")
-	public String myPic(){
-		return "mypage2";
-	}*/
+
 	
 	/**
 	 * 사진 리스트

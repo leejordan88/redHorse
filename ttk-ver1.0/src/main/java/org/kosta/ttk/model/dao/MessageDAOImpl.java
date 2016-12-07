@@ -15,44 +15,45 @@ public class MessageDAOImpl implements MessageDAO {
 	private SqlSessionTemplate template;
 	@Override
 	public void messageSend(MessageVO messageVO) {
-		template.insert("message.messageSend",messageVO);
+		template.insert("post.messageSend",messageVO);
 	}
 	@Override
 	public List<MessageVO> messageListUnChecked(MemberVO smvo) {
-		return template.selectList("message.messageListUnChecked", smvo);
+		return template.selectList("post.messageListUnChecked", smvo);
 	}
 	@Override
 	public List<MessageVO> messageList(PagingBeanVO pagingBean) {
-		return  template.selectList("message.messageList", pagingBean);
+		return  template.selectList("post.messageList", pagingBean);
 	}
 	
 	@Override
 	public MessageVO messageDetail(int messageNo) {
-		return template.selectOne("message.messageDetail",messageNo );
+		return template.selectOne("post.messageDetail",messageNo );
 	}
 	@Override
 	public void messageReadCheck(int messageNo) {
-		template.update("message.messageReadCheck",messageNo );
+		template.update("post.messageReadCheck",messageNo );
 	}
 	
-	@Override
-	public List<MessageVO> messageSendList(PagingBeanVO pagingBean) {
-		return template.selectList("message.messageSendList", pagingBean);
+
+	public List<MessageVO> messageSendList(PagingBeanVO pagingBeanSend) {
+		return template.selectList("post.messageSendList", pagingBeanSend);
 	}
 	@Override
 	public int messageListTotalCount(MessageVO messageVO) {
-		return template.selectOne("message.messageListTotalCount",messageVO);
+		return template.selectOne("post.messageListTotalCount",messageVO);
 	}
 
 	@Override
 	public int messageSendListTotalCount(MessageVO messageVO) {
-		return template.selectOne("message.messageSendListTotalCount",messageVO);
+
+		return template.selectOne("post.messageSendListTotalCount",messageVO);
+		
 	}
 
 	@Override
 	public int messageUncheckedCount(MemberVO memberVO) {
 		return template.selectOne("message.messageUncheckedCount",memberVO);
 	}
-	
 
 }
