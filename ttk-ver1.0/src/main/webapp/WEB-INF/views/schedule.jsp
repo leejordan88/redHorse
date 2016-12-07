@@ -71,6 +71,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<!-- Start Portfolio items -->
+			<!-- $(this).parent().next().next().next().html(); -->
 			<div id="travelView">
 				<c:forEach items="${travelingList}" var="list">
 					<c:if test="${i%j == 0 }">
