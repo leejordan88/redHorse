@@ -10,11 +10,11 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="footer-social text-center">
                             <ul>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,3 +68,6 @@
      <!-- Js -->
     <script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+    
+    
+    
