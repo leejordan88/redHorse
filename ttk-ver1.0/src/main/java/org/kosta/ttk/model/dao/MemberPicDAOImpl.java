@@ -36,6 +36,12 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 		template.update("memberpic.updateHit",pictureNo);
 	}
 	
+	// 12/7 조회수 보기
+	@Override
+	public int getUpdateHit(int pictureNo) {		
+		return template.selectOne("memberpic.getUpdateHit", pictureNo);
+	}
+	
 	// 사진 상세보기
 	@Override
 	public MemberPicVO showPictureDetail(int pictureNo){
@@ -47,5 +53,14 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	public void deleteMemberPic(int pictureNo){
 		template.delete("memberpic.deleteMemberPic", pictureNo);
 	}
+	
+	// 12/6 사진 수정
+	@Override
+	public void updateMemberPic(MemberPicVO pvo){
+		System.out.println(pvo);
+		template.update("memberpic.updateMemberPic", pvo);
+	}
+
+
 	
 }

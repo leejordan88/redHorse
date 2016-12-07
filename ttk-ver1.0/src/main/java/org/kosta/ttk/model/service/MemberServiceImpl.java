@@ -24,10 +24,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.registerMember(memberVO);
 	}
 	
-	@Override
+/*	@Override
 	public int idcheck(String id) {
 		return memberDAO.idcheck(id);
-	}
+	}*/
 	
 	public MemberVO findMember(String id) {
 		return memberDAO.findMember(id);
@@ -37,8 +37,8 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.updateDelete(vo);
 
 	}
-	@Override
+	/*@Override
 	public List<MemberVO> searchMemberByOption(String str) {
 		return memberDAO.searchMemberByOption(str);
-	}
+	}*/
 }

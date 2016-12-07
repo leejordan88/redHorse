@@ -35,6 +35,12 @@ public class MemberPicServiceImpl implements MemberPicService {
 		memberPicDAO.updateHit(pictureNo);
 	}
 	
+	// 12/7 추가 조회수 보기
+	@Override
+	public int getUpdateHit(int pictureNo) {		
+		return memberPicDAO.getUpdateHit(pictureNo);
+	}
+	
 	// 12/5 사진 상세보기(조회수 증가)
 	@Override
 	public MemberPicVO showPictureDetail(int pictureNo){
@@ -54,6 +60,12 @@ public class MemberPicServiceImpl implements MemberPicService {
 		memberPicDAO.deleteMemberPic(pictureNo);
 	}
 	
-	// 사진 수정하기
+	// 12/6 사진 수정하기
+	@Override
+	public void updateMemberPic(MemberPicVO pvo){
+		System.out.println(pvo);
+		memberPicDAO.updateMemberPic(pvo);
+	}
+
 	
 }

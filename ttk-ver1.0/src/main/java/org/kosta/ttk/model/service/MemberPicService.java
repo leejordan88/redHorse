@@ -12,11 +12,19 @@ public interface MemberPicService {
 
 	void updateHit(int pictureNo);
 
+	// 12/7 추가 부분
+	int getUpdateHit(int pictureNo);
+	// /////////////////////////////
+	
 	MemberPicVO showPictureDetail(int pictureNo);
 
 	MemberPicVO showPictureDetailNoHit(int pictureNo);
 
 	void deleteMemberPic(int pictureNo);
+
+	void updateMemberPic(MemberPicVO pvo);
+
+	
 
 	
 

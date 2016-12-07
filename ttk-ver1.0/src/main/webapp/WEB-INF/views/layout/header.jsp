@@ -88,7 +88,7 @@
 
 			<!-- 회원가입시 적용 -->
 			<!-- Collect the nav links, forms, and other content for toggling -->
-
+	<%-- 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
@@ -99,7 +99,7 @@
 					<li><a class="page-scroll" href="profile_list.do">ProfileList</a>
 					</li>
 
-					<c:choose>
+				<c:choose>
 						<c:when test="${sessionScope.mvo==null}">
 							<li><a href="register.do">회원가입</a></li>
 							<li><a href="#" data-toggle="modal"
@@ -116,7 +116,7 @@
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="getPictureList.do">My Profile</a></li>
-									<li><a href="upload.do">글쓰기</a></li>
+									<li><a href="upload.do">글쓰기</a></li> --%>
 
 
 

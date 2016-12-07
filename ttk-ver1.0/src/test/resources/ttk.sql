@@ -176,7 +176,7 @@ select*from memberPicture
 create table memberPicture(
  pictureNo number primary key,
  id varchar2(100),
- filename varchar2(100) not null,
+ fileName varchar2(100) not null,
  pictureTitle varchar2(100) not null,
  pictureDate date not null,
  pictureContent clob not null,
@@ -185,7 +185,7 @@ constraint fk_member foreign key(id) references member(id)
  )
 
  
- insert into memberPicture(pictureNo,id,filename,pictureTitle,pictureDate)
+ insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate)
 values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
 
 
@@ -457,3 +457,9 @@ select * from place where areaName = '강원도' and categoryName = '맛집';
 
 select * from traveler where placeNo = 1 and tDate = '2016-11-29'
 
+
+	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
+	where pictureNo=63
+
+	update memberPicture set pictureTitle='rrr', pictureContent='rrr', filename='속초_봉포머구리집.jpg'
+	where pictureNo=2

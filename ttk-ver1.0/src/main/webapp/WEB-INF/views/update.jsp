@@ -36,7 +36,7 @@
 	<!-- 수정 시작 form -->
 	<form class="form-horizontal form-label-left" method="post"
 		action="${pageContext.request.contextPath}/updateMemberAction.do">
-		<input type="hidden" name="command" value="update">
+		<input type="hidden" name="'[-]" value="update">
 		<!-- 아이디시작 -->
 		<div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">아이디
