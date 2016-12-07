@@ -40,12 +40,12 @@ where ms.sender=m2.id and  ms.receiver =#{messageVO.id})  rnum
 where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo desc
 </select>
  
- 
  <select id="messageSendList"     resultMap="usePagingBeanVO"  >
-select rnum, messageNo, receiver, sender, messageContent , messageDate FROM
-( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,messageContent, messageDate, sender, receiver  FROM message
-where sender =#{messageVO.id}) rnum
-where   rnum  between #{startRowNumber} and #{endRowNumber}  order by messageNo desc
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.receiver=m2.id and  ms.sender =#{messageVO.id})  rnum
+where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo desc
 </select>
  
  

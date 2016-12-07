@@ -585,3 +585,10 @@ select p.placeName, p.areaName, t.tDate
 from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
 
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.receiver=m2.id and  ms.sender ='java1')  rnum
+where   rnum  between 1 and 7 order by messageNo desc

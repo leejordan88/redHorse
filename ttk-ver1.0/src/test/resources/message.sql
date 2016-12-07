@@ -310,6 +310,11 @@ where ms.messageState=1 and ms.sender=m2.id and  ms.receiver ='java1')  rnum
 where   rnum  between 1 and 4 order by messageNo desc
 
 
+ -- 보낸쪽지 수정전 
+select rnum, messageNo, receiver, sender, messageContent , messageDate FROM
+( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,messageContent, messageDate, sender, receiver  FROM message
+where sender =#{messageVO.id}) rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber}  order by messageNo desc
 
 
 
