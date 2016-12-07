@@ -222,14 +222,11 @@
 
 	<!-- 로그인 모달 끝 -->
 
-
-
-	<!-- jQuery -->
-	<script
-		src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
-	<!-- FastClick -->
-	<script
-		src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
-	<!-- NProgress -->
-	<script
-		src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>
+    
+    
+    <!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
+    <!-- FastClick -->
+    <script src="${pageContext.request.contextPath}/resources/vendors/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="${pageContext.request.contextPath}/resources/vendors/nprogress.js"></script>

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.ttk.model.dao.MemberPicDAO;
 import org.kosta.ttk.model.vo.MemberPicVO;
+import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -45,5 +46,20 @@ public class MemberPicServiceImpl implements MemberPicService {
 	@Override
 	public MemberPicVO showPictureDetailNoHit(int pictureNo){		
 		return memberPicDAO.showPictureDetail(pictureNo);
+	}
+
+/*
+ * 영주 타회원 프로필보기 
+ * (non-Javadoc)
+ * @see org.kosta.ttk.model.service.MemberPicService#visitMemberPic(java.lang.String)
+ */
+	@Override
+	public List<MemberPicVO> visitMemberPic(String id) {
+		return memberPicDAO.visitMemberPic(id);
+	}
+
+	@Override
+	public MemberVO getMemberInfo(String id) {
+		return memberPicDAO.getMemberInfo(id);
 	}			
 }

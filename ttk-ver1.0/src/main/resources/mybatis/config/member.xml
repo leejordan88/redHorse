@@ -49,4 +49,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where name like '%${value}%' and range=1 and enabled = 1
 	]]>
 	</select>
+	
+	<update id="updateHit">
+		update member set hit=hit+1 where id=#{value}
+	</update>
+	
+	<select id="getMemberInfo" resultType="memberVO">
+		select id,name, introduce, hit, profileimg from member where id=#{value}
+	</select>
+	
 </mapper>

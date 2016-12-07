@@ -92,5 +92,24 @@ public class MemberPicController {
 	@RequestMapping("showPictureDetailNoHit.do")
 	public ModelAndView showPictureDetailNoHit(int pictureNo) {			
 		return new ModelAndView("memberpic_list","pvo",memberPicService.showPictureDetailNoHit(pictureNo));
-	}		
+	}	
+	
+	@RequestMapping("visitMemberPic.do")
+	public ModelAndView visitMemberPic(String id,HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
+		
+		if(session!=null&&mvo.getId().equals(id)){
+			return new ModelAndView("redirect:getPictureList.do");
+		}
+
+		ModelAndView mv =new ModelAndView();
+		mv.setViewName("memberpic_list");
+		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
+		mv.addObject("list", memberPicService.visitMemberPic(id));
+			
+		return mv;
+	}
+	
+	
 }
