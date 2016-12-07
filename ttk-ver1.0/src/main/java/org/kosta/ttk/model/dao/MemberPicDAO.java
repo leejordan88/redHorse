@@ -13,10 +13,18 @@ public interface MemberPicDAO {
 
 	void updateHit(int pictureNo);
 
+	// 12/7 추가 부분
+	int getUpdateHit(int pictureNo);	
+	// /////////////////////////////
+	
 	MemberPicVO showPictureDetail(int pictureNo);
 
 	List<MemberPicVO> visitMemberPic(String id);
 
+
 	MemberVO getMemberInfo(String id);
+
+	void updateMemberPic(MemberPicVO pvo);
+	void deleteMemberPic(int pictureNo);
 
 }

@@ -127,7 +127,129 @@ create table place(
  areaname varchar2(100) not null,
  constraint fk_category foreign key(categoryname) references category(categoryname),
  constraint fk_area foreign key(areaname) references area(areaname)
+
 );
+
+
+select * from place where areaname = '강원도' and categoryname = '맛집';
+
+drop table category
+drop table area
+drop table place
+select*from area
+select*from category
+select*from place
+
+
+--------------------------회원, 장소 까지 
+drop table travelerRange
+select*from travelerRange
+
+----공개범위설정
+create table travelerRange(
+trange number primary key,
+trangeCategory varchar2(100) not null
+)
+
+insert into travelerRange(trange,trangeCategory)
+values(1,'남자');
+
+insert into travelerRange(trange,trangeCategory)
+values(2,'여자');
+
+insert into travelerRange(trange,trangeCategory)
+values(3,'전체');
+
+--  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+drop table traveler
+select*from traveler
+
+create table traveler(
+ placeNo number,
+ id varchar2(100),
+ tdate date not null,
+ tstate number default 1,              -- 1일때 진행중   0일때 감추기
+ 
+ trange number constraint fk_traveler_trange references travelerRange(trange),               
+ 
+ constraint pk_placeNo foreign key(placeNo) references place,
+ constraint pk_id foreign key(id) references member,
+ constraint pk_traveler primary key(placeNo,id,tdate)
+ )
+
+
+ 
+ -- to_date(시간정보,포맷)
+insert into date_test(id,mydate) 
+values('jsp',to_date('2016/7/20 9:00:10','YYYY-MM-DD HH24:MI:SS'));
+ 
+ 
+ --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
+insert into traveler(placeNo,id,tdate,trange)
+values(1,'java',to_date('2016-12-02'),3)
+
+
+---??  sysdate 로 자동으로 주면 해당날짜에 들어가는지??????? 
+-- 해당날짜를 선택해서 삽입해야하는데 sysdate로
+-- 들어가게되면 자동으로 현재날짜가 들어감 (생각해보기
+
+-- to_date(시간정보,포맷)
+insert into date_test(id,mydate) 
+values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
+
+
+--여행사진
+
+drop sequence memberPicture_seq;
+create sequence memberPicture_seq;
+
+drop table memberPicture;
+select*from memberPicture
+
+create table memberPicture(
+ pictureNo number primary key,
+ id varchar2(100),
+ fileName varchar2(100) not null,
+ pictureTitle varchar2(100) not null,
+ pictureDate date not null,
+ pictureContent clob not null,
+ hit number default 0,
+constraint fk_member foreign key(id) references member(id)
+ )
+
+ 
+ insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate)
+values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
+
+
+
+--message
+
+drop sequence message_seq;
+create sequence message_seq;
+
+select*from message
+
+drop table message;
+
+create table message(
+ messageNo number primary key,
+ sender varchar2(100) constraint fk_message_sender references member(id),
+ reciever varchar2(100) constraint fk_message_reciever references member(id),
+ messageDate date not null,
+ messageContent clob not null,
+ messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ )
+-- sender와 reciever 가 같을경우 생각해보자
+
+insert into message(messageNo,sender,reciever,messageDate,messageContent)
+values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
+
+insert into message(messageNo,sender,reciever,messageDate,messageContent)
+values(message_seq.nextval,'java2','java',sysdate,'2번째경우 반대의경우')
+
+>>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '1','남산_N서울타워.jpg', '남산_N서울타워', '04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)', '37.551399', '126.988184', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '2','중구_위안부_기억의터.jpg', '중구_위안부_기억의터', '04628  서울 중구 퇴계로26가길 6 (예장동)', '37.559061', '126.990767', '관광지', '서울');
@@ -626,3 +748,9 @@ from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
 
 
+
+	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
+	where pictureNo=63
+
+	update memberPicture set pictureTitle='rrr', pictureContent='rrr', filename='속초_봉포머구리집.jpg'
+	where pictureNo=2

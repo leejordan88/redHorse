@@ -1,205 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:include page="layout/header.jsp"></jsp:include>
-<link
-	href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css"
-	rel="stylesheet" type="text/css">
-<!-- bootstrap-daterangepicker -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendors/daterangepicker.css"
-	rel="stylesheet">
+<!-- 12/4 효민 추가부분 -->
+<!-- 12/7 전체 수정하였으므로 전체 복사 후 통합해주세요 -->
+<div class="container">
+   <div class="row topspace">
+      <!-- Start Portfolio Section -->
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="section-title text-center">
+                  <h3>My Gallery</h3>
+                  <p>사진을 구경하세용</p>
+               </div>
+            </div>
+         </div>
+         <!-- 리스트에서 사진 3개씩 출력 위한 소스 -->
+         <c:set var="i" value="0" />
+         <c:set var="j" value="3" />
+         <div class="row">
+         <!-- $(this).children().children().children().children().children().val(); -->
+            <div class="col-md-12" id ="listDetail">
+               <!-- Start Portfolio items -->
+               <c:forEach var="list" items="${requestScope.list}">
+                  <c:if test="${i%j == 0 }">
+                     <ul id="portfolio-list">
+                  </c:if>
+                  <li>
+                     <div class="portfolio-item" >
+                        <!-- 이미지 클릭 시 모달 창 실행 -->
+                        <a href="#portfolioModal${list.pictureNo }"
+                           class="portfolio-link" data-toggle="modal" id="memberPicModal">
+                           <input type="hidden" id="pictureNo" value="${list.pictureNo }"> <img
+                           src="${pageContext.request.contextPath}/resources/picupload/${list.memberVO.getId() }/picture/${list.fileName}"
+                           class="img-responsive" alt="" />
+                           <div class="portfolio-caption">
+                              <h4>
+                                 ${list.pictureTitle }<br>${list.pictureDate }
+                              </h4>
+                           </div>
+                        </a>
+                     </div> 
+                     <c:if test="${i%j == j-1 }">
+                  </li>
+                  </c:if>
+                  <c:set var="i" value="${i+1 }" />
 
-<script
-	src="${pageContext.request.contextPath}/resources/vendors/jquery.smartWizard.js"></script>
-<!-- Select2 -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendors/select2.min.css"
-	rel="stylesheet">
-</head>
-<body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<!-- 수정 시작 form -->
-	<form class="form-horizontal form-label-left" method="post"
-		action="${pageContext.request.contextPath}/updateMemberAction.do" enctype="multipart/form-data">
-		<input type="hidden" name="command" value="update">
-		<!-- 아이디시작 -->
-		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">아이디
-				<span class="required">*</span>
-			</label>
-			<div class="col-md-2 col-sm-12 col-xs-12">
-				<input type="text" name="id" value="${sessionScope.mvo.id}"
-					class="form-control col-md-7 col-xs-12" readonly="readonly"
-					required="required">
-			</div>
-			<span id="msg_id"></span>
-		</div>
-		<!-- 아이디 끝 -->
-		<!-- 비밀번호시작 -->
-		<div class="form-group">
-			<label for="password"
-				class="control-label col-md-3 col-sm-3 col-xs-12">비밀번호 <span
-				class="required">*</span>
-			</label>
-			<div class="col-md-3 col-sm-3 col-xs-12">
-				<input type="password" name="password"
-					value="${sessionScope.mvo.password}"
-					class="form-control col-md-7 col-xs-12" required="required">
-			</div>
-			<span id="msg_password"></span>
-		</div>
-		<!-- 비밀번호 끝 -->
-		<!-- 이름 시작 -->
-		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">이름
-				<span class="required">*</span>
-			</label>
-			<div class="col-md-2 col-sm-12 col-xs-12">
-				<input type="name" name="name" value="${sessionScope.mvo.name}"
-					class="form-control col-md-7 col-xs-12" readonly="readonly"
-					required="required">
-			</div>
-			<span id="msg_name"></span>
-		</div>
-		<!-- 이름 끝 -->
-		<!-- 프로필 사진 등록 -->
-		<!--  글씨 -->
-                     <div class="form-group">
-           	<label class="control-label col-md-3 col-sm-3 col-xs-12">사진
-				<span class="required">*</span>
-					</label>
-                          <!-- 글씨끝 -->
- 					<input type="file" name=uploadFile><br>
-               </div>               
-               <!-- 프로필사진 끝 -->        
-               <!-- 전체 공개 범위
-                range 위치 변경 문 12/7 진석 -->
-             <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">검색공개범위 
-                            <span class="required">*</span></label>
-                            
-                          <div class="col-md-6 col-sm-3 col-xs-12">
-                 <c:choose>
-                 	<c:when test="${sessionScope.mvo.range==1}">                              
-                              <input type="radio"  checked name="range" value="1"> 전체공개
-                              <input type="radio"   name="range" value="0"> 비공개
-                     </c:when>
-                     <c:otherwise>                              
-                              <input type="radio"   name="range" value="1"> 전체공개
-                              <input type="radio"  checked name="range" value="0"> 비공개
-                     </c:otherwise>
-                     </c:choose>                                    
-                          </div>				
-                            <span id="msg_range"></span>
-                          </div>
-                         <!-- 전체 공개 범위 끝 -->
-		<!-- 폰번호 시작 -->
-		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span
-				class="required">*</span></label>
-			<div class="col-md-2">
-				<input type="text" name="tel" value="${sessionScope.mvo.tel}"
-					class="form-control col-md-7 col-xs-12" required="required">
-			</div>
-			<span id="msg_tel"></span>
-		</div>
-		<!-- 폰번호 끝 -->
-		<!-- 나이 -->
-		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">나이<span
-				class="required">*</span>
-			</label>
-			<div class="col-md-2">
-				<input type="text" id="age" name="age"
-					value="${sessionScope.mvo.age}"
-					class="form-control col-md-7 col-xs-12" required="required">
-			</div>
-			<span id="msg_birthday"></span>
-		</div>
-		<!-- 나이끝 -->
-		<!-- 주소 -->
-		<div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">주소<span
-				class="required">*</span>
-			</label>
-			<div class="col-md-2">
-				<input type="text" id="address" name="address"
-					value="${sessionScope.mvo.address}"
-					class="form-control col-md-7 col-xs-12" required="required">
-			</div>
-			<span id="msg_birthday"></span>
-		</div>
-		<!-- 주소끝 -->
-		<!-- 자기소개 시작 -->
-			        <div class="form-group">
-	                <label for="introduce" class="control-label col-md-3 col-sm-3 col-xs-12">자기소개 <span class="required">*</span>
-	                </label>
-	                <!-- 자기소개 텍스트 -->
-	                  <div class="col-md-6 col-sm-12 col-xs-12">
-	                    <textarea id="introduce" required="required" class="form-control " name="introduce">${sessionScope.mvo.introduce}</textarea>
-							</div>
-	                    <span id="msg_introduce"></span>       
-               </div>   
-               <!-- 자기소개끝  -->
-               <center>
-			<button class="btn btn-primary" type="submit" id="update">수정</button>
-			<button class="btn btn-primary" type="button" id="delete" name="delete">회원탈퇴</button>
-			</center>
-	</form>
-	<!-- 수정버튼끝 -->
-	
-	<!-- 회원탈퇴 제이쿼리 비활성화 updateDelete.do -->
-	<!-- 12/2 정밀 검사 회원탈퇴 추가 진석 -->
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$('#delete').click(function(){
-			 var result = confirm('정말로 탈퇴하시겠습니까?');
-		        if(result) {
-		           //yes
-		        	$(location).attr('href',"updateDelete.do");
-		        } else {
-		            //no
-		        	alert("개인정보수정을 취소합니다.");
-		        	  location.replace('index.do');
-		            retrun;
-		        }
-		}); // click
-		
-	// 숫자 체크 
-		$('#update').click(function() {
-			// isNaN = Not a Number ==> 숫자가 아니면 true 
-			// 숫자면 false
-			if(isNaN($('#age').val())) {
-				alert("나이를 숫자로 입력하세요");
-			/* 	alert(typeof $('#age').val()); */
-					return false;
-			}isNaN
-				if(isNumeric($('#tel').val())){
-				alert("핸드폰번호를 숫자로 입력하세요");
-					return false;
-			} 
-		}); // update 버튼 클릭
-	}); // ready
-	</script>
-<!-- 회원탈퇴 제이쿼리 끝 비활성화  -->
-</body>
-
-<jsp:include page="layout/footer.jsp"></jsp:include>
-</html>
+                  <!-- 모달부분(사진 상세보기) -->
+                  <div class="section-modal modal fade"
+                     id="portfolioModal${list.pictureNo }" tabindex="-1" role="dialog"
+                     aria-hidden="true">
+                     <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal">
+                           <div class="lr">
+                              <div class="rl"></div>
+                           </div>
+                        </div>
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="modal-body">
+                                    <!-- Project Details Go Here -->
+                                    <div class="section-title text-center">
+                                       <h2>${list.pictureTitle}</h2>
+                                       <h4></h4>
+                                    </div>
+                                    <br>
+                                    <ul class="list-inline">
+                                       <li><b>Hit: <span id="hitView">${list.hit }</span></li>
+                                       <li><b>Date: ${list.pictureDate }</li>
+                                       <li><b>Writer: ${list.memberVO.getName() }</li>
+                                    </ul>
+                                    <br> <img
+                                       src="${pageContext.request.contextPath}/resources/picupload/${list.memberVO.getId() }/picture/${list.fileName}">
+                                    <br> <br> <br>
+                                    <br>
+                                    <h4>
+                                       <strong>${list.pictureContent}</strong>
+                                    </h4>
+                                    <br> <br>
+                                    <c:if test="${list.memberVO.getId()==sessionScope.mvo.id}">
+                                    <a    href="${pageContext.request.contextPath}/updateMemberPicView.do?pictureNo=${list.pictureNo}">
+                                       <button    class="btn btn-primary" type="button">수정</button></a>
+                                       <a    href="${pageContext.request.contextPath}/deleteMemberPic.do?pictureNo=${list.pictureNo}">
+                                       <button class="btn btn-primary" type="button">삭제</button></a>
+                                       
+                                    </c:if>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </c:forEach>
+               </ul>
+               <!-- End Portfolio items -->
+            </div>
+         </div>
+      </div>
+      <!-- End Portfolio Section -->
+   </div>
+</div>
+<!-- /container -->
+<script src="${pageContext.request.contextPath}/resources/asset/js/template.js"></script>
+<!-- 12/7 전체 수정하였으므로 전체 복사 후 통합해주세요 -->

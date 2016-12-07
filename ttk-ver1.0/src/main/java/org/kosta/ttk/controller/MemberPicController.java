@@ -16,6 +16,7 @@ import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,6 +38,9 @@ public class MemberPicController {
 	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
 	public String registerProductAction(MemberPicVO memberPicVO, HttpServletRequest request){
 		HttpSession session=request.getSession(false);
+
+	public String uploadMemberPic(MemberPicVO memberPicVO, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
 		// MemberVO setting
 		if(session!=null){
 			MemberVO mvo=(MemberVO) session.getAttribute("mvo");
@@ -114,6 +118,7 @@ public class MemberPicController {
 			
 		return mv;
 	}
+
 	@RequestMapping("visitSchedule.do")
 	public ModelAndView visitSchedule(String id, HttpServletRequest request){
 		ModelAndView mv =new ModelAndView();
@@ -121,5 +126,74 @@ public class MemberPicController {
 		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mv.addObject("travelingList", travelerService.getTravelingList(id));
 		return mv;
+	
+	/**
+	 * 사진 삭제하기
+	 * @param pictureNo
+	 * @return
+	 */
+	@RequestMapping("deleteMemberPic.do")
+	public ModelAndView deleteMemberPic(int pictureNo) {
+		memberPicService.deleteMemberPic(pictureNo);
+		return new ModelAndView("memberpic_delete_success");
+
 	}
+
+	
+	/** 수정 페이지로 이동
+	 * @param pictureNo
+	 * @return
+	 */
+	@RequestMapping("updateMemberPicView.do")
+	public ModelAndView updateMemberberPicView(int pictureNo){
+		return new ModelAndView("memberpic_update","pvo",memberPicService.showPictureDetailNoHit(pictureNo));
+	}
+
+	/** 12/7 수정/ 사진 게시물 수정 
+	 * @param memberPicVO
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("updateMemberPic.do")
+	public ModelAndView updateMemberPic(MemberPicVO memberPicVO, HttpServletRequest request){
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			MemberVO mvo = (MemberVO) session.getAttribute("mvo");
+			if (mvo != null) {
+				memberPicVO.setMemberVO(mvo);
+			}
+		}
+		uploadPath = request.getSession().getServletContext()
+				.getRealPath("/resources/picupload/" + memberPicVO.getMemberVO().getId() + "/picture/");
+		File uploadDir = new File(uploadPath);
+		if (uploadDir.exists() == false)
+			uploadDir.mkdirs();
+		 System.out.println(memberPicVO.getFileName());
+		MultipartFile file = memberPicVO.getUploadFile();
+
+		if (file.isEmpty() == false) {
+			System.out.println("파일명:" + file.getOriginalFilename());
+			File uploadFile = new File(uploadPath + file.getOriginalFilename());
+			try {
+				file.transferTo(uploadFile);
+				System.out.println(uploadPath + file.getOriginalFilename() + " 파일업로드");
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		memberPicVO.setFileName(file.getOriginalFilename());
+		memberPicService.updateMemberPic(memberPicVO);	
+		System.out.println(memberPicVO.getFileName());
+		//return new ModelAndView("memberpic_detail","pvo",memberPicService.showPictureDetailNoHit(memberPicVO.getPictureNo()));
+		return new ModelAndView("redirect:getPictureList.do?id="+memberPicVO.getMemberVO().getId());
+	}	
+	
+	@RequestMapping("updateHit.do")
+	@ResponseBody
+	public int updateHit(int pictureNo){
+		System.out.println("업데이트힛 실행");
+		memberPicService.updateHit(pictureNo);
+		return (memberPicService.getUpdateHit(pictureNo));
+	}
+
 }
