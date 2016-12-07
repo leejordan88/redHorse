@@ -6,16 +6,16 @@ import java.util.List;
  * 한 페이지에서 보여줄 게시물 목록 정보와 페이징 정보를 저장하는 비즈니스 객체
  * 
  * @author kosta
+ * StatsVO 추가  12/7 진석
  *
  */
 public class ListVO {
 	private List<AreaVO> areaList;
 	private List<CategoryVO> categoryList;
 	private List<TravelerVO> travelerList;
-	
 	private List<MessageVO> list;
-	private PagingBeanVO pagingBean;
-
+	private List<StatsVO> StatsList;
+	private PagingBeanVO pagingBean;	
 	public ListVO() {
 		super();
 	}
@@ -40,13 +40,14 @@ public class ListVO {
 
 	public void setPagingBean(PagingBeanVO pagingBean) {
 		this.pagingBean = pagingBean;
-	}
-
-	public ListVO(List<AreaVO> areaList, List<CategoryVO> categoryList, List<TravelerVO> travelerList) {
+	}	
+	public ListVO(List<AreaVO> areaList, List<CategoryVO> categoryList, List<TravelerVO> travelerList,
+			List<StatsVO> statsList) {
 		super();
 		this.areaList = areaList;
 		this.categoryList = categoryList;
 		this.travelerList = travelerList;
+		StatsList = statsList;
 	}
 
 	public List<AreaVO> getAreaList() {
@@ -73,10 +74,19 @@ public class ListVO {
 		this.travelerList = travelerList;
 	}
 
+	public List<StatsVO> getStatsList() {
+		return StatsList;
+	}
+
+	public void setStatsList(List<StatsVO> statsList) {
+		StatsList = statsList;
+	}
+
 	@Override
 	public String toString() {
 		return "ListVO [areaList=" + areaList + ", categoryList=" + categoryList + ", travelerList=" + travelerList
-				+ ", list=" + list + ", pagingBean=" + pagingBean + "]";
+				+ ", list=" + list + ", StatsList=" + StatsList + ", pagingBean=" + pagingBean + "]";
 	}
+
 
 }

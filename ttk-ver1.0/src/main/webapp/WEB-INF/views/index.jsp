@@ -116,7 +116,7 @@
 										</div>
 								</a></li>
 							</c:forEach>
-							<c:forEach items="${listVO.categoryList }" var="list">
+							<c:forEach items="${listVO.categoryList }" var="list">			
 								<li class="mix Category"><a href="areaList.do?categoryName=${list.categoryName }">
 									<img src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}" alt="">
 										<div class="overly">
@@ -150,42 +150,45 @@
 
 
 <!-- Start Fun Facts Section -->
+	<c:forEach items="${listVO.statsList}" var="list">
 <section class="fun-facts">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-female"></i>
-					<div class="timer" id="item4" data-to="223" data-speed="5000"></div>
+					<div class="timer" id="item4" data-to="${list.female}" data-speed="2000"></div>
 					<h5>여자회원수</h5>
 				</div>
 			</div>
+			 
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-male"></i>
-					<div class="timer" id="item4" data-to="342" data-speed="5000"></div>
+					<div class="timer" id="item4" data-to="${list.male}" data-speed="2000"></div>
 					<h5>남자회원수</h5>
 				</div>
 			</div>
+			 	
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-cloud-upload"></i>
-					<div class="timer" id="item1" data-to="591" data-speed="5000"></div>
+					<div class="timer" id="item1" data-to="${list.pictureNo}" data-speed="2000"></div>
 					<h5>회원사진업로드</h5>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-check"></i>
-					<div class="timer" id="item2" data-to="294" data-speed="5000"></div>
+					<div class="timer" id="item2" data-to="${list.tstate}" data-speed="2000"></div>
 					<h5>여행친구찾기완료</h5>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+</c:forEach>
 <!-- End Fun Facts Section -->
-  
 
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>

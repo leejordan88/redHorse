@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,9 +34,10 @@
 	<br>
 	<br>
 	<br>
+
 	<!-- 수정 시작 form -->
 	<form class="form-horizontal form-label-left" method="post"
-		action="${pageContext.request.contextPath}/updateMemberAction.do">
+		action="${pageContext.request.contextPath}/updateMemberAction.do" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="update">
 		<!-- 아이디시작 -->
 		<div class="form-group">
@@ -80,20 +82,34 @@
 		<!-- 프로필 사진 등록 -->
 		<!--  글씨 -->
                      <div class="form-group">
-                          <label for="profileimg" class="control-label col-md-3 col-sm-3 col-xs-12">프로필 사진 <span class="required">*</span></label>
-                          <div class="col-md-6 col-sm-3 col-xs-12" >
+           	<label class="control-label col-md-3 col-sm-3 col-xs-12">사진
+				<span class="required">*</span>
+					</label>
                           <!-- 글씨끝 -->
-                            <img src="${pageContext.request.contextPath}/resources/images/img.jpg" alt="">
-                          <input type="file" name="profileimg"  id="profileimg" required="required">
-                         </div>
-                          <span id="msg_profileimg"></span>
-               </div>                 
+ 					<input type="file" name=uploadFile><br>
+               </div>               
                <!-- 프로필사진 끝 -->        
-<!-- <form id="ajaxform" action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" multiple id="photo_upload">
-    <output id="list"></output>
-    <input type="button" value="완료" id="files_send">
-</form> -->
+               <!-- 전체 공개 범위
+                range 위치 변경 문 12/7 진석 -->
+             <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">검색공개범위 
+                            <span class="required">*</span></label>
+                            
+                          <div class="col-md-6 col-sm-3 col-xs-12">
+                 <c:choose>
+                 	<c:when test="${sessionScope.mvo.range==1}">                              
+                              <input type="radio"  checked name="range" value="1"> 전체공개
+                              <input type="radio"   name="range" value="0"> 비공개
+                     </c:when>
+                     <c:otherwise>                              
+                              <input type="radio"   name="range" value="1"> 전체공개
+                              <input type="radio"  checked name="range" value="0"> 비공개
+                     </c:otherwise>
+                     </c:choose>                                    
+                          </div>				
+                            <span id="msg_range"></span>
+                          </div>
+                         <!-- 전체 공개 범위 끝 -->
 		<!-- 폰번호 시작 -->
 		<div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span
@@ -142,18 +158,45 @@
 	                    <span id="msg_introduce"></span>       
                </div>   
                <!-- 자기소개끝  -->
-			<button class="btn btn-primary" type="submit">수정</button>
+               <center>
+			<button class="btn btn-primary" type="submit" id="update">수정</button>
 			<button class="btn btn-primary" type="button" id="delete" name="delete">회원탈퇴</button>
+			</center>
 	</form>
 	<!-- 수정버튼끝 -->
 	
 	<!-- 회원탈퇴 제이쿼리 비활성화 updateDelete.do -->
+	<!-- 12/2 정밀 검사 회원탈퇴 추가 진석 -->
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#delete').click(function(){
-			$(location).attr('href',"updateDelete.do");
-		});
-	});
+			 var result = confirm('정말로 탈퇴하시겠습니까?');
+		        if(result) {
+		           //yes
+		        	$(location).attr('href',"updateDelete.do");
+		        } else {
+		            //no
+		        	alert("개인정보수정을 취소합니다.");
+		        	  location.replace('index.do');
+		            retrun;
+		        }
+		}); // click
+		
+	// 숫자 체크 
+		$('#update').click(function() {
+			// isNaN = Not a Number ==> 숫자가 아니면 true 
+			// 숫자면 false
+			if(isNaN($('#age').val())) {
+				alert("나이를 숫자로 입력하세요");
+			/* 	alert(typeof $('#age').val()); */
+					return false;
+			}isNaN
+				if(isNumeric($('#tel').val())){
+				alert("핸드폰번호를 숫자로 입력하세요");
+					return false;
+			} 
+		}); // update 버튼 클릭
+	}); // ready
 	</script>
 <!-- 회원탈퇴 제이쿼리 끝 비활성화  -->
 </body>
