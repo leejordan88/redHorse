@@ -16,6 +16,10 @@
 	href="${pageContext.request.contextPath}/resources/asset/css/bootstrap.min.css"
 	rel="stylesheet">
 	
+	<!-- Add custom CSS here -->
+<link
+   href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
+   rel="stylesheet">
 	
 <!-- Font Awesome CSS -->
 <link

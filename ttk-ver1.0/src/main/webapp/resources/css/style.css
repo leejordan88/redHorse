@@ -2142,14 +2142,21 @@ and (min-width : 551px){
 }
 
 
-.fun-facts {
-
+..fun-facts {
+    color:#fff;
     background-attachment: fixed;
     background-size: cover;
     padding-top: 120px;
     padding-bottom: 80px;
     background: url(../images/bg-fun-fact2.jpg) center center no-repeat;
 
+}
+.counter-item h5{
+  color:#fff;
+  font-weight:bolder;
+    text-align:center;
+  margin-bottom:0px;
+    font-size: 1em;
 }
 
 .counter-item {
@@ -2159,13 +2166,6 @@ and (min-width : 551px){
     padding: 40px;
 }
 
-.counter-item h5 {
-  text-align:center;
-  margin-bottom:0px;
-  color:#fcf8e3;
-  font-size: 20px;
-
-}
 
 .counter-item i {
   font-size:50px;
