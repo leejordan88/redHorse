@@ -16,6 +16,9 @@ public interface PlaceService {
 
 	PlaceVO detailPlace(PlaceVO placeVO);
 
+	List<PlaceVO> getAllPlaces();
+
+
 
 
 

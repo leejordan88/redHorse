@@ -71,7 +71,7 @@
                                     <ul class="list-inline">
                                        <li><b>Hit: <span id="hitView"></span></li>
                                        <li><b>Date: ${list.pictureDate }</li>
-                                       <li><b>Writer: ${list.memberVO.getName() }</li>
+                                       <li><b>Writer: ${list.memberVO.name }</li>
                                     </ul>
                                     <br> <img
                                        src="${pageContext.request.contextPath}/resources/picupload/${list.memberVO.getId() }/picture/${list.fileName}">

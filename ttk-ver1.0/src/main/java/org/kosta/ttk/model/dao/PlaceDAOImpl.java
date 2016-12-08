@@ -33,4 +33,10 @@ public class PlaceDAOImpl implements PlaceDAO {
 		return template.selectOne("place.detailPlace", placeVO);
 	}
 
+
+	@Override
+	public List<PlaceVO> getAllPlaces() {
+		return template.selectList("place.getAllPlaces");
+	}
+
 }

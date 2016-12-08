@@ -86,6 +86,7 @@ public class MemberPicController {
 		mav.setViewName("memberpic_list");
 		mav.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mav.addObject("list", memberPicService.visitMemberPic(id));
+		System.out.println(memberPicService.visitMemberPic(id));
 		return mav;
 	}
 	
