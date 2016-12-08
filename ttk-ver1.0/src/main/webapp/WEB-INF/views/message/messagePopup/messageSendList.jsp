@@ -39,30 +39,46 @@
 	<div id="services" class="services">
 		<div class="container">
 			<div class="row">
-                    <div class="col-md-4 col-md-offset-4 text-center">
+				<div id="msgicon">
                         <h2 class="main-title">
                         <img src="${pageContext.request.contextPath}/resources/images/message/mainReceive.png" id="">
                         <img src="${pageContext.request.contextPath}/resources/images/message/mainUncheck.png">
                        <img src="${pageContext.request.contextPath}/resources/images/message/mainDelete.png">
-                       </h2>
-                        <hr>
-                    </div>
-                </div>
-<table>
-<c:forEach var="msvo" items="${requestScope.vo.list}">	
- <tr>
-<td><h3>${msvo.messageVO.receiver}</h3></td> 
- <td>${msvo.messageVO.messageDate} | <br>   <%-- <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}" ></a> --%>  ${msvo.messageVO.messageContent}    </td>  
-<%--  <td><img src="${pageContext.request.contextPath}/resources/images/message/deleteB.PNG"></td> --%>
- </tr>
-
-</c:forEach>
-
-<%-- <td>사진<img
-									src="${pageContext.request.contextPath}/resources/upload/${sessionScope.mvo.id}/profile/${sessionScope.mvo.profileimg}"></td> --%>
+                       </h2>   
+                   </div>     
+             </div>
+<hr>
 
 
-</table>
+
+	<!-- <div id="mlist"> -->
+	<div class="container bootstrap snippet">
+    <div class="row">
+            <div class="chat-message" id="list-form">
+                <ul class="chat">
+                       <c:forEach var="msvo" items="${requestScope.vo.list}">	
+                    <li class="left clearfix">
+                       <span class="chat-img pull-left">
+                          <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                       </span>
+                       <div class="chat-body clearfix">
+                          <div class="header">
+                             	<strong class="primary-font">${msvo.messageVO.receiver}</strong>
+								<small class="pull-right text-muted">${msvo.messageVO.messageDate}</small>
+                          </div>
+                          <p id="list-font">
+								${msvo.messageVO.messageContent}
+                          </p>
+                       </div>
+                    </li>
+                      </c:forEach>
+                </ul>
+            </div>                      
+	   </div>
+	</div>
+<hr>
+
+<div id="plist">
 			<p class="paging">
 		<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
 		<c:if test="${pb.previousPageGroup}">
@@ -88,8 +104,8 @@
 	</p>
 	<br>
 	<br>
-	
-		</div>
+	</div>
+	</div>
 	</div>
 	<!-- /Services -->
 
