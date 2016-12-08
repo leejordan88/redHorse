@@ -2,12 +2,10 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../layout/header.jsp"></jsp:include> 
-
 <!-- Add custom CSS here -->
 <link
    href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
    rel="stylesheet">
-
 <!-- 전체 페이지시작 -->
 <section id="profile-list">
 	<div class="container">
@@ -46,10 +44,12 @@
                 <ul class="chat">
                        <c:forEach var="msvo" items="${requestScope.vo.list}">   
                     <li class="left clearfix">
+                    <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}">
                        <span class="chat-img pull-left">
                           <img src="${pageContext.request.contextPath}/resources/upload/${msvo.messageVO.sender}/profile/${msvo.messageVO.memberVO.profileimg}" alt="User Avatar">
                        </span>
-                       <div class="chat-body clearfix">
+ 							</a>                       
+							<div class="chat-body clearfix">
                           <div class="header">
                                 <strong class="primary-font">${msvo.messageVO.sender}</strong>
                         <small class="pull-right text-muted"> 

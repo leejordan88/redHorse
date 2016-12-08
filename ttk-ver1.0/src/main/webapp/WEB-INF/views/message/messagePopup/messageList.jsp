@@ -6,7 +6,6 @@
 <link
    href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
    rel="stylesheet">
-
 <!-- 전체 페이지시작 -->
 <section id="profile-list">
 	<div class="container">
@@ -19,7 +18,6 @@
 			</div>
 		</div>
 	</div>
-
    <!--파란색부분 -->
    <div id="services" class="services">
       <div class="container">
@@ -44,9 +42,11 @@
                 <ul class="chat">
                        <c:forEach var="msvo" items="${requestScope.vo.list}">   
                     <li class="left clearfix">
+                    <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}">
                        <span class="chat-img pull-left">
                           <img src="${pageContext.request.contextPath}/resources/upload/${msvo.messageVO.sender}/profile/${msvo.messageVO.memberVO.profileimg}" alt="User Avatar">
                        </span>
+                     </a>
                        <div class="chat-body clearfix">
                           <div class="header">
                                 <strong class="primary-font">${msvo.messageVO.sender}</strong>
@@ -95,7 +95,6 @@
    <br>
    </div>
   <!-- 페이징부분  끝-->
-  
    </div>
    </div>
 </section>
@@ -116,6 +115,11 @@
 		$("#moveDelete").click(function() {
 			alert("2차때!");
 		});
+	/* $(".left").click(function() {
+			alert("떳다");
+				location.href = "messageSendList.do";
+		});   */
 	});
+
 </script>
 <jsp:include page="../../layout/footer.jsp"></jsp:include>
