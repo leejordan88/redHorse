@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
 <!-- Start Home Page Slider -->
@@ -83,7 +84,6 @@
 </section>
 <!-- End Home Page Slider -->
 
-
 <!-- Start Portfolio Section -->
 <section id="portfolio-work">
 	<div class="container">
@@ -114,7 +114,7 @@
 										</div>
 								</a></li>
 							</c:forEach>
-							<c:forEach items="${listVO.categoryList }" var="list">
+							<c:forEach items="${listVO.categoryList }" var="list">			
 								<li class="mix Category"><a href="areaList.do?categoryName=${list.categoryName }">
 									<img src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}" alt="">
 										<div class="overly">
@@ -128,10 +128,12 @@
 								<c:forEach items="${listVO.travelerList }" var="list">
 								<li class="mix Hot"><a href="detailPlace.do?placeNo=${list.placeVO.placeNo }">
 									<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeVO.placeName}.jpg" alt="">
+									<div class="overly">
 											<div class="position-center">
 												<h2 style="text-align: center">${list.rank }위</h2>
 										    	<h3>${list.placeVO.placeName }</h3>
 											</div>
+										</div>
 								</a></li>
 							</c:forEach>
 							<!-- 효민 추가부분 끝-->
@@ -146,42 +148,45 @@
 
 
 <!-- Start Fun Facts Section -->
+	<c:forEach items="${listVO.statsList}" var="list">
 <section class="fun-facts">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-female"></i>
-					<div class="timer" id="item4" data-to="223" data-speed="5000"></div>
+					<div class="timer" id="item4" data-to="${list.female}" data-speed="2000"></div>
 					<h5>여자회원수</h5>
 				</div>
 			</div>
+			 
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-male"></i>
-					<div class="timer" id="item4" data-to="342" data-speed="5000"></div>
+					<div class="timer" id="item4" data-to="${list.male}" data-speed="2000"></div>
 					<h5>남자회원수</h5>
 				</div>
 			</div>
+			 	
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-cloud-upload"></i>
-					<div class="timer" id="item1" data-to="591" data-speed="5000"></div>
+					<div class="timer" id="item1" data-to="${list.pictureNo}" data-speed="2000"></div>
 					<h5>회원사진업로드</h5>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-check"></i>
-					<div class="timer" id="item2" data-to="294" data-speed="5000"></div>
+					<div class="timer" id="item2" data-to="${list.tstate}" data-speed="2000"></div>
 					<h5>여행친구찾기완료</h5>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+</c:forEach>
 <!-- End Fun Facts Section -->
-  
 
 <jsp:include page="our_team.jsp"></jsp:include>
 <jsp:include page="layout/footer.jsp"></jsp:include>

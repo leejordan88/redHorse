@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.vo.MemberVO;
+import org.kosta.ttk.model.vo.StatsVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +41,10 @@ public class MemberDAOImpl implements MemberDAO  {
 	@Override
 	public List<MemberVO> searchMemberByOption(String str) {
 		return template.selectList("member.searchMemberByOption", str);
+	}
+	@Override
+	public List<StatsVO> getStats(){
+		return template.selectList("member.getStats");
 	}
 	@Override
 	public List<MemberVO> searchMemberByName(String name) {

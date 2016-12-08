@@ -20,6 +20,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	@Override
 	public List<TravelerVO> hotPlaceRankingList(){
 		return template.selectList("traveler.hotPlaceRankingList");
+
 	}
 
 	@Override

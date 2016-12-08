@@ -58,19 +58,50 @@ public class MemberController {
 	}
 	/**
 	 * 회원정보수정    11/30 완료
+	 * 프로필사진 수정  12/2 완료
 	 * @param request
 	 * @param memberVO
 	 * @return
 	 */
 
-	@RequestMapping("updateMemberAction.do")
+	@RequestMapping(value ="updateMemberAction.do", method = RequestMethod.POST)
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
+
+		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
+		//경로 설정
+		File uploadDir=new File(uploadPath);
+		if(uploadDir.exists()==false)
+			uploadDir.mkdirs();
+		System.out.println(memberVO.getName());
+		MultipartFile file=memberVO.getUploadFile();//파일 
+		//System.out.println(file.isEmpty()); // 업로드할 파일이 있는 지 확인 
+		if(file.isEmpty()==false){
+			System.out.println("파일명:"+file.getOriginalFilename());
+			File uploadFile=new File(uploadPath+file.getOriginalFilename());
+			try {
+				file.transferTo(uploadFile);//실제 디렉토리로 파일을 저장한다 
+				System.out.println(uploadPath+file.getOriginalFilename()+" 파일업로드");
+			} catch (IllegalStateException | IOException e) {				
+				e.printStackTrace();
+			}
+			memberVO.setProfileimg(file.getOriginalFilename());  //1
+		} else {
+			memberVO.setProfileimg(null);
+		}
 		HttpSession session = request.getSession(false);
-		session.setAttribute("mvo", memberVO);
 		memberService.updateMember(memberVO);
-		return "update_result";
+	
+		MemberVO updatedMemberVO = memberService.findMember(memberVO.getId());
+		session.setAttribute("mvo", updatedMemberVO);
+		return "update_result"; 
 	}
 	
+	/**
+	 * 회원가입 
+	 * @param memberVO
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "registerMemberAction.do", method = RequestMethod.POST)
 	public String registerMemberAction(MemberVO memberVO,HttpServletRequest request) {
 		System.out.println(memberVO);
@@ -191,9 +222,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping("hideTravel.do")
-	public 	ModelAndView hideTravel(TravelerVO travelerVO){
+	public ModelAndView hideTravel(TravelerVO travelerVO){
 		System.out.println(travelerVO);
 		travelerService.hideTravel(travelerVO);
 		return new ModelAndView("redirect:schedule.do");
 	}
+
 }

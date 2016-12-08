@@ -16,5 +16,5 @@ public interface MessageDAO {
 	//List<MessageVO> messageList(MemberVO smvo);
 	int messageListTotalCount(MessageVO messageVO);
 	int messageSendListTotalCount(MessageVO messageVO);
-	int messageUncheckedCount(MemberVO smvo);
+	int messageUncheckedCount(MessageVO messageVO);
 }

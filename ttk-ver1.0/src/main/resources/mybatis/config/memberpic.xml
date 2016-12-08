@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<selectKey keyProperty="pictureNo" resultType="int" order="BEFORE">
  		select memberPicture_seq.nextval from dual
  	</selectKey>
- 	insert into memberPicture(pictureNo,id,filename,pictureTitle,pictureContent,pictureDate) 
+ 	insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureContent,pictureDate) 
  	values(#{pictureNo}, #{memberVO.id}, #{fileName},#{pictureTitle},#{pictureContent},sysdate)
  </insert>
  
@@ -19,21 +19,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="id" property="memberVO.id"/>
 </resultMap>
 
- <!-- 사진첩 리스트 -->
+
+ <!-- 사진첩 리스트, 12/5수정 where id =#{value}부분 추가, 12/7수정 리스트에서 상세보기 까지 가능하도록(모달 사용)하기 위해서 수정-->
+
  <select id="getPictureList" resultMap="memberPicRM">
- 	select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
- 	from memberPicture order by pictureNo desc
+	 select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
+ 		from memberPicture p, member m where p.id=#{value} and p.id=m.id order by p.pictureNo desc
  </select>
  
+<!-- 12/7 수정 상세보기 (게시물 수정 완료 후 페이지)-->
+<select id="showPictureDetail" resultMap="memberPicRM">
+	 select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
+ 		from memberPicture p, member m where p.pictureNo=#{p.pictureNo} and p.id=m.id order by p.pictureNo desc
+</select>
+
  <!-- 12/4 효민 사진 상세보기 -->
  <!-- 조회수 -->
  <update id="updateHit" parameterType="int">
 	update memberPicture set hit=hit+1 where pictureNo=#{pictureNo}
 </update>
 
-<!-- 상세보기 -->
-<select id="showPictureDetail" resultMap="memberPicRM">
-	 select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate, hit
- 		from memberPicture where pictureNo=#{pictureNo}
+<!-- 12/7 추가 조회수 보기 -->
+<select id="getUpdateHit" resultType="int">
+	select hit from memberPicture where pictureNo=#{value}
 </select>
+
+<select id="visitMemberPic" resultMap="memberPicRM" resultType="memberPicVO">
+ 	select pictureNo, id, filename, pictureTitle, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate
+ 	from memberPicture where id=#{value} order by pictureNo desc
+</select>
+
+<!-- 사진 삭제하기 -->
+<delete id="deleteMemberPic">
+	delete from memberPicture where pictureNo=#{value}
+</delete>
+
+<!-- 12/5 사진 수정하기 -->
+<update id="updateMemberPic" parameterType="memberPicVO">
+	update memberPicture set pictureTitle=#{pictureTitle}, pictureContent=#{pictureContent}, fileName=#{fileName, jdbcType=VARCHAR}
+	where pictureNo=#{pictureNo}
+</update>
+
 </mapper>
+

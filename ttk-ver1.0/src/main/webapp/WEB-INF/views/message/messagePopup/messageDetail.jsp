@@ -1,21 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../../layout/header.jsp"></jsp:include> 
 
-<script>
-	$(document).ready(function() {
-		$('#msgmodal').modal('show');
-	});
-</script>
+<!-- Add custom CSS here -->
+<link
+   href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
+   rel="stylesheet">
 
-<%-- 메세지디테일화면
+<!-- 전체 페이지시작 -->
+<section id="profile-list">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title text-center">
+					<h3>A message, Reply now!</h3>
+					<p>지금 답장하세요!!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--파란색부분 -->
+	<div id="services" class="services">
+		<div class="container">
+			<div class="row">
+                    <div id="msgicon">
+                        <h2 class="main-title">
+                        <img src="${pageContext.request.contextPath}/resources/images/message/mainReceive.png"  id="moveReceive" >
+                        <img src="${pageContext.request.contextPath}/resources/images/message/mainUncheck.png"  id="moveUncheck" >
+                       <img src="${pageContext.request.contextPath}/resources/images/message/mainDelete.png"  id="moveDelete" >
+                       </h2>
+                    </div>
+                </div>
+			<hr>
+
+<!-- 내용부분 -->
 <table>
 <tr>
 <td>sender(img)</td>   <td>${requestScope.messageVO.memberVO.profileimg}</td>
@@ -24,7 +44,46 @@
  <td>날짜</td>    <td>${requestScope.messageVO.messageDate}</td>
 <td>답장버튼</td><td>삭제버틴</td>
 </tr>
-</table> --%>
+</table>
+<!-- 내용부분 끝-->
+	
+		</div>
+	</div>
+	<!-- 파란부분끝 -->
+
+</section>
+<script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#moveSend").click(function(){
+			location.href="messageSendList.do";
+		});
+		$("#moveUncheck").click(function(){
+			location.href="messageListUnChecked.do";
+		});
+		$("#moveReceive").click(function(){
+			location.href="messageList.do";
+		});
+		
+		$("#moveDelete").click(function(){
+			alert("2차때!");
+		});
+	});
+</script>
+
+
+<jsp:include page="../../layout/footer.jsp"></jsp:include>
+
+
+
+
+<script>
+	$(document).ready(function() {
+		$('#msgmodal').modal('show');
+	});
+</script>
+
 
 <!-- 로그인모달 -->
 	<div class="modal fade" id="msgmodal" tabindex="-1" role="dialog"

@@ -40,10 +40,7 @@
         </div>
     </div>
 
-    
-<%-- 
-    <!-- jQuery Version 2.1.1 -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script> --%>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/resources/asset/js/bootstrap.min.js"></script>

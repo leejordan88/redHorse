@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <jsp:include page="../layout/header.jsp"></jsp:include>
-    <!-- Select2 -->
-	<link href="${pageContext.request.contextPath}/resources/message/messageIndex/css/style.css" rel="stylesheet">
+   <!-- Add custom CSS here -->
+<link
+   href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
+   rel="stylesheet">
   
 <section id="profile-list">
 	<div class="container">
@@ -13,9 +15,10 @@
                     <p>읽지않은 메세지${requestScope.count}개,  아이콘을 클릭하세요!</p>
 				</div>
                    </div>
-              </div> <!-- class="row" -->
-			</div>   <!-- class="container" -->
+              </div> 
+			</div>   
 
+<!-- 파란색부분시작 -->
  <div id="services" class="services">
             <div class="container">
               		<div class="row">
@@ -49,22 +52,19 @@
                         <div class="service-item">
                             <i class="service-icon fa fa-trash-o"></i>
                             <h4 class="service-title">Delete Message</h4>
-                        </div>
+					 </div>
                     </div>
                 </div>
             </div>
         </div>
  </section> 
-       
+      <!-- 파란색부분끝 --> 
 
+<!-- 경로이동 ( 아이콘클릭) -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#messageList").click(function(){
-			
-			 var popUrl = "messageList.do";    //팝업창에 출력될 페이지 URL
-			    var popOption = "width=870, height=600, top=100, left=330 resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-			        window.open(popUrl,"",popOption);
-		
+			location.href="messageList.do";
 		});
 		$("#messageSendList").click(function(){
 			location.href="messageSendList.do";
@@ -74,14 +74,5 @@
 		});
 	});
 </script>
-
-
- <script type="text/javascript">
-function popupOpen(){
-    var popUrl = "messageList.do";    //팝업창에 출력될 페이지 URL
-    var popOption = "width=870, height=460, top=200, left=330 resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-        window.open(popUrl,"",popOption);
-    }
-</script>      
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>

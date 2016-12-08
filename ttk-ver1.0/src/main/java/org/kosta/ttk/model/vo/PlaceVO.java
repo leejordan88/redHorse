@@ -11,6 +11,7 @@ public class PlaceVO {
 	
 	public PlaceVO() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public PlaceVO(int placeNo, String categoryName, String areaName, String placeName, String placeAddress, int placeX,
 			int placeY) {

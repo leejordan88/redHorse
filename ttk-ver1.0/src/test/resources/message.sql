@@ -276,3 +276,50 @@ message where messageState=1 and receiver='java1'
 
 select *from 
 message where messageState=1 and receiver='java1'
+
+
+
+
+
+select messageNo,sender,receiver, messageContent, messageDate, profileIMG 
+from message 
+where  messageState=1 and receiver='java1'
+
+
+
+select rnum, messageNo, sender ,receiver, messageDate, messageContent, messageState FROM
+( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,sender,receiver,messageDate,messageContent,messageState  FROM message
+where receiver ='java1'  ) rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+-- 받은쪾지 페이징빈
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.sender=m2.id and  ms.receiver ='java1')  rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+
+-- 안읽은쪽지페이징빈
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.messageState=1 and ms.sender=m2.id and  ms.receiver ='java1')  rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+ -- 보낸쪽지 수정전 
+select rnum, messageNo, receiver, sender, messageContent , messageDate FROM
+( SELECT row_number() over(order by messageNo desc)  as rnum, messageNo,messageContent, messageDate, sender, receiver  FROM message
+where sender =#{messageVO.id}) rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber}  order by messageNo desc
+
+
+
+
+
+
+
+

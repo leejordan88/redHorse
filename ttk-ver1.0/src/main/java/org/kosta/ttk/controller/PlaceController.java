@@ -14,6 +14,7 @@ import org.kosta.ttk.model.vo.CategoryVO;
 import org.kosta.ttk.model.vo.ListVO;
 import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.PlaceVO;
+import org.kosta.ttk.model.vo.StatsVO;
 import org.kosta.ttk.model.vo.TravelerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +31,23 @@ public class PlaceController {
 	@Resource
 	private MemberService memberService;
 	
+/**
+ * 12/7 통계까지 완료 -진석-	 StatsList
+ * @return
+ */
+	
 	@RequestMapping("index.do")
 	public  ModelAndView index(){
 		List<AreaVO> areaList = placeService.areaList();
 		List<CategoryVO> categoryList = placeService.categoryList();
 		List<TravelerVO> travelerList = travelerService.hotPlaceRankingList();
-		ListVO listVO = new ListVO();
+		List<StatsVO> statsList = memberService.getStats();
+		ListVO listVO = new ListVO();	
 		listVO.setAreaList(areaList);
 		listVO.setCategoryList(categoryList);
 		listVO.setTravelerList(travelerList);
-		//System.out.println(listVO);
+		listVO.setStatsList(statsList);
+		System.out.println(listVO);
 		return new ModelAndView("index", "listVO", listVO);
 	}
 	

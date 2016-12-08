@@ -1,3 +1,40 @@
+
+--create table member ( sex(남1,여2) ,  
+--create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
+--create table traveler(  tstate number default 1,     
+
+select sex,pictureNo,tstate,count(*) from a.member,b.memberPicture,c.traveler 
+group by a.sex,b.poctureNo,c.tstate
+--distinct
+
+--통계 12/6 진석
+select distinct(select count(sex) from member where sex=1 group by sex) as male
+,(select count(sex) from member where sex=2 group by sex) as female
+,(select count(*) from memberPicture) as pictureNo
+,(select count(*) from traveler where tstate=2) as tstate  
+from member
+
+--distinct  중복값 제거
+
+
+
+select * from MEMBER
+where sex=1
+select count(*) from memberPicture
+select count(*) from traveler
+where tstate=2
+
+select m.sex, p.pictureNo, t.tstate from member m, memberPicture p, traveler t
+where m.id=p.id
+and p.id=t.id
+
+
+-- sex 값 남, 여 한번에 추출
+select sex,count(sex) from member
+group by sex;
+
+select count(*) from member where sex='1'
+
 --member13명 삽입, category, area, place 등록 완료
 
 select *from memberRange;
@@ -76,6 +113,8 @@ insert into area(areaname,areapicture) values('전라도','전라도.jpg');
 insert into area(areaname,areapicture) values('제주도','제주도.jpg');
 insert into area(areaname,areapicture) values('충청도','충청도.jpg');
 
+
+--오류
 drop table place;
 create table place(
  placeNo number primary key,
@@ -88,7 +127,129 @@ create table place(
  areaname varchar2(100) not null,
  constraint fk_category foreign key(categoryname) references category(categoryname),
  constraint fk_area foreign key(areaname) references area(areaname)
+
 );
+
+
+select * from place where areaname = '강원도' and categoryname = '맛집';
+
+drop table category
+drop table area
+drop table place
+select*from area
+select*from category
+select*from place
+
+
+--------------------------회원, 장소 까지 
+drop table travelerRange
+select*from travelerRange
+
+----공개범위설정
+create table travelerRange(
+trange number primary key,
+trangeCategory varchar2(100) not null
+)
+
+insert into travelerRange(trange,trangeCategory)
+values(1,'남자');
+
+insert into travelerRange(trange,trangeCategory)
+values(2,'여자');
+
+insert into travelerRange(trange,trangeCategory)
+values(3,'전체');
+
+--  1 일때 남자   , 2 일때 여자  3 일때 전체공개     -- -- 0일때 전체공개 거부    //  1일때 전체공개 허용  !!수정해야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+drop table traveler
+select*from traveler
+
+create table traveler(
+ placeNo number,
+ id varchar2(100),
+ tdate date not null,
+ tstate number default 1,              -- 1일때 진행중   0일때 감추기
+ 
+ trange number constraint fk_traveler_trange references travelerRange(trange),               
+ 
+ constraint pk_placeNo foreign key(placeNo) references place,
+ constraint pk_id foreign key(id) references member,
+ constraint pk_traveler primary key(placeNo,id,tdate)
+ )
+
+
+ 
+ -- to_date(시간정보,포맷)
+insert into date_test(id,mydate) 
+values('jsp',to_date('2016/7/20 9:00:10','YYYY-MM-DD HH24:MI:SS'));
+ 
+ 
+ --insert 시 sysdate가아닌 선택한 특정날짜가 입력되어야한다
+insert into traveler(placeNo,id,tdate,trange)
+values(1,'java',to_date('2016-12-02'),3)
+
+
+---??  sysdate 로 자동으로 주면 해당날짜에 들어가는지??????? 
+-- 해당날짜를 선택해서 삽입해야하는데 sysdate로
+-- 들어가게되면 자동으로 현재날짜가 들어감 (생각해보기
+
+-- to_date(시간정보,포맷)
+insert into date_test(id,mydate) 
+values('jsp',to_date('2016/7/20 9:00:10','YYYY/MM/DD HH24:MI:SS'));
+
+
+--여행사진
+
+drop sequence memberPicture_seq;
+create sequence memberPicture_seq;
+
+drop table memberPicture;
+select*from memberPicture
+
+create table memberPicture(
+ pictureNo number primary key,
+ id varchar2(100),
+ fileName varchar2(100) not null,
+ pictureTitle varchar2(100) not null,
+ pictureDate date not null,
+ pictureContent clob not null,
+ hit number default 0,
+constraint fk_member foreign key(id) references member(id)
+ )
+
+ 
+ insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate)
+values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
+
+
+
+--message
+
+drop sequence message_seq;
+create sequence message_seq;
+
+select*from message
+
+drop table message;
+
+create table message(
+ messageNo number primary key,
+ sender varchar2(100) constraint fk_message_sender references member(id),
+ reciever varchar2(100) constraint fk_message_reciever references member(id),
+ messageDate date not null,
+ messageContent clob not null,
+ messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ )
+-- sender와 reciever 가 같을경우 생각해보자
+
+insert into message(messageNo,sender,reciever,messageDate,messageContent)
+values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
+
+insert into message(messageNo,sender,reciever,messageDate,messageContent)
+values(message_seq.nextval,'java2','java',sysdate,'2번째경우 반대의경우')
+
+>>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '1','남산_N서울타워.jpg', '남산_N서울타워', '04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)', '37.551399', '126.988184', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '2','중구_위안부_기억의터.jpg', '중구_위안부_기억의터', '04628  서울 중구 퇴계로26가길 6 (예장동)', '37.559061', '126.990767', '관광지', '서울');
@@ -357,7 +518,7 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '265','뽀빠이핫도그.jpg', '뽀빠이핫도그', '부산광역시 중구 창선동 1가 30-12', '35.099580', '129.031067', '맛집', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '266','할매집 회국수.jpg', '할매집 회국수', '부산광역시 중구 남포동 2가 15-1', '35.099127', '129.031497', '맛집', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '267','미스터스시.jpg', '미스터스시', '부산광역시 사하구 다대동 1552-18', '35.048824', '128.965396', '맛집', '부산');
-insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '268','VR플러스부산남포점.jpg', 'VR플러스부산남포점', '부산광역시 중구 남포동 6가 85 남포프라자 지하1층', '35.097711', '129.028991', '액티비티', '부산');
+insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '268','VR플러스부산남포점.jpg', 'VR플러스부산남포점', '부산광역시 중구 남포동 6가 85 남포프라자 지하1층', '35.097711', '129.028991', '엑티비티', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '269','광안비치랜드.jpg', '광안비치랜드', '부산광역시 수영구 민락동 181-191', '35.154320', '129.124879', '엑티비티', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '270','디오라마월드.jpg', '디오라마월드', '부산광역시 해운대구 우동 1468-1', '35.171515', '129.128809', '엑티비티', '부산');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '271','주라지 테마파크.jpg', '주라지 테마파크', '부산광역시 해운대구 우동 1495 신세계백화점 센텀시티점 9F', '35.168956', '129.129743', '엑티비티', '부산');
@@ -507,8 +668,6 @@ insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,cat
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '415','옥천학생야영장.jpg', '옥천학생야영장', '충청북도 옥천군 이원면 용방리 1016-1', '36.255834', '127.635966', '엑티비티', '충청도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '416','도레미캠핑장.jpg', '도레미캠핑장', '충청북도 괴산군 불정면 세평리', '36.857619', '127.820288', '엑티비티', '충청도');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '417','아산레일바이크.jpg', '아산레일바이크', '충청남도 아산시 도고면 아산만로 199-7', '36.761284', '126.867220', '엑티비티', '충청도');
-
-
 --------------------------회원, 장소 까지 
 drop table travelerRange
 select*from travelerRange
@@ -552,7 +711,7 @@ drop table memberPicture;
 select*from memberPicture
 
 create table memberPicture(
- pictureNo number primary key,
+ pictureNo number primary key,  --사진 업로드 쏩기
  id varchar2(100),
  filename varchar2(100) not null,
  pictureTitle varchar2(100) not null,
@@ -561,6 +720,9 @@ create table memberPicture(
  hit number default 0,
 constraint fk_member foreign key(id) references member(id)
  );
+ 
+insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate,pictureContent)
+values(memberPicture_seq.nextval,'java1','준성.jpg','강릉에서~~~!2',sysdate,'123')
 
 --message
 
@@ -584,4 +746,21 @@ create table message(
 select p.placeName, p.areaName, t.tDate
 from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
+
+
+
+
+	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
+	where pictureNo=63
+
+	update memberPicture set pictureTitle='rrr', pictureContent='rrr', filename='속초_봉포머구리집.jpg'
+	where pictureNo=2
+	select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
+ 		from memberPicture p, member m where p.id='java1' and p.id=m.id order by p.pictureNo desc
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.receiver=m2.id and  ms.sender ='java1')  rnum
+where   rnum  between 1 and 7 order by messageNo desc
 
