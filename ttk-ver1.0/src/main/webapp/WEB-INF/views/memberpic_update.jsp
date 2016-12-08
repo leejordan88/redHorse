@@ -22,16 +22,31 @@
     });	 
 </script> 
 		<br><br>
+		<div class="container">
+		<header>
+			<h3><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 게시글 수정</h3>
+		</header>
+		<br>
+		<br>
 		<form action="${pageContext.request.contextPath}/updateMemberPic.do"
-			method="post" enctype="multipart/form-data" id="updateMemberPicForm">
-			제목   <input type="text" id="pictureTitle" name="pictureTitle" value=${pvo.pictureTitle } size="48"><br>
-			작성자 ${sessionScope.mvo.name} <br>
-			내용 <br><textarea cols="33" rows="15" id="pictureContent" name="pictureContent">${pvo.pictureContent }</textarea><br>
+		method="post" enctype="multipart/form-data" id="updateMemberPicForm">
+			<div class="form-group col-md-12">
+				<input name="pictureTitle"  id="pictureTitle" placeholder="제목을 입력하세요" class="form-control" />
+			</div>
+			<div class="form-group col-md-12">
+				<textarea name="pictureContent" id="pictureContent" placeholder="내용을 입력하세요" class="form-control" rows="10"></textarea>
+			</div>
 			<%-- file upload를 위해 type을 file로 명시 --%>
-			<input type="file" name="uploadFile" id="uploadFile">
-			<input type="button" id="resetBtn" value="취소">
-			<input type="button" id="updateBtn" value="수정">
-			<input type="hidden" name="pictureNo" value=${pvo.pictureNo }>			
-	</form>
+			<div class="form-group col-md-12">
+				<input type="file" id="uploadFile" name="uploadFile" class="form-control" />
+			</div> 		
+			<br><br><br><br>
+			<div class="form-group col-md-12 text-center" >	
+				<button class="btn btn-lg btn-primary" id="updateBtn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  수정</button>
+				<button class="btn btn-lg btn-primary" id="resetBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  취소</button>
+				<input type="hidden" name="pictureNo" value=${pvo.pictureNo }>	
+			</div>
+		</form>
+	</div>
 	
 <jsp:include page="layout/footer.jsp"/>

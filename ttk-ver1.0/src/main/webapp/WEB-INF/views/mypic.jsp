@@ -1,28 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#listDetail").on("click","#memberPicModal",function(){
-		var pictureNo = $(this).children().val();
-		$.ajax({
-			type:"post", 
-			url: "updateHit.do",
-			data: "pictureNo="+$("#pictureNo").val(),
-			success: function(data){
-				 alert($("#pictureNo").val()+" "+data); 
-				$("#hitView").html(data);
-			}
-		});
-	});
-	
-    $("#listDetail").on("click","#memberPicModal",function(){
-        var pictureNo = $(this).children().val(); 
-       // alert(pictureNo);        
-       $("#pictureNo").val(pictureNo);
-     });
-});
-</script>
+
 <!-- 12/4 효민 추가부분 -->
 <!-- 12/7 전체 수정하였으므로 전체 복사 후 통합해주세요 -->
 <div class="container">
@@ -58,7 +37,8 @@ $(document).ready(function() {
 									class="img-responsive" alt="" />
 									<div class="portfolio-caption">
 										<h4>
-											${list.pictureTitle }<br>${list.pictureDate }
+											${list.pictureTitle }<br>
+											${list.pictureDate }
 										</h4>
 									</div>
 								</a>
@@ -67,7 +47,7 @@ $(document).ready(function() {
 						</li>
 						</c:if>
 						<c:set var="i" value="${i+1 }" />
-
+						
 						<!-- 모달부분(사진 상세보기) -->
 						<div class="section-modal modal fade"
 							id="portfolioModal${list.pictureNo }" tabindex="-1" role="dialog"
@@ -89,7 +69,7 @@ $(document).ready(function() {
 												</div>
 												<br>
 												<ul class="list-inline">
-													<li><b>Hit: <span id="hitView">${list.hit }</span></li>
+													<li><b>Hit: <span id="hitView"></span></li>
 													<li><b>Date: ${list.pictureDate }</li>
 													<li><b>Writer: ${list.memberVO.getName() }</li>
 												</ul>
@@ -102,10 +82,10 @@ $(document).ready(function() {
 												</h4>
 												<br> <br>
 												<c:if test="${list.memberVO.getId()==sessionScope.mvo.id}">
-													<a 	href="${pageContext.request.contextPath}/deleteMemberPic.do?pictureNo=${list.pictureNo}">
-													<button class="btn btn-primary" type="button">삭제</button></a>
-													<a 	href="${pageContext.request.contextPath}/updateMemberPicView.do?pictureNo=${list.pictureNo}">
+												<a 	href="${pageContext.request.contextPath}/updateMemberPicView.do?pictureNo=${list.pictureNo}">
 													<button 	class="btn btn-primary" type="button">수정</button></a>
+													<a 	href="${pageContext.request.contextPath}/deleteMemberPic.do?pictureNo=${list.pictureNo}">
+													<button class="btn btn-primary" type="button">삭제</button></a>													
 												</c:if>
 											</div>
 										</div>

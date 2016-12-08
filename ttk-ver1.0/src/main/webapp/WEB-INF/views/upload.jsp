@@ -3,9 +3,9 @@
 <jsp:include page="layout/header_profile.jsp"></jsp:include>
 <link 	href="${pageContext.request.contextPath}/resources/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 <!-- 사진첩 사진 업로드 페이지 -->
+<!-- 12/8 효민 전체적 수정 -->
 <!-- 12/7 효민 전체적 수정 -->
 <!-- 12/2 효민 추가 부분  -->
-<script src="${pageContext.request.contextPath}/resources/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
 	 $(document).ready(function(){			 
 		 $("#uploadBtn").click(function(){ 
@@ -21,7 +21,9 @@
     		}    		
     	});
     	$("#resetBtn").click(function(){    		
-    		$("#uploadForm")[0].reset();
+    		$("#uploadForm").each(function() {
+    			this.reset();
+    		});
     	});
     });	 
 </script> 
@@ -29,38 +31,36 @@
 <body>
 <br>
 <br>
-	<div class="section-title text-center">
-		<h3>새 게시물</h3>
-	</div>
-	
+<!-- Start  section -->
+
+	<div class="container">
+		<header>
+			<h3><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 게시글 쓰기</h3>
+		</header>
+		<br>
+		<br>
 		<form action="${pageContext.request.contextPath}/uploadMemberPic.do"
 		method="post" enctype="multipart/form-data" id="uploadForm">
-		  <div class="form-group col-xs-6 col-sm-3" >
-    		<label for="pictureTitle">제목</label>
-  		 	 <input type="text" class="form-control" id="pictureTitle" placeholder="제목을 입력하세요">
-  			</div>
-  			<br>
-  			<div class="form-group">
-  				<label for="name">작성자</label>
-  				 ${sessionScope.mvo.name} 
-  			</div>	
-			<br>
-			<div class="form-group col-xs-6">
-				<label for="pictureContent">내용</label>
-				<textarea class="form-control" id="pictureContent" rows="3"></textarea>
+			<div class="form-group col-md-12">
+				<input name="pictureTitle"  id="pictureTitle" placeholder="제목을 입력하세요" class="form-control" />
 			</div>
-			<br>
+			<div class="form-group col-md-12">
+				<textarea name="pictureContent" id="pictureContent" placeholder="내용을 입력하세요" class="form-control" rows="10"></textarea>
+			</div>
 			<%-- file upload를 위해 type을 file로 명시 --%>
-			 <div class="form-group">
-	   			 <label for="uploadFile"></label>
-	 				  <input type="file" id="uploadFile">
-	  		</div>
-	  		<br>
-			<!-- <input type="submit" value="등록"> -->
-				<input type="button" id="uploadBtn" value="등록">
-				<input type="button" id="resetBtn" value="취소">
-			</form>
-<!-- 12/2 효민 추가 부분  끝-->
+			<div class="form-group col-md-12">
+				<input type="file" id="uploadFile" name="uploadFile" class="form-control" />
+			</div> 		
+			<br><br><br><br>
+			<div class="form-group col-md-12 text-center" >	
+				<button class="btn btn-lg btn-primary" id="uploadBtn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  등록</button>
+				<button class="btn btn-lg btn-primary" id="resetBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  취소</button>
+			</div>
+		</form>
+	</div>
+
+<!-- End contact section -->
+<!-- 12/8 효민 추가 부분  끝-->
 
 	<jsp:include page="layout/footer.jsp"></jsp:include>
 	<!-- jQuery -->
