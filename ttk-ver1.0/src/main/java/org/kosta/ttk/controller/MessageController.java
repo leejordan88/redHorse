@@ -41,20 +41,15 @@ public class MessageController {
 		return new ModelAndView("message/messageIndex", "count", count);
 		}
 	
-	
 	@RequestMapping("messageListUnChecked.do")
-	public ModelAndView messageListUnChecked(HttpServletRequest request,String pageNo) {
+	public ModelAndView messageListUnChecked(HttpServletRequest request,HttpSession session,String pageNo) {
 		ListVO vo=null;
-		HttpSession session=request.getSession(false);
-		if(session!=null||session.getAttribute("mvo")==null){
 			MemberVO smvo=(MemberVO) session.getAttribute("mvo");
 				MessageVO messageVO=new MessageVO();
 				messageVO.setId(smvo.getId());
 			vo = messageService.messageListUnChecked(messageVO,pageNo);
-		}
 		return new ModelAndView("message/messagePopup/messageListUnChecked", "vo", vo);
 		}
-	
 	
 	@RequestMapping("messageList.do")
 	public ModelAndView messageList(HttpServletRequest request,String pageNo) {
@@ -66,8 +61,6 @@ public class MessageController {
 				MessageVO messageVO=new MessageVO();
 				messageVO.setId(smvo.getId());
 			vo = messageService.messageList(messageVO,pageNo);
-	
-		
 		}
 		return new ModelAndView("message/messagePopup/messageList", "vo", vo);
 	}
@@ -91,6 +84,5 @@ public class MessageController {
 		MessageVO messageVO = messageService.messageDetail(messageNo);
 		return new ModelAndView("message/messagePopup/messageDetail", "messageVO", messageVO);
 	}
-
 }
 
