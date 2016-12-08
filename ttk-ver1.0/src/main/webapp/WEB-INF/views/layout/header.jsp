@@ -102,12 +102,18 @@
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll" href="index.do#portfolio-work">Place</a>
 					</li>
-					<li><a class="page-scroll" href="profile_list.do">ProfileList</a>
+			
+			<!-- 영주 여행지검색 -->			
+					<li>
+					<a class="page-scroll" href="getAllPlaces.do">Place_List</a>
+					</li>
+										
+					<li><a class="page-scroll" href="profile_list.do">Profile_List</a>
 					</li>
 
 					<c:choose>
 						<c:when test="${sessionScope.mvo==null}">
-							<li><a href="register.do">회원가입</a></li>
+							<li><a href="register.do">Register</a></li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#login-modal">Login</a></li>
 						</c:when>

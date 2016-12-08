@@ -142,5 +142,12 @@ public class PlaceController {
 			return new ModelAndView("regiTraveler_ok");
 		}
 	}
+	
+	@RequestMapping("getAllPlaces.do")
+	public ModelAndView getAllPlaces(){
+		
+		List<PlaceVO> list = placeService.getAllPlaces(); 
+		return new ModelAndView("getAllPlaces","places",list);
+	}
 
 }
