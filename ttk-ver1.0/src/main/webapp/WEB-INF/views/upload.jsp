@@ -32,7 +32,6 @@
 <br>
 <br>
 <!-- Start  section -->
-
 	<div class="container">
 		<header>
 			<h3><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 게시글 쓰기</h3>
@@ -52,7 +51,7 @@
 				<input type="file" id="uploadFile" name="uploadFile" class="form-control" />
 			</div> 		
 			<br><br><br><br>
-			<div class="form-group col-md-12 " >	
+			<div class="form-group col-md-12 text-center">	
 				<!-- 12/8 효민 아침 수정 부분 -->	
 				<button type="button" class="btn btn-lg btn-primary" id="uploadBtn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  등록</button>
 				<button type="button" class="btn btn-lg btn-primary" id="resetBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 취소</button>

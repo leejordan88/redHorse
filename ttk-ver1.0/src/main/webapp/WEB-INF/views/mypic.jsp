@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#listDetail").on("click","#memberPicModal",function(){
+		var pictureNo = $(this).children().val();
+		$.ajax({
+			type:"post", 
+			url: "updateHit.do?",
+			data: "pictureNo="+$("#pictureNo").val(),
+			success: function(data){
+				alert($("#pictureNo").val()+" "+data); 
+				$("#hitView").html(data);
+			}
+		});
+	});    
+});
+</script>
 <!-- 12/4 효민 추가부분 -->
 <!-- 12/7 전체 수정하였으므로 전체 복사 후 통합해주세요 -->
 <div class="container">
@@ -19,16 +34,16 @@
 			<!-- 리스트에서 사진 3개씩 출력 위한 소스 -->
 			<c:set var="i" value="0" />
 			<c:set var="j" value="3" />
-			<div class="row">
+			<div class="row"  id ="listDetail">
 			<!-- $(this).children().children().children().children().children().val(); -->
-				<div class="col-md-12" id ="listDetail">
+				<div class="col-md-12">
 					<!-- Start Portfolio items -->
 					<c:forEach var="list" items="${requestScope.list}">
 						<c:if test="${i%j == 0 }">
-							<ul id="portfolio-list">
+							<ul id="portfolio-list" >
 						</c:if>
 						<li>
-							<div class="portfolio-item" >
+							<div class="portfolio-item">
 								<!-- 이미지 클릭 시 모달 창 실행 -->
 								<a href="#portfolioModal${list.pictureNo }"
 									class="portfolio-link" data-toggle="modal" id="memberPicModal">
