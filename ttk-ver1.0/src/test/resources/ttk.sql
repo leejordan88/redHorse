@@ -52,7 +52,6 @@ values(1,'공개허용');
 insert into memberRange(range,rangeCategory)
 values(0,'공개거부');
 
-
 select *from member;
 drop table member;
 
@@ -96,6 +95,7 @@ categorypicture varchar2(100) not null
 insert into category(categoryname,categorypicture) values('관광지','관광지.jpg');
 insert into category(categoryname,categorypicture) values('맛집','맛집.jpg');
 insert into category(categoryname,categorypicture) values('엑티비티','엑티비티.jpg');
+
 
 drop table area;
 create table area(

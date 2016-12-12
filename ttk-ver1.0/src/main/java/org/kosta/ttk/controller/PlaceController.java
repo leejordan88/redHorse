@@ -86,7 +86,6 @@ public class PlaceController {
 		List<PlaceVO> placeList = placeService.placeList(placeVO);
 		return new ModelAndView("place_list", "placeList", placeList);
 	}
-	
 	/**
 	 * 작성자: 준성
 	 * 해당 장소 클릭 시 장소의 세부사항을 나타내주는 메서드
@@ -149,8 +148,7 @@ public class PlaceController {
 			travelerService.regiTraveler(tvo);
 			return new ModelAndView("regiTraveler_ok");
 		}
-	}
-	
+	}	
 	@RequestMapping("getAllPlaces.do")
 	public ModelAndView getAllPlaces(){
 		
