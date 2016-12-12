@@ -1,8 +1,6 @@
-
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
 
 body, p, h1, h2, h3, h4, h5{
 	
@@ -250,8 +248,8 @@ div.box {
     position: relative;
     min-height: 1px;
     float: left;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 10px 10px 10px 10px;
+
 }
 
 .profile_details:nth-child(3n) {
@@ -1145,7 +1143,7 @@ li {
 	
     text-transform: uppercase;
     font-weight: 900;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     color: rgb(0, 0, 0);
     font-size: 13px;
 }
@@ -2142,21 +2140,14 @@ and (min-width : 551px){
 }
 
 
-..fun-facts {
-    color:#fff;
+.fun-facts {
+
     background-attachment: fixed;
     background-size: cover;
     padding-top: 120px;
     padding-bottom: 80px;
     background: url(../images/bg-fun-fact2.jpg) center center no-repeat;
 
-}
-.counter-item h5{
-  color:#fff;
-  font-weight:bolder;
-    text-align:center;
-  margin-bottom:0px;
-    font-size: 1em;
 }
 
 .counter-item {
@@ -2166,6 +2157,13 @@ and (min-width : 551px){
     padding: 40px;
 }
 
+.counter-item h5 {
+  text-align:center;
+  margin-bottom:0px;
+  color:#fcf8e3;
+  font-size: 20px;
+
+}
 
 .counter-item i {
   font-size:50px;
@@ -3041,12 +3039,11 @@ iframe {
 	position: fixed; right: 0; top: 0; z-index: 99; display:none;}
 
 #popup_layer { 
-	/* width:300px; */
 	margin-bottom:30px;
 	background:#fff;
 	border:solid 1px #ccc;
 	position:absolute;
-	top:50%;
+	top:260px;
 	left:50%;
 	margin-left:-200px;
 	box-shadow: 0px 1px 20px #333;
