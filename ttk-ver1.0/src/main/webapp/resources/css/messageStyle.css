@@ -125,6 +125,26 @@ a:hover, a:active, a:focus {
   outline: 0;
 }
 /* ----------------------------------- */
+#msgContent{
+	border-style: solid;
+	border-color: white;
+	border-width: 1.5px;
+	text-align: center;
+    width: 300px;
+    height: auto;
+    margin-left: 37%;
+    margin-right: 30%;
+    padding-bottom: 34px;
+    padding-top: 9px;
+}
+
+#detail-pica{
+	background-color: #7fbbda;
+}
+#detail-picb{
+	margin-top: -4%;
+	margin-bottom: -2%;
+}
 
 #list-form{
    margin-bottom: -5%;
@@ -178,13 +198,13 @@ h4.service-title {
  messageDetail 부분
 
 #messageSender{
-	color: white;
+   color: white;
 }
 #messageDate{
-	color: #d5d5d5;
+   color: #d5d5d5;
 }
 #messageContent{
-	color: white;
+   color: white;
 }
 .profile-widget {
   position: relative;
@@ -193,7 +213,7 @@ h4.service-title {
   background-size: cover;
   background-position: center;
   padding: 50px 0 10px;
-	
+   
 }
 .profile-widget .image-container .profile-background {
   width: 100%;
@@ -241,5 +261,3 @@ h4.service-title {
 .panel-white {
   border: 1px solid #dddddd;
 }
-
-   
