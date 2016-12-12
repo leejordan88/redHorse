@@ -11,7 +11,7 @@
          <div class="row">
             <div class="col-md-12">
                <div class="section-title text-center">
-                  <h3>My Gallery</h3>
+                  <h3>Gallery</h3>
                   <p>사진을 구경하세용</p>
                </div>
             </div>
@@ -71,7 +71,7 @@
                                     <ul class="list-inline">
                                        <li><b>Hit: <span id="hitView"></span></li>
                                        <li><b>Date: ${list.pictureDate }</li>
-                                       <li><b>Writer: ${list.memberVO.getName() }</li>
+                                       <li><b>Writer: ${list.memberVO.getId() }</li>
                                     </ul>
                                     <br> <img
                                        src="${pageContext.request.contextPath}/resources/picupload/${list.memberVO.getId() }/picture/${list.fileName}">

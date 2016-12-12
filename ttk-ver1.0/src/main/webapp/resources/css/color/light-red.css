@@ -127,7 +127,7 @@ fieldset[disabled] .btn-xl.active {
 
 .menu-wrap a:hover,
 .menu-wrap a:focus {
-	color: #FF432E;
+   color: #FF432E;
 }
 
 .menu-wrap .logo {
@@ -151,8 +151,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .no-touch .feature:hover i,
-	.no-touch .feature:active i,
-	.no-touch .feature:focus i {
+   .no-touch .feature:active i,
+   .no-touch .feature:focus i {
         
         box-shadow: 0 0 0 0 #FF432E;
 }
@@ -206,16 +206,16 @@ fieldset[disabled] .btn-xl.active {
 
 .about-us-section-2 .carousel-indicators li,
 .project-image .carousel-indicators li {
-	border: 2px solid #FF432E !important;
+   border: 2px solid #FF432E !important;
 }
 
 .about-us-section-2 .carousel-indicators .active,
 .project-image .carousel-indicators .active {
-	background-color: #FF432E;
+   background-color: #FF432E;
 }
 
 .owl-theme .owl-controls .owl-buttons div {
-	background: #FF432E;
+   background: #FF432E;
 }
 
 #team-section .nav-tabs.nav-justified {
@@ -245,7 +245,7 @@ fieldset[disabled] .btn-xl.active {
     color: #FF432E;
 }
 .testimonials-carousel .owl-controls.clickable .owl-buttons div{
-	color: #FF432E;
+   color: #FF432E;
 }
 .owl-theme .owl-controls .owl-page.active{
     background-color: #FF432E;

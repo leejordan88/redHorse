@@ -25,10 +25,7 @@
                                         <div class="team-details">
                                             <h4>이준성</h4>
                                             <p>29<br>Project leader</p>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
+
                                         </div>
                                     </div>
 
@@ -37,10 +34,7 @@
                                         <div class="team-details">
                                             <h4>천영해</h4>
                                             <p>28<br>Study leader</p>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
+          
                                         </div>
                                     </div>
 
@@ -49,10 +43,7 @@
                                         <div class="team-details">
                                             <h4>오진석</h4>
                                             <p>25<br>Presentation leader</p>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
+       
                                         </div>
                                     </div>    
 
@@ -61,10 +52,7 @@
                                         <div class="team-details">
                                             <h4>김효민</h4>
                                             <p>24<br>Document leader</p>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
+
                                         </div>
                                     </div>
 
@@ -73,10 +61,7 @@
                                         <div class="team-details">
                                             <h4>서예원</h4>
                                             <p>23<br>BirdView leader</p>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
+
                                         </div>
                                     </div>
 
@@ -85,10 +70,7 @@
                                         <div class="team-details">
                                             <h4>이영주</h4>
                                             <p>23<br>Food leader</p>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                            </ul>
+
                                         </div>
                                     </div>
                                 </div>

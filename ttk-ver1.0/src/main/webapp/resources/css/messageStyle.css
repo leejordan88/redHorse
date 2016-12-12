@@ -126,10 +126,10 @@ a:hover, a:active, a:focus {
 }
 /* ----------------------------------- */
 #msgContent{
-	border-style: solid;
-	border-color: white;
-	border-width: 1.5px;
-	text-align: center;
+   border-style: solid;
+   border-color: white;
+   border-width: 1.5px;
+   text-align: center;
     width: 300px;
     height: auto;
     margin-left: 37%;
@@ -139,11 +139,11 @@ a:hover, a:active, a:focus {
 }
 
 #detail-pica{
-	background-color: #7fbbda;
+   background-color: #7fbbda;
 }
 #detail-picb{
-	margin-top: -4%;
-	margin-bottom: -2%;
+   margin-top: -4%;
+   margin-bottom: -2%;
 }
 
 #list-form{
@@ -183,7 +183,7 @@ h4.service-title {
 }
 
 /* 한번도 클릭하지 않은 링크, none으로 언더라인 생기지 않게 함 */
-   a:link {color:#ffffff; text-decoration:none;}
+   a:link {/* color:#ffffff; */ text-decoration:none;}
    한번 이상 클릭한 링크, none으로 언더라인 생기지 않게 함
    a:visited {color:#ffffff; text-decoration:none;}   
    마우스 오버시 링크 색상, none으로 언더라인 생기지 않게 함
@@ -202,9 +202,6 @@ h4.service-title {
 }
 #messageDate{
    color: #d5d5d5;
-}
-#messageContent{
-   color: white;
 }
 .profile-widget {
   position: relative;

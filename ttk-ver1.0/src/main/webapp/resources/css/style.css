@@ -1,5 +1,29 @@
-<<<<<<< HEAD
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+body, p, h1, h2, h3, h4, h5{
+	
+	font-family: 'Noto Sans KR', sans-serif;
+
+/* font-family: 'Jeju Gothic', sans-serif; */
+
+/* font-family: 'Nanum Gothic', sans-serif; */
+
+}
+
+
+#portfolio-work .block .portfolio-contant .overly h1, #portfolio-work .block .portfolio-contant .overly h2{
+	margin-top: 30%;
+
+}
+
+#place-list{
+	overflow: hidden;
+  padding: 90px 0;
+  padding-bottom: 30px;
+  text-align: center;
+}
 .agrRadio{
     margin-top: 15px;
     margin-left: 63%;
@@ -14,9 +38,6 @@
 	padding-top: 100px;
 }
 
-=======
-
->>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 .validate_msg{
 	color: #ff0000;
 }
@@ -227,8 +248,8 @@ div.box {
     position: relative;
     min-height: 1px;
     float: left;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 10px 10px 10px 10px;
+
 }
 
 .profile_details:nth-child(3n) {
@@ -454,7 +475,6 @@ div.box {
   margin: 0 auto;
 }
 #head .title {
-  font-family: Alice, Georgia, serif;
   font-size: 49px;
   font-size: 3.0625rem;
 }
@@ -943,7 +963,7 @@ ul.msg_list li a .message {
   color: #fff;
 }
 #portfolio-work .block .portfolio-contant ul li a h2 {
-  font-size: 22px;
+  font-size: 26px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -965,7 +985,7 @@ ul.msg_list li a .message {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(94, 42, 254, 0.9);
   opacity: 0;
   -webkit-transition: .3s all;
   -o-transition: .3s all;
@@ -991,7 +1011,6 @@ ul.msg_list li a .message {
  
 body {
     overflow-x: hidden;
-    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -1056,7 +1075,7 @@ li {
     color: #666;
     //font-style: italic;
     font-size: 28px;
-    font-family: 'Oswald', sans-serif;
+
     text-transform: none;
 }
 
@@ -1120,12 +1139,13 @@ li {
 
 
 .navbar-default .nav li a {
+	font-family: 'Nanum Gothic', sans-serif;
+	
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: black;
-    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: rgb(0, 0, 0);
+    font-size: 13px;
 }
 
 
@@ -1189,7 +1209,6 @@ li {
 .menu-wrap a {
 	color: #fff;
     font-weight: 300;
-    font-family: 'Oswald', sans-serif;
 }
 
 .menu-wrap .logo {
@@ -1566,7 +1585,6 @@ li {
     letter-spacing: 5px;
     margin-bottom: 55px;
     color: #fff;
-    font-family: 'Oswald', sans-serif;
 }
 
 
@@ -1746,7 +1764,6 @@ li {
     font-size: 15px;
     color: #666;
     font-weight: 300;
-    font-family: 'Oswald', sans-serif;
 }
 
 .feature-2 h4{
@@ -1754,7 +1771,7 @@ li {
     color: #666;
     padding-bottom: 10px;
     font-weight: 300;
-    font-family: 'Oswald', sans-serif;
+
 }
 
 .feature p, 
@@ -1993,7 +2010,7 @@ and (min-width : 551px){
    //margin: 20px 0 0 0;
     position: relative;
     top: 38%;
-    font-family: 'Oswald', sans-serif;
+
 }
 
 .portfolio-caption a i {
@@ -2109,40 +2126,59 @@ and (min-width : 551px){
 /* Start Fun Facts Counter Section
 /*----------------------------------------------------------*/
 
+.color-overlay {
+    background: #000;
+    opacity: .3;
+    min-width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+}
+
+
 .fun-facts {
 
     background-attachment: fixed;
     background-size: cover;
     padding-top: 120px;
     padding-bottom: 80px;
+    background: url(../images/bg-fun-fact2.jpg) center center no-repeat;
+
 }
 
 .counter-item {
     position:relative;
     text-align:center;
     margin-bottom: 40px;
-
     padding: 40px;
 }
 
 .counter-item h5 {
   text-align:center;
   margin-bottom:0px;
-  color:black;
+  color:#fcf8e3;
+  font-size: 20px;
+
 }
 
 .counter-item i {
-  font-size:40px;
+  font-size:50px;
 }
 
 
 .timer {
+	
+	color:#fcf8e3;
   font-size: 48px;
   font-weight: 800;
   text-transform: uppercase;
   text-align:center;
   line-height:80px;
-    font-family: 'Oswald', sans-serif;
+
 }
 
 
@@ -2649,7 +2685,7 @@ footer.style-1 .footer-link li {
 .team-member .team-details h4 {
     padding-top: 30%;
     font-size: 22px;
-    font-family: 'Oswald', sans-serif;
+ 
 }
 
 .team-member .team-details li {
@@ -3003,12 +3039,11 @@ iframe {
 	position: fixed; right: 0; top: 0; z-index: 99; display:none;}
 
 #popup_layer { 
-	/* width:300px; */
 	margin-bottom:30px;
 	background:#fff;
 	border:solid 1px #ccc;
 	position:absolute;
-	top:50%;
+	top:260px;
 	left:50%;
 	margin-left:-200px;
 	box-shadow: 0px 1px 20px #333;

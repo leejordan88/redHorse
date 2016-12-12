@@ -3,10 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../layout/header.jsp"></jsp:include> 
 
-<!-- Add custom CSS here -->
-<link
-   href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
-   rel="stylesheet">
 
 <!-- 전체 페이지시작 -->
 <section id="profile-list">
@@ -42,17 +38,17 @@
                     </div>
                 <div class="col-sm-12">
                     <div class="details">
-	                        <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
-	                        <h5 id="messageDate">${requestScope.messageVO.messageDate}</h5>
-	                        <textarea class="form-control" id="msgContent" cols="45" rows="6" readonly="readonly" placeholder="${requestScope.messageVO.messageContent}"></textarea>
-	                       	<!--  <div id="messageContent"></div> -->
+                           <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
+                           <h5 id="messageDate">${requestScope.messageVO.messageDate}</h5>
+                           <textarea class="form-control" id="msgContent" cols="45" rows="6" readonly="readonly" placeholder="${requestScope.messageVO.messageContent}"></textarea>
+                             <!--  <div id="messageContent"></div> -->
                         <br><br>
                         <div class="mg-top-10">
-                            <a href="#"  class="btn btn-success">send<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
+                            <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">send<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
                             &nbsp;
                             <a href="#" class="btn btn-success" >delete<%-- <img src="${pageContext.request.contextPath}/resources/images/message/delete.png" > --%></a>
                         </div>
-               	 </div>
+                   </div>
             </div>
 </div>
 <!-- 내용부분 끝-->
