@@ -18,13 +18,13 @@ public class MessageController {
 	private MessageService messageService;
 
 	@RequestMapping("messageSend.do")
-	public ModelAndView messageSend(HttpServletRequest request, MessageVO messageVO) {
+	public String messageSend(HttpServletRequest request, MessageVO messageVO) {
 		HttpSession session = request.getSession(false);
 		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 		messageVO.setSender(mvo.getId());
 		System.out.println(messageVO);
 		messageService.messageSend(messageVO);
-		return new ModelAndView("index");
+		return "redirect:messageSendList.do";
 	}
 
 	@RequestMapping("messageUncheckedCount.do")

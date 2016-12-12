@@ -80,6 +80,14 @@
     $(document).ready(function(){
     	
     	$("#searchByNameBtn").click(function(){
+    		
+    		if($("#searchName").val()==""){
+    			alert("검색하려는 이름을 입력해주세요");
+    			$("#serachResultView").html("");	
+    			return;
+    		}
+  		
+    		
 			$.ajax({
 				type:"POST",
 				url:"searchMemberByName.do",				
