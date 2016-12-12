@@ -65,7 +65,7 @@
 					    data += "</div></div></div></div>";
 					
 						 }
-						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
+						 data += "<div class='col-md-12'><input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'></div>";
 						 document.getElementById("travelerListByDate").innerHTML = data;
 						 } 
 					 });
@@ -155,11 +155,8 @@
 						<input id="enableNextMonth" type="text" placeholder="Select date"
 
 							class=" form-control "> <br> <br>
-
 					</div>
-
 				</div>
-
 				<div class="right_col" role="main">
 
 					<div class="row">
