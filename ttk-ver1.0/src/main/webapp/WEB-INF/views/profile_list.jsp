@@ -98,11 +98,14 @@
 						alert("조건이 일치하는 회원이 없습니다.");	
 						$("#serachResultView").html("");						
 					}else{
-						var sicon="<i class='fa fa-male'></i>";
+						var sicon="";
 						var data="";
 						for(var i=0;i<result.length;i++){
+
 							if(result[i].sex==2){
 								sicon="<i class='fa fa-female'></i>";
+			 				}else{
+								sicon="<i class='fa fa-male'></i>";
 							}
 							data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
 							data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";
@@ -117,6 +120,7 @@
 							data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
 							data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
 							data+="</div></div></div></div>";
+							
 						}
 						$("#serachResultView").html(data);				
 					}
@@ -137,11 +141,13 @@
 					alert("조건이 일치하는 회원이 없습니다.");
 					$("#serachResultView").html("");
 				}else{
-					var sicon="<i class='fa fa-male'></i>";
+					var sicon="";
 					var data="";
 					for(var i=0;i<result.length;i++){
 						if(result[i].sex==2){
 							sicon="<i class='fa fa-female'></i>";
+						}else{
+							sicon="<i class='fa fa-male'></i>";
 						}
 						data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
 						data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";

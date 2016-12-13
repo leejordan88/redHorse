@@ -25,6 +25,9 @@ public interface MemberPicDAO {
 	MemberVO getMemberInfo(String id);
 
 	void updateMemberPic(MemberPicVO pvo);
+	
 	void deleteMemberPic(int pictureNo);
+
+	void updateMemberHit(String id);
 
 }

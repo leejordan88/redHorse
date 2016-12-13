@@ -21,7 +21,7 @@ public interface MemberDAO {
 
 	List<StatsVO> getStats();
 
-	List<MemberVO> searchMemberByName(String name);
+	List<MemberVO> searchMemberByName(MemberVO memberVO);
 
 
 
