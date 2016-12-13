@@ -149,9 +149,9 @@ public class PlaceController {
 			try {
 				tvo.setId(mvo.getId());
 				travelerService.regiTraveler(tvo);
-				return new ModelAndView("regiTraveler_ok");
+				return new ModelAndView("regiTraveler_ok", "placeNo", tvo.getPlaceNo());
 			} catch (DuplicateKeyException e) {
-				return new ModelAndView();
+				return new ModelAndView("regiTraveler_fail", "placeNo", tvo.getPlaceNo());
 			}
 		}
 	}
