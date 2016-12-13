@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 <context:component-scan base-package="org.kosta" />
-<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+
 <!-- dataSource -->
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
  <property name="driverClassName">
@@ -29,6 +29,7 @@
   <value>30</value>
  </property>
 </bean>
+
 <!-- MyBatis 연동 설정 -->
 <bean id="sqlSessionFactory" 
 class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -39,6 +40,20 @@ class="org.mybatis.spring.SqlSessionFactoryBean">
 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
  <constructor-arg ref="sqlSessionFactory"></constructor-arg>
 </bean>
+
+<!-- Interceptor 설정 -->
+<mvc:interceptors>
+	<mvc:interceptor>
+		<mvc:mapping path="/*.do"/>
+		<mvc:exclude-mapping path="/index.do"/>
+		<mvc:exclude-mapping path="/login.do"/>
+		<mvc:exclude-mapping path="/logout.do"/>
+		<mvc:exclude-mapping path="/before_login.do"/>
+		<mvc:exclude-mapping path="/login_fail.do"/>
+		<mvc:exclude-mapping path="/register.do"/>
+		<bean class="org.kosta.ttk.controller.LoginCheckInterceptor" />
+	</mvc:interceptor>
+</mvc:interceptors>
 
 </beans>
 
