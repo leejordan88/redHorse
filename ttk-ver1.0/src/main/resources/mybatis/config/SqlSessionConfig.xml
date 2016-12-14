@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 사용할 클래스에 대한 별칭을 명시한다.  -->
 	<typeAliases>
 	<package name="org.kosta.ttk.model.vo"/>
-	</typeAliases>	
+	</typeAliases>
 	<!-- mapper.xml 을 명시한다  -->
 	<mappers>	
 	<mapper resource="mybatis/config/place.xml"/>	
@@ -21,13 +21,3 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</mappers>
 
 </configuration>
-
-
-
-
-
-
-
-
-
-

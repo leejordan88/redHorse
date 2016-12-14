@@ -16,6 +16,7 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.PlaceVO;
 import org.kosta.ttk.model.vo.StatsVO;
 import org.kosta.ttk.model.vo.TravelerVO;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,7 +87,6 @@ public class PlaceController {
 		List<PlaceVO> placeList = placeService.placeList(placeVO);
 		return new ModelAndView("place_list", "placeList", placeList);
 	}
-	
 	/**
 	 * 작성자: 준성
 	 * 해당 장소 클릭 시 장소의 세부사항을 나타내주는 메서드
@@ -145,12 +145,15 @@ public class PlaceController {
 		if(mvo == null){
 			return new ModelAndView("login_fail");
 		}else{
-			tvo.setId(mvo.getId());
-			travelerService.regiTraveler(tvo);
-			return new ModelAndView("regiTraveler_ok");
+			try {
+				tvo.setId(mvo.getId());
+				travelerService.regiTraveler(tvo);
+				return new ModelAndView("regiTraveler_ok", "placeNo", tvo.getPlaceNo());
+			} catch (DuplicateKeyException e) {
+				return new ModelAndView("regiTraveler_fail", "placeNo", tvo.getPlaceNo());
+			}
 		}
-	}
-	
+	}	
 	@RequestMapping("getAllPlaces.do")
 	public ModelAndView getAllPlaces(){
 		

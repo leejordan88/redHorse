@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-alert("여행지 등록이 완료되었습니다.");
-location.href="detailPlace.do?placeNo="+${placeNo };
+<script type="text/javascript">
+alert("로그인 후 이용하세요~");
+location.href="index.do";
 </script>
 </body>
 </html>
