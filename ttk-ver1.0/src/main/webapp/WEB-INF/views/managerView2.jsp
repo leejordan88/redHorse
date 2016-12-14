@@ -5,54 +5,48 @@
 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
 <!-- 이 위로는 헤더 -->
 <div class="container" style="margin-top:5%">
-  <form class="navbar-form navbar-right" role="search">
+ <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="회원검색">
         </div>
         <button type="submit" class="btn btn-default">검색</button>
       </form>
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="managerView.do">회원관리</a></li>
-  <li role="presentation" ><a href="managerView2.do">신고관리</a></li>
+  <li role="presentation" ><a href="managerView.do">회원관리</a></li>
+  <li role="presentation" class="active"><a href="managerView2.do">신고관리</a></li>
   <li role="presentation" ><a href="managerView3.do">블랙리스트관리</a></li>
 </ul>
-  <br>
+ <br>
  <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">회원관리</div>
   <!-- Table -->
- <table class="table">
+   <table class="table">
 	    <thead>
 	      <tr>
 		<th>#</th>
-		<th>아이디</th>
-		<th>이름</th>
-		<th>핸드폰번호</th>
-		<th>나이</th>
-		<th>신고받은 횟수</th>
-		<th>전체쪽지수</th>
-		<th>여행등록수</th>
-		<th>사진첩 게시글수</th>
+		<th>신고한 사람</th>
+		<th>신고 받은 사람</th>
+		<th>신고 받은 사유</th>
+		<th>블랙리스트 유/무</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr>
 		<td>1</td>
-		<td>java2</td>
-		<td>영해형</td>
-		<td>01030289402</td>
-		<td>35</td>
-		<td>2</td>
-		<td>4</td>
-		<td>5</td>
-		<td>4</td>
+		<td>Table cell</td>
+		<td>Table cell</td>
+		<td>Table cell</td>
+		<td><div class="radio">
+	  <label>
+	    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+	    블랙리스트
+	  </label>
+	</div></td>
+		
 	      </tr>
 	      <tr>
 		<td>2</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
 		<td>Table cell</td>
 		<td>Table cell</td>
 		<td>Table cell</td>
@@ -60,10 +54,6 @@
 	      </tr>
 	      <tr>
 		<td>3</td>
-			<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
 		<td>Table cell</td>
 		<td>Table cell</td>
 		<td>Table cell</td>

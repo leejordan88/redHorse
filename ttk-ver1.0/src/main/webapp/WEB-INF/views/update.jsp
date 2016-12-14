@@ -59,13 +59,21 @@
 				class="required">*</span>
 			</label>
 			<div class="col-md-3 col-sm-3 col-xs-12">
-				<input type="password" name="password"
-					value="${sessionScope.mvo.password}"
+				<input type="password" name="password" id="password" value="${sessionScope.mvo.password}"
 					class="form-control col-md-7 col-xs-12" required="required">
 			</div>
 			<span id="msg_password"></span>
 		</div>
 		<!-- 비밀번호 끝 -->
+		 <div class="form-group">
+                            <label for="cpassword" class="control-label col-md-3 col-sm-3 col-xs-12" >비밀번호확인 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="password" id="cpassword" name="cpassword"  value="${sessionScope.mvo.password}"
+                              class="form-control col-md-7 col-xs-12" required="required">
+                            </div>
+                            <span id="msg_cpassword"></span>
+                          </div>    
 		<!-- 이름 시작 -->
 		<div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">이름
@@ -115,7 +123,7 @@
 			<label class="control-label col-md-3 col-sm-3 col-xs-3">핸드폰번호<span
 				class="required">*</span></label>
 			<div class="col-md-2">
-				<input type="text" name="tel" value="${sessionScope.mvo.tel}"
+				<input type="text" name="tel" id="tel"value="${sessionScope.mvo.tel}"
 					class="form-control col-md-7 col-xs-12" required="required">
 			</div>
 			<span id="msg_tel"></span>
@@ -178,23 +186,31 @@
 		            //no
 		        	alert("개인정보수정을 취소합니다.");
 		        	  location.replace('index.do');
-		            retrun;
+		            return;
 		        }
 		}); // click
 		
 	// 숫자 체크 
 		$('#update').click(function() {
 			// isNaN = Not a Number ==> 숫자가 아니면 true 
-			// 숫자면 false
+			// 숫자면 false  
 			if(isNaN($('#age').val())) {
 				alert("나이를 숫자로 입력하세요");
-			/* 	alert(typeof $('#age').val()); */
 					return false;
-			}isNaN
-				if(isNumeric($('#tel').val())){
-				alert("핸드폰번호를 숫자로 입력하세요");
+			}
+			if(isNaN($('#tel').val())) {
+				alert("휴대폰번호를 숫자로 입력하세요");
 					return false;
-			} 
+			}
+			if($('#password').val()!=$('#cpassword').val()){
+				alert("비밀번호랑 비밀번호확인이랑 일치하지 않습니다");
+				return false;
+			}
+			if($('#tel').val().length != 11) {
+				//var tel=$(this).val().trim();
+				alert("휴대폰 번호 11자리 입력하세요");
+					return false;
+			}
 		}); // update 버튼 클릭
 	}); // ready
 	</script>

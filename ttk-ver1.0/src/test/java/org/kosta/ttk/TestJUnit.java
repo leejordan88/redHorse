@@ -10,7 +10,9 @@ import org.junit.runner.RunWith;
 import org.kosta.ttk.controller.MemberController;
 import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
+import org.kosta.ttk.model.service.MemberPicService;
 import org.kosta.ttk.model.service.MemberService;
+import org.kosta.ttk.model.vo.MemberPicVO;
 import org.kosta.ttk.model.vo.StatsVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,17 +45,18 @@ public class TestJUnit {
 
 	@Resource
 	private MemberService memberService;
+	private MemberPicService memberPicService;
+	private MemberPicVO pvo;
 
-	
 	@Test
 	public void test(){
 
 		/* ArrayList<StatsVO> svo = new ArrayList<StatsVO>(); */
 		/*StatsVO svo = new StatsVO();*/
-		 List<StatsVO> list = memberService.getStats();
+		 //List<StatsVO> list = memberService.getStats();
 		/*StatsVO svo=new StatsVO();*/
 		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
-		System.out.println(list);
+		//System.out.println(list);		
 	}
 }
 

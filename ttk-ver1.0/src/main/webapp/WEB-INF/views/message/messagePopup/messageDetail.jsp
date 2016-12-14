@@ -18,7 +18,6 @@
    </div>
 
 <!--파란색부분 -->
-
    <div id="services" class="services">
       <div class="container">
          <div class="row">
@@ -53,7 +52,6 @@
             </div>
 </div>
 <!-- 내용부분 끝-->
-
       </div>
    </div>
  <!-- 파란부분끝 -->
@@ -73,17 +71,15 @@
       });
       
       $('#btn-delete').click(function() {
-            //삭제
-             var result = confirm('메세지를 삭제하시겠습니까?');
-              if(result) {
-                 //yes
-                 $(location).attr('href',"receiveMessageDelete.do?messageNo=${requestScope.messageVO.messageNo}");
-              } else {
-                 
-                  return;
-              }
-            
-            
+         	//삭제
+         	 var result = confirm('메세지를 삭제하시겠습니까?');
+		        if(result) {
+		           //yes
+		        	$(location).attr('href',"receiveMessageDelete.do?messageNo=${requestScope.messageVO.messageNo}");
+		        } else {
+		           
+		            return;
+		        }
       });//function 
   });
    

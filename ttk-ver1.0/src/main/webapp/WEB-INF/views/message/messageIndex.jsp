@@ -49,7 +49,7 @@
                         </div>
                     </div>
                        <div class="col-md-3 text-center">
-                        <div class="service-item">
+                        <div class="service-item"  id="messageDeleteList">
                             <i class="service-icon fa fa-trash-o"></i>
                             <h4 class="service-title">Delete Message</h4>
 					 </div>
@@ -72,7 +72,10 @@
 		$("#messageListUnChecked").click(function(){
 			location.href="messageListUnChecked.do";
 		});
+		//경로추가 12/13 위의 아이콘 아이디 추가
+		$("#messageDeleteList").click(function(){
+			location.href="messageDeleteList.do";
+		});
 	});
 </script>
-
 <jsp:include page="../layout/footer.jsp"></jsp:include>

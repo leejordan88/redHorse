@@ -18,8 +18,8 @@ public class MessageDAOImpl implements MessageDAO {
 		template.insert("post.messageSend",messageVO);
 	}
 	@Override
-	public List<MessageVO> messageListUnChecked(MemberVO smvo) {
-		return template.selectList("post.messageListUnChecked", smvo);
+	public List<MessageVO> messageListUnChecked(PagingBeanVO pagingBean) {
+		return template.selectList("post.messageListUnChecked", pagingBean);
 	}
 	@Override
 	public List<MessageVO> messageList(PagingBeanVO pagingBean) {
@@ -52,5 +52,28 @@ public class MessageDAOImpl implements MessageDAO {
 	public int messageUncheckedCount(MessageVO messageVO) {
 		return template.selectOne("post.messageUncheckedCount",messageVO);
 	}
-
+	@Override
+	public void receiveMessageDelete(int messageNo) {
+		template.update("post.receiveMessageDelete",messageNo );
+	}
+	@Override
+	public List<MessageVO> messageDeleteList(PagingBeanVO pagingBean) {
+		return  template.selectList("post.messageDeleteList", pagingBean);
+	}
+	@Override
+	public int messageDeleteListTotalCount(MessageVO messageVO) {
+		return template.selectOne("post.messageDeleteListTotalCount",messageVO);
+	}
+	@Override
+	public void sendMessageDelete(int messageNo) {
+		template.update("post.sendMessageDelete",messageNo);
+	}
+	@Override
+	public void returnReceiveMessageDelete(int messageNo) {
+		template.update("post.returnReceiveMessageDelete",messageNo);
+	}
+	@Override
+	public void returnSendMessageDelete(int messageNo) {
+		template.update("post.returnSendMessageDelete",messageNo);
+	}
 }

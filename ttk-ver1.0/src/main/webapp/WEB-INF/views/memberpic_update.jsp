@@ -31,14 +31,14 @@
       <form action="${pageContext.request.contextPath}/updateMemberPic.do"
       method="post" enctype="multipart/form-data" id="updateMemberPicForm">
          <div class="form-group col-md-12">
-            <input name="pictureTitle"  id="pictureTitle" placeholder="제목을 입력하세요" class="form-control" />
+            <input name="pictureTitle"  id="pictureTitle" value="${pvo.pictureTitle }" class="form-control" />
          </div>
          <div class="form-group col-md-12">
-            <textarea name="pictureContent" id="pictureContent" placeholder="내용을 입력하세요" class="form-control" rows="10"></textarea>
+            <textarea name="pictureContent" id="pictureContent" class="form-control" rows="10">${pvo.pictureContent }</textarea>
          </div>
          <%-- file upload를 위해 type을 file로 명시 --%>
          <div class="form-group col-md-12">
-            <input type="file" id="uploadFile" name="uploadFile" class="form-control" />
+            <input type="file" id="uploadFile" name="uploadFile" class="form-control"/>
          </div>       
          <br><br><br><br>
          <div class="form-group col-md-12 text-center" >
