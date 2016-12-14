@@ -26,5 +26,19 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 <!-- 	<property name="maxUploadSize" value="5*1024*1024"/>	 -->
 </bean>
 
+<!-- Interceptor 설정 -->
+<mvc:interceptors>
+	<mvc:interceptor>
+		<mvc:mapping path="/*.do"/>
+		<mvc:exclude-mapping path="/index.do"/>
+		<mvc:exclude-mapping path="/login.do"/>
+		<mvc:exclude-mapping path="/logout.do"/>
+		<mvc:exclude-mapping path="/before_login.do"/>
+		<mvc:exclude-mapping path="/login_fail.do"/>
+		<mvc:exclude-mapping path="/register.do"/>
+		<bean class="org.kosta.ttk.controller.LoginCheckInterceptor" />
+	</mvc:interceptor>
+</mvc:interceptors>
+
 </beans>
 
