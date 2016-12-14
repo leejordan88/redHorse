@@ -44,7 +44,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where ${value} and range=1 and enabled = 1
 	]]>
 	</select>
-	
 
 	<select id="getStats" resultType="statsVO" >
 select distinct(select count(sex) from member where sex=1 group by sex) as male

@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </resultMap>
 
 
+
  <!-- 사진첩 리스트, 12/5수정 where id =#{value}부분 추가, 12/7수정 리스트에서 상세보기 까지 가능하도록(모달 사용)하기 위해서 수정-->
 
  <select id="getPictureList" resultMap="memberPicRM">
@@ -44,15 +45,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select hit from memberPicture where pictureNo=#{value}
 </select>
 
+<!-- 12/13 pictureContent 추가 -->
 <select id="visitMemberPic" resultMap="memberPicRM" resultType="memberPicVO">
- 	select pictureNo, id, filename, pictureTitle, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate
+ 	select pictureNo, id, filename, pictureTitle, pictureContent, to_char(pictureDate, 'YYYY.MM.DD')as pictureDate
  	from memberPicture where id=#{value} order by pictureNo desc
 </select>
 
-<!-- 사진 삭제하기 -->
+<!-- 사진 게시물 삭제하기 -->
 <delete id="deleteMemberPic">
 	delete from memberPicture where pictureNo=#{value}
 </delete>
+<!-- 파일 삭제하기 -->
 
 <!-- 12/5 사진 수정하기 -->
 <update id="updateMemberPic" parameterType="memberPicVO">

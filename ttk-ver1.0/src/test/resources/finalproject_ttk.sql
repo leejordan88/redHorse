@@ -264,8 +264,8 @@ select p.areaname, p.categoryname, p.placeName, t.placeNo, rank() over(order by 
 	group by p.areaname, p.categoryname, p.placeName, t.placeNo
 	
 	
-	
-	
 
+	delete from memberPicture where pictureNo=22
 	
-	
+	select hit from memberPicture where pictureNo=109
+

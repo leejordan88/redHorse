@@ -1,6 +1,8 @@
 
+
 --create table member ( sex(남1,여2) ,  
 --create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
+
 --create table traveler(  tstate number default 1,     
 
 select sex,pictureNo,tstate,count(*) from a.member,b.memberPicture,c.traveler 
@@ -127,7 +129,6 @@ create table place(
  areaname varchar2(100) not null,
  constraint fk_category foreign key(categoryname) references category(categoryname),
  constraint fk_area foreign key(areaname) references area(areaname)
-
 );
 
 
@@ -249,7 +250,6 @@ values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
 insert into message(messageNo,sender,reciever,messageDate,messageContent)
 values(message_seq.nextval,'java2','java',sysdate,'2번째경우 반대의경우')
 
->>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '1','남산_N서울타워.jpg', '남산_N서울타워', '04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)', '37.551399', '126.988184', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '2','중구_위안부_기억의터.jpg', '중구_위안부_기억의터', '04628  서울 중구 퇴계로26가길 6 (예장동)', '37.559061', '126.990767', '관광지', '서울');
@@ -742,13 +742,12 @@ create table message(
  );
 -- sender와 reciever 가 같을경우 생각해보자
 
+
+ 
  --여행일정 뽑는 SQL
 select p.placeName, p.areaName, t.tDate
 from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
-
-
-
 
 	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
 	where pictureNo=63
@@ -763,4 +762,5 @@ select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, 
 FROM message ms, member m2 
 where ms.receiver=m2.id and  ms.sender ='java1')  rnum
 where   rnum  between 1 and 7 order by messageNo desc
+
 

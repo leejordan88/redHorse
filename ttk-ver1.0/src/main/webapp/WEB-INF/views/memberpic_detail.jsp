@@ -54,7 +54,7 @@
       <br>
        <c:if test="${requestScope.pvo.memberVO.id==sessionScope.mvo.id}">
          <button class="btn btn-primary" type="button" id="updateMemberPicView" name="updateMemberPicView">수정</button>
-   <button class="btn btn-primary" type="button" id="deleteMemberPic" name="deleteMemberPic">삭제</button>
+  		 <button class="btn btn-primary" type="button" id="deleteMemberPic" name="deleteMemberPic">삭제</button>
    </c:if>
    </div>
 

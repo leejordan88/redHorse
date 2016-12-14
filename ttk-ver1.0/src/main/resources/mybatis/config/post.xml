@@ -48,7 +48,6 @@ where ms.receiver=m2.id and  ms.sender =#{messageVO.id})  rnum
 where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo desc
 </select>
  
- 
 <select id="messageListUnChecked"     resultMap="usePagingBeanVO">
   select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
 ( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
@@ -67,12 +66,9 @@ from message ms, member m2
 where  ms.sender=m2.id and messageNo=#{value}
 </select>
  
- 
  <insert id="messageSend"  parameterType="messageVO">
  insert into message(messageNo,sender,receiver,messageDate,messageContent) 
  values(message_seq.nextval, #{sender}, #{receiver}, sysdate ,#{messageContent})
  </insert>
  
-
-
 </mapper>
