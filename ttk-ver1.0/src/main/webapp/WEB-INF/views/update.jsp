@@ -178,7 +178,7 @@
 		            //no
 		        	alert("개인정보수정을 취소합니다.");
 		        	  location.replace('index.do');
-		            retrun;
+		            return;
 		        }
 		}); // click
 		

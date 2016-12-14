@@ -212,6 +212,8 @@ select*from message
 
 drop table message;
 
+
+-- 12/10 수정  DeleteState (send, receive) 두가지 추가
 create table message(
  messageNo number primary key,
  id varchar2(100) constraint fk_message_id references member(id),
@@ -219,25 +221,23 @@ create table message(
  receiver varchar2(100) constraint fk_message_receiver references member(id),
  messageDate date not null,
  messageContent clob not null,
- messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ receiveDeleteState number default 1, 
+ sendDeleteState number default 1  
  )
 -- sender와 receiver 가 같을경우 생각해보자
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
-values(message_seq.nextval,'java1','java2',sysdate,'ㄴㅇㅁ나ㅓㅗ어ㅏㅁ노아머농ㄴㅇ?');
+values(message_seq.nextval,'java1','java2',sysdate,'받은삭제');
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
-values(message_seq.nextval,'java1','java4',sysdate,'ㄴ언안ㅁㅇㅁ너ㅏ와');
+values(message_seq.nextval,'java2','java1',sysdate,'보낸삭제');
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
 values(message_seq.nextval,'java1','java2',sysdate,'ㅇ?');
 
 insert into message(messageNo,sender,receiver,messageDate,messageContent)
 values(message_seq.nextval,'java1','java3',sysdate,'ㅇ');
-
-
-
-
 
 ----------------------------------------------
 -- 미확인 메세지 띄우는창
@@ -294,10 +294,10 @@ where   rnum  between 1 and 4 order by messageNo desc
 
 
 -- 받은쪾지 페이징빈
-select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
-( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG, receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo,ms.receiveDeleteState, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
 FROM message ms, member m2 
-where ms.sender=m2.id and  ms.receiver ='java1')  rnum
+where ms.sender=m2.id and  ms.receiver ='java1' and ms.receiveDeleteState=1)  rnum
 where   rnum  between 1 and 4 order by messageNo desc
 
 
@@ -318,8 +318,197 @@ where   rnum  between #{startRowNumber} and #{endRowNumber}  order by messageNo 
 
 
 
+-- list 삭제 된 메세지 추가 
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState,receiveDeleteState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum, ms.receiveDeleteState, ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.sender=m2.id and  ms.receiver ='java1' and ms.receiveDeleteState=1)  rnum
+where   rnum  between 1 and  4 order by messageNo desc
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState,receiveDeleteState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.receiveDeleteState, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.sender=m2.id and  ms.receiver ='java2' and ms.receiveDeleteState=1)  rnum
+where   rnum  between 1 and 4 order by messageNo desc
+
+
+select receiver, messageContent, messageDate,receiveDeleteState
+from message
+where receiver='java2';
+
+
+select count(*)from message where receiver='java2'
+ select count(*)from message where receiver='java2' and receiveDeleteState=0
+ select count(*)from message where receiver='java2' and receiveDeleteState=1
+ 
+ select count(*)from message where sender='java2'
+ 
+  select count(*)from message where  receiver='java2' 
+  and receiveDeleteState=1
+ 
+  select count(*)from message where messageState=1 and receiver='java2' and receiveDeleteState=1
+  
+  
+  
+  select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.receiveDeleteState, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.sender=m2.id and  ms.receiver ='java2' and ms.receiveDeleteState=0)  rnum
+where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo desc
 
 
 
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.receiveDeleteState, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.sender=m2.id and  ms.sender ='java2' ) 
+
+
+--보낸 메세지 개수 확인
+-- 보낸 메세지  보존 6   삭제 5      전체 11
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState
+from message
+where sender='java2';
+
+select receiver, messageContent, messageDate,sendDeleteState
+from message
+where sender='java2' and sendDeleteState=1;
+
+select receiver, messageContent, messageDate,sendDeleteState
+from message
+where sender='java2' and sendDeleteState=0;
+
+--받은메세지 개수확인
+--전체 8  보존 5    삭제 3
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState
+from message
+where receiver='java2';
+
+select receiver, messageContent, messageDate,receiveDeleteState,sender
+from message
+where receiver='java2' and receiveDeleteState=1;
+
+select receiver, messageContent, messageDate,receiveDeleteState,sender
+from message
+where receiver='java2' and receiveDeleteState=0;
+
+--전체 
+-- 합 19  보존 11 삭제 8
+
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState,sendDeleteState
+from message
+where receiver='java2' and receiveDeleteState=0  or sender='java2' and sendDeleteState=0;
+
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState,sendDeleteState
+from message
+where receiver='java2' and receiveDeleteState=0 or sender='java2'  and sendDeleteState=0 ;
+
+--------------------------------
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.receiveDeleteState, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+FROM message ms, member m2 
+where  ms.sender ='java2' and ms.sendDeleteState=0 or ms.receiver='java2' and ms.receiveDeleteState=0) 
+
+
+select ms1.sender, ms2.receiver, ms1.messageNo, ms2.messageContent, ms1.messageDate, ms1.receiveDeleteState, ms2.sendDeleteState
+from message ms1, message ms2 , member m1, member m2
+where ms1.receiver='java2' and ms1.receiveDeleteState=0   or    ms2.sender='java2'  and ms2.sendDeleteState=0 and  m1.id=ms1.sender and m2.id=ms2.receiver;
+
+
+
+
+
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState,sendDeleteState
+from message
+where receiver='java2' and receiveDeleteState=0 or sender='java2' and sendDeleteState=0 ;
+
+
+
+-- member 참조없이  java2의 메세지만 조회해을경우  8 경우
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState,sendDeleteState
+from message
+where receiver='java2' and receiveDeleteState=0 or sender='java2' and sendDeleteState=0 ;
+
+update message set sendDeleteState=0 where messageNo=22
+
+select ms1.sender, ms2.receiver, ms1.messageNo, ms2.messageContent, ms1.messageDate, ms1.receiveDeleteState, ms2.sendDeleteState
+from message ms1, message ms2 , member m1, member m2
+where ms1.receiver='java2' and ms1.receiveDeleteState=0  m1.id=ms1.sender  or  ms2.sender='java2'  and ms2.sendDeleteState=0  m2.id=ms2.receiver;
+
+select ms1.sender, ms2.receiver, ms1.messageNo, ms2.messageContent, ms1.messageDate, ms1.receiveDeleteState, ms2.sendDeleteState
+from message ms1, message ms2 , member m
+where ms1.receiver='java2' and ms1.receiveDeleteState=0  m1.id=ms1.sender or  ms2.sender='java2'  and ms2.sendDeleteState=0  m2.id=ms2.receiver;
+
+
+
+select ms.sender,ms.receiver, ms.messageNo,ms.messageContent, ms.messageDate,ms.receiveDeleteState,ms.sendDeleteState,m.profileIMG
+from message ms, member m
+where ms.receiver='java2' and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender='java2' and ms.sendDeleteState=0 and ms.receiver=m.id;
+
+
+
+select receiver, messageNo,messageContent, messageDate,receiveDeleteState,sendDeleteState
+from message
+where receiver='java2' and receiveDeleteState=0  or sender='java2' and sendDeleteState=0 ;
+
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver='java2' and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender='java2' and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between 1 and  20 order by messageNo desc
+
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver=#{messageVO.id} and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender=#{messageVO.id} and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between 1 and  20 order by messageNo desc
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver='java2' and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender='java2' and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between 1 and  20 order by messageNo desc
+
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver='java2' and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender='java2' and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between 1 and 20 order by messageNo desc
+
+
+select count(*)from message where receiver='java2' and receiveDeleteState=0 or sender='java2' and sendDeleteState=0
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver='java2' and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender='java2' and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between 1 and 20 order by messageNo desc
+
+
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState,ms.receiveDeleteState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.messageState=1 and ms.sender=m2.id and  ms.receiver ='java2' and ms.receiveDeleteState=1)  rnum
+where   rnum  between 1 and 20 order by messageNo desc
+
+
+  select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState,ms.receiveDeleteState, m2.profileIMG   
+FROM message ms, member m2 
+where ms.messageState=1 and ms.sender=m2.id and  ms.receiver =#{messageVO.id}  and ms.receiveDeleteState=1)  rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageNo desc
 
 

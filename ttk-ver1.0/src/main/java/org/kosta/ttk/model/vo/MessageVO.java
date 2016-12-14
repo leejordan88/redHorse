@@ -1,17 +1,22 @@
 package org.kosta.ttk.model.vo;
 
+
+//  12/8  messageState---> receiveCheckState , sendCheckState  수정 
+//     삭제현황 수정 senderState , receiveState를 deleteState로
 public class MessageVO {
 	private int messageNo;
 	private String id,sender,receiver;
 	private String messageDate;
 	private String messageContent;
-	private int senderState;
-	private int receiverState;
-	private MemberVO memberVO;
 	private int messageState;
-	
+	private int receiveDeleteState;
+	private int sendDeleteState;
+	private MemberVO memberVO;
+	public MessageVO() {
+		super();
+	}
 	public MessageVO(int messageNo, String id, String sender, String receiver, String messageDate,
-			String messageContent, int senderState, int receiverState, MemberVO memberVO, int messageState) {
+			String messageContent, int messageState, int receiveDeleteState, int sendDeleteState, MemberVO memberVO) {
 		super();
 		this.messageNo = messageNo;
 		this.id = id;
@@ -19,16 +24,9 @@ public class MessageVO {
 		this.receiver = receiver;
 		this.messageDate = messageDate;
 		this.messageContent = messageContent;
-		this.senderState = senderState;
-		this.receiverState = receiverState;
-		this.memberVO = memberVO;
 		this.messageState = messageState;
-	}
-	public MessageVO() {
-		super();
-	}
-	public MessageVO(MemberVO memberVO) {
-		super();
+		this.receiveDeleteState = receiveDeleteState;
+		this.sendDeleteState = sendDeleteState;
 		this.memberVO = memberVO;
 	}
 	public int getMessageNo() {
@@ -67,38 +65,35 @@ public class MessageVO {
 	public void setMessageContent(String messageContent) {
 		this.messageContent = messageContent;
 	}
-	public int getSenderState() {
-		return senderState;
-	}
-	public void setSenderState(int senderState) {
-		this.senderState = senderState;
-	}
-	public int getReceiverState() {
-		return receiverState;
-	}
-	public void setReceiverState(int receiverState) {
-		this.receiverState = receiverState;
-	}
-	public MemberVO getMemberVO() {
-		return memberVO;
-	}
-	
-	public void setMemberVO(MemberVO memberVO) {
-		this.memberVO = memberVO;
-	}
 	public int getMessageState() {
 		return messageState;
 	}
 	public void setMessageState(int messageState) {
 		this.messageState = messageState;
 	}
+	public int getReceiveDeleteState() {
+		return receiveDeleteState;
+	}
+	public void setReceiveDeleteState(int receiveDeleteState) {
+		this.receiveDeleteState = receiveDeleteState;
+	}
+	public int getSendDeleteState() {
+		return sendDeleteState;
+	}
+	public void setSendDeleteState(int sendDeleteState) {
+		this.sendDeleteState = sendDeleteState;
+	}
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
 	@Override
 	public String toString() {
 		return "MessageVO [messageNo=" + messageNo + ", id=" + id + ", sender=" + sender + ", receiver=" + receiver
-				+ ", messageDate=" + messageDate + ", messageContent=" + messageContent + ", senderState=" + senderState
-				+ ", receiverState=" + receiverState + ", memberVO=" + memberVO + ", messageState=" + messageState
-				+ "]";
+				+ ", messageDate=" + messageDate + ", messageContent=" + messageContent + ", messageState="
+				+ messageState + ", receiveDeleteState=" + receiveDeleteState + ", sendDeleteState=" + sendDeleteState
+				+ ", memberVO=" + memberVO + "]";
 	}
-	   
-	
 }

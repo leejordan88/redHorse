@@ -17,42 +17,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <result column="messageDate"  property="messageVO.messageDate"></result>
 <result column="messageContent"  property="messageVO.messageContent"></result>
 <result column="messageState"  property="messageVO.messageState"></result>
+<result column="receiveDeleteState"  property="messageVO.receiveDeleteState"></result>
+<result column="sendDeleteState"  property="messageVO.sendDeleteState"></result>
 <result column="profileIMG"  property="messageVO.memberVO.profileimg"></result>
 </resultMap>
  
   <select id="messageListTotalCount"     parameterType="messageVO"  resultType="int">
-     select count(*)from message where receiver=#{id}
+     select count(*)from message where receiver=#{id} and receiveDeleteState=1
  </select>
  
   <select id="messageSendListTotalCount"     parameterType="messageVO"  resultType="int">
-     select count(*)from message where sender=#{id}
+     select count(*)from message where sender=#{id} and sendDeleteState=1
  </select>
  
   <select id="messageUncheckedCount"     parameterType="messageVO"  resultType="int">
- 	 select count(*)from message where messageState=1 and receiver=#{id}
+ 	 select count(*)from message where messageState=1 and receiver=#{id}  and receiveDeleteState=1
  </select>
  
 <select id="messageList"       resultMap="usePagingBeanVO"  >
 select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
-( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.receiveDeleteState, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
 FROM message ms, member m2 
-where ms.sender=m2.id and  ms.receiver =#{messageVO.id})  rnum
+where ms.sender=m2.id and  ms.receiver =#{messageVO.id} and ms.receiveDeleteState=1)  rnum
 where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo desc
 </select>
  
  <select id="messageSendList"     resultMap="usePagingBeanVO"  >
 select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
-( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG , ms.sendDeleteState
 FROM message ms, member m2 
-where ms.receiver=m2.id and  ms.sender =#{messageVO.id})  rnum
+where ms.receiver=m2.id and  ms.sender =#{messageVO.id} and ms.sendDeleteState=1)  rnum
 where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo desc
 </select>
  
 <select id="messageListUnChecked"     resultMap="usePagingBeanVO">
   select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
-( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState,ms.receiveDeleteState, m2.profileIMG   
 FROM message ms, member m2 
-where ms.messageState=1 and ms.sender=m2.id and  ms.receiver =#{messageVO.id})  rnum
+where ms.messageState=1 and ms.sender=m2.id and  ms.receiver =#{messageVO.id}  and ms.receiveDeleteState=1)  rnum
 where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageNo desc
  </select>
  
@@ -61,7 +63,7 @@ update message set messageState=0 where messageNo=#{value}
 </update>
 
 <select id="messageDetail"   resultMap="useMemberVO"  >
-select ms.messageNo, ms.sender, ms.messageContent, ms.messageDate , m2.profileIMG 
+select ms.messageNo, ms.sender, ms.messageContent, ms.messageDate , ms.messageNo ,m2.profileIMG 
 from message ms, member m2 
 where  ms.sender=m2.id and messageNo=#{value}
 </select>
@@ -70,5 +72,33 @@ where  ms.sender=m2.id and messageNo=#{value}
  insert into message(messageNo,sender,receiver,messageDate,messageContent) 
  values(message_seq.nextval, #{sender}, #{receiver}, sysdate ,#{messageContent})
  </insert>
- 
+
+<update id="receiveMessageDelete"   parameterType="messageVO">
+update message set receiveDeleteState=0 where messageNo=#{value}
+</update>
+
+<update id="sendMessageDelete"   parameterType="messageVO">
+update message set sendDeleteState=0 where messageNo=#{value}
+</update>
+
+<select id="messageDeleteListTotalCount"     parameterType="messageVO"  resultType="int">
+     select count(*)from message where receiver=#{id} and receiveDeleteState=0 or sender=#{id} and sendDeleteState=0
+ </select>
+
+<select id="messageDeleteList"       resultMap="usePagingBeanVO"  >
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver=#{messageVO.id} and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender=#{messageVO.id} and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageNo desc
+</select>
+
+<update id="returnReceiveMessageDelete"   parameterType="messageVO">
+update message set receiveDeleteState=1 where messageNo=#{value}
+</update>
+
+<update id="returnSendMessageDelete"   parameterType="messageVO">
+update message set sendDeleteState=1 where messageNo=#{value}
+</update>
+
 </mapper>

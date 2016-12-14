@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../../layout/header.jsp"></jsp:include>
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../../layout/header.jsp"></jsp:include> 
+
 
 <!-- Add custom CSS here -->
 <link
-	href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
-	rel="stylesheet">
+
+   href="${pageContext.request.contextPath}/resources/css/messageStyle.css"
+   rel="stylesheet">
+
+
+
 
 <!-- 전체 페이지시작 -->
 <section id="profile-list">
@@ -39,34 +44,37 @@
 			</div>
 			<hr>
 
-			<!-- 리스트부분시작 -->
-			<div class="container bootstrap snippet">
-				<div class="row">
-					<div class="chat-message" id="list-form">
-						<ul class="chat">
-							<c:forEach var="msvo" items="${requestScope.vo.list}">
-								<li class="left clearfix"><a
-									href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}">
-										<span class="chat-img pull-left"> <img
-											src="${pageContext.request.contextPath}/resources/upload/${msvo.messageVO.sender}/profile/${msvo.messageVO.memberVO.profileimg}"
-											alt="User Avatar">
-									</span>
-								</a>
-									<div class="chat-body clearfix">
-										<div class="header">
-											<strong class="primary-font">${msvo.messageVO.sender}</strong>
-											<small class="pull-right text-muted">
-												${msvo.messageVO.messageDate}</small>
-										</div>
-										<p id="list-font">${msvo.messageVO.messageContent}</p>
-									</div></li>
-							</c:forEach>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<hr>
-			<!-- 리스트부분 끝 -->
+   <!-- 리스트부분시작 -->
+   <div class="container bootstrap snippet">
+    <div class="row">
+            <div class="chat-message" id="list-form">
+                <ul class="chat">
+                       <c:forEach var="msvo" items="${requestScope.vo.list}">   
+                    <li class="left clearfix">
+                    <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}">
+                       <span class="chat-img pull-left">
+                          <img src="${pageContext.request.contextPath}/resources/upload/${msvo.messageVO.sender}/profile/${msvo.messageVO.memberVO.profileimg}" alt="User Avatar">
+                       </span>
+ 							</a>                       
+							<div class="chat-body clearfix">
+                          <div class="header">
+                                <strong class="primary-font">${msvo.messageVO.sender}</strong>
+                        <small class="pull-right text-muted"> 
+								${msvo.messageVO.messageDate}</small>
+                          </div>
+                          <p id="list-font">
+                        ${msvo.messageVO.messageContent}
+                          </p>
+                       </div>
+                    </li>
+                      </c:forEach>
+                </ul>
+            </div>                      
+      </div>
+   </div>
+<hr>
+<!-- 리스트부분 끝 -->
+		
 
 			<!-- 페이징부분 -->
 			<div id="plist">
@@ -116,7 +124,7 @@
 			location.href = "messageSendList.do";
 		});
 		$("#moveDelete").click(function() {
-			alert("2차때!");
+			location.href="messageDeleteList.do";
 		});
 	});
 </script>
