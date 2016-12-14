@@ -18,6 +18,7 @@
    </div>
 
 <!--파란색부분 -->
+
    <div id="services" class="services">
       <div class="container">
          <div class="row">
@@ -30,7 +31,6 @@
                     </div>
                 </div>
          <hr>
-
 <!-- 내용부분 -->
   <div class="panel panel-white profile-widget" id="detail-pica">
                 <div class="image-container bg2" id="detail-picb">  
@@ -39,46 +39,53 @@
                 <div class="col-sm-12">
                     <div class="details">
                            <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
-                           <h5 id="messageDate">${requestScope.messageVO.messageDate}</h5>
+                           <h5 id="messageDate">${requestScope.messageVO.messageDate}  &nbsp; 
+                           <a href="" id="sirenButton"><img style="width:1.5%; height:1.5%;" src="${pageContext.request.contextPath}/resources/images/message/siren.png"  class="sirenButton"></a></h5>
                            <textarea class="form-control" id="msgContent" cols="45" rows="6" readonly="readonly" placeholder="${requestScope.messageVO.messageContent}"></textarea>
                              <!--  <div id="messageContent"></div> -->
                         <br><br>
                         <div class="mg-top-10">
                             <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">send<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
                             &nbsp;
-                            <a href="#" class="btn btn-success" >delete<%-- <img src="${pageContext.request.contextPath}/resources/images/message/delete.png" > --%></a>
+                            <a href="#"  id="btn-delete" class="btn btn-success delete" >delete<%-- <img src="${pageContext.request.contextPath}/resources/images/message/delete.png" > --%></a>
                         </div>
                    </div>
             </div>
 </div>
 <!-- 내용부분 끝-->
+
       </div>
    </div>
-   <!-- 파란부분끝 -->
+ <!-- 파란부분끝 -->
 </section>
 <script src="${pageContext.request.contextPath}/resources/vendors/select2.full.min.js"></script>
 <script type="text/javascript">
+
    $(document).ready(function() {
       $("#moveSend").click(function(){
          location.href="messageSendList.do";
       });
       $("#moveUncheck").click(function(){
-         location.href="messageListUnChecked.do";
+         location.href="messageListUnChecked.do"; 
       });
       $("#moveReceive").click(function(){
          location.href="messageList.do";
       });
-      $("#moveDelete").click(function(){
-         alert("2차때!");
-      });
-      $('.btn-blue').click(function() {
-            $('#message-modal').modal('show');
-      });
-   
-      $('.btn-green').click(function() {
-         alert("2dsdd!");
-      });
-   });
+      
+      $('#btn-delete').click(function() {
+            //삭제
+             var result = confirm('메세지를 삭제하시겠습니까?');
+              if(result) {
+                 //yes
+                 $(location).attr('href',"receiveMessageDelete.do?messageNo=${requestScope.messageVO.messageNo}");
+              } else {
+                 
+                  return;
+              }
+            
+            
+      });//function 
+  });
    
    </script>
 <jsp:include page="../../layout/footer.jsp"></jsp:include>
