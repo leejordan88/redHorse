@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<jsp:include page="layout/header.jsp"></jsp:include>
-
+<jsp:include page="../layout/header.jsp"></jsp:include>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
@@ -63,7 +60,6 @@
 						data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+json[i].id+"> <i class='fa fa-user'></i>";
 						data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
 					    data += "</div></div></div></div>";
-					
 						 }
 						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
 						 document.getElementById("travelerListByDate").innerHTML = data;
@@ -230,4 +226,4 @@
 		} ]
 	})
 </script>
-<jsp:include page="layout/footer.jsp"></jsp:include>
+<jsp:include page="../layout/footer.jsp"></jsp:include>

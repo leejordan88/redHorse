@@ -1,5 +1,3 @@
-
-
 --create table member ( sex(남1,여2) ,  
 --create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
 
@@ -764,3 +762,6 @@ where ms.receiver=m2.id and  ms.sender ='java1')  rnum
 where   rnum  between 1 and 7 order by messageNo desc
 
 
+select *
+from traveler
+where id = 'java1'
