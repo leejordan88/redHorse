@@ -28,15 +28,15 @@
                           </select>
                         </div>
                         <label class="control-label col-md-1"><input type="button" class="btn btn-primary" value="찾기!" id="serachBtn"></label>
-					</form>
-					
-			<form id="searchByNameForm">
-				<div class="col-md-2 col-sm-12 col-xs-12">
+               </form>
+               
+         <form id="searchByNameForm">
+            <div class="col-md-2 col-sm-12 col-xs-12">
                     <input type="text" name="name"  id="searchName" placeholder="이름" class="form-control">
                 </div>
-                  	<input type="button" class="btn btn-success" value="검색!" id="searchByNameBtn">
-				</form> 
-			</div>
+                     <input type="button" class="btn btn-success" value="검색!" id="searchByNameBtn">
+            </form> 
+         </div>
 				<div class="searchView">
 					<div class="form-group">
                       <div class="col-md-12 col-sm-12 col-xs-12 text-center">

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-	<footer class="style-1">
+   <footer class="style-1">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
@@ -18,9 +18,9 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="footer-link">
                             <ul class="pull-right">
-                    		<li>
-                     		  <a class="page-scroll" href="index.do#team">made by <i class="fa fa-star"></i> YJ YW HM JS YH JS</a>
-                  		  </li>
+                          <li>
+                             <a class="page-scroll" href="index.do#team">made by <i class="fa fa-star"></i> YJ YW HM JS YH JS</a>
+                          </li>
                             </ul>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery.appear.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/cbpAnimatedHeader.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.fitvids.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/styleswitcher.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jquery.fitvids.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/styleswitcher.js"></script>
 
     <!-- Contact Form JavaScript -->
 
