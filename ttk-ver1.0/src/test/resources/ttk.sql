@@ -225,6 +225,39 @@ values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
 
 
 
+
+create messageReport(
+messageReportNo number
+messageNo
+ )
+
+
+
+
+
+ messageNo number primary key,
+ id varchar2(100) constraint fk_message_id references member(id),
+ sender varchar2(100) constraint fk_message_sender references member(id),
+ receiver varchar2(100) constraint fk_message_receiver references member(id),
+ messageDate date not null,
+ messageContent clob not null,
+ messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ receiveDeleteState number default 1, 
+ sendDeleteState number default 1  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --message
 
 drop sequence message_seq;
@@ -234,15 +267,18 @@ select*from message
 
 drop table message;
 
+-- 12/10 수정  DeleteState (send, receive) 두가지 추가
 create table message(
  messageNo number primary key,
+ id varchar2(100) constraint fk_message_id references member(id),
  sender varchar2(100) constraint fk_message_sender references member(id),
- reciever varchar2(100) constraint fk_message_reciever references member(id),
+ receiver varchar2(100) constraint fk_message_receiver references member(id),
  messageDate date not null,
  messageContent clob not null,
- messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ receiveDeleteState number default 1, 
+ sendDeleteState number default 1  
  )
--- sender와 reciever 가 같을경우 생각해보자
 
 insert into message(messageNo,sender,reciever,messageDate,messageContent)
 values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
