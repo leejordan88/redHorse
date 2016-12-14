@@ -19,9 +19,7 @@
 								<li class="mix Category"><a href="placeList.do?areaName=${param.areaName }&categoryName=${list.categoryName }" >
 										<img src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}" alt="">
 										<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center">${list.categoryName }</h2>
-											</div>
+												<h1>${list.categoryName }</h1>
 										</div>
 								</a></li>
 							</c:forEach>

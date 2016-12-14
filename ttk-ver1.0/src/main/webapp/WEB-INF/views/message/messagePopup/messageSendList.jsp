@@ -25,7 +25,6 @@
 		</div>
 	</div>
 
-
    <!--파란색부분 -->
    <div id="services" class="services">
       <div class="container">
@@ -58,13 +57,16 @@
                     		<div class="header">
                     			<strong class="primary-font">${msvo.messageVO.receiver}</strong>
                     			<small class="pull-right text-muted">
-                    			${msvo.messageVO.messageDate}</small>
+                    			<a href="sendMessageDelete.do?messageNo=${msvo.messageVO.messageNo}">삭제 </a>|
+                    			<c:if test="${msvo.messageVO.messageState==0}">확인된 메세지 |  </c:if>
+												${msvo.messageVO.messageDate}</small>
                     		</div>
                     			<p id="list-font">
                     			${msvo.messageVO.messageContent}
                     		</p>
                     	</div>
                     </li>     
+			 			
 			 			</c:forEach>
                 </ul>
             </div>                      
@@ -72,7 +74,6 @@
    </div>
 <hr>
  <!-- 리스트부분끝 -->
-
 <!-- 페이징부분 -->
 <div id="plist">
          <p class="paging">
@@ -120,7 +121,7 @@
 			location.href = "messageListUnChecked.do";
 		});
 		$("#moveDelete").click(function() {
-			alert("2차때!");
+			location.href="messageDeleteList.do";
 		});
 	});
 </script>

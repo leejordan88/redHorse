@@ -170,7 +170,7 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#delete').click(function(){
-			 var result = confirm('정말로 탈퇴하시겠습니까?');
+			 var result = confirm('탈퇴시 해당 아이디로는 재가입이 불가능 합니다. 탈퇴 하시겠습니까?');
 		        if(result) {
 		           //yes
 		        	$(location).attr('href',"updateDelete.do");
@@ -178,7 +178,7 @@
 		            //no
 		        	alert("개인정보수정을 취소합니다.");
 		        	  location.replace('index.do');
-		            retrun;
+		            return;
 		        }
 		}); // click
 		

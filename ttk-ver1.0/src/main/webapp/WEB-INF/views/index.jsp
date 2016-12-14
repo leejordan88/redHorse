@@ -7,6 +7,7 @@
 
 <!-- Start Home Page Slider -->
 <section id="page-top">
+
 	<!-- Carousel -->
 	<div id="main-slide" class="carousel slide" data-ride="carousel">
 
@@ -38,9 +39,10 @@
 			<!--/ Carousel item end -->
 
 			<div class="item ">
-				<img class="img-responsive"
-					src="${pageContext.request.contextPath}/resources/images/area/40.jpg"
-					alt="slider">
+        <video autoplay="" loop="" class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">
+            <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>			
+
 				<div class="slider-content">
 					<div class="col-md-12 text-center">
 						<h1 class="animated3">
@@ -58,7 +60,7 @@
 
 			<div class="item">
 				<img class="img-responsive"
-					src="${pageContext.request.contextPath}/resources/images/area/3.jpg"
+					src="${pageContext.request.contextPath}/resources/images/area/40.jpg"
 					alt="slider">
 				<div class="slider-content">
 					<div class="col-md-12 text-center">
@@ -83,6 +85,7 @@
 		</a>
 	</div>
 	<!-- /carousel -->
+
 </section>
 <!-- End Home Page Slider -->
 
@@ -110,9 +113,8 @@
 								<li class="mix Area"><a href="categoryList.do?areaName=${list.areaName }"> 
 									<img src="${pageContext.request.contextPath}/resources/images/area/${list.areaPicture}" alt="">
 										<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center">${list.areaName }</h2>
-											</div>
+											<!-- <div class="position-center"></div> -->
+											<h1>${list.areaName }</h1>
 										</div>
 								</a></li>
 							</c:forEach>
@@ -120,9 +122,7 @@
 								<li class="mix Category"><a href="areaList.do?categoryName=${list.categoryName }">
 									<img src="${pageContext.request.contextPath}/resources/images/category/${list.categoryPicture}" alt="">
 										<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center">${list.categoryName }</h2>
-											</div>
+												<h1>${list.categoryName }</h1>
 										</div>
 								</a></li>
 							</c:forEach>
@@ -130,11 +130,8 @@
 								<c:forEach items="${listVO.travelerList }" var="list">
 								<li class="mix Hot"><a href="detailPlace.do?placeNo=${list.placeVO.placeNo }">
 									<img src="${pageContext.request.contextPath}/resources/images/place/${list.placeVO.placeName}.jpg" alt="">
-									<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center">${list.rank }위</h2>
-										    	<h3>${list.placeVO.placeName }</h3>
-											</div>
+										<div class="overly">	
+												<h2>${list.rank }위<br><br>${list.placeVO.placeName }</h2>
 										</div>
 								</a></li>
 							</c:forEach>
@@ -150,8 +147,9 @@
 
 
 <!-- Start Fun Facts Section -->
+
 	<c:forEach items="${listVO.statsList}" var="list">
-<section class="fun-facts">
+<section class="fun-facts" id="funfacts">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-3">
@@ -161,7 +159,6 @@
 					<h5>여자회원수</h5>
 				</div>
 			</div>
-			 
 			<div class="col-xs-12 col-sm-6 col-md-3">
 				<div class="counter-item">
 					<i class="fa fa-male"></i>
@@ -183,9 +180,8 @@
 					<div class="timer" id="item2" data-to="${list.tstate}" data-speed="2000"></div>
 					<h5>여행친구찾기완료</h5>
 				</div>
-			</div>
 		</div>
-	</div>
+	</div></div>
 </section>
 </c:forEach>
 <!-- End Fun Facts Section -->

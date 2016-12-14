@@ -1,6 +1,8 @@
 package org.kosta.ttk.model.service;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.kosta.ttk.model.vo.ListVO;
 import org.kosta.ttk.model.vo.MessageVO;
 
@@ -11,4 +13,10 @@ public interface MessageService {
 	MessageVO messageDetail(int messageNo);
 	ListVO messageSendList(MessageVO messageVO,String pageNo);
 	int messageUncheckedCount(MessageVO messageVO);
+	void receiveMessageDelete(int messageNo);
+	ListVO messageDeleteList(MessageVO messageVO, String pageNo);
+	void sendMessageDelete(int messageNo);
+	void returnReceiveMessageDelete(int messageNo);
+	void returnSendMessageDelete(int messageNo);
+	MessageVO getIdSession(HttpSession session);
 }
