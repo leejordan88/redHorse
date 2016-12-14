@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.ttk.model.dao.MemberPicDAO;
 import org.kosta.ttk.model.vo.MemberPicVO;
+import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,30 +43,44 @@ public class MemberPicServiceImpl implements MemberPicService {
 	}
 	
 	// 12/5 사진 상세보기(조회수 증가)
+
 	@Override
 	public MemberPicVO showPictureDetail(int pictureNo){
 		memberPicDAO.updateHit(pictureNo);
 		return memberPicDAO.showPictureDetail(pictureNo);
 	}
 	
-	// 사진 상세보기 (조회수 증가X)
 	@Override
 	public MemberPicVO showPictureDetailNoHit(int pictureNo){		
 		return memberPicDAO.showPictureDetail(pictureNo);
-	}			
-	
-	// 사진 삭제하기
-	@Override
-	public void deleteMemberPic(int pictureNo){
-		memberPicDAO.deleteMemberPic(pictureNo);
 	}
+
+
+/*
+ * 영주 타회원 프로필보기 
+ * (non-Javadoc)
+ * @see org.kosta.ttk.model.service.MemberPicService#visitMemberPic(java.lang.String)
+ */
+	@Override
+	public List<MemberPicVO> visitMemberPic(String id) {
+		return memberPicDAO.visitMemberPic(id);
+	}
+
+	@Override
+	public MemberVO getMemberInfo(String id) {
+		return memberPicDAO.getMemberInfo(id);
+	}			
+
 	
 	// 12/6 사진 수정하기
 	@Override
 	public void updateMemberPic(MemberPicVO pvo){
-		System.out.println(pvo);
+		//System.out.println(pvo);
 		memberPicDAO.updateMemberPic(pvo);
 	}
+	@Override
+	public void deleteMemberPic(int pictureNo){
+		memberPicDAO.deleteMemberPic(pictureNo);
+	}
 
-	
 }

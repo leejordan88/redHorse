@@ -16,27 +16,27 @@ public class PlaceDAOImpl implements PlaceDAO {
 	@Resource
 	private SqlSessionTemplate template;
 	
-
 	@Override
 	public List<AreaVO> areaList(){
-		return template.selectList("place.areaList");
-		
+		return template.selectList("place.areaList");	
 	}
-
-
 	@Override
 	public List<CategoryVO> categoryList() {
 		return template.selectList("place.categoryList");
 	}
-
-
 	@Override
 	public List<PlaceVO> placeList(PlaceVO placeVO) {
 		return template.selectList("place.placeList", placeVO);
 	}
-
 	@Override
 	public PlaceVO detailPlace(PlaceVO placeVO) {
 		return template.selectOne("place.detailPlace", placeVO);
 	}
+
+
+	@Override
+	public List<PlaceVO> getAllPlaces() {
+		return template.selectList("place.getAllPlaces");
+	}
+
 }

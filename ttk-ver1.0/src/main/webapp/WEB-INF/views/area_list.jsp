@@ -20,9 +20,7 @@
 								<li class="mix Category"><a href="placeList.do?categoryName=${param.categoryName }&areaName=${list.areaName }" >
 										<img src="${pageContext.request.contextPath}/resources/images/area/${list.areaPicture}" alt="">
 										<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center">${list.areaName }</h2>
-											</div>
+												<h1>${list.areaName }</h1>
 										</div>
 								</a></li>
 							</c:forEach>
@@ -33,8 +31,6 @@
 		</div>
 	</div>
 </section>
-
-
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
 

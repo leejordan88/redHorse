@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="place">
 
-	<select id="areaList" resultType="areaVO">
+<select id="areaList" resultType="areaVO">
 	select*from area
 	</select> 
 	
@@ -16,6 +16,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id = "placeList" parameterType="placeVO" resultType = "placeVO">
 	select * from place where areaName = #{areaName} and categoryName = #{categoryName}
 	</select>
-	
 
+	
+	<select id = "detailPlace" parameterType="placeVO" resultType="placeVO">
+	select * from place where placeNo = #{placeNo}
+	</select>
+	
+	<select id="getAllPlaces" resultType="placeVO">
+	select * from place 
+	</select>
+	
 </mapper>

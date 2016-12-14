@@ -270,3 +270,5 @@ select p.areaname, p.categoryname, p.placeName, t.placeNo, rank() over(order by 
 
 	
 	delete from memberPicture where pictureNo=22
+	
+	select hit from memberPicture where pictureNo=109

@@ -1,14 +1,19 @@
 package org.kosta.ttk;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import org.kosta.ttk.controller.MemberController;
+import org.kosta.ttk.controller.MessageController;
 import org.kosta.ttk.controller.PlaceController;
-import org.kosta.ttk.model.service.PlaceService;
-import org.kosta.ttk.model.service.TravelerService;
-import org.kosta.ttk.model.vo.PlaceVO;
-import org.kosta.ttk.model.vo.TravelerVO;
+import org.kosta.ttk.model.service.MemberPicService;
+import org.kosta.ttk.model.service.MemberService;
+import org.kosta.ttk.model.vo.MemberPicVO;
+import org.kosta.ttk.model.vo.StatsVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -37,19 +42,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
-	@Resource
-	private PlaceController placeController;
-	@Resource
-	private PlaceService placeService;
-	@Resource
-	private TravelerService travelerService;
-	@Test
 
+	@Resource
+	private MemberService memberService;
+	private MemberPicService memberPicService;
+	private MemberPicVO pvo;
+	@Test
 	public void test(){
-		TravelerVO travelerVO = new TravelerVO();
-		travelerVO.setPlaceNo(1);
-		travelerVO.settDate("2016-12-02");
-		//System.out.println(travelerService.travelerList(travelerVO));
-		System.out.println(placeController.findTravelerBydate(travelerVO));
+
+		/* ArrayList<StatsVO> svo = new ArrayList<StatsVO>(); */
+		/*StatsVO svo = new StatsVO();*/
+		 //List<StatsVO> list = memberService.getStats();
+		/*StatsVO svo=new StatsVO();*/
+		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
+		//System.out.println(list);		
+		
+		
 	}
 }
+

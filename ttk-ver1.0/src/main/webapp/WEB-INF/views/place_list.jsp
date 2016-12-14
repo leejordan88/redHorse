@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="layout/header.jsp"></jsp:include>
 
-
 <!-- Start Portfolio Section -->
 <section id="portfolio-work">
 	<div class="container">
@@ -22,9 +21,7 @@
 										src="${pageContext.request.contextPath}/resources/images/place/${list.placeName}.jpg"
 										alt="">
 										<div class="overly">
-											<div class="position-center">
-												<h2 style="text-align: center" id="place_abc">${list.placeName }</h2>
-											</div>
+												<h2 id="place_abc">${list.placeName }</h2>
 										</div>
 								</a></li>
 							</c:forEach>
