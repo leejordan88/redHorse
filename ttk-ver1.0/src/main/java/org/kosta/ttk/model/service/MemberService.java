@@ -22,7 +22,7 @@ public interface MemberService {
 
 	List<MemberVO> searchMemberByOption(String str);
 
-	List<MemberVO> searchMemberByName(String name);
+	List<MemberVO> searchMemberByName(MemberVO memberVO);
 
 	List<StatsVO> getStats();
 

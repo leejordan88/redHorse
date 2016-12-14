@@ -2,7 +2,6 @@ package org.kosta.ttk.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -114,11 +113,12 @@ public class MemberPicController {
 		if(session!=null&&mvo.getId().equals(id)){
 			return new ModelAndView("redirect:getPictureList.do");
 		}
-
+		memberPicService.updateMemberHit(id);
 		ModelAndView mv =new ModelAndView();
 		mv.setViewName("memberpic_list");
-		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mv.addObject("list", memberPicService.visitMemberPic(id));
+		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
+
 		return mv;
 	}
 

@@ -83,4 +83,9 @@ public class MemberPicServiceImpl implements MemberPicService {
 		memberPicDAO.deleteMemberPic(pictureNo);
 	}
 
+	@Override
+	public void updateMemberHit(String id) {
+		memberPicDAO.updateMemberHit(id);
+	}
+
 }
