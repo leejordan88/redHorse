@@ -27,4 +27,6 @@ public interface MemberPicService {
 
 	void deleteMemberPic(int pictureNo);
 
+	void updateMemberHit(String id);
+
 }

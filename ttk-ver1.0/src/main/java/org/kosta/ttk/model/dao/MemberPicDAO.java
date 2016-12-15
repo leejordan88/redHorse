@@ -15,6 +15,9 @@ public interface MemberPicDAO {
 	List<MemberPicVO> visitMemberPic(String id);
 	MemberVO getMemberInfo(String id);
 	void updateMemberPic(MemberPicVO pvo);
+	
 	void deleteMemberPic(int pictureNo);
+
+	void updateMemberHit(String id);
 
 }

@@ -154,7 +154,7 @@ public class MemberController {
 	//조건별 다른 회원 검색
 		@RequestMapping("searchMemberByOption.do")
 		@ResponseBody
-		public Object searchMemberByOption(String[] search){
+		public Object searchMemberByOption(String[] search,HttpSession session){
 			int sex=0;
 			ArrayList<String> ageRange=new ArrayList<String>();
 			StringBuffer age= new StringBuffer();
@@ -188,6 +188,12 @@ public class MemberController {
 			}else if(sex==3){
 				str="sex=1 or sex=2";
 			}
+
+			
+			MemberVO mvo= (MemberVO)session.getAttribute("mvo");
+			if(mvo!=null)
+				str+="and id!='"+mvo.getId()+"'";
+
 			System.out.println(str);
 			List<MemberVO> list =memberService.searchMemberByOption(str);
 			if(list.isEmpty()){
@@ -201,9 +207,16 @@ public class MemberController {
 		
 		@RequestMapping("searchMemberByName.do")
 		@ResponseBody
-		public Object searchMemberByName(String name){
-			System.out.println(name);
-			List<MemberVO> list =memberService.searchMemberByName(name);
+		public Object searchMemberByName(String name,HttpSession session){
+			MemberVO mvo= (MemberVO)session.getAttribute("mvo");
+			MemberVO memberVO = new MemberVO();	
+			memberVO.setName(name);
+			
+			if(mvo!=null)
+				memberVO.setId(mvo.getId());
+			
+			List<MemberVO> list =memberService.searchMemberByName(memberVO);
+			
 			if(list.isEmpty()){
 				HashMap<String,String> map=new HashMap<String,String>();
 				map.put("error","fail");

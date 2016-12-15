@@ -52,12 +52,13 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	//영주 타회원프로필
 	@Override
 	public List<MemberPicVO> visitMemberPic(String id) {
+
 		return template.selectList("memberpic.visitMemberPic",id);
 	}
 
 	@Override
 	public MemberVO getMemberInfo(String id) {
-		template.update("member.updateHit",id);
+
 		return template.selectOne("member.getMemberInfo", id);
 	}
 	
@@ -70,5 +71,11 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	@Override
 	public void deleteMemberPic(int pictureNo){
 		template.delete("memberpic.deleteMemberPic", pictureNo);
+	}
+
+	//영주 조회수 증가 수정
+	@Override
+	public void updateMemberHit(String id) {
+		template.update("member.updateMemberHit",id);
 	}
 }
