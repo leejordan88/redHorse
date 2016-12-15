@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.ttk.model.dao.AdminDAO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -35,7 +34,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJUnit {
 
 	@Resource
-	private AdminDAO  adminDAO;
+	//private AdminDAO  adminDAO;
 
 	@Test
 	public void test(){
@@ -46,7 +45,7 @@ public class TestJUnit {
 		/*StatsVO svo=new StatsVO();*/
 		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
 		//System.out.println(list);		
-		System.out.println(adminDAO.managerView());
+		//System.out.println(adminDAO.managerView());
 	}
 }
 
