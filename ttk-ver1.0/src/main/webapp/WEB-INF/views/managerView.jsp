@@ -48,42 +48,20 @@
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach items="${reporterList}" var="reporterList" varStatus="status">
 				<tr>
-					<td>1</td>
-					<td>java2</td>
-					<td>영해형</td>
-					<td>01030289402</td>
-					<td>35</td>
-					<td>2</td>
-					<td>4</td>
-					<td>5</td>
-					<td>4</td>
-					<td>회원</td>
+					<td>${status.count}</td>
+					<td>${reporterList.id}</td>
+					<td>${reporterList.name}</td>
+					<td>${reporterList.tel}</td>
+					<td>${reporterList.age}</td>
+					<td>${reporterList.reportCount}</td>
+					<td>${reporterList.messageCount}</td>
+					<td>${reporterList.travelingCount}</td>
+					<td>${reporterList.pictureCount}</td>
+					<td><c:if test="${reporterList.enabled == 1}">회원</c:if><c:if test="${reporterList.enabled == 0}">탈퇴회원</c:if></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-					<td>Table cell</td>
-				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 	<sql id="selectMember">
 		select id,password,name,tel,sex,age,address,introduce,profileimg,
-		range,enabled,hit from member
+		range,enabled,hit, authority from member
 	</sql>
 	<select id="login" resultType="memberVO" parameterType="memberVO">
 		<include refid="selectMember"></include>
@@ -65,6 +65,10 @@ from member
 	
 	<select id="getMemberInfo" resultType="memberVO">
 		select id,name, introduce, hit, profileimg from member where id=#{value}
+	</select>
+	
+	<select id = "getAllMembersId" resultType="string">
+		select id from member
 	</select>
 	
 </mapper>

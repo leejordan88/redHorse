@@ -15,13 +15,16 @@ public class MemberVO {
 	private int range;
 	private int enabled;
 	private int hit;
-	private MultipartFile uploadFile; // 파일업로드를 위한 변수 
+	private MultipartFile uploadFile;
+	private int authority;// 파일업로드를 위한 변수 
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public MemberVO(String id, String password, String name, String tel, int sex, int age, String address,
-			String introduce, String profileimg, int range, int enabled, int hit, MultipartFile uploadFile) {
+			String introduce, String profileimg, int range, int enabled, int hit, MultipartFile uploadFile,
+			int authority) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -36,7 +39,17 @@ public class MemberVO {
 		this.enabled = enabled;
 		this.hit = hit;
 		this.uploadFile = uploadFile;
+		this.authority = authority;
 	}
+
+	public int getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(int authority) {
+		this.authority = authority;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -115,11 +128,13 @@ public class MemberVO {
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", tel=" + tel + ", sex=" + sex
 				+ ", age=" + age + ", address=" + address + ", introduce=" + introduce + ", profileimg=" + profileimg
-				+ ", range=" + range + ", enabled=" + enabled + ", hit=" + hit + ", uploadFile=" + uploadFile + "]";
+				+ ", range=" + range + ", enabled=" + enabled + ", hit=" + hit + ", uploadFile=" + uploadFile
+				+ ", authority=" + authority + "]";
 	}
 	
 }

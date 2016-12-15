@@ -51,4 +51,8 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> searchMemberByName(MemberVO memberVO) {
 		return memberDAO.searchMemberByName(memberVO);
 	}
+	@Override
+	public List<String> getAllMembersId() {
+		return memberDAO.getAllMembersId();
+	}
 }
