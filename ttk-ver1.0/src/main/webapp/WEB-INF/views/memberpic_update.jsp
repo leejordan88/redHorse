@@ -43,7 +43,7 @@
          <br><br><br><br>
          <div class="form-group col-md-12 text-center" >
          <!-- 12/8 효민 아침 수정 부분 -->   
-            <button type="button" class="btn btn-lg btn-primary" id="updateBtn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  수정</button>
+            <button type="button" class="btn btn-lg btn-primary" id="updateBtn"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  완료</button>
             <button type="button" class="btn btn-lg btn-primary" id="resetBtn"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  취소</button>
          <!-- 12/8 효민 아침 수정 부분 끝-->      
             <input type="hidden" name="pictureNo" value=${pvo.pictureNo }>   

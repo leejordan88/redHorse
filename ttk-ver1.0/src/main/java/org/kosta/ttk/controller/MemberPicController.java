@@ -26,10 +26,10 @@ public class MemberPicController {
 	private TravelerService travelerService;
 	private String uploadPath;
 	/**
-	 * 파일 업로드 구현 
-	 * 12/2 효민
+	 * 파일 업로드 구현 12/2 효민
+	 * 
 	 * @param request
-	 * @param pvo0
+	 * @param pvo
 	 * @return
 	 */
 	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
@@ -202,5 +202,4 @@ public class MemberPicController {
 		memberPicService.updateHit(pictureNo);
 		return (memberPicService.getUpdateHit(pictureNo));
 	}
-
 }
