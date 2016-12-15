@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="layout/header_profile.jsp"/>
+<jsp:include page="layout/header_myprofile.jsp"/>
 
 <script src="//code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript">
@@ -54,7 +54,7 @@
       <br>
        <c:if test="${requestScope.pvo.memberVO.id==sessionScope.mvo.id}">
          <button class="btn btn-primary" type="button" id="updateMemberPicView" name="updateMemberPicView">수정</button>
-   <button class="btn btn-primary" type="button" id="deleteMemberPic" name="deleteMemberPic">삭제</button>
+  		 <button class="btn btn-primary" type="button" id="deleteMemberPic" name="deleteMemberPic">삭제</button>
    </c:if>
    </div>
 

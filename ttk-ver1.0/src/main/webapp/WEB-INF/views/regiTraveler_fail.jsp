@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-쪽지
+<script>
+alert("해당 날짜에 이미 여행계획이 등록 되었습니다.");
+location.href="detailPlace.do?placeNo="+${placeNo };
+</script>
 </body>
 </html>

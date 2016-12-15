@@ -240,5 +240,4 @@ public class MemberController {
 		travelerService.hideTravel(travelerVO);
 		return new ModelAndView("redirect:schedule.do");
 	}
-
 }

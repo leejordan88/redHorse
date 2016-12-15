@@ -34,7 +34,7 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	// 12/4 효민 사진 조회수 증가
 	@Override
 	public void updateHit(int pictureNo){
-		template.update("memberpic.updateHit",pictureNo);
+		template.update("memberpic.updateHit", pictureNo);
 	}
 	
 	// 12/7 조회수 보기
@@ -65,7 +65,7 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	// 12/6 사진 수정
 	@Override
 	public void updateMemberPic(MemberPicVO pvo){
-		System.out.println(pvo);
+		//System.out.println(pvo);
 		template.update("memberpic.updateMemberPic", pvo);
 	}
 	@Override

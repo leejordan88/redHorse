@@ -16,71 +16,99 @@ import org.springframework.web.servlet.ModelAndView;
 public class MessageController {
 	@Resource
 	private MessageService messageService;
-
+	
 	@RequestMapping("messageSend.do")
 	public String messageSend(HttpServletRequest request, MessageVO messageVO) {
 		HttpSession session = request.getSession(false);
 		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 		messageVO.setSender(mvo.getId());
-		System.out.println(messageVO);
 		messageService.messageSend(messageVO);
 		return "redirect:messageSendList.do";
 	}
 
+	//  읽지않은 메세지가 몇개인지 나타내기위한 컨트롤러
 	@RequestMapping("messageUncheckedCount.do")
-	public ModelAndView messageUncheckedCount(HttpServletRequest request) {
-		int count = 0;
-		HttpSession session = request.getSession(false);
-		if (session != null || session.getAttribute("mvo") == null) {
+	public ModelAndView messageUncheckedCount(HttpSession session) {
+			int count = 0;
 			MemberVO smvo = (MemberVO) session.getAttribute("mvo");
 			MessageVO messageVO = new MessageVO();
 			messageVO.setId(smvo.getId());
 			count = messageService.messageUncheckedCount(messageVO);
-		}
-		return new ModelAndView("message/messageIndex", "count", count);
+			return new ModelAndView("message/messageIndex", "count", count);
 	}
-
+	
 	@RequestMapping("messageListUnChecked.do")
-	public ModelAndView messageListUnChecked(HttpServletRequest request, String pageNo) {
-		ListVO vo = null;
-		HttpSession session = request.getSession(false);
-		if (session != null || session.getAttribute("mvo") == null) {
+	public ModelAndView messageListUnChecked(HttpSession session, String pageNo) {
+			ListVO vo = null;
 			MemberVO smvo = (MemberVO) session.getAttribute("mvo");
 			MessageVO messageVO = new MessageVO();
 			messageVO.setId(smvo.getId());
 			vo = messageService.messageListUnChecked(messageVO, pageNo);
-		}
 		return new ModelAndView("message/messagePopup/messageListUnChecked", "vo", vo);
 	}
-
+	
+	//수정 MessageVO 타입으로 보내지않고 MemberVO로 갈 경우
 	@RequestMapping("messageList.do")
-	public ModelAndView messageList(HttpServletRequest request, String pageNo) {
-		// ListVO vo=new ListVO();
+	public ModelAndView messageList(HttpSession session,String pageNo) {
 		ListVO vo = null;
-		HttpSession session = request.getSession(false);
-
-		MemberVO smvo = (MemberVO) session.getAttribute("mvo");
-		MessageVO messageVO = new MessageVO();
-		messageVO.setId(smvo.getId());
+		MessageVO messageVO = messageService.getIdSession(session);
 		vo = messageService.messageList(messageVO, pageNo);
 		return new ModelAndView("message/messagePopup/messageList", "vo", vo);
 	}
-
+	
 	@RequestMapping("messageSendList.do")
-	public ModelAndView messageSendList(HttpServletRequest request, String pageNo) {
+	public ModelAndView messageSendList(HttpSession session, String pageNo) {
 		ListVO vo = null;
-		HttpSession session = request.getSession(false);
 		MemberVO smvo = (MemberVO) session.getAttribute("mvo");
 		MessageVO messageVO = new MessageVO();
 		messageVO.setId(smvo.getId());
 		vo = messageService.messageSendList(messageVO, pageNo);
 		return new ModelAndView("message/messagePopup/messageSendList", "vo", vo);
 	}
-
+	
 	@RequestMapping("messageDetail.do")
 	public ModelAndView messageDetail(int messageNo) {
 		MessageVO messageVO = messageService.messageDetail(messageNo);
 		return new ModelAndView("message/messagePopup/messageDetail", "messageVO", messageVO);
 	}
+
+	//@RequestMapping(value="receiveMessageDelete.do",method=RequestMethod.POST)
+	@RequestMapping("receiveMessageDelete.do")
+	public ModelAndView receiveMessageDelete(int messageNo){
+		System.out.println("컨트롤러까지옴"+messageNo+":메세지번호");
+		messageService.receiveMessageDelete(messageNo);
+		return new ModelAndView("redirect:messageList.do");
+	}
+
+	@RequestMapping("sendMessageDelete.do")
+	public ModelAndView sendMessageDelete(int messageNo){
+		messageService.sendMessageDelete(messageNo);
+		return new ModelAndView("redirect:messageSendList.do");
+	}
+	
+	@RequestMapping("messageDeleteList.do")
+	public ModelAndView messageDeleteList(HttpSession session,String pageNo) {
+		ListVO vo = null;
+		MemberVO smvo = (MemberVO) session.getAttribute("mvo");
+		MessageVO messageVO = new MessageVO();
+		messageVO.setId(smvo.getId());
+		vo = messageService.messageDeleteList(messageVO, pageNo);
+		return new ModelAndView("message/messagePopup/messageDeleteList", "vo", vo);
+	}
+
+	
+	@RequestMapping("returnReceiveMessageDelete.do")
+	public ModelAndView returnReceiveMessageDelete(int messageNo){
+		messageService.returnReceiveMessageDelete(messageNo);
+		return new ModelAndView("redirect:messageDeleteList.do");
+	}
+
+	@RequestMapping("returnSendMessageDelete.do")
+	public ModelAndView returnSendMessageDelete(int messageNo){
+		messageService.returnSendMessageDelete(messageNo);
+		return new ModelAndView("redirect:messageDeleteList.do");
+	}
+	
+
 
 }

@@ -135,7 +135,9 @@
                            <li><a href="upload.do">글쓰기</a></li>
 
                            <li><a href="update.do">회원정보수정</a></li>
-
+							
+							 <li><a href="managerView.do">관리자페이지</a></li>
+							
                            <li><a href="logout.do"><i
                                  class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                         </ul></li>

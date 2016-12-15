@@ -1,6 +1,96 @@
+-----------메세지 신고---------------
+
+drop sequence messageReport_seq;
+create sequence messageReport_seq;
+
+select*from messageReport
+
+drop table messageReport;
+
+
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+messageReportContent varchar2(100) not null,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)
+
+
+--여행사진 신고
+
+
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
+
+drop table pictureReport;
+select*from pictureReport
+
+
+create table pictureReport(
+pictureReportNo number not null,
+pictureNo number not null,
+pictureReportDate date not null,
+pictureReportState number default 1,
+pictureReportContent varchar2(100) not null,
+reporter varchar2(100) not null,
+constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
+constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
+)
+
+ drop table authorities;
+
+ create table authorities(
+   username varchar2(100) not null,
+   authority varchar(30) not null,
+   constraint fk_authorities foreign key(username) references member(id),
+   constraint member_authorities primary key(username,authority)
+)
+
+alter table member add (authority number default 0);
+alter table member drop column authority ;
+
+-- member table add column + authority  -jin seok-
+alter table member add (authority number default 0);
+-- member table drop column + authority  -jin seok-
+alter table member drop column authority ;
+
+--관리자 추가 진석
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
+
+
+-- 12/10 수정  DeleteState (send, receive) 두가지 추가
+create table message(
+ messageNo number primary key,
+ id varchar2(100) constraint fk_message_id references member(id),
+ sender varchar2(100) constraint fk_message_sender references member(id),
+ receiver varchar2(100) constraint fk_message_receiver references member(id),
+ messageDate date not null,
+ messageContent clob not null,
+ messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ receiveDeleteState number default 1, 
+ sendDeleteState number default 1  
+ )
+
+
+
+drop table message;
+
+
+
+
+
+
+
+
+
+
 
 --create table member ( sex(남1,여2) ,  
 --create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
+
 --create table traveler(  tstate number default 1,     
 
 select sex,pictureNo,tstate,count(*) from a.member,b.memberPicture,c.traveler 
@@ -52,7 +142,6 @@ values(1,'공개허용');
 insert into memberRange(range,rangeCategory)
 values(0,'공개거부');
 
-
 select *from member;
 drop table member;
 
@@ -97,6 +186,7 @@ insert into category(categoryname,categorypicture) values('관광지','관광지
 insert into category(categoryname,categorypicture) values('맛집','맛집.jpg');
 insert into category(categoryname,categorypicture) values('엑티비티','엑티비티.jpg');
 
+
 drop table area;
 create table area(
 areaname varchar2(100) primary key,
@@ -127,7 +217,6 @@ create table place(
  areaname varchar2(100) not null,
  constraint fk_category foreign key(categoryname) references category(categoryname),
  constraint fk_area foreign key(areaname) references area(areaname)
-
 );
 
 
@@ -224,6 +313,39 @@ values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
 
 
 
+
+create messageReport(
+messageReportNo number
+messageNo
+ )
+
+
+
+
+
+ messageNo number primary key,
+ id varchar2(100) constraint fk_message_id references member(id),
+ sender varchar2(100) constraint fk_message_sender references member(id),
+ receiver varchar2(100) constraint fk_message_receiver references member(id),
+ messageDate date not null,
+ messageContent clob not null,
+ messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ receiveDeleteState number default 1, 
+ sendDeleteState number default 1  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --message
 
 drop sequence message_seq;
@@ -233,15 +355,18 @@ select*from message
 
 drop table message;
 
+-- 12/10 수정  DeleteState (send, receive) 두가지 추가
 create table message(
  messageNo number primary key,
+ id varchar2(100) constraint fk_message_id references member(id),
  sender varchar2(100) constraint fk_message_sender references member(id),
- reciever varchar2(100) constraint fk_message_reciever references member(id),
+ receiver varchar2(100) constraint fk_message_receiver references member(id),
  messageDate date not null,
  messageContent clob not null,
- messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
+ receiveDeleteState number default 1, 
+ sendDeleteState number default 1  
  )
--- sender와 reciever 가 같을경우 생각해보자
 
 insert into message(messageNo,sender,reciever,messageDate,messageContent)
 values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
@@ -249,7 +374,6 @@ values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
 insert into message(messageNo,sender,reciever,messageDate,messageContent)
 values(message_seq.nextval,'java2','java',sysdate,'2번째경우 반대의경우')
 
->>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
 
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '1','남산_N서울타워.jpg', '남산_N서울타워', '04340  서울 용산구 남산공원길 105 (용산동2가, YTN서울타워)', '37.551399', '126.988184', '관광지', '서울');
 insert into  place(placeNo,placePicture,placeName,placeAddress,placeX,placeY,categoryname,areaname) values ( '2','중구_위안부_기억의터.jpg', '중구_위안부_기억의터', '04628  서울 중구 퇴계로26가길 6 (예장동)', '37.559061', '126.990767', '관광지', '서울');
@@ -742,13 +866,12 @@ create table message(
  );
 -- sender와 reciever 가 같을경우 생각해보자
 
+
+ 
  --여행일정 뽑는 SQL
 select p.placeName, p.areaName, t.tDate
 from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
-
-
-
 
 	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
 	where pictureNo=63
@@ -763,4 +886,31 @@ select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, 
 FROM message ms, member m2 
 where ms.receiver=m2.id and  ms.sender ='java1')  rnum
 where   rnum  between 1 and 7 order by messageNo desc
+
+
+
+select
+distinct(select sum((select count(*) from member m, pictureReport pr, memberPicture p where pr.pictureNo = p.pictureNo and m.id = 'java1') +
+(select count(*) from messageReport mr, message m where mr.messageNo = m.messageNo and m.sender = 'java1')) from dual) as reportCount 
+,(select id from member where id = 'java1') as id
+,(select name from member where id = 'java1') as name
+,(select tel from member where id = 'java1') as tel
+,(select age from member where id = 'java1') as age
+,(select sum((select count(*) from message where sender = 'java1') + (select count(*) from message where receiver = 'java1')) from message) messageCount
+,(select count(*) from traveler where id = 'java1') as travelingCount
+,(select count(*) from memberPicture where id = 'java1') as pictureCount
+from member;
+
+
+select distinct
+  (select id from member where id='java1')as id
+  ,(select name from member where id='java1')as name
+  ,(select sex from member where id='java1')as sex
+ , (select age from member where id='java1')as age
+,(select count(*)from (select msr.messageNo from  messageReport msr, message ms where msr.messageNo=ms.messageNo and ms.sender='java1' 
+union all select pr.pictureNo from pictureReport pr, memberPicture mp where pr.pictureNo= mp.pictureNo and mp.id='java1')) as report
+ ,(select count(*)from memberPicture where id='java1') as memberPicture
+,(select count(*)from message where sender ='java1' or receiver='java1') as message
+,(select count (*)from TRAVELER where id='java1') as TRAVELER 
+from member
 

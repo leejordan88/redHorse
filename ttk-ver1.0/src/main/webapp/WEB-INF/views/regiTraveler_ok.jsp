@@ -9,7 +9,7 @@
 <body>
 <script>
 alert("여행지 등록이 완료되었습니다.");
-location.href="index.do";
+location.href="detailPlace.do?placeNo="+${placeNo };
 </script>
 </body>
 </html>
