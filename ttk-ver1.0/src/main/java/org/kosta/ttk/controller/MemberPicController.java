@@ -26,8 +26,8 @@ public class MemberPicController {
 	@Resource
 	private TravelerService travelerService;
 
-	private String uploadPath;
-
+	private String uploadPath;	
+	
 	/**
 	 * 파일 업로드 구현 12/2 효민
 	 * 
@@ -204,4 +204,6 @@ public class MemberPicController {
 		memberPicService.updateHit(pictureNo);
 		return (memberPicService.getUpdateHit(pictureNo));
 	}
+	
+	
 }

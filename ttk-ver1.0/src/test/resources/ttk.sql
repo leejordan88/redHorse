@@ -721,13 +721,13 @@ constraint fk_member foreign key(id) references member(id)
 insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate,pictureContent)
 values(memberPicture_seq.nextval,'java1','준성.jpg','강릉에서~~~!2',sysdate,'123')
 
+
+
 --message
 
 drop sequence message_seq;
 create sequence message_seq;
-
 select*from message
-
 drop table message;
 create table message(
  messageNo number primary key,
@@ -738,27 +738,48 @@ create table message(
  messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
  );
 -- sender와 reciever 가 같을경우 생각해보자
-
-
  
  --여행일정 뽑는 SQL
 select p.placeName, p.areaName, t.tDate
 from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
 
+drop sequence messageReport_seq;
+create sequence messageReport_seq;
+select*from messageReport
+
+drop table messageReport;
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+messageReportContent varchar2(100) not null,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)
+
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
 
 
-	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
-	where pictureNo=63
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
 
-	update memberPicture set pictureTitle='rrr', pictureContent='rrr', filename='속초_봉포머구리집.jpg'
-	where pictureNo=2
-	select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
- 		from memberPicture p, member m where p.id='java1' and p.id=m.id order by p.pictureNo desc
+drop table pictureReport;
+select*from pictureReport
 
-select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
-( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
-FROM message ms, member m2 
-where ms.receiver=m2.id and  ms.sender ='java1')  rnum
-where   rnum  between 1 and 7 order by messageNo desc
+create table pictureReport(
+pictureReportNo number not null,
+pictureNo number not null,
+pictureReportDate date not null,
+pictureReportState number default 1,
+pictureReportContent varchar2(100) not null,
+reporter varchar2(100) not null,
+constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
+constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
+)
+
+
+
 
