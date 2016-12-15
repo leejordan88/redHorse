@@ -92,5 +92,9 @@ public class MemberPicServiceImpl implements MemberPicService {
 	public void updateMemberHit(String id) {
 		memberPicDAO.updateMemberHit(id);
 	}
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 }

@@ -2,6 +2,7 @@ package org.kosta.ttk.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class MemberPicController {
     * 파일 업로드 구현 12/2 효민
     * 
     * @param request
-    * @param pvo0
+    * @param pvo
     * @return
     */
    @RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)

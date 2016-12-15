@@ -16,7 +16,9 @@
 				}
 			}); // $.ajax
 		}); // #listDetail
+		
 	}); // ready
+	
 </script>
 
 <div class="container">

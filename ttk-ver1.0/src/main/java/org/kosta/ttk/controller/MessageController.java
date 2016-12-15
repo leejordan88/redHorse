@@ -20,13 +20,12 @@ public class MessageController {
 	private MessageService messageService;
 	
 	@RequestMapping("messageSend.do")
-	public ModelAndView messageSend(HttpSession session,MessageVO messageVO) {
-		//현재 session 값  MemberVO mvo 에 담아서  mvo 아이디 값을 MessageVO messageVO의 memberVO.id 값에 담는다 
-		// mvo 에 담지 않고 한번에 담는방법있나?  or MessageVO가 아닌 MemberVO로 바로 보내는방법 
+	public String messageSend(HttpServletRequest request, MessageVO messageVO) {
+		HttpSession session = request.getSession(false);
 		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 		messageVO.setSender(mvo.getId());
 		messageService.messageSend(messageVO);
-		return new ModelAndView("index");
+		return "redirect:messageSendList.do";
 	}
 
 	//  읽지않은 메세지가 몇개인지 나타내기위한 컨트롤러

@@ -77,104 +77,103 @@
 </section>
 
  <script type="text/javascript">
-    $(document).ready(function(){
-       
-       $("#searchByNameBtn").click(function(){
-          
-          if($("#searchName").val()==""){
-             alert("검색하려는 이름을 입력해주세요");
-             $("#serachResultView").html("");   
-             return;
-          }
-        
-          
-         $.ajax({
-            type:"POST",
-            url:"searchMemberByName.do",            
-            data:$("#searchByNameForm").serialize(),
-            dataType:"json",   
-            success:function(result){                
-               if(result.error=="fail"){
-                  alert("조건이 일치하는 회원이 없습니다.");   
-                  $("#serachResultView").html("");                  
-               }else{
-                  var sicon="";
-                  var data="";
-                  for(var i=0;i<result.length;i++){
+    $(document).ready(function(){    	
+    	$("#searchByNameBtn").click(function(){
+    		
+    		if($("#searchName").val()==""){
+    			alert("검색하려는 이름을 입력해주세요");
+    			$("#serachResultView").html("");	
+    			return;
+    		}
+  		
+    		
+			$.ajax({
+				type:"POST",
+				url:"searchMemberByName.do",				
+				data:$("#searchByNameForm").serialize(),
+				dataType:"json",   
+				success:function(result){ 					
+					if(result.error=="fail"){
+						alert("조건이 일치하는 회원이 없습니다.");	
+						$("#serachResultView").html("");						
+					}else{
+						var sicon="";
+						var data="";
+						for(var i=0;i<result.length;i++){
 
-                     if(result[i].sex==2){
-                        sicon="<i class='fa fa-female'></i>";
-                      }else{
-                        sicon="<i class='fa fa-male'></i>";
-                     }
-                     data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
-                     data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";
-                     data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
-                     data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
-                     data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
-                     data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+result[i].id+"'></c:if>";
-                     data+="<img src='${pageContext.request.contextPath}/resources/upload/";
-                     data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
-                     data+="<c:if test='${sessionScope.mvo!=null}'>";
-                     data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
-                     data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
-                     data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
-                     data+="</div></div></div></div>";
-                     
-                  }
-                  $("#serachResultView").html(data);            
-               }
-            }// success
-           });//ajax       
-       });
-       
-       
-       
-       $("#serachBtn").click(function(){ 
-         $.ajax({
-         type:"POST",
-         url:"searchMemberByOption.do",            
-         data:$("#searchForm").serialize(),
-         dataType:"json",   
-         success:function(result){                
-            if(result.error=="fail"){
-               alert("조건이 일치하는 회원이 없습니다.");
-               $("#serachResultView").html("");
-            }else{
-               var sicon="";
-               var data="";
-               for(var i=0;i<result.length;i++){
-                  if(result[i].sex==2){
-                     sicon="<i class='fa fa-female'></i>";
-                  }else{
-                     sicon="<i class='fa fa-male'></i>";
-                  }
-                  data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
-                  data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";
-                  data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
-                  data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
-                  data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
-                  data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+result[i].id+"'></c:if>";
-                  data+="<img src='${pageContext.request.contextPath}/resources/upload/";
-                  data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
-                  data+="<c:if test='${sessionScope.mvo!=null}'>";
-                  data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
-                  data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
-                  data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
-                  data+="</div></div></div></div>";
-               }
-               $("#serachResultView").html(data);            
-            }
-         }// success
-        });//ajax                        
-       });
-       
-       $("#serachResultView").on("click",".messageBtn",(function(){
-          var receiver =$(this).val();
-          $("#messageContent").val("");
-          $("#receiver").val(receiver);
-       }))
-    });   
+							if(result[i].sex==2){
+								sicon="<i class='fa fa-female'></i>";
+			 				}else{
+								sicon="<i class='fa fa-male'></i>";
+							}
+							data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
+							data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";
+							data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
+							data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
+							data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
+							data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+result[i].id+"'></c:if>";
+							data+="<img src='${pageContext.request.contextPath}/resources/upload/";
+							data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
+							data+="<c:if test='${sessionScope.mvo!=null}'>";
+							data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
+							data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
+							data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
+							data+="</div></div></div></div>";
+							
+						}
+						$("#serachResultView").html(data);				
+					}
+				}// success
+			  });//ajax 		
+    	});
+    	
+    	
+    	
+    	$("#serachBtn").click(function(){ 
+			$.ajax({
+			type:"POST",
+			url:"searchMemberByOption.do",				
+			data:$("#searchForm").serialize(),
+			dataType:"json",   
+			success:function(result){ 					
+				if(result.error=="fail"){
+					alert("조건이 일치하는 회원이 없습니다.");
+					$("#serachResultView").html("");
+				}else{
+					var sicon="";
+					var data="";
+					for(var i=0;i<result.length;i++){
+						if(result[i].sex==2){
+							sicon="<i class='fa fa-female'></i>";
+						}else{
+							sicon="<i class='fa fa-male'></i>";
+						}
+						data+="<div class='col-xs-6 col-md-4 profile_details'><div class='well profile_view'><div class='col-sm-12'><div class='left col-xs-7'>";
+						data+="<h2><i>"+result[i].name+"</i>&nbsp;"+sicon+"</h2><br>";
+						data+="<ul class='list-unstyled'><li><p><strong>자기소개: </strong>"+result[i].introduce+"</p></li>";
+						data+=" <li><i class='fa fa-smile-o'></i>나이 : "+result[i].age+"</li>";
+						data+=" <li><i class='fa fa-building'></i>지역 : "+result[i].address+"</li></ul></div>";
+						data+="<div class='right col-xs-5 text-center'><c:if test='${sessionScope.mvo!=null}'><a href='visitMemberPic.do?id="+result[i].id+"'></c:if>";
+						data+="<img src='${pageContext.request.contextPath}/resources/upload/";
+						data+=result[i].id+"/profile/"+result[i].profileimg+"' class='img-circle img-responsive'><c:if test='${sessionScope.mvo!=null}'></a></c:if>";
+						data+="<c:if test='${sessionScope.mvo!=null}'>";
+						data+="<a href='#' data-toggle='modal' data-target='#message-modal'>";
+						data+="<button  type='button' class='btn btn-success btn-xs messageBtn' value="+result[i].id+"> <i class='fa fa-user'></i>";
+						data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
+						data+="</div></div></div></div>";
+					}
+					$("#serachResultView").html(data);				
+				}
+			}// success
+		  });//ajax 			 	 			
+    	});
+    	
+    	$("#serachResultView").on("click",".messageBtn",(function(){
+    		var receiver =$(this).val();
+    		$("#messageContent").val("");
+    		$("#receiver").val(receiver);
+    	}))
+    });	
 </script>
 
 
