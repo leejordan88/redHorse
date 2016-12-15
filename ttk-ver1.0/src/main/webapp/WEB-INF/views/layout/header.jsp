@@ -155,7 +155,7 @@
                      <!--    <a href="messageUncheckedCount.do"> -->
                         
                         
-                        <i   class="fa fa-envelope-o"></i> <span class="badge bg-green">N</span>
+                        <i   class="fa fa-envelope-o"></i> <span class="badge bg-green">n</span>
                      </a>
                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list"
                            role="menu">
