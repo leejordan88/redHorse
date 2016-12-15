@@ -71,4 +71,10 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	public void deleteMemberPic(int pictureNo){
 		template.delete("memberpic.deleteMemberPic", pictureNo);
 	}
+
+	   //영주 조회수 증가 수정
+	   @Override
+	   public void updateMemberHit(String id) {
+	      template.update("member.updateMemberHit",id);
+	   }
 }

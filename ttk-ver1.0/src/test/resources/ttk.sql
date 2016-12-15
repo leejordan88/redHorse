@@ -230,6 +230,7 @@ create messageReport(
 messageReportNo number
 messageNo
  )
+ 
 
 
 
@@ -800,3 +801,61 @@ where ms.receiver=m2.id and  ms.sender ='java1')  rnum
 where   rnum  between 1 and 7 order by messageNo desc
 
 
+
+
+
+
+
+-----------------------추가------------------------------
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)
+
+
+
+
+
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
+
+drop table pictureReport;
+select*from pictureReport
+
+
+create table pictureReport(
+pictureReportNo number not null,
+pictureNo number not null,
+pictureReportDate date not null,
+pictureReportState number default 1,
+constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
+constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
+)
+
+
+
+
+
+
+
+
+drop sequence messageReport_seq;
+create sequence messageReport_seq;
+
+select*from messageReport
+
+drop table messageReport;
+
+
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)

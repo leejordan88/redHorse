@@ -152,52 +152,58 @@ public class MemberController {
 	}
 	
 	//조건별 다른 회원 검색
-		@RequestMapping("searchMemberByOption.do")
-		@ResponseBody
-		public Object searchMemberByOption(String[] search){
-			int sex=0;
-			ArrayList<String> ageRange=new ArrayList<String>();
-			StringBuffer age= new StringBuffer();
-			for(int i=0;i<search.length;i++){
-				if(search[i].equals("1")){
-					sex+=1;
-				}else if(search[i].equals("2")){
-					sex+=2;
-				}else if(search[i].equals("10")){
-					ageRange.add("(age<20)");
-				}else if(search[i].equals("20")){
-					ageRange.add("(20<=age and age<30)");
-				}else if(search[i].equals("30")){
-					ageRange.add("(30<=age and age<40)");
-				}else if(search[i].equals("40")){
-					ageRange.add("(40<=age)");
-				}
-			}
-			if(!ageRange.isEmpty()){
-				age.append(ageRange.get(0));
-				for(int j=1;j<ageRange.size();j++)
-					age.append(" or "+ageRange.get(j));
-			}
-			String str="";
-			if((sex==1||sex==2)&&age.length()>0){
-				str="sex="+sex+" and ("+age+")";
-			}else if(age.length()>0){
-				str=age.toString();
-			}else if(sex==1||sex==2){
-				str="sex="+sex;
-			}else if(sex==3){
-				str="sex=1 or sex=2";
-			}
-			System.out.println(str);
-			List<MemberVO> list =memberService.searchMemberByOption(str);
-			if(list.isEmpty()){
-				HashMap<String,String> map=new HashMap<String,String>();
-				map.put("error","fail");
-				return map;
-			}
-				
-			return list;
-		}
+    @RequestMapping("searchMemberByOption.do")
+    @ResponseBody
+    public Object searchMemberByOption(String[] search,HttpSession session){
+       int sex=0;
+       ArrayList<String> ageRange=new ArrayList<String>();
+       StringBuffer age= new StringBuffer();
+       for(int i=0;i<search.length;i++){
+          if(search[i].equals("1")){
+             sex+=1;
+          }else if(search[i].equals("2")){
+             sex+=2;
+          }else if(search[i].equals("10")){
+             ageRange.add("(age<20)");
+          }else if(search[i].equals("20")){
+             ageRange.add("(20<=age and age<30)");
+          }else if(search[i].equals("30")){
+             ageRange.add("(30<=age and age<40)");
+          }else if(search[i].equals("40")){
+             ageRange.add("(40<=age)");
+          }
+       }
+       if(!ageRange.isEmpty()){
+          age.append(ageRange.get(0));
+          for(int j=1;j<ageRange.size();j++)
+             age.append(" or "+ageRange.get(j));
+       }
+       String str="";
+       if((sex==1||sex==2)&&age.length()>0){
+          str="sex="+sex+" and ("+age+")";
+       }else if(age.length()>0){
+          str=age.toString();
+       }else if(sex==1||sex==2){
+          str="sex="+sex;
+       }else if(sex==3){
+          str="sex=1 or sex=2";
+       }
+
+       
+       MemberVO mvo= (MemberVO)session.getAttribute("mvo");
+       if(mvo!=null)
+          str+="and id!='"+mvo.getId()+"'";
+
+       System.out.println(str);
+       List<MemberVO> list =memberService.searchMemberByOption(str);
+       if(list.isEmpty()){
+          HashMap<String,String> map=new HashMap<String,String>();
+          map.put("error","fail");
+          return map;
+       }
+          
+       return list;
+    }
 		
 		@RequestMapping("searchMemberByName.do")
 		@ResponseBody

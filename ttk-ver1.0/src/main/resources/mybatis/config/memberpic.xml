@@ -59,8 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 12/5 사진 수정하기 -->
 <update id="updateMemberPic" parameterType="memberPicVO">
-	update memberPicture set pictureTitle=#{pictureTitle}, pictureContent=#{pictureContent}, fileName=#{fileName, jdbcType=VARCHAR}
-	where pictureNo=#{pictureNo}
+   update memberPicture set pictureTitle=#{pictureTitle}, pictureContent=#{pictureContent}, fileName=#{fileName, jdbcType=VARCHAR}
+   where pictureNo=#{pictureNo}
 </update>
 
 </mapper>
