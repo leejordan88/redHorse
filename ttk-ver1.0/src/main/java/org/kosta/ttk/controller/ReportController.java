@@ -10,20 +10,23 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ReportController {
 	@Resource
 	private MemberPicReportService memberPicReportService;
 	
+	// 사진 게시물 신고(12/14)
 	@RequestMapping(value = "reportMemberPicture.do", method = RequestMethod.POST)
-	public String reportMemberPicture(HttpServletRequest request, MemberPicReportVO memberPicReportVO){
+	public ModelAndView reportMemberPicture(HttpServletRequest request, MemberPicReportVO memberPicReportVO){
 		HttpSession session = request.getSession(false);
 		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 		memberPicReportVO.setReporter(mvo.getId());
 		memberPicReportService.reportMemberPicture(memberPicReportVO);
 		System.out.println(memberPicReportVO);
-		return "memberpic_report_success";
+		return new ModelAndView("memberpic_report_success", "id", mvo.getId());
 	}	
+	
 	
 }
