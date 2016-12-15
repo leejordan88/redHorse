@@ -808,7 +808,7 @@ create sequence pictureReport_seq;
 
 drop table pictureReport;
 select*from pictureReport
->>>>>>> branch 'version1.4' of https://github.com/leejordan88/redHorse.git
+
 
 create table pictureReport(
 pictureReportNo number not null,
@@ -883,3 +883,40 @@ messageReportState number default 1,
 constraint pk_messageNo foreign key(messageNo) references message,
 constraint pk_messageReport primary key(messageReportNo,messageNo)
 )
+
+
+
+
+
+select
+distinct(select sum((select count(*) from member m, pictureReport pr, memberPicture p where pr.pictureNo = p.pictureNo and m.id = 'java1') +
+(select count(*) from messageReport mr, message m where mr.messageNo = m.messageNo and m.sender = 'java1')) from dual) as reportCount 
+,(select id from member where id = 'java1') as id
+,(select name from member where id = 'java1') as name
+,(select tel from member where id = 'java1') as tel
+,(select age from member where id = 'java1') as age
+,(select sum((select count(*) from message where sender = 'java1') + (select count(*) from message where receiver = 'java1')) from message) messageCount
+,(select count(*) from traveler where id = 'java1') as travelingCount
+,(select count(*) from memberPicture where id = 'java1') as pictureCount
+from member;
+
+
+
+----------관리자-----------
+drop table authorities;
+
+ create table authorities(
+   username varchar2(100) not null,
+   authority varchar(30) not null,
+   constraint fk_authorities foreign key(username) references member(id),
+   constraint member_authorities primary key(username,authority)
+)
+
+-- member table add column + authority  -jin seok-
+alter table member add (authority number default 0);
+-- member table drop column + authority  -jin seok-
+alter table member drop column authority;
+--관리자 추가 진석
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
+
+
