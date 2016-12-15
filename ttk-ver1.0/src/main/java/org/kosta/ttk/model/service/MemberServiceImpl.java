@@ -30,6 +30,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.idcheck(id);
 	}
 	
+	@Override
 	public MemberVO findMember(String id) {
 		return memberDAO.findMember(id);
 	}
@@ -48,6 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<StatsVO> getStats(){
 		return memberDAO.getStats();
 	}
+	@Override
 	public List<MemberVO> searchMemberByName(MemberVO memberVO) {
 		return memberDAO.searchMemberByName(memberVO);
 	}

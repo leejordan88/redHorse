@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.MessageVO;
 import org.kosta.ttk.model.vo.PagingBeanVO;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -36,6 +35,7 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 	
 
+	@Override
 	public List<MessageVO> messageSendList(PagingBeanVO pagingBeanSend) {
 		return template.selectList("post.messageSendList", pagingBeanSend);
 	}

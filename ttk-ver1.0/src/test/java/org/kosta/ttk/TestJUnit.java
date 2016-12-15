@@ -1,19 +1,13 @@
 package org.kosta.ttk;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.kosta.ttk.controller.MemberController;
-import org.kosta.ttk.controller.MessageController;
-import org.kosta.ttk.controller.PlaceController;
 import org.kosta.ttk.model.service.MemberPicService;
 import org.kosta.ttk.model.service.MemberService;
 import org.kosta.ttk.model.vo.MemberPicVO;
-import org.kosta.ttk.model.vo.StatsVO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 

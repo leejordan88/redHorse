@@ -914,3 +914,12 @@ union all select pr.pictureNo from pictureReport pr, memberPicture mp where pr.p
 ,(select count (*)from TRAVELER where id='java1') as TRAVELER 
 from member
 
+   select id, name, tel, age, (
+   select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
+   ( select sum(
+      (select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
+      (select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
+   )from dual)as reportCount,
+   (select count(*) from traveler where member.id = traveler.id) as travelingCount,
+   (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount
+      from member

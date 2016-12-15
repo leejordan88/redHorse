@@ -12,6 +12,7 @@
 					<h3>Place</h3>
 					<p>세부 장소를 선택해주세요</p>
 				</div>
+				
 				<div class="block">
 					<div class="portfolio-contant">
 						<ul id="portfolio-contant-active">

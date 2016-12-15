@@ -10,7 +10,6 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.MessageVO;
 import org.kosta.ttk.model.vo.PagingBeanVO;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MessageServiceImpl implements MessageService {
