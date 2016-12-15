@@ -780,6 +780,19 @@ constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
 constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
 )
 
+ drop table authorities;
 
+ create table authorities(
+   username varchar2(100) not null,
+   authority varchar(30) not null,
+   constraint fk_authorities foreign key(username) references member(id),
+   constraint member_authorities primary key(username,authority)
+)
 
+-- member table add column + authority  -jin seok-
+alter table member add (authority number default 0);
+-- member table drop column + authority  -jin seok-
+alter table member drop column authority;
+--관리자 추가 진석
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
 
