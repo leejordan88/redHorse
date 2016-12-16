@@ -73,17 +73,9 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 		template.delete("memberpic.deleteMemberPic", pictureNo);
 	}
 
-<<<<<<< HEAD
-	   //영주 조회수 증가 수정
-	   @Override
-	   public void updateMemberHit(String id) {
-	      template.update("member.updateMemberHit",id);
-	   }
-=======
 	//영주 조회수 증가 수정
 	@Override
 	public void updateMemberHit(String id) {
 		template.update("member.updateMemberHit",id);
 	}
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 }

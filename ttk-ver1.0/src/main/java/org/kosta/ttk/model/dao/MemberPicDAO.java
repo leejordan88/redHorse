@@ -15,13 +15,7 @@ public interface MemberPicDAO {
 	List<MemberPicVO> visitMemberPic(String id);
 	MemberVO getMemberInfo(String id);
 	void updateMemberPic(MemberPicVO pvo);
-<<<<<<< HEAD
 	void deleteMemberPic(int pictureNo);
-=======
-	
-	void deleteMemberPic(int pictureNo);
-
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 	void updateMemberHit(String id);
 
 }

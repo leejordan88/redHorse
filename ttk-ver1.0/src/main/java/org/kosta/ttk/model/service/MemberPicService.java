@@ -27,11 +27,6 @@ public interface MemberPicService {
 
 	void deleteMemberPic(int pictureNo);
 
-<<<<<<< HEAD
 	void updateMemberHit(String id);
-	
-=======
-	void updateMemberHit(String id);
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 
 }

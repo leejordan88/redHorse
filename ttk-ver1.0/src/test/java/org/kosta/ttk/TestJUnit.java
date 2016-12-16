@@ -1,10 +1,6 @@
 package org.kosta.ttk;
 
-import javax.annotation.Resource;
-
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.ttk.model.dao.AdminDAO;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -34,19 +30,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-*.xml")
 public class TestJUnit {
 
-	@Resource
+/*	@Resource
 	private AdminDAO  adminDAO;
 
 	@Test
 	public void test(){
 
-		/* ArrayList<StatsVO> svo = new ArrayList<StatsVO>(); */
-		/*StatsVO svo = new StatsVO();*/
+		 ArrayList<StatsVO> svo = new ArrayList<StatsVO>(); 
+		StatsVO svo = new StatsVO();
 		 //List<StatsVO> list = memberService.getStats();
-		/*StatsVO svo=new StatsVO();*/
+		StatsVO svo=new StatsVO();
 		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
 		//System.out.println(list);		
 		System.out.println(adminDAO.managerView());
-	}
+	}*/
 }
 
