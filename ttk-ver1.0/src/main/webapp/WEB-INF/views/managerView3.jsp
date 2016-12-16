@@ -13,7 +13,7 @@
       </form>
 <ul class="nav nav-tabs">
   <li role="presentation" ><a href="managerView.do">회원관리</a></li>
-  <li role="presentation" ><a href="managerView2.do">신고관리</a></li>
+  <li role="presentation" ><a href="messageReportList.do">신고관리</a></li>
   <li role="presentation" class="active"><a href="managerView3.do">블랙리스트관리</a></li>
 </ul>
  <br>

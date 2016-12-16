@@ -24,9 +24,18 @@ public class AdminServiceImpl implements AdminService {
 		}else{
 			pagingBean = new PagingBeanVO(totalCount, Integer.parseInt(pageNo));
 		}
-		
+		/*return new ListVO(adminDAO.managerView(pagingBean) , pagingBean);*/
 		return new ListVO(null,null,null,null,null,adminDAO.managerView(pagingBean) , pagingBean);
-
 	}
-
+	@Override
+	public ListVO messageReportList(String pageNo) {
+	   int totalCount = adminDAO.memberTotalCount();
+	   PagingBeanVO pagingBean = null;
+	   if (pageNo == null){
+	      pagingBean = new PagingBeanVO(totalCount);
+	   }else{
+	      pagingBean = new PagingBeanVO(totalCount, Integer.parseInt(pageNo));
+	   }
+	   return new ListVO(adminDAO.messageReportList(pagingBean) , pagingBean);
+	}
 }

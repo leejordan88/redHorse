@@ -4,7 +4,26 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
-   <select id="managerView"  resultType="reporterVO">
+  
+<resultMap type="messageReportVO"    id="paginMessageReport" >
+<result column="receiver"  property="messageVO.receiver"></result>
+<result column="sender"  property="messageVO.sender"></result>
+</resultMap>
+   
+  <select id="memberTotalCount"  resultType="int">
+   select count(*)from messageReport 
+   </select>
+  
+  <select id="messageReportList"  resultMap="paginMessageReport">
+     select rnum, messageReportNo, receiver, sender,messageNo,messageReportContent ,messageReportDate FROM
+( SELECT row_number() over(order by msp.messageReportNo desc)  as rnum, msp.messageReportNo, ms.receiver, ms.sender, msp.messageNo, msp.messageReportContent ,msp.messageReportDate 
+from messageReport msp , message ms 
+where msp.messageNo=ms.messageNo) rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageReportNo desc
+   </select>
+
+
+<select id="managerView"  resultType="reporterVO">
    select*from ( SELECT row_number() over(order by age asc) as rnum, id, name, tel, age, (
     select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
     (select sum(

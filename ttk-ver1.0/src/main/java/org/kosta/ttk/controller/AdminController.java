@@ -19,4 +19,18 @@ public class AdminController {
       ListVO rList = adminService.managerView(pageNo);
       return new ModelAndView("managerView", "rList",rList);
    }
+
+   /**
+    *  메세지신고리스트 작성자 영해
+    * @param pageNo
+    * @return
+    */
+   @RequestMapping("messageReportList.do")
+   public ModelAndView messageReportList(String pageNo) {
+      ListVO vo = adminService.messageReportList(pageNo);
+      System.out.println(vo);
+      return new ModelAndView("managerView2", "vo", vo);
+   }
+
+
 }

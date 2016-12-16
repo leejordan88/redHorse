@@ -7,13 +7,14 @@ import java.util.List;
  * 
  * @author kosta
  * StatsVO 추가  12/7 진석
+ * @param <E>
  *
  */
-public class ListVO {
+public class ListVO<E> {
 	private List<AreaVO> areaList;
 	private List<CategoryVO> categoryList;
 	private List<TravelerVO> travelerList;
-	private List<MessageVO> list;
+	private List<E> list;
 	private List<StatsVO> StatsList;
 	private List<ReporterVO> reporterList;
 	private PagingBeanVO pagingBean;	
@@ -23,7 +24,7 @@ public class ListVO {
 	}
 
 	public ListVO(List<AreaVO> areaList, List<CategoryVO> categoryList, List<TravelerVO> travelerList,
-			List<MessageVO> list, List<StatsVO> statsList, List<ReporterVO> reporterList, PagingBeanVO pagingBean) {
+			List<E> list, List<StatsVO> statsList, List<ReporterVO> reporterList, PagingBeanVO pagingBean) {
 		super();
 		this.areaList = areaList;
 		this.categoryList = categoryList;
@@ -34,7 +35,7 @@ public class ListVO {
 		this.pagingBean = pagingBean;
 	}
 
-	public ListVO(List<MessageVO> list, PagingBeanVO pagingBean) {
+	public ListVO(List<E> list, PagingBeanVO pagingBean) {
 		super();
 		this.list = list;
 		this.pagingBean = pagingBean;
@@ -49,11 +50,11 @@ public class ListVO {
 		this.reporterList = reporterList;
 	}
 
-	public List<MessageVO> getList() {
+	public List<E> getList() {
 		return list;
 	}
 
-	public void setList(List<MessageVO> list) {
+	public void setList(List<E> list) {
 		this.list = list;
 	}
 
