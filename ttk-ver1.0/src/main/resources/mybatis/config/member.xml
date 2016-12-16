@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 <!-- enabled=1 일떄 로그인 가능 0일때 접근불가 -->
 	</select>
 	<update id="updateMember" parameterType="memberVO">
-		update member set password=#{password},tel=#{tel},address=#{address},range=#{range}
+		update member set password=#{password},tel=#{tel},address=#{address},range=#{range},introduce=#{introduce}
 		<if test="profileimg != null">
 			,profileimg=#{profileimg}
 		</if>
@@ -38,12 +38,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 where id= #{id}
 	</update>
 	
-	<select id="searchMemberByOption" resultType="memberVO">
-	<![CDATA[
-	select * from member
-	where ${value} and range=1 and enabled = 1
-	]]>
-	</select>
+   <select id="searchMemberByOption" resultType="memberVO">
+   <![CDATA[
+   select * from member
+   where ${value} and range=1 and enabled = 1 and authority=0
+   ]]>
+   </select>
 
 	<select id="getStats" resultType="statsVO" >
 select distinct(select count(sex) from member where sex=1 group by sex) as male
@@ -53,11 +53,11 @@ select distinct(select count(sex) from member where sex=1 group by sex) as male
 from member
 </select>
 
-	<select id="searchMemberByName" resultType="memberVO">
-	<![CDATA[
-	select * from member
-	where name like '%${name}%' and range=1 and enabled = 1	]]> <if test="id != null"> and id!=#{id}</if>
-	</select>
+   <select id="searchMemberByName" resultType="memberVO">
+   <![CDATA[
+   select * from member
+   where name like '%${name}%' and range=1 and enabled = 1 and authority=0   ]]> <if test="id != null"> and id!=#{id}</if>
+   </select>
 	
 	<update id="updateMemberHit">
 		update member set hit=hit+1 where id=#{value}
