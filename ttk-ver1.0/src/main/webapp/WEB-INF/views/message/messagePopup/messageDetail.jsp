@@ -17,7 +17,12 @@
       </div>
    </div>
 
+<<<<<<< HEAD
 <!--파란색부분 -->
+=======
+<!--파란색부분 -->
+
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
    <div id="services" class="services">
       <div class="container">
          <div class="row">
@@ -37,21 +42,38 @@
                     </div>
                 <div class="col-sm-12">
                     <div class="details">
+<<<<<<< HEAD
                            <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
                            <h5 id="messageDate">${requestScope.messageVO.messageDate}  &nbsp; 
                            <a href="" id="sirenButton"><img style="width:1.5%; height:1.5%;" src="${pageContext.request.contextPath}/resources/images/message/siren.png"  class="sirenButton"></a></h5>
+=======
+                           <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
+                           <h5 id="messageDate">${requestScope.messageVO.messageDate}  &nbsp;
+                           
+                         <a href='#' data-toggle='modal' data-target='#messageReport-modal' ><img style="width:1.5%; height:1.5%;" 
+                            src="${pageContext.request.contextPath}/resources/images/message/siren.png"  class="sirenButton"> 
+                            </a>
+                            
+                            
+                            </h5>
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
                            <textarea class="form-control" id="msgContent" cols="45" rows="6" readonly="readonly" placeholder="${requestScope.messageVO.messageContent}"></textarea>
                              <!--  <div id="messageContent"></div> -->
                         <br><br>
                         <div class="mg-top-10">
                             <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">send<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
                             &nbsp;
-                            <a href="#"  id="btn-delete" class="btn btn-success delete" >delete<%-- <img src="${pageContext.request.contextPath}/resources/images/message/delete.png" > --%></a>
+                            <a href="#"  id="btn-delete" class="btn btn-success delete" >delete</a>
                         </div>
                    </div>
             </div>
 </div>
+<<<<<<< HEAD
 <!-- 내용부분 끝-->
+=======
+<!-- 내용부분 끝-->
+
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
       </div>
    </div>
  <!-- 파란부분끝 -->
@@ -66,10 +88,11 @@
       $("#moveUncheck").click(function(){
          location.href="messageListUnChecked.do"; 
       });
-      $("#moveReceive").click(function(){
+      $("#moveDelete").click(function(){
          location.href="messageList.do";
       });
       
+<<<<<<< HEAD
       $('#btn-delete').click(function() {
          	//삭제
          	 var result = confirm('메세지를 삭제하시겠습니까?');
@@ -80,6 +103,20 @@
 		           
 		            return;
 		        }
+=======
+      $('#btn-delete').click(function() {
+            //삭제
+             var result = confirm('메세지를 삭제하시겠습니까?');
+              if(result) {
+                 //yes
+                 $(location).attr('href',"receiveMessageDelete.do?messageNo=${requestScope.messageVO.messageNo}");
+              } else {
+                 
+                  return;
+              }
+            
+            
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
       });//function 
   });
    
@@ -110,5 +147,38 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
    <!-- 쪽지보내기 모달 끝 -->  
+=======
+        </div>
+   <!-- 쪽지보내기 모달 끝 -->  
+   
+  <!--  12/14일 화요일  -->
+    <!-- 신고하기 모달 -->
+          <div class="modal fade" id="messageReport-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Message">신고</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="messageReportSend.do">
+                            <div class="form-group">
+                            <input type="text" id="messageNo" name="messageNo" value="${requestScope.messageVO.messageNo}" readonly="readonly" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                               <textarea class="form-control" required="required" id="messageReportContentSend" name="messageReportContent" cols="45" rows="9" placeholder="신고내용을 적어주세요. 신중히 적어주시기바랍니다." ></textarea>
+                            </div>
+                            <p class="text-center">
+                                <button class="btn btn-send animated fadeInUp" type="submit"><i class="fa fa-sign-in"></i>전송</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- 신고하기 모달 끝 -->  
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+  
+<resultMap type="messageReportVO"    id="paginMessageReport" >
+<result column="receiver"  property="messageVO.receiver"></result>
+<result column="sender"  property="messageVO.sender"></result>
+</resultMap>
+   
+  <select id="memberTotalCount"  resultType="int">
+   select count(*)from messageReport 
+   </select>
+  
+  <select id="messageReportList"  resultMap="paginMessageReport">
+     select rnum, messageReportNo, receiver, sender,messageNo,messageReportContent ,messageReportDate FROM
+( SELECT row_number() over(order by msp.messageReportNo desc)  as rnum, msp.messageReportNo, ms.receiver, ms.sender, msp.messageNo, msp.messageReportContent ,msp.messageReportDate 
+from messageReport msp , message ms 
+where msp.messageNo=ms.messageNo) rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageReportNo desc
+   </select>
+
+
+<select id="managerView"  resultType="reporterVO">
+   select*from ( SELECT row_number() over(order by age asc) as rnum, id, name, tel, age, (
+    select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
+    (select sum(
+       (select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
+       (select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
+    )from dual)as reportCount,
+    (select count(*) from traveler where member.id = traveler.id) as travelingCount,
+    (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount,
+    enabled
+       from member )
+ where   rnum  between #{startRowNumber} and  #{endRowNumber} order by age asc
+   </select>
+   
+   <select id="adminSearchByName" resultType="reporterVO">
+   <![CDATA[
+   select id, name, tel, age, (
+    select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
+    (select sum(
+       (select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
+       (select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
+    )from dual)as reportCount,
+    (select count(*) from traveler where member.id = traveler.id) as travelingCount,
+    (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount,
+    enabled
+       from member 
+ where name like '%${value}%'  ]]>
+   </select>
+   
+   
+</mapper>

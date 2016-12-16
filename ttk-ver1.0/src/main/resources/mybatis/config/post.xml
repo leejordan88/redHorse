@@ -51,7 +51,7 @@ where   rnum  between #{startRowNumber} and  #{endRowNumber} order by messageNo 
 </select>
  
 <select id="messageListUnChecked"     resultMap="usePagingBeanVO">
-  select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
+  select rnum, messageNo,sender,receiver,to_char(messageDate, 'YYYY.MM.DD')as messageDate,messageContent,messageState, profileIMG FROM
 ( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState,ms.receiveDeleteState, m2.profileIMG   
 FROM message ms, member m2 
 where ms.messageState=1 and ms.sender=m2.id and  ms.receiver =#{messageVO.id}  and ms.receiveDeleteState=1)  rnum
@@ -101,4 +101,13 @@ update message set receiveDeleteState=1 where messageNo=#{value}
 update message set sendDeleteState=1 where messageNo=#{value}
 </update>
 
+ <insert id="messageReportSend"  parameterType="messageReportVO">
+ <selectKey keyProperty="messageReportNo" resultType="int" order="BEFORE">
+       select messageReportNo_seq.nextval from dual
+    </selectKey>
+ insert into messageReport
+ (messageReportNo,messageNo,messageReportDate, messageReportContent) 
+ values
+ (messageReport_seq.nextval, #{messageVO.messageNo}, sysdate ,#{messageReportContent})
+ </insert>
 </mapper>

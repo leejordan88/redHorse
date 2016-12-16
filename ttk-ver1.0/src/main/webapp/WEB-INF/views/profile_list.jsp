@@ -7,13 +7,13 @@
 
     
 <section id="profile-list">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12"><br>
-            <div class="section-title text-center">
-                   <h3>다른 회원 검색</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"><br>
+				<div class="section-title text-center">
+                	<h3>다른 회원 검색</h3>
                     <p>타 회원 프로필 리스트입니다. 조건별 검색이 가능합니다.</p>
-            </div>
+				</div>
 
               <div class="form-group">                    
                       <form id="searchForm">
@@ -37,15 +37,15 @@
                      <input type="button" class="btn btn-success" value="검색!" id="searchByNameBtn">
             </form> 
          </div>
-            <div class="searchView">
-               <div class="form-group">
+				<div class="searchView">
+					<div class="form-group">
                       <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                       <span id="serachResultView"></span>
+             		    <span id="serachResultView"></span>
                   </div>
                 </div>
                </div>
              </div>
-      </div>
+		</div>
       </div>
       <!-- 쪽지보내기모달 -->
           <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -62,7 +62,7 @@
                             <input type="text" id="receiver" name="receiver" value="" readonly="readonly" class="form-control"/>
                             </div>
                             <div class="form-group">
-                               <textarea class="form-control" required="required" id="messageContent" name="messageContent" cols="45" rows="9" placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 쪽지 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>
+                            	<textarea class="form-control" required="required" id="messageContent" name="messageContent" cols="45" rows="9" placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다. 쪽지 작성 시 타인에 대한 배려와 책임을 담아주세요."></textarea>
                             </div>
                             <p class="text-center">
                                 <button class="btn btn-green animated fadeInUp" type="submit"><i class="fa fa-sign-in"></i>전송</button>
@@ -77,7 +77,7 @@
 </section>
 
  <script type="text/javascript">
-    $(document).ready(function(){    	
+    $(document).ready(function(){
     	$("#searchByNameBtn").click(function(){
     		
     		if($("#searchName").val()==""){
@@ -85,8 +85,6 @@
     			$("#serachResultView").html("");	
     			return;
     		}
-  		
-    		
 			$.ajax({
 				type:"POST",
 				url:"searchMemberByName.do",				

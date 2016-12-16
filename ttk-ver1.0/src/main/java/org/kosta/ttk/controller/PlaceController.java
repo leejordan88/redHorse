@@ -7,12 +7,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.ttk.model.service.MemberService;
+import org.kosta.ttk.model.service.MessageService;
 import org.kosta.ttk.model.service.PlaceService;
 import org.kosta.ttk.model.service.TravelerService;
 import org.kosta.ttk.model.vo.AreaVO;
 import org.kosta.ttk.model.vo.CategoryVO;
 import org.kosta.ttk.model.vo.ListVO;
 import org.kosta.ttk.model.vo.MemberVO;
+import org.kosta.ttk.model.vo.MessageVO;
 import org.kosta.ttk.model.vo.PlaceVO;
 import org.kosta.ttk.model.vo.StatsVO;
 import org.kosta.ttk.model.vo.TravelerVO;
@@ -31,6 +33,8 @@ public class PlaceController {
 	private TravelerService travelerService;	
 	@Resource
 	private MemberService memberService;
+	@Resource
+	private MessageService messageService;
 	
 /**
  * 12/7 통계까지 완료 -진석-	 StatsList
@@ -38,7 +42,7 @@ public class PlaceController {
  */
 	
 	@RequestMapping("index.do")
-	public  ModelAndView index(){
+	public  ModelAndView index(HttpSession session){
 		List<AreaVO> areaList = placeService.areaList();
 		List<CategoryVO> categoryList = placeService.categoryList();
 		List<TravelerVO> travelerList = travelerService.hotPlaceRankingList();
@@ -48,7 +52,18 @@ public class PlaceController {
 		listVO.setCategoryList(categoryList);
 		listVO.setTravelerList(travelerList);
 		listVO.setStatsList(statsList);
-		System.out.println(listVO);
+		
+		MemberVO smvo = (MemberVO) session.getAttribute("mvo");
+		
+		if(smvo!=null){
+		MessageVO messageVO = new MessageVO();
+		messageVO.setId(smvo.getId());
+		
+		session.setAttribute("count", messageService.messageUncheckedCount(messageVO));
+		session.setAttribute("msgList", messageService.messageListUnChecked(messageVO, null));
+
+		}
+		
 		return new ModelAndView("index", "listVO", listVO);
 	}
 	

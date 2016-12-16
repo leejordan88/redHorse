@@ -10,8 +10,6 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.MessageVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -19,6 +17,7 @@ public class MessageController {
 	@Resource
 	private MessageService messageService;
 	
+
 	@RequestMapping("messageSend.do")
 	public String messageSend(HttpServletRequest request, MessageVO messageVO) {
 		HttpSession session = request.getSession(false);
@@ -67,8 +66,16 @@ public class MessageController {
 	}
 	
 	@RequestMapping("messageDetail.do")
-	public ModelAndView messageDetail(int messageNo) {
+	public ModelAndView messageDetail(int messageNo,HttpSession session) {
 		MessageVO messageVO = messageService.messageDetail(messageNo);
+		
+		MemberVO smvo = (MemberVO) session.getAttribute("mvo");
+		if(smvo!=null){
+		MessageVO msgVO = new MessageVO();
+		msgVO.setId(smvo.getId());
+		session.setAttribute("count", messageService.messageUncheckedCount(msgVO));
+		session.setAttribute("msgList", messageService.messageListUnChecked(msgVO, null));
+		}
 		return new ModelAndView("message/messagePopup/messageDetail", "messageVO", messageVO);
 	}
 
