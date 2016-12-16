@@ -78,7 +78,6 @@
 
  <script type="text/javascript">
     $(document).ready(function(){
-    	
     	$("#searchByNameBtn").click(function(){
     		
     		if($("#searchName").val()==""){
@@ -86,8 +85,6 @@
     			$("#serachResultView").html("");	
     			return;
     		}
-  		
-    		
 			$.ajax({
 				type:"POST",
 				url:"searchMemberByName.do",				

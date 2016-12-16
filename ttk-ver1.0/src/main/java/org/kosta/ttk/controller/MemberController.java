@@ -211,18 +211,14 @@ public class MemberController {
 			MemberVO mvo= (MemberVO)session.getAttribute("mvo");
 			MemberVO memberVO = new MemberVO();	
 			memberVO.setName(name);
-			
 			if(mvo!=null)
 				memberVO.setId(mvo.getId());
-			
 			List<MemberVO> list =memberService.searchMemberByName(memberVO);
-			
 			if(list.isEmpty()){
 				HashMap<String,String> map=new HashMap<String,String>();
 				map.put("error","fail");
 				return map;
 			}
-				
 			return list;
 		}
 	

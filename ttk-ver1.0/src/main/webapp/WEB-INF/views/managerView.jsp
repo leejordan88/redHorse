@@ -4,7 +4,7 @@
 <jsp:include page="layout/header.jsp" />
 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
 <!-- 이 위로는 헤더 -->
-<div class="container" style="margin-top: 6%">
+<div class="container" style="margin-top: 7%">
 	<form class="navbar-form navbar-right" role="search">
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="회원검색">
@@ -24,7 +24,6 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>아이디</th>
 					<th>이름</th>
 					<th>핸드폰번호</th>
@@ -48,9 +47,8 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${requestScope.rList.reporterList}" var="reporterList" varStatus="status">
+			<c:forEach items="${requestScope.rList.reporterList}" var="reporterList">
 				<tr>
-					<td>${status.count}</td>
 					<td>${reporterList.id}</td>
 					<td>${reporterList.name}</td>
 					<td>${reporterList.tel}</td>

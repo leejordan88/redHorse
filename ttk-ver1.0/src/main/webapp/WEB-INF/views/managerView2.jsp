@@ -4,7 +4,7 @@
 <jsp:include page="layout/header.jsp" />
 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
 <!-- 이 위로는 헤더 -->
-<div class="container" style="margin-top: 5%">
+<div class="container" style="margin-top: 7%">
    <form class="navbar-form navbar-right" role="search">
       <div class="form-group">
          <input type="text" class="form-control" placeholder="회원검색">
