@@ -11,4 +11,6 @@ public interface AdminDAO {
 
  int memberListTotalCount();
 
+List<ReporterVO> adminSearchByName(String name);
+
 }

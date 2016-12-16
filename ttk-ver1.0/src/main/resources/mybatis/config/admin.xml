@@ -18,6 +18,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  where   rnum  between #{startRowNumber} and  #{endRowNumber} order by age asc
    </select>
    
+   <select id="adminSearchByName" resultType="reporterVO">
+   <![CDATA[
+   select id, name, tel, age, (
+    select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
+    (select sum(
+       (select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
+       (select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
+    )from dual)as reportCount,
+    (select count(*) from traveler where member.id = traveler.id) as travelingCount,
+    (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount,
+    enabled
+       from member 
+ where name like '%${value}%'  ]]>
+   </select>
    
    
 </mapper>

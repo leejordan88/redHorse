@@ -5,12 +5,12 @@
 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
 <!-- 이 위로는 헤더 -->
 <div class="container" style="margin-top: 5%">
-	<form class="navbar-form navbar-right" role="search">
+	<form class="navbar-form navbar-right" role="search" id="adminSearchByNameForm">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="회원검색">
+			<input type="text"  name="name"  id="adminSearchName"class="form-control" placeholder="회원검색">
 		</div>
-		<button type="submit" class="btn btn-default">검색</button>
-	</form>
+	<input type="button" value="검색" id="adminSearchByNameBtn" class="btn btn-default">
+</form>
 	<ul class="nav nav-tabs">
 		<li role="presentation" class="active"><a href="managerView.do">회원관리</a></li>
 		<li role="presentation"><a href="managerView2.do">신고관리</a></li>
@@ -20,11 +20,11 @@
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
 		<div class="panel-heading">회원관리</div>
+		
 		<!-- Table -->
 		<table class="table">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>아이디</th>
 					<th>이름</th>
 					<th>핸드폰번호</th>
@@ -47,10 +47,10 @@
 							</th>
 				</tr>
 			</thead>
-			<tbody>
-			<c:forEach items="${requestScope.rList.reporterList}" var="reporterList" varStatus="status">
+
+			<tbody id="adminSearchView">
+			<c:forEach items="${requestScope.rList.reporterList}" var="reporterList">
 				<tr>
-					<td>${status.count}</td>
 					<td>${reporterList.id}</td>
 					<td>${reporterList.name}</td>
 					<td>${reporterList.tel}</td>
@@ -64,13 +64,13 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
 	</div>
 	<nav>
 	
 	
-	
 <!-- 페이징부분 -->
-
+<div id="adminPagingArea">
 	<c:set var="pb" value="${requestScope.rList.pagingBean}"></c:set>	
 		
 		<ul class="pager">
@@ -95,9 +95,62 @@
 					</c:if>			
 
 			<!-- 페이징부분  끝-->
-		</ul>
+		</ul></div>
 	</nav>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    	
+    	$("#adminSearchByNameBtn").click(function(){
+    		
+    		if($("#adminSearchName").val()==""){
+    			alert("검색하려는 이름을 입력해주세요");
+    			$("#adminSearchView").html("");	
+    			return;
+    		}
+  		
+    		
+			$.ajax({
+				type:"POST",
+				url:"adminSearchByName.do",				
+				data:$("#adminSearchByNameForm").serialize(),
+				dataType:"json",   
+				success:function(result){ 					
+					if(result.error=="fail"){
+						alert("조건이 일치하는 회원이 없습니다.");	
+						$("#adminSearchView").html("");						
+					}else{
+						var memberState="";
+						var data="";
+						for(var i=0;i<result.length;i++){
+							if(result[i].enabled==1){
+								memberState="회원";
+							}else{
+								memberState="탈퇴회원";
+							}							
+
+							data+="<tr><td>"+result[i].id+"</td>";
+							data+="<td>"+result[i].name+"</td>";
+							data+="<td>"+result[i].tel+"</td>";
+							data+="<td>"+result[i].age+"</td>";
+							data+="<td>"+result[i].reportCount+"</td>";
+							data+="<td>"+result[i].messageCount+"</td>";
+							data+="<td>"+result[i].travelingCount+"</td>";
+							data+="<td>"+result[i].pictureCount+"</td>";
+							data+="<td>"+memberState+"</td></tr>";
+							
+						}
+						$("#adminSearchView").html(data);	
+						$("#adminPagingArea").html("");
+					}
+				}// success
+			  });//ajax 		
+    	});
+    	
+
+    });	
+</script>
 
 <!-- 이 아래로는 푸터 -->
 <jsp:include page="layout/footer.jsp" />

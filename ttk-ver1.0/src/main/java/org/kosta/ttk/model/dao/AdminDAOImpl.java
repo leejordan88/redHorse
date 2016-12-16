@@ -25,4 +25,9 @@ public class AdminDAOImpl implements AdminDAO{
 	public List<ReporterVO> managerView(PagingBeanVO pagingBean) {
 		return template.selectList("admin.managerView",pagingBean);
 	}
+
+	@Override
+	public List<ReporterVO> adminSearchByName(String name) {
+		return template.selectList("admin.adminSearchByName",name);
+	}
 }
