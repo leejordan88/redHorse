@@ -131,13 +131,15 @@
                            class=" fa fa-angle-down"></span>
                      </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
-                           <li><a href="getPictureList.do?id=${mvo.id }">My Profile</a></li>
                                     <!-- 관리자 c:if 문 추가 -진석- -->
                            <c:if test="${sessionScope.mvo.authority=='1'}">
                            <li><a href="managerView.do">관리자 페이지</a></li>
                            </c:if>
+                           <c:if test="${sessionScope.mvo.authority=='0'}">
+                            <li><a href="getPictureList.do?id=${mvo.id }">My Profile</a></li>
                            <li><a href="upload.do">글쓰기</a></li>
                            <li><a href="update.do">회원정보수정</a></li>
+                           </c:if>
                            <li><a href="logout.do"><i
                                  class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                         </ul></li>
