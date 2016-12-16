@@ -34,7 +34,7 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	// 12/4 효민 사진 조회수 증가
 	@Override
 	public void updateHit(int pictureNo){
-		template.update("memberpic.updateHit",pictureNo);
+		template.update("memberpic.updateHit", pictureNo);
 	}
 	
 	// 12/7 조회수 보기
@@ -52,23 +52,30 @@ public class MemberPicDAOImpl implements MemberPicDAO {
 	//영주 타회원프로필
 	@Override
 	public List<MemberPicVO> visitMemberPic(String id) {
+
 		return template.selectList("memberpic.visitMemberPic",id);
 	}
 
 	@Override
 	public MemberVO getMemberInfo(String id) {
-		template.update("member.updateHit",id);
+
 		return template.selectOne("member.getMemberInfo", id);
 	}
 	
 	// 12/6 사진 수정
 	@Override
 	public void updateMemberPic(MemberPicVO pvo){
-		System.out.println(pvo);
+		//System.out.println(pvo);
 		template.update("memberpic.updateMemberPic", pvo);
 	}
 	@Override
 	public void deleteMemberPic(int pictureNo){
 		template.delete("memberpic.deleteMemberPic", pictureNo);
+	}
+
+	//영주 조회수 증가 수정
+	@Override
+	public void updateMemberHit(String id) {
+		template.update("member.updateMemberHit",id);
 	}
 }

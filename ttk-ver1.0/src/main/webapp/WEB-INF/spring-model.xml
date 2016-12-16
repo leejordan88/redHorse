@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 <context:component-scan base-package="org.kosta" />
-<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+
 <!-- dataSource -->
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
  <property name="driverClassName">
@@ -29,6 +29,7 @@
   <value>30</value>
  </property>
 </bean>
+
 <!-- MyBatis 연동 설정 -->
 <bean id="sqlSessionFactory" 
 class="org.mybatis.spring.SqlSessionFactoryBean">

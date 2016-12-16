@@ -8,8 +8,8 @@
 </head>
 <body>
 <script>
-alert("여행지 등록이 완료되었습니다.");
-location.href="index.do";
+alert("해당 날짜에 이미 여행계획이 등록 되었습니다.");
+location.href="detailPlace.do?placeNo="+${placeNo };
 </script>
 </body>
 </html>

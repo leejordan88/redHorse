@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-  <jsp:include page="layout/header.jsp"></jsp:include>
+  <jsp:include page="../layout/header.jsp"></jsp:include>
 
 <!-- Datatables -->
     <link href="${pageContext.request.contextPath}/resources/vendors/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -62,4 +62,4 @@
     <!-- Datatables -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.dataTables.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/vendors/dataTables.bootstrap.min.js"></script>
-<jsp:include page="layout/footer.jsp"></jsp:include>
+<jsp:include page="../layout/footer.jsp"></jsp:include>

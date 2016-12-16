@@ -53,8 +53,9 @@
 									<div class="chat-body clearfix">
 										<div class="header">
 											<strong class="primary-font">${msvo.messageVO.sender}</strong>
-											<small class="pull-right text-muted"><c:if
-													test="${msvo.messageVO.messageState==0}">읽음 |  </c:if>
+											<small class="pull-right text-muted">
+											<a href="receiveMessageDelete.do?messageNo=${msvo.messageVO.messageNo}">삭제 </a>|
+											<c:if test="${msvo.messageVO.messageState==0}">읽음 |  </c:if>
 												${msvo.messageVO.messageDate}</small>
 										</div>
 										<p id="list-font">${msvo.messageVO.messageContent}</p>
@@ -114,7 +115,7 @@
 			location.href = "messageListUnChecked.do";
 		});
 		$("#moveDelete").click(function() {
-			alert("2차때!");
+			location.href="messageDeleteList.do";
 		});
 	});
 </script>

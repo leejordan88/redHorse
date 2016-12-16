@@ -75,12 +75,17 @@ public class MemberPicServiceImpl implements MemberPicService {
 	// 12/6 사진 수정하기
 	@Override
 	public void updateMemberPic(MemberPicVO pvo){
-		System.out.println(pvo);
+		//System.out.println(pvo);
 		memberPicDAO.updateMemberPic(pvo);
 	}
 	@Override
 	public void deleteMemberPic(int pictureNo){
 		memberPicDAO.deleteMemberPic(pictureNo);
+	}
+
+	@Override
+	public void updateMemberHit(String id) {
+		memberPicDAO.updateMemberHit(id);
 	}
 
 }

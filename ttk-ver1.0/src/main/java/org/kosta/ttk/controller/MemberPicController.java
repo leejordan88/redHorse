@@ -2,7 +2,6 @@ package org.kosta.ttk.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -25,14 +24,13 @@ public class MemberPicController {
 	private MemberPicService memberPicService;
 	@Resource
 	private TravelerService travelerService;
-	
 	private String uploadPath;
 	/**
-	 * 파일 업로드 구현 
-	 * 12/2 효민
+	 * 파일 업로드 구현 12/2 효민
+	 * 
 	 * @param request
 	 * @param pvo
-	 * @return 
+	 * @return
 	 */
 	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
 	public String registerProductAction(MemberPicVO memberPicVO, HttpServletRequest request){
@@ -70,7 +68,7 @@ public class MemberPicController {
 		}
 		memberPicVO.setFileName(file.getOriginalFilename());
 		memberPicService.uploadMemberPic(memberPicVO);
-		System.out.println(memberPicVO);
+		// System.out.println(memberPicVO);
 		return "uploadMemberPic_result";
 	}
 	/**
@@ -79,7 +77,7 @@ public class MemberPicController {
 	 * @return
 	 */
 	@RequestMapping("getPictureList.do")
-	public ModelAndView getPictureList(String id){
+	public ModelAndView getPictureList(String id) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("memberpic/memberpic_list");
 		mav.addObject("memberVO", memberPicService.getMemberInfo(id));
@@ -87,11 +85,17 @@ public class MemberPicController {
 		System.out.println(memberPicService.visitMemberPic(id));
 		return mav;
 	}
-	
+
+	/**
+	 * 사진 상세보기
+	 * 
+	 * @param pictureNo
+	 * @return
+	 */
 	@RequestMapping("showPictureDetail.do")
-	public ModelAndView showPictureDetail(int pictureNo) {		
-		memberPicService.updateHit(pictureNo);	
-		return new ModelAndView("redirect:showContentNoHit.do?pictureNo="+pictureNo);
+	public ModelAndView showPictureDetail(int pictureNo) {
+		memberPicService.updateHit(pictureNo);
+		return new ModelAndView("redirect:showContentNoHit.do?pictureNo=" + pictureNo);
 	}
 	
 	@RequestMapping("showPictureDetailNoHit.do")
@@ -107,11 +111,12 @@ public class MemberPicController {
 		if(session!=null&&mvo.getId().equals(id)){
 			return new ModelAndView("redirect:getPictureList.do");
 		}
-
+		memberPicService.updateMemberHit(id);
 		ModelAndView mv =new ModelAndView();
 		mv.setViewName("memberpic_list");
-		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mv.addObject("list", memberPicService.visitMemberPic(id));
+		mv.addObject("memberVO", memberPicService.getMemberInfo(id));
+
 		return mv;
 	}
 
@@ -123,8 +128,10 @@ public class MemberPicController {
 		mv.addObject("travelingList", travelerService.getTravelingList(id));
 		return mv;
 	}
+
 	/**
 	 * 사진 삭제하기
+	 * 
 	 * @param pictureNo
 	 * @return
 	 */
@@ -135,23 +142,26 @@ public class MemberPicController {
 
 	}
 
-	
-	/** 수정 페이지로 이동
+
+	/**
+	 * 수정 페이지로 이동
+	 * 
 	 * @param pictureNo
 	 * @return
 	 */
 	@RequestMapping("updateMemberPicView.do")
-	public ModelAndView updateMemberberPicView(int pictureNo){
-		return new ModelAndView("memberpic_update","pvo",memberPicService.showPictureDetailNoHit(pictureNo));
+	public ModelAndView updateMemberberPicView(int pictureNo) {
+		return new ModelAndView("memberpic_update", "pvo", memberPicService.showPictureDetailNoHit(pictureNo));
 	}
 
-	/** 12/7 수정/ 사진 게시물 수정 
+	/**
+	 * 12/7 수정/ 사진 게시물 수정 
 	 * @param memberPicVO
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping("updateMemberPic.do")
-	public ModelAndView updateMemberPic(MemberPicVO memberPicVO, HttpServletRequest request){
+	public ModelAndView updateMemberPic(MemberPicVO memberPicVO, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			MemberVO mvo = (MemberVO) session.getAttribute("mvo");
@@ -164,7 +174,7 @@ public class MemberPicController {
 		File uploadDir = new File(uploadPath);
 		if (uploadDir.exists() == false)
 			uploadDir.mkdirs();
-		 System.out.println(memberPicVO.getFileName());
+		System.out.println(memberPicVO.getFileName());
 		MultipartFile file = memberPicVO.getUploadFile();
 
 		if (file.isEmpty() == false) {
@@ -178,18 +188,16 @@ public class MemberPicController {
 			}
 		}
 		memberPicVO.setFileName(file.getOriginalFilename());
-		memberPicService.updateMemberPic(memberPicVO);	
+		memberPicService.updateMemberPic(memberPicVO);
 		System.out.println(memberPicVO.getFileName());
-		//return new ModelAndView("memberpic_detail","pvo",memberPicService.showPictureDetailNoHit(memberPicVO.getPictureNo()));
-		return new ModelAndView("redirect:getPictureList.do?id="+memberPicVO.getMemberVO().getId());
-	}	
-	
+		return new ModelAndView("redirect:getPictureList.do?id=" + memberPicVO.getMemberVO().getId());
+	}
+
 	@RequestMapping("updateHit.do")
 	@ResponseBody
-	public int updateHit(int pictureNo){
+	public int updateHit(int pictureNo) {
 		System.out.println("업데이트힛 실행");
 		memberPicService.updateHit(pictureNo);
 		return (memberPicService.getUpdateHit(pictureNo));
 	}
-
 }

@@ -48,7 +48,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<StatsVO> getStats(){
 		return memberDAO.getStats();
 	}
-	public List<MemberVO> searchMemberByName(String name) {
-		return memberDAO.searchMemberByName(name);
+	public List<MemberVO> searchMemberByName(MemberVO memberVO) {
+		return memberDAO.searchMemberByName(memberVO);
+	}
+	@Override
+	public List<String> getAllMembersId() {
+		return memberDAO.getAllMembersId();
 	}
 }

@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="section-title text-center">
-				<h3>내가 등록한 여행</h3>
+				<h3>${memberVO.name}님이 등록한 여행</h3>
 				<br>
 			</div>
 		</div>
@@ -49,6 +49,7 @@
 		</div>
 	</div>
 </div>
+
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
 

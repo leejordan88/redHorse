@@ -16,6 +16,7 @@ import org.kosta.ttk.model.vo.MemberVO;
 import org.kosta.ttk.model.vo.PlaceVO;
 import org.kosta.ttk.model.vo.StatsVO;
 import org.kosta.ttk.model.vo.TravelerVO;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +61,7 @@ public class PlaceController {
 	@RequestMapping("categoryList")
 	public ModelAndView categoryList(){
 		List<CategoryVO> categoryList = placeService.categoryList();
-		return new ModelAndView("category_list", "categoryList", categoryList);
+		return new ModelAndView("traveler/category_list", "categoryList", categoryList);
 	}
 	
 	/**
@@ -72,7 +73,7 @@ public class PlaceController {
 	@RequestMapping("areaList.do")
 	public ModelAndView areaList(){
 		List<AreaVO> areaList = placeService.areaList();
-		return new ModelAndView("area_list","areaList",areaList);
+		return new ModelAndView("traveler/area_list","areaList",areaList);
 	}
 	
 	/**
@@ -84,7 +85,7 @@ public class PlaceController {
 	@RequestMapping("placeList.do")
 	public ModelAndView placeList(PlaceVO placeVO){
 		List<PlaceVO> placeList = placeService.placeList(placeVO);
-		return new ModelAndView("place_list", "placeList", placeList);
+		return new ModelAndView("traveler/place_list", "placeList", placeList);
 	}
 	/**
 	 * 작성자: 준성
@@ -96,7 +97,7 @@ public class PlaceController {
 	@RequestMapping("detailPlace.do")
 	public ModelAndView detailPlace(PlaceVO placeVO){
 		PlaceVO pvo = placeService.detailPlace(placeVO);
-		return new ModelAndView("detailPlace", "placeVO", pvo);
+		return new ModelAndView("traveler/detailPlace", "placeVO", pvo);
 	}
 	
 	/**
@@ -116,15 +117,18 @@ public class PlaceController {
 		ArrayList<MemberVO> mvo = new ArrayList<MemberVO>();
 		for(int i = 0; i < travelerList.size(); i++){
 			if(sex==1){
-				if(travelerList.get(i).gettRange()!=2){
-					mvo.add(memberService.findMember(travelerList.get(i).getId()));
+				//남성 회원의 검색일 경우: 여성에게만 공개되는 회원 및 여행이 삭제된 회원은 list에 추가 하지 않는다.
+				if(travelerList.get(i).gettRange()!=2 && travelerList.get(i).gettState()==1){
+						mvo.add(memberService.findMember(travelerList.get(i).getId()));
 				}
 			}else if(sex==2){
-				if(travelerList.get(i).gettRange()!=1){
-					mvo.add(memberService.findMember(travelerList.get(i).getId()));
+				//여성 회원의 검색일 경우: 남성에게만 공개되는 회원 및 여행이 삭제된 회원은 list에 추가 하지 않는다.
+				if(travelerList.get(i).gettRange()!=1 && travelerList.get(i).gettState()==1){
+						mvo.add(memberService.findMember(travelerList.get(i).getId()));
 				}
 			}
 		}
+		//System.out.println("출력되는 회원 정보: " + mvo);
 		return mvo;
 	}
 	
@@ -144,16 +148,19 @@ public class PlaceController {
 		if(mvo == null){
 			return new ModelAndView("login_fail");
 		}else{
-			tvo.setId(mvo.getId());
-			travelerService.regiTraveler(tvo);
-			return new ModelAndView("regiTraveler_ok");
+			try {
+				tvo.setId(mvo.getId());
+				travelerService.regiTraveler(tvo);
+				return new ModelAndView("traveler/regiTraveler_ok", "placeNo", tvo.getPlaceNo());
+			} catch (DuplicateKeyException e) {
+				return new ModelAndView("traveler/regiTraveler_fail", "placeNo", tvo.getPlaceNo());
+			}
 		}
 	}	
 	@RequestMapping("getAllPlaces.do")
 	public ModelAndView getAllPlaces(){
-		
 		List<PlaceVO> list = placeService.getAllPlaces(); 
-		return new ModelAndView("getAllPlaces","places",list);
+		return new ModelAndView("traveler/getAllPlaces","places",list);
 	}
 
 }
