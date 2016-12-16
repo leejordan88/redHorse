@@ -18,6 +18,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mapper resource="mybatis/config/member.xml"/>	
 	<mapper resource="mybatis/config/traveler.xml"/>	
 	<mapper resource="mybatis/config/memberpic.xml"/>
+	<mapper resource="mybatis/config/admin.xml"/>	
+	<mapper resource="mybatis/config/report.xml"/>
 	</mappers>
 
 </configuration>

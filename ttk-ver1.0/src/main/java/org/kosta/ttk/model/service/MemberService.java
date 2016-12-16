@@ -26,4 +26,6 @@ public interface MemberService {
 
 	List<StatsVO> getStats();
 
+	List<String> getAllMembersId();
+
 }

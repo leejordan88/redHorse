@@ -1,3 +1,4 @@
+select * from member
 -----------메세지 신고---------------
 
 drop sequence messageReport_seq;
@@ -88,6 +89,8 @@ drop table message;
 
 
 
+=======
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
 --create table member ( sex(남1,여2) ,  
 --create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
 
@@ -311,42 +314,6 @@ constraint fk_member foreign key(id) references member(id)
  insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate)
 values(memberPicture_seq.nextval,'java','iu2.jpg','강릉에서~~~!2',sysdate)
 
-
-
-
-create messageReport(
-messageReportNo number
-messageNo
- )
-
-
-
-
-
- messageNo number primary key,
- id varchar2(100) constraint fk_message_id references member(id),
- sender varchar2(100) constraint fk_message_sender references member(id),
- receiver varchar2(100) constraint fk_message_receiver references member(id),
- messageDate date not null,
- messageContent clob not null,
- messageState number default 1 ,       --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
- receiveDeleteState number default 1, 
- sendDeleteState number default 1  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---message
 
 drop sequence message_seq;
 create sequence message_seq;
@@ -848,13 +815,13 @@ constraint fk_member foreign key(id) references member(id)
 insert into memberPicture(pictureNo,id,fileName,pictureTitle,pictureDate,pictureContent)
 values(memberPicture_seq.nextval,'java1','준성.jpg','강릉에서~~~!2',sysdate,'123')
 
+
+
 --message
 
 drop sequence message_seq;
 create sequence message_seq;
-
 select*from message
-
 drop table message;
 create table message(
  messageNo number primary key,
@@ -865,28 +832,79 @@ create table message(
  messageState number default 1        --내가 내메세지를 확인안했으면 1        했으면 0으로 수정
  );
 -- sender와 reciever 가 같을경우 생각해보자
-
-
  
  --여행일정 뽑는 SQL
 select p.placeName, p.areaName, t.tDate
 from traveler t, place p
 where t.placeNo = p.placeNo and t.id = 'java1';
 
-	update memberPicture set pictureTitle='rrr', pictureContent='rrr'
-	where pictureNo=63
+drop sequence messageReport_seq;
+create sequence messageReport_seq;
+select*from messageReport
+
+drop table messageReport;
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+messageReportContent varchar2(100) not null,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)
+
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
+
+
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
 
 	update memberPicture set pictureTitle='rrr', pictureContent='rrr', filename='속초_봉포머구리집.jpg'
 	where pictureNo=2
 	select p.pictureNo, p.id, m.name, p.fileName, p.pictureTitle, p.pictureContent, to_char(p.pictureDate, 'YYYY.MM.DD')as pictureDate, p.hit
  		from memberPicture p, member m where p.id='java1' and p.id=m.id order by p.pictureNo desc
+ 		
+drop table pictureReport;
+select*from pictureReport
 
+<<<<<<< HEAD
 select rnum, messageNo,sender,receiver,messageDate,messageContent,messageState, profileIMG FROM
 ( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,ms.messageContent,ms.messageState, m2.profileIMG   
 FROM message ms, member m2 
 where ms.receiver=m2.id and  ms.sender ='java1')  rnum
 where   rnum  between 1 and 7 order by messageNo desc
+=======
+create table pictureReport(
+pictureReportNo number not null,
+pictureNo number not null,
+pictureReportDate date not null,
+pictureReportState number default 1,
+pictureReportContent varchar2(100) not null,
+reporter varchar2(100) not null,
+constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
+constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
+)
 
+ drop table authorities;
+
+ create table authorities(
+   username varchar2(100) not null,
+   authority varchar(30) not null,
+   constraint fk_authorities foreign key(username) references member(id),
+   constraint member_authorities primary key(username,authority)
+)
+
+-- member table add column + authority  -jin seok-
+alter table member add (authority number default 0);
+-- member table drop column + authority  -jin seok-
+alter table member drop column authority;
+--관리자 추가 진석
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
+
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
+
+<<<<<<< HEAD
 
 
 select
@@ -923,3 +941,108 @@ from member
    (select count(*) from traveler where member.id = traveler.id) as travelingCount,
    (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount
       from member
+=======
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
+
+drop table pictureReport;
+select*from pictureReport
+
+create table pictureReport(
+pictureReportNo number not null,
+pictureNo number not null,
+pictureReportDate date not null,
+pictureReportState number default 1,
+pictureReportContent varchar2(100) not null,
+reporter varchar2(100) not null,
+constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
+constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
+)
+
+----------메세지 신고---------------
+
+drop sequence messageReport_seq;
+create sequence messageReport_seq;
+
+select*from messageReport
+drop table messageReport;
+
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+messageReportContent varchar2(100) not null,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)
+
+select count(p.pictureNo) from memberPicture p, member m where p.id=m.id and m.id='java1';
+select count 
+--신고받은 횟수
+select
+distinct(select sum((select count(*) from member m, pictureReport pr, memberPicture p where pr.pictureNo = p.pictureNo and m.id = 'java1') +
+(select count(*) from messageReport mr, message m where mr.messageNo = m.messageNo and m.sender = 'java1')) from dual) as reportCount 
+,(select id from member where id = 'java1') as id
+,(select name from member where id = 'java1') as name
+,(select tel from member where id = 'java1') as tel
+,(select age from member where id = 'java1') as age
+,(select sum((select count(*) from message where sender = 'java1') + (select count(*) from message where receiver = 'java1')) from message) messageCount
+,(select count(*) from traveler where id = 'java1') as travelingCount
+,(select count(*) from memberPicture where id = 'java1') as pictureCount
+from member;
+
+	
+	select id, name, tel, age, (
+	select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
+	( select sum(
+		(select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
+		(select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
+	)from dual)as reportCount,
+	(select count(*) from traveler where member.id = traveler.id) as travelingCount,
+	(select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount,
+	enabled
+   	from member
+
+
+
+
+-- member table add column + authority  -jin seok-
+alter table member add (authority number default 0);
+commit
+-- member table drop column + authority  -jin seok-
+alter table member drop column authority ;
+
+--관리자 추가 진석
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
+
+>>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
+
+
+
+
+select rnum, messageNo,sender,receiver,messageDate,messageContent, profileIMG, sendDeleteState,receiveDeleteState FROM
+( SELECT row_number() over(order by  ms.messageNo desc)  as rnum,  ms.messageNo, ms.sender,ms.receiver,ms.messageDate,
+ms.messageContent,m.profileIMG , ms.sendDeleteState,ms.receiveDeleteState
+FROM message ms, member m
+where ms.receiver=#{messageVO.id} and ms.receiveDeleteState=0 and  ms.sender=m.id or ms.sender=#{messageVO.id}
+and ms.sendDeleteState=0 and ms.receiver=m.id)  rnum
+where   rnum  between #{startRowNumber} and #{endRowNumber} order by messageNo desc
+
+Select ( Row_Number() Over ( Order By [정렬 기준 컬럼] [정렬 방향]  )) as [Row_Number()로 만든 순서 컬럼명], [출력할 컬럼...]
+From [테이블]
+Where [조건] AND [Row_Number()로 만든 순서 컬럼명] between [범위의 시작] And [범위의 끝]
+
+
+
+   select*from ( SELECT row_number() over(order by age asc) as rnum, id, name, tel, age, (
+   select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
+   (select sum(
+      (select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
+      (select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
+   )from dual)as reportCount,
+   (select count(*) from traveler where member.id = traveler.id) as travelingCount,
+   (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount,
+   enabled
+      from member ) rnum
+where   rnum  between 1 and 5 order by age asc

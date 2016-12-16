@@ -52,4 +52,8 @@ public class MemberDAOImpl implements MemberDAO  {
 	public List<MemberVO> searchMemberByName(MemberVO memberVO) {
 		return template.selectList("member.searchMemberByName", memberVO);
 	}
+	@Override
+	public List<String> getAllMembersId() {
+		return template.selectList("member.getAllMembersId");
+	}
 }

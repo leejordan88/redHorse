@@ -23,6 +23,8 @@ public interface MemberDAO {
 
 	List<MemberVO> searchMemberByName(MemberVO memberVO);
 
+	List<String> getAllMembersId();
+
 
 
 }

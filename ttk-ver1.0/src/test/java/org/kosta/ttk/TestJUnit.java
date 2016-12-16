@@ -4,10 +4,10 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.kosta.ttk.model.service.MemberPicService;
 import org.kosta.ttk.model.service.MemberService;
 import org.kosta.ttk.model.vo.MemberPicVO;
+
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -38,9 +38,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJUnit {
 
 	@Resource
-	private MemberService memberService;
-	private MemberPicService memberPicService;
-	private MemberPicVO pvo;
+	//private AdminDAO  adminDAO;
 
 	@Test
 	public void test(){
@@ -51,6 +49,7 @@ public class TestJUnit {
 		/*StatsVO svo=new StatsVO();*/
 		//System.out.println(placeController.findTravelerByDate(travelerVO, mvo));
 		//System.out.println(list);		
+		//System.out.println(adminDAO.managerView());
 	}
 }
 

@@ -11,12 +11,14 @@ package org.kosta.ttk.model.vo;
  */
 public class PagingBeanVO {
 	private MessageVO messageVO;
+	
 	public MessageVO getMessageVO() {
 		return messageVO;
 	}
 	public void setMessageVO(MessageVO messageVO) {
 		this.messageVO = messageVO;
 	}
+
 
 	/**
 	 * 현재 페이지
@@ -61,7 +63,15 @@ public class PagingBeanVO {
 	
 	}
 
+	public PagingBeanVO(int totalContents) {
+		this.totalContents = totalContents;
+	}
+
+	public PagingBeanVO(int totalContents, int nowPage) {
+		this.nowPage = nowPage;
+		this.totalContents = totalContents;
 	
+	}	
 	
 
 	public int getNowPage() {
