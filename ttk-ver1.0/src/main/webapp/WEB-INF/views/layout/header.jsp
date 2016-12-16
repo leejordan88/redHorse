@@ -132,7 +132,7 @@
                      </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
                            <li><a href="getPictureList.do?id=${mvo.id }">My Profile</a></li>
-                           <!-- 관리자 c:if 문 추가 -진석- -->
+                                    <!-- 관리자 c:if 문 추가 -진석- -->
                            <c:if test="${sessionScope.mvo.authority=='1'}">
                            <li><a href="managerView.do">관리자 페이지</a></li>
                            </c:if>
@@ -155,10 +155,23 @@
                      <!--    <a href="messageUncheckedCount.do"> -->
                         
                         
-                        <i   class="fa fa-envelope-o"></i> <span class="badge bg-green">N</span>
+                        <i   class="fa fa-envelope-o"></i><c:if test="${sessionScope.count>0}"> <span class="badge bg-green">${sessionScope.count}</span></c:if>
                      </a>
-                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list"
-                           role="menu">
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+            <c:forEach var="msvo" items="${sessionScope.msgList.list}">  
+                   <li>
+                      <a href="messageDetail.do?messageNo=${msvo.messageVO.messageNo}">
+                        <span class="user-profile"><img src="${pageContext.request.contextPath}/resources/upload/${msvo.messageVO.sender}/profile/${msvo.messageVO.memberVO.profileimg}"  alt="Profile Image" /></span>
+                        <span>
+                          <span>${msvo.messageVO.sender}</span>
+                          <span class="time">${msvo.messageVO.messageDate}</span>
+                        </span>
+                        <span class="message">
+                         ${msvo.messageVO.messageContent}
+                        </span>
+                      </a>
+                    </li>  
+               </c:forEach>                          
                            <li>
                               <div class="text-center">
                                  <a href="messageUncheckedCount.do"> <strong>See

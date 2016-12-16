@@ -36,9 +36,10 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<mvc:exclude-mapping path="/before_login.do"/>
 		<mvc:exclude-mapping path="/login_fail.do"/>
 		<mvc:exclude-mapping path="/register.do"/>
+		<mvc:exclude-mapping path="/registerMemberAction.do"/>
+		<mvc:exclude-mapping path="/idcheckAjax.do"/>
 		<bean class="org.kosta.ttk.controller.LoginCheckInterceptor" />
 	</mvc:interceptor>
 </mvc:interceptors>
 
 </beans>
-

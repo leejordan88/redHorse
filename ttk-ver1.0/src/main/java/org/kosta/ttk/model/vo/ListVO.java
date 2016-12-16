@@ -15,15 +15,38 @@ public class ListVO {
 	private List<TravelerVO> travelerList;
 	private List<MessageVO> list;
 	private List<StatsVO> StatsList;
+	private List<ReporterVO> reporterList;
 	private PagingBeanVO pagingBean;	
+	
 	public ListVO() {
 		super();
+	}
+
+	public ListVO(List<AreaVO> areaList, List<CategoryVO> categoryList, List<TravelerVO> travelerList,
+			List<MessageVO> list, List<StatsVO> statsList, List<ReporterVO> reporterList, PagingBeanVO pagingBean) {
+		super();
+		this.areaList = areaList;
+		this.categoryList = categoryList;
+		this.travelerList = travelerList;
+		this.list = list;
+		StatsList = statsList;
+		this.reporterList = reporterList;
+		this.pagingBean = pagingBean;
 	}
 
 	public ListVO(List<MessageVO> list, PagingBeanVO pagingBean) {
 		super();
 		this.list = list;
 		this.pagingBean = pagingBean;
+	}
+	
+
+	public List<ReporterVO> getReporterList() {
+		return reporterList;
+	}
+
+	public void setReporterList(List<ReporterVO> reporterList) {
+		this.reporterList = reporterList;
 	}
 
 	public List<MessageVO> getList() {

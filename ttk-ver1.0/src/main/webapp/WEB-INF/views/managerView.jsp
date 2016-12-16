@@ -48,7 +48,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${reporterList}" var="reporterList" varStatus="status">
+			<c:forEach items="${requestScope.rList.reporterList}" var="reporterList" varStatus="status">
 				<tr>
 					<td>${status.count}</td>
 					<td>${reporterList.id}</td>
@@ -66,14 +66,38 @@
 		</table>
 	</div>
 	<nav>
+	
+	
+	
+<!-- 페이징부분 -->
+
+	<c:set var="pb" value="${requestScope.rList.pagingBean}"></c:set>	
+		
 		<ul class="pager">
-			<li class="disabled"><a href="#" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span></a></li>
-			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+		
+		<c:if test="${pb.previousPageGroup}">
+		
+			<li class="active"><a href="managerView.do?pageNo=${pb.startPageOfPageGroup-1}" ><span
+					aria-hidden="true">◀</span></a></li> </c:if>
+
+			<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+				<c:choose>
+					<c:when test="${pb.nowPage!=i}">
+						<li class="active"><a href="managerView.do?pageNo=${i}">${i}<span class="sr-only"></span></a></li>
+					</c:when>
+				<c:otherwise> <li class="disabled"><a href="managerView.do?pageNo=${i}">${i}<span class="sr-only">(current)</span></a></li></c:otherwise>
+				</c:choose>					
+			</c:forEach>		
+					
+					<c:if test="${pb.nextPageGroup}">
+						<li class="active"><a href="managerView.do?pageNo=${pb.endPageOfPageGroup+1}" ><span
+					aria-hidden="true">▶</span></a></li>
+					</c:if>			
+
+			<!-- 페이징부분  끝-->
 		</ul>
 	</nav>
 </div>
 
 <!-- 이 아래로는 푸터 -->
 <jsp:include page="layout/footer.jsp" />
-
