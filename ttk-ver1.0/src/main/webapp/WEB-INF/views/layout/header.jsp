@@ -45,9 +45,9 @@
    rel="stylesheet">
    
 <!-- Custom CSS -->
-<link
+<%-- <link
    href="${pageContext.request.contextPath}/resources/css/custom.css"
-   rel="stylesheet">
+   rel="stylesheet"> --%>
 <link
    href="${pageContext.request.contextPath}/resources/css/responsive.css"
    rel="stylesheet">
@@ -155,7 +155,7 @@
                      <!--    <a href="messageUncheckedCount.do"> -->
                         
                         
-                        <i   class="fa fa-envelope-o"></i><c:if test="${sessionScope.count>0}"> <span class="badge bg-green">${sessionScope.count}</span></c:if>
+                       <i class="fa fa-envelope-o"></i><c:if test="${sessionScope.count>0}"> <span class="badge bg-green">${sessionScope.count}</span></c:if>
                      </a>
                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
             <c:forEach var="msvo" items="${sessionScope.msgList.list}">  

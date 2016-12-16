@@ -44,7 +44,7 @@
                              <!--  <div id="messageContent"></div> -->
                         <br><br>
                         <div class="mg-top-10">
-                            <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">send<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
+                            <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">reply<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
                             &nbsp;
                             <a href="#"  id="btn-delete" class="btn btn-success delete" >delete<%-- <img src="${pageContext.request.contextPath}/resources/images/message/delete.png" > --%></a>
                         </div>
