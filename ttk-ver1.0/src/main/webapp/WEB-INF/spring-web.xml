@@ -36,6 +36,5 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	<!-- 아래는 파일사이즈 제한시 사용한다  -->
 	<!-- <property name="maxUploadSize" value="5*1024*1024"/> -->	
 </bean>
-
 </beans>
 
