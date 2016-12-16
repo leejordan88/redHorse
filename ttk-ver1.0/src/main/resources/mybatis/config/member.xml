@@ -71,4 +71,8 @@ from member
 		select id from member
 	</select>
 	
+	<select id="memberListTotalCount" resultType="int">
+     select count(*) from member
+ 	</select>
+	
 </mapper>

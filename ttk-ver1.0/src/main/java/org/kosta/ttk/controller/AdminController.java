@@ -1,11 +1,10 @@
 package org.kosta.ttk.controller;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.service.AdminService;
-import org.kosta.ttk.model.vo.ReporterVO;
+import org.kosta.ttk.model.vo.ListVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,8 +15,8 @@ public class AdminController {
    private AdminService adminService; ////
    
    @RequestMapping("managerView.do")
-   public ModelAndView managerView(){  ///
-      List<ReporterVO> reporterList = adminService.managerView();
-      return new ModelAndView("managerView", "reporterList",reporterList);
+   public ModelAndView managerView(String pageNo){  ///영주
+      ListVO rList = adminService.managerView(pageNo);
+      return new ModelAndView("managerView", "rList",rList);
    }
 }

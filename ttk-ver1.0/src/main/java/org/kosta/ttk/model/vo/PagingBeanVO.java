@@ -38,7 +38,7 @@ public class PagingBeanVO {
 	public PagingBeanVO() {
 	}
 
-	/*public PagingBeanVO(int totalContents) {
+	public PagingBeanVO(int totalContents) {
 		this.totalContents = totalContents;
 	}
 
@@ -46,7 +46,7 @@ public class PagingBeanVO {
 	public PagingBeanVO(int totalContents, int nowPage) {
 		this.totalContents = totalContents;
 		this.nowPage = nowPage;
-	}*/
+	}
 
 	
 	public PagingBeanVO(MessageVO messageVO ,int totalContents) {
