@@ -101,4 +101,13 @@ update message set receiveDeleteState=1 where messageNo=#{value}
 update message set sendDeleteState=1 where messageNo=#{value}
 </update>
 
+ <insert id="messageReportSend"  parameterType="messageReportVO">
+ <selectKey keyProperty="messageReportNo" resultType="int" order="BEFORE">
+       select messageReportNo_seq.nextval from dual
+    </selectKey>
+ insert into messageReport
+ (messageReportNo,messageNo,messageReportDate, messageReportContent) 
+ values
+ (messageReport_seq.nextval, #{messageVO.messageNo}, sysdate ,#{messageReportContent})
+ </insert>
 </mapper>

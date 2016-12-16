@@ -6,11 +6,6 @@ public class MessageReportVO {
 	private int messageReportState;
 	private String messageReportContent;
 	private MessageVO messageVO;
-	
-	public MessageReportVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public MessageReportVO(int messageReportNo, String messageReportDate, int messageReportState,
 			String messageReportContent, MessageVO messageVO) {
@@ -20,6 +15,10 @@ public class MessageReportVO {
 		this.messageReportState = messageReportState;
 		this.messageReportContent = messageReportContent;
 		this.messageVO = messageVO;
+	}
+
+	public MessageReportVO() {
+		super();
 	}
 
 	public int getMessageReportNo() {
@@ -62,10 +61,10 @@ public class MessageReportVO {
 		this.messageVO = messageVO;
 	}
 
-	@Override
-	public String toString() {
-		return "MessageReportVO [messageReportNo=" + messageReportNo + ", messageReportDate=" + messageReportDate
-				+ ", messageReportState=" + messageReportState + ", messageReportContent=" + messageReportContent
-				+ ", messageVO=" + messageVO + "]";
-	}	
+	public MessageReportVO(String messageReportContent, MessageVO messageVO) {
+		super();
+		this.messageReportContent = messageReportContent;
+		this.messageVO = messageVO;
+	}
+
 }
