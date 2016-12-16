@@ -132,7 +132,7 @@
                      </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
                            <li><a href="getPictureList.do?id=${mvo.id }">My Profile</a></li>
-                                    <!-- 관리자 c:if 문 추가 -진석- -->
+                           <!-- 관리자 c:if 문 추가 -진석- -->
                            <c:if test="${sessionScope.mvo.authority=='1'}">
                            <li><a href="managerView.do">관리자 페이지</a></li>
                            </c:if>

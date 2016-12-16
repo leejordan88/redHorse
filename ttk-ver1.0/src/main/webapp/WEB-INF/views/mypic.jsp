@@ -157,6 +157,10 @@
 												class="form-control" />
 										</div>
 										<div class="form-group">
+											<input type="hidden" id="receiver" name="receiver"
+												value="${list.memberVO.getId()}"class="form-control" />
+										</div>
+										<div class="form-group">
 											<textarea class="form-control" required="required"
 												id="pictureReportContent" name="pictureReportContent"
 												cols="45" rows="9" placeholder="신고사유를 적어주세요. 예) 음란성 글, 광고 글 등"></textarea>
