@@ -16,7 +16,7 @@ public class AdminController {
    private AdminService adminService; ////
    
    @RequestMapping("managerView.do")
-   public ModelAndView managerView(){  ///
+   public ModelAndView managerView(){  ///영주
       List<ReporterVO> reporterList = adminService.managerView();
       return new ModelAndView("managerView", "reporterList",reporterList);
    }
