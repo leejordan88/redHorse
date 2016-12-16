@@ -38,7 +38,7 @@ public class MemberController {
 	public String login(MemberVO memberVO, HttpServletRequest request) {
 		MemberVO vo = memberService.login(memberVO);
 		if (vo == null) {
-			return "login_fail";
+			return "member/login_fail";
 		} else {
 			request.getSession().setAttribute("mvo", vo);
 			return "redirect:index.do";
@@ -66,7 +66,8 @@ public class MemberController {
 
 	@RequestMapping(value ="updateMemberAction.do", method = RequestMethod.POST)
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
-
+		System.out.println(memberVO);
+	
 		uploadPath=request.getSession().getServletContext().getRealPath("/resources/upload/"+memberVO.getId()+"/profile/");
 		//경로 설정
 		File uploadDir=new File(uploadPath);
@@ -89,11 +90,12 @@ public class MemberController {
 			memberVO.setProfileimg(null);
 		}
 		HttpSession session = request.getSession(false);
-		memberService.updateMember(memberVO);
-	
+		memberService.updateMember(memberVO);  //잘못됬다
+		System.out.println("실행~");
 		MemberVO updatedMemberVO = memberService.findMember(memberVO.getId());
 		session.setAttribute("mvo", updatedMemberVO);
-		return "update_result"; 
+		System.out.println(updatedMemberVO+"수정완료");
+		return "member/update_result"; 
 	}
 	
 	/**
@@ -148,7 +150,7 @@ public class MemberController {
 		System.out.println(mvo);
 		memberService.updateDelete(mvo);
 		request.getSession().invalidate();
-		return "updateDelete";
+		return "member/updateDelete";
 	}
 	
 	//조건별 다른 회원 검색
@@ -194,11 +196,9 @@ public class MemberController {
 				HashMap<String,String> map=new HashMap<String,String>();
 				map.put("error","fail");
 				return map;
-			}
-				
+			}			
 			return list;
 		}
-		
 		@RequestMapping("searchMemberByName.do")
 		@ResponseBody
 		public Object searchMemberByName(String name){

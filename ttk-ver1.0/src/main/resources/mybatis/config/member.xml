@@ -6,15 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 	<sql id="selectMember">
 		select id,password,name,tel,sex,age,address,introduce,profileimg,
-		range,enabled,hit from member
+		range,enabled,hit,authority from member
 	</sql>
 	<select id="login" resultType="memberVO" parameterType="memberVO">
 		<include refid="selectMember"></include>
-		where id=#{id} and password=#{password} and enabled = '1'  
+		where id=#{id} and password=#{password} and enabled = '1' 
 		 <!-- enabled=1 일떄 로그인 가능 0일때 접근불가 -->
 	</select>
 	<update id="updateMember" parameterType="memberVO">
-		update member set password=#{password},tel=#{tel},address=#{address},range=#{range}
+		update member set password=#{password},tel=#{tel},age=#{age},address=#{address},range=#{range},introduce=#{introduce}
 		<if test="profileimg != null">
 			,profileimg=#{profileimg}
 		</if>

@@ -73,8 +73,6 @@ public class MemberPicController {
 		System.out.println(memberPicVO);
 		return "uploadMemberPic_result";
 	}
-
-	
 	/**
 	 * 사진 리스트
 	 * @param pvo
@@ -83,7 +81,7 @@ public class MemberPicController {
 	@RequestMapping("getPictureList.do")
 	public ModelAndView getPictureList(String id){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("memberpic_list");
+		mav.setViewName("memberpic/memberpic_list");
 		mav.addObject("memberVO", memberPicService.getMemberInfo(id));
 		mav.addObject("list", memberPicService.visitMemberPic(id));
 		System.out.println(memberPicService.visitMemberPic(id));

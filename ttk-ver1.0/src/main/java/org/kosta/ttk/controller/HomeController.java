@@ -17,11 +17,13 @@ public class HomeController {
 	@RequestMapping("{viewName}.do")
 	public String showView(@PathVariable String viewName){
 		System.out.println("@PathVariable:"+viewName);
+		System.out.println("홈컨트롤러");
 		return viewName;
 	}
 	@RequestMapping("{dirName}/{viewName}.do")
 	public String showView(@PathVariable String dirName,@PathVariable String viewName){
 		System.out.println("@PathVariable:"+dirName+"/"+viewName);
+		System.out.println("홈컴트롤러2");
 		return dirName+"/"+viewName;
 	}
 	@RequestMapping("member/admin/{viewName}.do")

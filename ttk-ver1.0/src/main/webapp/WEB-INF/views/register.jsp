@@ -293,7 +293,6 @@
                   
 </div></section>
 
-    
 	 <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/resources/vendors/jquery.min.js"></script>
     <!-- Bootstrap -->

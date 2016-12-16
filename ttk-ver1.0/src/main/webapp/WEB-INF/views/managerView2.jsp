@@ -4,7 +4,7 @@
 <jsp:include page="layout/header.jsp" />
 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
 <!-- 이 위로는 헤더 -->
-<div class="container" style="margin-top: 5%">
+<div class="container" style="margin-top: 6%">
 	<form class="navbar-form navbar-right" role="search">
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="회원검색">
@@ -19,7 +19,17 @@
 	<br>
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
-		<div class="panel-heading">신고관리</div>
+		<div class="panel-heading">신고관리
+		<div class="btn-group">
+								<button class="btn btn-default btn-xs dropdown-toggle"
+									type="button" data-toggle="dropdown" aria-expanded="false">
+									신고목록<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">쪽지신고</a></li>
+									<li><a href="#">게시물신고</a></li>
+								</ul>
+							</div></div>
 		<!-- Table -->
 		<table class="table">
 			<thead>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="layout/header_profile.jsp"/>
+<jsp:include page="../layout/header_profile.jsp"/>
 
 <script src="//code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript">
@@ -61,4 +61,4 @@
    <hr>
 
 </div>
-<jsp:include page="layout/footer.jsp"/>
+<jsp:include page="../layout/footer.jsp"/>

@@ -1,4 +1,11 @@
 
+-- member table add column + authority  -jin seok-
+alter table member add (authority number default 0);
+-- member table drop column + authority  -jin seok-
+alter table member drop column authority ;
+
+--관리자 추가 진석
+insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
 --create table member ( sex(남1,여2) ,  
 --create table memberPicture( pictureNo number primary key,  --사진 업로드 쏩기
 --create table traveler(  tstate number default 1,     
@@ -95,7 +102,6 @@ categorypicture varchar2(100) not null
 insert into category(categoryname,categorypicture) values('관광지','관광지.jpg');
 insert into category(categoryname,categorypicture) values('맛집','맛집.jpg');
 insert into category(categoryname,categorypicture) values('엑티비티','엑티비티.jpg');
-
 
 drop table area;
 create table area(
@@ -206,6 +212,7 @@ create sequence memberPicture_seq;
 
 drop table memberPicture;
 select*from memberPicture
+
 
 create table memberPicture(
  pictureNo number primary key,
@@ -764,3 +771,115 @@ FROM message ms, member m2
 where ms.receiver=m2.id and  ms.sender ='java1')  rnum
 where   rnum  between 1 and 7 order by messageNo desc
 
+
+-----------메세지 신고  12/14일 이후---------------
+
+drop sequence messageReport_seq;
+create sequence messageReport_seq;
+
+select*from messageReport
+
+drop table messageReport;
+
+
+create table messageReport(
+messageReportNo number not null,
+messageNo number not null,
+messageReportDate  date not null,
+messageReportState number default 1,
+messageReportContent varchar2(100) not null,
+constraint pk_messageNo foreign key(messageNo) references message,
+constraint pk_messageReport primary key(messageReportNo,messageNo)
+)
+
+
+
+---------여행사진 신고---------
+
+
+drop sequence pictureReport_seq;
+create sequence pictureReport_seq;
+
+drop table pictureReport;
+select*from pictureReport
+
+
+create table pictureReport(
+pictureReportNo number not null,
+pictureNo number not null,
+pictureReportDate date not null,
+pictureReportState number default 1,
+pictureReportContent varchar2(100) not null,
+reporter varchar2(100) not null,
+constraint pk_pictureNo foreign key(pictureNo) references memberPicture,
+constraint pk_pictureReport primary key(pictureReportNo,pictureNo)
+)
+
+
+
+
+select distinct(select count(sex) from member where sex=1 group by sex) as male
+,(select count(sex) from member where sex=2 group by sex) as female
+,(select count(*) from memberPicture) as pictureNo
+,(select count(*) from traveler where tstate=2) as tstate  
+from member
+
+--회원 조회 쿼리문 진석 test
+
+select distinct(select id ,name,tel,age from member where id='java2')
+(select count(*) from messageReport )
+from member
+-- 아우터 조인 연습
+   create table message2(
+     id varchar2(100) not null,
+     info varchar2(100) not null
+   )   
+   insert into message2(id,info) values('java','tttt');
+   insert into message2(id,info) values('ioc','ㅎㅎㅎㅎ');
+    --------------------------------------------------------------------
+   select * from member;
+   select * from board_inst;
+   select * from area
+      
+   
+  select id,name,
+  (select count(*) from area where member.id=area.id) as boardcount,
+  (select count(*) from message2 where member.id=message2.id) as messcount
+  from member
+  order by boardcount desc,messcount desc   
+
+
+   
+   
+   
+-- 회원조회 쿼리문 준성이형
+select
+distinct(select sum((select count(*) from member m, pictureReport pr, memberPicture p where pr.pictureNo = p.pictureNo and m.id = 'java1') +
+(select count(*) from messageReport mr, message m where mr.messageNo = m.messageNo and m.sender = 'java1')) from dual) as reportCount 
+,(select id from member where id = 'java1') as id
+,(select name from member where id = 'java1') as name
+,(select tel from member where id = 'java1') as tel
+,(select age from member where id = 'java1') as age
+,(select sum((select count(*) from message where sender = 'java1') + (select count(*) from message where receiver = 'java1')) from message) messageCount
+,(select count(*) from traveler where id = 'java1') as travelingCount
+,(select count(*) from memberPicture where id = 'java1') as pictureCount
+from member;
+
+--회원조회 쿼리문 영해행
+select distinct
+  (select id from member where id='java1')as id
+  ,(select name from member where id='java1')as name
+  ,(select sex from member where id='java1')as sex
+ , (select age from member where id='java1')as age
+,(select count(*)from (select msr.messageNo from  messageReport msr, message ms where msr.messageNo=ms.messageNo and ms.sender='java1' 
+union all select pr.pictureNo from pictureReport pr, memberPicture mp where pr.pictureNo= mp.pictureNo and mp.id='java1')) as report
+ ,(select count(*)from memberPicture where id='java1') as memberPicture
+,(select count(*)from message where sender ='java1' or receiver='java1') as message
+,(select count (*)from TRAVELER where id='java1') as TRAVELER 
+from member
+ 
+select id from member where
+
+
+select * from member where id like='j%'
+ 

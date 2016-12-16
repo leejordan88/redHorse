@@ -92,7 +92,7 @@
                   class="icon-bar"></span> <span class="icon-bar"></span> <span
                   class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="index.do">TTK</a>
+            <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/index.do">TTK</a>
          </div>
 
 
@@ -109,20 +109,19 @@
          
          <!-- 영주 여행지검색 -->         
                <li>
-               <a class="page-scroll" href="getAllPlaces.do">Place_List</a>
+               <a class="page-scroll" href="${pageContext.request.contextPath}/getAllPlaces.do">Place_List</a>
                </li>
                               
-               <li><a class="page-scroll" href="profile_list.do">Profile_List</a>
+               <li><a class="page-scroll" href="${pageContext.request.contextPath}/profile_list.do">Profile_List</a>
                </li>
 
                <c:choose>
                   <c:when test="${sessionScope.mvo==null}">
-                     <li><a href="register.do">Register</a></li>
+                     <li><a href="${pageContext.request.contextPath}/register.do">Register</a></li>                
                      <li><a href="#" data-toggle="modal"
                         data-target="#login-modal">Login</a></li>
                   </c:when>
                   <c:otherwise>
-
                      <li class=""><a href="javascript:;"
                         class="user-profile dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false"> <img
@@ -131,12 +130,15 @@
                            class=" fa fa-angle-down"></span>
                      </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
-                           <li><a href="getPictureList.do?id=${mvo.id }">My Profile</a></li>
-                           <li><a href="upload.do">글쓰기</a></li>
-
-                           <li><a href="update.do">회원정보수정</a></li>
-
-                           <li><a href="logout.do"><i
+                           <li><a href="${pageContext.request.contextPath}/getPictureList.do?id=${mvo.id}">My Profile</a></li>                          
+                           <!-- 관리자 c:if 문 추가 -진석- -->
+                           <c:if test="${sessionScope.mvo.authority=='1'}">
+                           <li><a href="${pageContext.request.contextPath}/managerView.do">관리자 페이지</a></li>
+                           </c:if>
+                           <!-- 관리자 모드 끝 -->
+                           <li><a href="${pageContext.request.contextPath}/memberpic/upload.do">글쓰기</a></li>
+                           <li><a href="${pageContext.request.contextPath}/member/update.do">회원정보수정</a></li>
+                           <li><a href="${pageContext.request.contextPath}/logout.do"><i
                                  class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                         </ul></li>
 
@@ -189,7 +191,7 @@
                <h4 class="modal-title" id="Login">Member Login</h4>
             </div>
             <div class="modal-body">
-               <form method="post" action="login.do">
+               <form method="post" action="${pageContext.request.contextPath}/login.do">
                   <input type="hidden" name="command" value="login">
                   <div class="form-group">
                      <input type="text" class="form-control" id="email-modal"

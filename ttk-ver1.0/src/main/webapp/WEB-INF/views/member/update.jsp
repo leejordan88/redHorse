@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<jsp:include page="layout/header.jsp"></jsp:include>
+<jsp:include page="../layout/header.jsp"></jsp:include>
 <link
 	href="${pageContext.request.contextPath}/resources/vendors/smart_wizard.css"
 	rel="stylesheet" type="text/css">
@@ -24,19 +24,8 @@
 	rel="stylesheet">
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 	<!-- 수정 시작 form -->
-	<form class="form-horizontal form-label-left" method="post"
+	<form class="form-horizontal form-label-left" method="post" style="margin-top:10%"
 		action="${pageContext.request.contextPath}/updateMemberAction.do" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="update">
 		<!-- 아이디시작 -->
@@ -167,7 +156,7 @@
                </div>   
                <!-- 자기소개끝  -->
                <center>
-			<button class="btn btn-primary" type="submit" id="update">수정</button>
+			<button class="btn btn-primary" type="submit" id="update" name="update">수정</button>
 			<button class="btn btn-primary" type="button" id="delete" name="delete">회원탈퇴</button>
 			</center>
 	</form>
@@ -185,7 +174,7 @@
 		        } else {
 		            //no
 		        	alert("개인정보수정을 취소합니다.");
-		        	  location.replace('index.do');
+		        	  location.replace('${pageContext.request.contextPath}/index.do');
 		        	  return;
 		        }
 		}); // click
@@ -217,5 +206,5 @@
 <!-- 회원탈퇴 제이쿼리 끝 비활성화  -->
 </body>
 
-<jsp:include page="layout/footer.jsp"></jsp:include>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
 </html>

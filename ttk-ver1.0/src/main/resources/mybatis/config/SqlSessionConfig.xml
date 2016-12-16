@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Sql Mapper -->
-<!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="admin">
-   <select id="managerView"  resultType="reporterVO">
-   select id, name, tel, age, (
-   select count(*) from message where member.id = message.sender or member.id=message.receiver) as messageCount,
-   (select sum(
-      (select count(*) from  pictureReport, memberPicture where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id)+
-      (select count(*) from  messageReport, message where messageReport.messageNo = message.messageNo and member.id = message.sender)
-   )from dual)as reportCount,
-   (select count(*) from traveler where member.id = traveler.id) as travelingCount,
-   (select count(*) from memberPicture where member.id = memberPicture.id) as pictureCount,
-   enabled
-      from member
-   </select>
-   
-   
-</mapper>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- MyBatis  DataSource에 대한 설정 및  SQL 정의 xml 에 대한 매핑
+		spring과 연동시에는 spring 설정에서 DataSource(dbcp) 를 정의한다. 
+-->
+<configuration>	
+	<!-- 사용할 클래스에 대한 별칭을 명시한다.  -->
+	<typeAliases>
+	<package name="org.kosta.ttk.model.vo"/>
+	</typeAliases>	
+	<!-- mapper.xml 을 명시한다  -->
+	<mappers>	
+
+
+	<mapper resource="mybatis/config/place.xml"/>	
+	<mapper resource="mybatis/config/post.xml"/>	
+	<mapper resource="mybatis/config/member.xml"/>	
+	<mapper resource="mybatis/config/traveler.xml"/>	
+	<mapper resource="mybatis/config/memberpic.xml"/>
+
+	</mappers>
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
