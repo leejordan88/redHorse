@@ -26,7 +26,6 @@ public class AdminDAOImpl implements AdminDAO{
 	}
 
 	@Override
-
 	public int memberTotalCount() {
 	   return template.selectOne("admin.memberTotalCount");
 	}
@@ -34,5 +33,9 @@ public class AdminDAOImpl implements AdminDAO{
 	@Override
 	public List<MessageReportVO> messageReportList(PagingBeanVO pagingBean) {
 	   return template.selectList("admin.messageReportList",pagingBean);
+	}
+	@Override
+	public List<ReporterVO> adminSearchByName(String name) {
+		return template.selectList("admin.adminSearchByName",name);
 	}
 }

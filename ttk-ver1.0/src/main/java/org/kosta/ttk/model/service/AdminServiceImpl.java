@@ -1,11 +1,14 @@
 package org.kosta.ttk.model.service;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.ttk.model.dao.AdminDAO;
 import org.kosta.ttk.model.vo.ListVO;
 import org.kosta.ttk.model.vo.PagingBeanVO;
+import org.kosta.ttk.model.vo.ReporterVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,4 +41,10 @@ public class AdminServiceImpl implements AdminService {
 	   }
 	   return new ListVO(adminDAO.messageReportList(pagingBean) , pagingBean);
 	}
+
+	@Override
+	public List<ReporterVO> adminSearchByName(String name) {
+		return adminDAO.adminSearchByName(name);
+	}
+
 }

@@ -13,4 +13,6 @@ public interface AdminDAO {
 int memberTotalCount();
 List<MessageReportVO> messageReportList(PagingBeanVO pagingBean);
 
+List<ReporterVO> adminSearchByName(String name);
+
 }
