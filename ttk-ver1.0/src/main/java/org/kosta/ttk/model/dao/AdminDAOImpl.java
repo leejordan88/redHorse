@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.ttk.model.vo.PagingBeanVO;
 import org.kosta.ttk.model.vo.ReporterVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -14,8 +15,14 @@ public class AdminDAOImpl implements AdminDAO{
    @Resource
    private SqlSessionTemplate template;
    
-   @Override
-   public List<ReporterVO> managerView() {
-      return template.selectList("admin.managerView");
-   }
+
+	@Override
+	public int memberListTotalCount() {
+		return template.selectOne("member.memberListTotalCount");
+	}
+
+	@Override
+	public List<ReporterVO> managerView(PagingBeanVO pagingBean) {
+		return template.selectList("admin.managerView",pagingBean);
+	}
 }
