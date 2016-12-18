@@ -20,7 +20,7 @@ public class ReportController {
 	@Resource
 	private MemberPicReportService memberPicReportService;
 	@Resource
-	   private ReportService reportService;
+	private ReportService reportService;
 	
 	// 사진 게시물 신고(12/14)
 	@RequestMapping(value = "reportMemberPicture.do", method = RequestMethod.POST)

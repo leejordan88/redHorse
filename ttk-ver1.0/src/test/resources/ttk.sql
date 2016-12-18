@@ -229,6 +229,7 @@ select*from message
 
 drop table message;
 
+
 -- 12/10 수정  DeleteState (send, receive) 두가지 추가
 create table message(
  messageNo number primary key,
@@ -241,6 +242,8 @@ create table message(
  receiveDeleteState number default 1, 
  sendDeleteState number default 1  
  )
+ 
+ DROP TABLE MESSAGE CASCADE CONSTRAINT; 
 
 insert into message(messageNo,sender,reciever,messageDate,messageContent)
 values(message_seq.nextval,'java','java2',sysdate,'2번째경우')
@@ -878,9 +881,6 @@ from member;
 	enabled
    	from member
 
-
-
-
 -- member table add column + authority  -jin seok-
 alter table member add (authority number default 0);
 commit
@@ -889,4 +889,5 @@ alter table member drop column authority ;
 
 --관리자 추가 진석
 insert into  member(id,password,name,tel,sex,age,address,introduce,profileImg,range,authority) values ( 'admin','1234', '관리자', '01011111111', '2', '20', '서울', '안녕하세요', '설현.jpg', '1','1');
+
 
