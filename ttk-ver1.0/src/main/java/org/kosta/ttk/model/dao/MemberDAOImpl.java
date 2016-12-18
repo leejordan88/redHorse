@@ -50,4 +50,9 @@ public class MemberDAOImpl implements MemberDAO  {
 	public List<MemberVO> searchMemberByName(String name) {
 		return template.selectList("member.searchMemberByName", name);
 	}
+	
+	@Override
+	public void updateMemberBlackList(String id){
+		template.update("member.updateMemberBlackList",id);
+	}
 }

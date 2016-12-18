@@ -13,8 +13,6 @@ from member
 
 --distinct  중복값 제거
 
-
-
 select * from MEMBER
 where sex=1
 select count(*) from memberPicture
@@ -807,4 +805,12 @@ distinct(select sum((select count(*) from member m, pictureReport pr, memberPict
 ,(select count(*) from memberPicture where id = 'java1') as pictureCount
 from member;
 
+select reporter, receiver, pictureReportContent from pictureReport  
 
+select  from member m, pictureReport p where 
+
+
+
+select member.id from  pictureReport, memberPicture, member
+where memberPicture.pictureNo = pictureReport.pictureNo and member.id = memberPicture.id 
+and member.enabled='3'

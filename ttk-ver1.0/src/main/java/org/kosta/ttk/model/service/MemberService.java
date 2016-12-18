@@ -26,4 +26,6 @@ public interface MemberService {
 
 	List<StatsVO> getStats();
 
+	void updateMemberBlackList(String id);
+
 }

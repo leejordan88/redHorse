@@ -21,48 +21,29 @@
   <!-- Default panel contents -->
   <div class="panel-heading">회원관리</div>
   <!-- Table -->
-   <table class="table">
-	    <thead>
-	      <tr>
-		<th>#</th>
-		<th>Table heading</th>
-		<th>Table heading</th>
-		<th>Table heading</th>
-		<th>Table heading</th>
-		<th>Table heading</th>
-		<th>Table heading</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-		<td>1</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-	      </tr>
-	      <tr>
-		<td>2</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-	      </tr>
-	      <tr>
-		<td>3</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-		<td>Table cell</td>
-	      </tr>
-	    </tbody>
-	  </table>
+    <table class="table">
+         <thead>
+            <tr>
+               <th>#</th>
+               <th>신고한 사람</th>
+               <th>신고 받은 사람</th>
+               <th>신고 받은 사유</th>
+               <th>블랙리스트이동</th>
+            </tr>
+         </thead>
+         <tbody>
+
+            <c:forEach var="br" items="${requestScope.list}">
+               <tr>
+                  <td>1</td>
+                  <td>${br.id}</td>
+                  
+               
+                 </tr>
+            </c:forEach>
+
+         </tbody>
+      </table>
 </div>
 <nav>
   <ul class="pager">

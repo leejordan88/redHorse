@@ -69,4 +69,10 @@ from member
 		select id,name, introduce, hit, profileimg from member where id=#{value}
 	</select>
 	
+	<!-- 12/16 회원 블랙리스트 추가 -->
+	<update id="updateMemberBlackList" parameterType="memberVO">
+		update member set enabled = 3
+	 where id= #{id}
+	</update>
+	
 </mapper>

@@ -34,16 +34,19 @@
          </thead>
          <tbody>
 
-            <c:forEach var="mr" items="${requestScope.vo.list}">
+            <c:forEach var="pr" items="${requestScope.list}">
                <tr>
                   <td>1</td>
-                  <td>${mr.messageVO.receiver}</td>
-                  <td>${mr.messageVO.sender}</td>
-                  <td>${mr.messageReportContent}</td>
+                  <td>${pr.reporter}</td>
+                  <td>${pr.receiver}</td>
+                  <td>${pr.pictureReportContent}</td>
                   <td>
                      <div class="btn-group btn-group-xs" role="group"
                         aria-label="Extra-small button group">
+                        	<a href="updateMemberBlackList.do?receiver=${pr.receiver}" >
                         <button type="button" class="btn btn-default">블랙리스트이동</button>
+          
+                        </a>
                      </div>
                   </td>
                </tr>
@@ -52,58 +55,14 @@
          </tbody>
       </table>
    </div>
-
-
-<%-- 
-   <!-- 페이징부분 -->
-
-   <div id="plist">
-      <p class="paging">
-         <c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
-         <c:if test="${pb.previousPageGroup}">
-            <a href="messageReportList.do?pageNo=${pb.startPageOfPageGroup-1}">◀&nbsp;
-            </a>
-         </c:if>
-
-
-         <c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-            end="${pb.endPageOfPageGroup}">
-            <c:choose>
-               <c:when test="${pb.nowPage!=i}">
-                  <a href="messageReportList.do?pageNo=${i}">${i}</a>
-               </c:when>
-               <c:otherwise>
-   ${i}
-   </c:otherwise>
-            </c:choose>
-   &nbsp;
-   </c:forEach>
-         <c:if test="${pb.nextPageGroup}">
-            <a href="messageReportList.do?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
-         </c:if>
-      </p>
-      <br> <br>
-   </div>
-   <!-- 페이징부분  끝--> --%>
- 
-
-
-
-
+   
 <nav>
-      <ul class="pager">
-         <li class="disabled"><a href="#" aria-label="Previous"><span
-               aria-hidden="true">&laquo;</span></a></li>
-         
-         
-         <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-      
-      
-      </ul>
-   </nav>
-
-
+  <ul class="pager">
+    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+  </ul>
+</nav>
 </div>
 
 <!-- 이 아래로는 푸터 -->
-<jsp:include page="layout/footer.jsp" />
+<jsp:include page="layout/footer.jsp"/>

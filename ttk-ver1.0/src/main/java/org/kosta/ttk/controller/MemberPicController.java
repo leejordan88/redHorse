@@ -26,17 +26,9 @@ public class MemberPicController {
 	@Resource
 	private TravelerService travelerService;
 
-	private String uploadPath;	
+	private String uploadPath;		
 	
-	/**
-	 * 파일 업로드 구현 12/2 효민
-	 * 
-	 * @param request
-	 * @param pvo
-	 * @return
-	 */
-	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
-	public String uploadMemberPic(MemberPicVO memberPicVO, HttpServletRequest request) {
+	public void File(MemberPicVO memberPicVO, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		// MemberVO setting
 		if (session != null) {
@@ -72,10 +64,23 @@ public class MemberPicController {
 			}
 		}
 		memberPicVO.setFileName(file.getOriginalFilename());
+	}
+	
+	
+	/**
+	 * 파일 업로드 구현 12/2 효민
+	 * 
+	 * @param request
+	 * @param pvo
+	 * @return
+	 */
+	@RequestMapping(value = "uploadMemberPic.do", method = RequestMethod.POST)
+	public String uploadMemberPic(MemberPicVO memberPicVO, HttpServletRequest request) {
+		File(memberPicVO, request);
 		memberPicService.uploadMemberPic(memberPicVO);
 		// System.out.println(memberPicVO);
 		return "uploadMemberPic_result";
-	}
+	}	
 
 	/**
 	 * 사진 리스트
@@ -110,7 +115,7 @@ public class MemberPicController {
 		return new ModelAndView("memberpic_list", "pvo", memberPicService.showPictureDetailNoHit(pictureNo));
 	}
 
-	@RequestMapping("visitMemberPic.do")
+	@RequestMapping("visitMemberPic.do") 
 	public ModelAndView visitMemberPic(String id, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
@@ -166,32 +171,7 @@ public class MemberPicController {
 	 */
 	@RequestMapping("updateMemberPic.do")
 	public ModelAndView updateMemberPic(MemberPicVO memberPicVO, HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			MemberVO mvo = (MemberVO) session.getAttribute("mvo");
-			if (mvo != null) {
-				memberPicVO.setMemberVO(mvo);
-			}
-		}
-		uploadPath = request.getSession().getServletContext()
-				.getRealPath("/resources/picupload/" + memberPicVO.getMemberVO().getId() + "/picture/");
-		File uploadDir = new File(uploadPath);
-		if (uploadDir.exists() == false)
-			uploadDir.mkdirs();
-		System.out.println(memberPicVO.getFileName());
-		MultipartFile file = memberPicVO.getUploadFile();
-
-		if (file.isEmpty() == false) {
-			System.out.println("파일명:" + file.getOriginalFilename());
-			File uploadFile = new File(uploadPath + file.getOriginalFilename());
-			try {
-				file.transferTo(uploadFile);
-				System.out.println(uploadPath + file.getOriginalFilename() + " 파일업로드");
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-		memberPicVO.setFileName(file.getOriginalFilename());
+		File(memberPicVO, request);
 		memberPicService.updateMemberPic(memberPicVO);
 		System.out.println(memberPicVO.getFileName());
 		return new ModelAndView("redirect:getPictureList.do?id=" + memberPicVO.getMemberVO().getId());
@@ -203,7 +183,5 @@ public class MemberPicController {
 		System.out.println("업데이트힛 실행");
 		memberPicService.updateHit(pictureNo);
 		return (memberPicService.getUpdateHit(pictureNo));
-	}
-	
-	
+	}	
 }

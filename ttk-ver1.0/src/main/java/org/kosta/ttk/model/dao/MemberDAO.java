@@ -23,6 +23,8 @@ public interface MemberDAO {
 
 	List<MemberVO> searchMemberByName(String name);
 
+	void updateMemberBlackList(String id);
+
 
 
 }

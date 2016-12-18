@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.ttk.model.service.MemberPicReportService;
+import org.kosta.ttk.model.service.MemberService;
 import org.kosta.ttk.model.vo.MemberPicReportVO;
 import org.kosta.ttk.model.vo.MemberVO;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ReportController {
 	@Resource
 	private MemberPicReportService memberPicReportService;
+	private MemberService memberService;
 	
 	// 사진 게시물 신고(12/14)
 	@RequestMapping(value = "reportMemberPicture.do", method = RequestMethod.POST)
@@ -28,5 +30,18 @@ public class ReportController {
 		return new ModelAndView("memberpic_report_success", "id", mvo.getId());
 	}	
 	
+	// 사진 게시물 신고 리스트 (12/16)
+	@RequestMapping("getReportMemberPicList.do")
+	public ModelAndView getReportMemberPicList() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("managerView2_memberpic");
+		mav.addObject("list", memberPicReportService.getReportMemberPicList());
+		return mav;
+	}
 	
+	@RequestMapping("updateMemberBlackList.do")
+	public ModelAndView updateMemberBlackList(MemberPicReportVO mprvo, String id) {
+		System.out.println(id);
+		return new ModelAndView("managerView3","list",memberPicReportService.getBlackList(mprvo, id));
+	}
 }

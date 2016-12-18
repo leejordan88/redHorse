@@ -51,4 +51,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> searchMemberByName(String name) {
 		return memberDAO.searchMemberByName(name);
 	}
+	
+	// 회원 블랙리스트 추가
+	@Override
+	public void updateMemberBlackList(String id){
+		memberDAO.	updateMemberBlackList(id);
+	}
 }
