@@ -25,13 +25,12 @@
 			<div class="row">
 				<div id="msgicon">
 					<h2 class="main-title">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/message/mainSend.png"
-							id="moveSend"> <img
-							src="${pageContext.request.contextPath}/resources/images/message/mainUncheck.png"
-							id="moveUncheck"> <img
-							src="${pageContext.request.contextPath}/resources/images/message/mainDelete.png"
-							id="moveDelete">
+						<img src="${pageContext.request.contextPath}
+						/resources/images/message/mainSend.png" id="moveSend"> 
+						<img src="${pageContext.request.contextPath}
+						/resources/images/message/mainUncheck.png" id="moveUncheck"> 
+						<img src="${pageContext.request.contextPath}
+						/resources/images/message/mainDelete.png" id="moveDelete">
 					</h2>
 				</div>
 			</div>

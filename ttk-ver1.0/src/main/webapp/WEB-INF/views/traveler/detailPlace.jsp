@@ -61,7 +61,8 @@
 						data+="<i class='fa fa-comments-o'></i>쪽지 </button></a></c:if>";
 					    data += "</div></div></div></div>";
 						 }
-						 data += "<input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
+						 /* 여행등록 부트스트랩으로 그리드 지정 */
+						 data += "<div class='col-md-12'><input type='button' id ='regiTraveler' value='여행등록' class='btn btn-primary'>";
 						 document.getElementById("travelerListByDate").innerHTML = data;
 						 } 
 					 });

@@ -17,12 +17,8 @@
       </div>
    </div>
 
-<<<<<<< HEAD
-<!--파란색부분 -->
-=======
 <!--파란색부분 -->
 
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
    <div id="services" class="services">
       <div class="container">
          <div class="row">
@@ -40,40 +36,31 @@
                 <div class="image-container bg2" id="detail-picb">  
                         <img src="${pageContext.request.contextPath}/resources/upload/${requestScope.messageVO.sender}/profile/${requestScope.messageVO.memberVO.profileimg}" class="avatar" alt="avatar"> 
                     </div>
+                <!-- 부트스트랩트 그리드 지정 -->    
                 <div class="col-sm-12">
                     <div class="details">
-<<<<<<< HEAD
-                           <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
-                           <h5 id="messageDate">${requestScope.messageVO.messageDate}  &nbsp; 
-                           <a href="" id="sirenButton"><img style="width:1.5%; height:1.5%;" src="${pageContext.request.contextPath}/resources/images/message/siren.png"  class="sirenButton"></a></h5>
-=======
                            <h4 id="messageSender">${requestScope.messageVO.sender} </h4>
                            <h5 id="messageDate">${requestScope.messageVO.messageDate}  &nbsp;
                            
-                         <a href='#' data-toggle='modal' data-target='#messageReport-modal' ><img style="width:1.5%; height:1.5%;" 
-                            src="${pageContext.request.contextPath}/resources/images/message/siren.png"  class="sirenButton"> 
-                            </a>
-                            
-                            
+                         <a href='#' data-toggle='modal' data-target='#messageReport-modal' >
+                         <!-- 사이렌버튼 사이즈 조정 -->
+                         <img style="width:1.5%; height:1.5%;" src="${pageContext.request.contextPath}/resources/images/message/siren.png"  class="sirenButton"> 
+                            </a>              
                             </h5>
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
                            <textarea class="form-control" id="msgContent" cols="45" rows="6" readonly="readonly" placeholder="${requestScope.messageVO.messageContent}"></textarea>
-                             <!--  <div id="messageContent"></div> -->
+                           <!--  <div id="messageContent"></div> -->
                         <br><br>
                         <div class="mg-top-10">
-                            <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">send<%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
+                        	<!-- send와 delete 버튼 모양 -->
+                            <a href='#' data-toggle='modal' data-target='#message-modal' class="btn btn-success">send
+                            <%-- <img src="${pageContext.request.contextPath}/resources/images/message/send.png" > --%></a>
                             &nbsp;
                             <a href="#"  id="btn-delete" class="btn btn-success delete" >delete</a>
                         </div>
                    </div>
             </div>
 </div>
-<<<<<<< HEAD
 <!-- 내용부분 끝-->
-=======
-<!-- 내용부분 끝-->
-
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
       </div>
    </div>
  <!-- 파란부분끝 -->
@@ -91,19 +78,6 @@
       $("#moveDelete").click(function(){
          location.href="messageList.do";
       });
-      
-<<<<<<< HEAD
-      $('#btn-delete').click(function() {
-         	//삭제
-         	 var result = confirm('메세지를 삭제하시겠습니까?');
-		        if(result) {
-		           //yes
-		        	$(location).attr('href',"receiveMessageDelete.do?messageNo=${requestScope.messageVO.messageNo}");
-		        } else {
-		           
-		            return;
-		        }
-=======
       $('#btn-delete').click(function() {
             //삭제
              var result = confirm('메세지를 삭제하시겠습니까?');
@@ -114,9 +88,6 @@
                  
                   return;
               }
-            
-            
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
       });//function 
   });
    
@@ -147,10 +118,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
-   <!-- 쪽지보내기 모달 끝 -->  
-=======
         </div>
    <!-- 쪽지보내기 모달 끝 -->  
    
@@ -181,4 +148,3 @@
             </div>
         </div>
    <!-- 신고하기 모달 끝 -->  
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git

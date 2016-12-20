@@ -1,9 +1,10 @@
+/* messageDetail.jsp 메세지 아이콘 위치지정하기 */
 #msgicon{
    margin-top: -80px;
    margin-left: 35%;
    margin-bottom: -2%;
 }
-/* ----------messagesendlist.jsp----------- */
+/* ----------messagesendList와 messageList.jsp 메세지 모양 ----------- */
 .chat-message {
   padding: 60px 20px 115px;
 }
@@ -198,8 +199,6 @@ h4.service-title {
  messageDetail 부분
 
 #messageSender{
-<<<<<<< HEAD
-=======
 
 	color: white;
 }
@@ -263,8 +262,6 @@ h4.service-title {
 }
 
    
-
->>>>>>> branch 'version1.0' of https://github.com/leejordan88/redHorse.git
    color: white;
 }
 #messageDate{
@@ -320,9 +317,9 @@ h4.service-title {
 }
 <!--버턴 --> */
 
-/* Component: Panel
+/* Component: Panel*/
 
-/* 경계선
+/* 경계선*/
 .panel-white {
   border: 1px solid #dddddd;
 }
